@@ -1,10 +1,12 @@
 const axios = require('axios');
 const fs = require('fs').promises;
 const path = require('path');
-require('dotenv').config();
 
+
+require('dotenv').config();
 const accessToken = process.env.ACCESS_TOKEN;
 const fileId = process.env.FILE_ID;
+
 const url = `https://api.figma.com/v1/files/${fileId}/variables/local`;
 
 // Convert RGBA to Hex
