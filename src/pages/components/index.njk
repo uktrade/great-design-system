@@ -1,0 +1,17 @@
+---
+navTitle: "Components"
+---
+{% extends "layout/_base.njk" %}
+{% block title %}Design System - Components{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>Design System Components</h1>
+        <p>Here are the available components</p>
+        <ul>
+            {% for item in collections.componentIndexes %}
+                <li><a href="{{ item.url }}">{{ item.data.title or item.fileSlug }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

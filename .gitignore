@@ -1,0 +1,11 @@
+# Node.js modules
+node_modules/
+
+# Build output
+dist/
+
+# Build output (committed)
+!/dist
+
+# Dotenv environment variable file
+.env

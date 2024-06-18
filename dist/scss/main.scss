@@ -1,0 +1,12 @@
+@import 'govuk-frontend/dist/govuk/all';
+
+@import './variables/colors.scss';
+@import './variables/typography.scss';
+@import './variables/spacing.scss';
+@import './variables/components.scss';
+
+@import "./base/fonts";
+@import "./base/typography";
+
+@import '../components/button/button.scss';
+@import '../components/card/card.scss';
