@@ -1,4 +1,9 @@
-@import 'govuk-frontend/dist/govuk/all';
+@import "node_modules/govuk-frontend/dist/govuk/base";
+@import "node_modules/govuk-frontend/dist/govuk/core/";
+@import "node_modules/govuk-frontend/dist/govuk/objects/";
+@import "node_modules/govuk-frontend/dist/govuk/components/";
+@import "node_modules/govuk-frontend/dist/govuk/utilities/";
+@import "node_modules/govuk-frontend/dist/govuk/overrides/";
 
 @import './variables/colors.scss';
 @import './variables/typography.scss';
