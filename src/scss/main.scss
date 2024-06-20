@@ -5,10 +5,16 @@
 @import "node_modules/govuk-frontend/dist/govuk/utilities/";
 @import "node_modules/govuk-frontend/dist/govuk/overrides/";
 
-@import './variables/colors.scss';
-@import './variables/typography.scss';
+@import './variables/colour.scss';
+@import './variables/type.scss';
 @import './variables/spacing.scss';
-@import './variables/components.scss';
+@import './variables/icon.scss';
+@import './variables/border.scss';
+
+@import './variables/components/button.scss';
+@import './variables/components/forms.scss';
+@import './variables/components/tab.scss';
+@import './variables/components/tag.scss';
 
 @import "./base/fonts";
 @import "./base/typography";
