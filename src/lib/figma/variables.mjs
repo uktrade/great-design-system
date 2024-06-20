@@ -5,7 +5,6 @@ import { fileURLToPath } from "url";
 import { diffLines } from "diff";
 import Table from "cli-table3";
 
-// Create __dirname equivalent for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
