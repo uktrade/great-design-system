@@ -7,7 +7,7 @@ import {
   getValue,
   formatVariable,
 } from "./utils.mjs";
-import { createDirectories, writeFiles } from "./variables.mjs";
+import { createDirectories, writeFiles } from "./write-scss-files.mjs";
 
 import dotenv from "dotenv";
 dotenv.config();
