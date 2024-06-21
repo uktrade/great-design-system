@@ -1,0 +1,14 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% set breadcrumbsData = {
+        collapseOnMobile: true,
+        itemsList: [
+            { href: '/', text: 'Home' },
+            { href: '/page2', text: 'Page 2' },
+            { href: '/page3', text: 'Page 3' }
+        ]
+    } %}
+
+    {{ "breadcrumbs" | component(breadcrumbsData) }}
+{% endblock %}
