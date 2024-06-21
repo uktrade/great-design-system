@@ -7,6 +7,12 @@
     "node": "^20.9.0",
     "npm": "^10.1.0"
   },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "scripts": {
     "dev": "npm run clean && npm-run-all --parallel dev:*",
