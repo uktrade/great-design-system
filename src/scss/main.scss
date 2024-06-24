@@ -1,15 +1,14 @@
-@import './variables/colour.scss';
-@import './variables/type.scss';
-@import './variables/spacing.scss';
-@import './variables/icon.scss';
-@import './variables/border.scss';
+@import './variables/colour';
+@import './variables/type';
+@import './variables/spacing';
+@import './variables/icon';
+@import './variables/border';
+@import './variables/components/button';
+@import './variables/components/forms';
+@import './variables/components/tab';
+@import './variables/components/tag';
 
-@import './variables/components/button.scss';
-@import './variables/components/forms.scss';
-@import './variables/components/tab.scss';
-@import './variables/components/tag.scss';
-
-@import './base/govuk-variable-overrides.scss';
+@import './govuk/variables/';
 
 @import "node_modules/govuk-frontend/dist/govuk/base";
 @import "node_modules/govuk-frontend/dist/govuk/core/";
@@ -17,6 +16,8 @@
 @import "node_modules/govuk-frontend/dist/govuk/components/";
 @import "node_modules/govuk-frontend/dist/govuk/utilities/";
 @import "node_modules/govuk-frontend/dist/govuk/overrides/";
+
+@import './govuk/components/';
 
 @import "./base/fonts";
 @import "./base/typography";

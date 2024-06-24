@@ -57,15 +57,24 @@ const logDifferences = (oldContent, newContent, filePath) => {
   console.log(table.toString());
 };
 
+const addUnderscoreToFileName = (filePath) => {
+  const dir = path.dirname(filePath);
+  const ext = path.extname(filePath);
+  const base = path.basename(filePath, ext);
+  return path.join(dir, `_${base}` + ext);
+};
+
 export const writeFiles = async (files, content) => {
   console.log(chalk.blue("Writing SCSS files..."));
   await Promise.all(
     Object.entries(files).map(async ([filePath]) => {
       const newContent = content[filePath];
       const oldContent = await readFileContent(filePath);
+      const newFilePath = addUnderscoreToFileName(filePath);
+
       if (oldContent !== newContent) {
         logDifferences(oldContent, newContent, filePath);
-        await fs.writeFile(filePath, newContent, { flag: "w" });
+        await fs.writeFile(newFilePath, newContent, { flag: "w" });
         console.log(chalk.green(`Written file: ${filePath}`));
       } else {
         console.log(chalk.green(`No changes for file: ${filePath}`));
