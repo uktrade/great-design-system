@@ -9,26 +9,35 @@ jobs:
   publish:
     executor: node-executor
     steps:
-      - checkout
+      - checkout:
+          path: ~/project
+
+      - run:
+          name: Fetch all tags
+          command: |
+            cd ~/project
+            git fetch --all --tags
+
+      - run:
+          name: Extract version from tag
+          command: |
+            cd ~/project
+            TAG_NAME=$(git describe --tags --abbrev=0)
+            echo "Extracted tag name: $TAG_NAME"
+            VERSION=${TAG_NAME#v}  # Remove the 'v' prefix if it exists
+            echo "Setting npm version to: $VERSION"
+            npm version $VERSION --no-git-tag-version
 
       - run:
           name: Set up Node.js
           command: |
             curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
             sudo apt-get install -y nodejs
-  
-      - run:
-          name: Set version from tag
-          command: |
-            TAG_NAME=$(git describe --tags)
-            echo "Extracted tag name: $TAG_NAME"
-            VERSION=${TAG_NAME}
-            echo "Setting npm version to: $VERSION"
-            npm version $VERSION --no-git-tag-version
 
       - run:
           name: Configure npm authentication
-          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          command: |
+            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
           environment:
             NPM_TOKEN: $NPM_TOKEN
 
@@ -42,15 +51,21 @@ jobs:
 
       - run:
           name: Install dependencies
-          command: npm install
+          command: |
+            cd ~/project
+            npm install
 
       - run:
           name: Build the npm package
-          command: npm run npm:package
+          command: |
+            cd ~/project
+            npm run npm:package
 
       - run:
           name: Publish to npm
-          command: npm publish --access public
+          command: |
+            cd ~/project
+            npm publish --access public
           environment:
             NODE_AUTH_TOKEN: $NPM_TOKEN
 
@@ -62,3 +77,5 @@ workflows:
           filters:
             tags:
               only: /.*/
+            branches:
+              ignore: /.*/
