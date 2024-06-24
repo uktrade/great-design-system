@@ -12,18 +12,19 @@ jobs:
       - checkout
 
       - run:
-          name: Fetch all tags
-          command: git fetch --all --tags
-
-      - run:
           name: Set up Node.js
           command: |
             curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -
             sudo apt-get install -y nodejs
 
       - run:
+          name: Install jq
+          command: sudo apt-get install -y jq
+
+      - run:
           name: Configure npm authentication
-          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          command: |
+            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
           environment:
             NPM_TOKEN: $NPM_TOKEN
 
@@ -33,11 +34,14 @@ jobs:
 
       - run:
           name: Build the npm package
-          command: npm run npm:package
+          command: npm run build
 
       - run:
           name: Publish to npm
-          command: npm publish --access public
+          command: |
+            VERSION=$(jq -r '.version' package.json)
+            echo "Publishing version: $VERSION"
+            npm publish --access public
           environment:
             NODE_AUTH_TOKEN: $NPM_TOKEN
 
