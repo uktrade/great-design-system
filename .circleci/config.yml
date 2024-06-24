@@ -16,6 +16,15 @@ jobs:
           command: |
             curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
             sudo apt-get install -y nodejs
+  
+      - run:
+          name: Set version from tag
+          command: |
+            TAG_NAME=$(git describe --tags)
+            echo "Extracted tag name: $TAG_NAME"
+            VERSION=${TAG_NAME}
+            echo "Setting npm version to: $VERSION"
+            npm version $VERSION --no-git-tag-version
 
       - run:
           name: Configure npm authentication
