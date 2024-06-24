@@ -24,7 +24,7 @@ jobs:
             cd ~/project
             TAG_NAME=$(git describe --tags --abbrev=0)
             echo "Extracted tag name: $TAG_NAME"
-            VERSION=${TAG_NAME#v}  # Remove the 'v' prefix if it exists
+            VERSION=${TAG_NAME}
             echo "Setting npm version to: $VERSION"
             npm version $VERSION --no-git-tag-version
 
