@@ -1,0 +1,55 @@
+version: 2.1
+
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:latest
+
+jobs:
+  publish:
+    executor: node-executor
+    steps:
+      - checkout
+
+      - run:
+          name: Set up Node.js
+          command: |
+            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+
+      - run:
+          name: Configure npm authentication
+          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          environment:
+            NPM_TOKEN: $NPM_TOKEN
+
+      - run:
+          name: Set git credentials
+          command: |
+            git config --global user.name "$CIRCLE_USERNAME"
+            git config --global user.email "circleci+${CIRCLE_USERNAME}@users.noreply.github.com"
+          environment:
+            CIRCLE_USERNAME: $CIRCLE_USERNAME
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - run:
+          name: Build the npm package
+          command: npm run npm:package
+
+      - run:
+          name: Publish to npm
+          command: npm publish --access public
+          environment:
+            NODE_AUTH_TOKEN: $NPM_TOKEN
+
+workflows:
+  version: 2
+  publish:
+    jobs:
+      - publish:
+          filters:
+            tags:
+              only: /.*/
