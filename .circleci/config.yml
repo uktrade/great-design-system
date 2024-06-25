@@ -8,6 +8,8 @@ executors:
 jobs:
   publish:
     executor: node-executor
+    environment:
+      NPM_TOKEN: $NPM_TOKEN
     steps:
       - checkout
 
@@ -27,8 +29,6 @@ jobs:
             mkdir -p ~/.npm
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
             echo "@uktrade:registry=https://registry.npmjs.org/" >> ~/.npmrc
-        environment:
-          NPM_TOKEN: $NPM_TOKEN
 
       - run:
           name: Verify npm token setup
@@ -60,8 +60,6 @@ jobs:
             VERSION=$(jq -r '.version' package.json)
             echo "Publishing version: $VERSION"
             npm publish --access public
-        environment:
-          NODE_AUTH_TOKEN: $NPM_TOKEN
 
 workflows:
   version: 2
