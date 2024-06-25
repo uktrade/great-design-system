@@ -1,51 +1,16 @@
 version: 2.1
 
-executors:
-  node-executor:
-    docker:
-      - image: circleci/node:latest
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node
+
 
 jobs:
-  publish:
-    executor: node-executor
-    environment:
-      NPM_TOKEN: $NPM_TOKEN
-      NODE_AUTH_TOKEN: $NPM_TOKEN
+  build:
+    <<: *defaults
     steps:
       - checkout
-
-      - run:
-          name: Set up Node.js
-          command: |
-            curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-            sudo apt-get install -y nodejs
-
-      - run:
-          name: Install jq
-          command: sudo apt-get install -y jq
-
-      - run:
-          name: Configure npm authentication
-          command: |
-            mkdir -p ~/.npm
-            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-            echo "@uktrade:registry=https://registry.npmjs.org/" >> ~/.npmrc
-
-      - run:
-          name: Verify npm token setup
-          command: cat ~/.npmrc
-
-      - run:
-          name: Check npm authentication
-          command: npm whoami
-
-      - run:
-          name: Print working directory
-          command: pwd
-
-      - run:
-          name: Check npm version and configuration
-          command: npm config ls -l && npm --version
 
       - run:
           name: Install dependencies
@@ -55,22 +20,33 @@ jobs:
           name: Build the npm package
           command: npm run build
 
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
       - run:
-          name: Verify package version
-          command: jq -r '.version' package.json
-
-      - run:
-          name: Publish to npm
+          name: Authenticate with registry
           command: |
-            VERSION=$(jq -r '.version' package.json)
-            echo "Publishing version: $VERSION"
-            npm publish --access public
+            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+            echo "@uktrade:registry=https://registry.npmjs.org/" >> ~/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish --access public
 
 workflows:
   version: 2
   publish:
     jobs:
-      - publish:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
+      - deploy:
+          requires:
+            - build
           filters:
             tags:
               only: /.*/
