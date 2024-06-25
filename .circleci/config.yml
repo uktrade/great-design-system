@@ -20,13 +20,8 @@ jobs:
             sudo apt-get install -y nodejs
 
       - run:
-          name: Install jq
-          command: sudo apt-get install -y jq
-
-      - run:
           name: Configure npm authentication
           command: |
-            mkdir -p ~/.npm
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
             echo "@uktrade:registry=https://registry.npmjs.org/" >> ~/.npmrc
 
