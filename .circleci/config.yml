@@ -1,16 +1,23 @@
 version: 2.1
 
-defaults: &defaults
-  working_directory: ~/repo
-  docker:
-    - image: circleci/node
-
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:latest
 
 jobs:
   build:
-    <<: *defaults
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/repo
     steps:
       - checkout
+
+      - run:
+          name: Set up Node.js
+          command: |
+            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+            sudo apt-get install -y nodejs
 
       - run:
           name: Install dependencies
@@ -20,16 +27,25 @@ jobs:
           name: Build the npm package
           command: npm run build
 
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - .
+
   deploy:
-    <<: *defaults
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/repo
     steps:
       - attach_workspace:
           at: ~/repo
+
       - run:
           name: Authenticate with registry
           command: |
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
             echo "@uktrade:registry=https://registry.npmjs.org/" >> ~/.npmrc
+
       - run:
           name: Publish package
           command: npm publish --access public
@@ -47,8 +63,3 @@ workflows:
       - deploy:
           requires:
             - build
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              ignore: /.*/
