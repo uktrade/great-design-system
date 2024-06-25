@@ -10,6 +10,7 @@ jobs:
     executor: node-executor
     environment:
       NPM_TOKEN: $NPM_TOKEN
+      NODE_AUTH_TOKEN: $NPM_TOKEN
     steps:
       - checkout
 
@@ -20,14 +21,23 @@ jobs:
             sudo apt-get install -y nodejs
 
       - run:
+          name: Install jq
+          command: sudo apt-get install -y jq
+
+      - run:
           name: Configure npm authentication
           command: |
+            mkdir -p ~/.npm
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
             echo "@uktrade:registry=https://registry.npmjs.org/" >> ~/.npmrc
 
       - run:
           name: Verify npm token setup
           command: cat ~/.npmrc
+
+      - run:
+          name: Check npm authentication
+          command: npm whoami
 
       - run:
           name: Print working directory
