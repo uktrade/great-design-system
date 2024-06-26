@@ -10,12 +10,12 @@
 
 @import './govuk/variables/';
 
-@import "node_modules/govuk-frontend/dist/govuk/base";
-@import "node_modules/govuk-frontend/dist/govuk/core/";
-@import "node_modules/govuk-frontend/dist/govuk/objects/";
-@import "node_modules/govuk-frontend/dist/govuk/components/";
-@import "node_modules/govuk-frontend/dist/govuk/utilities/";
-@import "node_modules/govuk-frontend/dist/govuk/overrides/";
+@import "govuk-frontend/dist/govuk/base";
+@import "govuk-frontend/dist/govuk/core/";
+@import "govuk-frontend/dist/govuk/objects/";
+@import "govuk-frontend/dist/govuk/components/";
+@import "govuk-frontend/dist/govuk/utilities/";
+@import "govuk-frontend/dist/govuk/overrides/";
 
 @import './govuk/components/';
 
