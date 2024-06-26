@@ -38,15 +38,17 @@ const fetchAndProcessFigmaTokens = async () => {
 
     if (variableCollections) {
       Object.values(variableCollections).forEach((collection) => {
-        if (collection.modes) {
-          collection.modes.forEach((mode) => {
-            modeIdToName[mode.modeId] = mode.name;
-          });
-        }
-        if (collection.variableIds) {
-          collection.variableIds.forEach((variableId) => {
-            variableIdToCollection[variableId] = collection.name;
-          });
+        if (!collection.hiddenFromPublishing) {
+          if (collection.modes) {
+            collection.modes.forEach((mode) => {
+              modeIdToName[mode.modeId] = mode.name;
+            });
+          }
+          if (collection.variableIds) {
+            collection.variableIds.forEach((variableId) => {
+              variableIdToCollection[variableId] = collection.name;
+            });
+          }
         }
       });
     }
@@ -54,7 +56,7 @@ const fetchAndProcessFigmaTokens = async () => {
     const sortedVariables = topologicalSort(variables);
 
     sortedVariables.forEach((variable) => {
-      if (variable && variable.valuesByMode) {
+      if (variable && variable.valuesByMode && !variable.hiddenFromPublishing) {
         const collectionName = variableIdToCollection[variable.id];
         const modes = Object.keys(variable.valuesByMode);
         const values = Object.values(variable.valuesByMode);
