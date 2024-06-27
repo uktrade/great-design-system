@@ -6,11 +6,10 @@ navTitle: "Components"
 
 {% block content %}
     <section>
-        <h1>Design System Components</h1>
-        <p>Here are the available components</p>
-        <ul>
+        <h2 class="govuk-heading-l">Components</h2>
+        <ul class="govuk-list">
             {% for item in collections.componentIndexes %}
-                <li><a href="{{ item.url }}">{{ item.data.title or item.fileSlug }}</a></li>
+                <li><a class="govuk-link" href="{{ item.url }}">{{ item.data.title or item.fileSlug }}</a></li>
             {% endfor %}
         </ul>
     </section>

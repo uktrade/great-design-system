@@ -5,24 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Great Design system{% endblock %}</title>
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                {% for page in collections.all %}
-                    {% if page.data.navTitle %}
-                        <li><a href="{{ page.url }}">{{ page.data.navTitle }}</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </nav>
+        <div class="govuk-width-container">
+            <nav class="govuk-main-wrapper">
+                <h1 class="govuk-heading-xl govuk-!-static-margin-bottom-2">Great Design System</h1>
+                <p>Great Design System provides components, styles and patterns.</p>
+                <ul class="govuk-list">
+                    {% for page in collections.all %}
+                        {% if page.data.navTitle %}
+                            <li><a class="govuk-link" href="{{ page.url }}">{{ page.data.navTitle }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+            <hr>
+        </div>
     </header>
-
-    <main>
-        {% block content %}Default content{% endblock %}
-    </main>
-
+    <div class="govuk-width-container">
+        <main class="govuk-main-wrapper">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
     <footer>
         
     </footer>

@@ -7,7 +7,11 @@ permalink: "/"
 
 {% block content %}
     <section>
-        <h1>Great Design System</h1>
-        <p>Design system does design system things</p>
+        <h2 class="govuk-heading-l">Available components</h2>
+        <ul class="govuk-list">
+            {% for item in collections.componentIndexes %}
+                <li><a class="govuk-link" href="{{ item.url }}">{{ item.data.title or item.fileSlug }}</a></li>
+            {% endfor %}
+        </ul>
     </section>
 {% endblock %}

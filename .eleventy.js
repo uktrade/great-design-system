@@ -34,8 +34,8 @@ module.exports = function(eleventyConfig) {
         return new nunjucks.runtime.SafeString(renderedString);
     });
 
-    eleventyConfig.addShortcode("exampleIframe", function(src, width="100%", height="200px") {
-        return `<iframe src="${src}" frameborder="0" width="${width}" height="${height}"></iframe>`;
+    eleventyConfig.addShortcode("exampleIframe", function(src, width="100%", height="100%") {
+        return `<div class="app-iframe-wrapper"><iframe src="${src}" frameborder="0" width="${width}" height="${height}"></iframe></div>`;
     });
     
 
