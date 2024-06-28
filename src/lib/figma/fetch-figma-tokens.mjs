@@ -66,10 +66,7 @@ const fetchAndProcessFigmaTokens = async () => {
         );
 
         const variableName = sanitizeVariableName(variable.name);
-        const category =
-          collectionName === "Components"
-            ? variableName.split("-")[1]
-            : variableName.split("-")[1];
+        const category = variableName.split("-")[1];
 
         const dirPath =
           collectionName === "Components" ? componentsDir : scssDir;
