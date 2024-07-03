@@ -1,0 +1,236 @@
+// Variables
+$great-button-shadow-size: 3px;
+$great-button-padding: 13px 20px 12px;
+$great-button-inline-padding: 8px 15px 7px;
+$great-button-font-size: 20px;
+$great-button-line-height: 1.3;
+$great-button-box-sizing: border-box;
+$great-button-display: inline-block;
+$great-button-position: relative;
+$great-button-width: 100%;
+$great-button-margin: 0 0 20px;
+$great-button-border-width: 1px;
+$great-button-border-radius: 0;
+$great-button-text-align: center;
+$great-button-vertical-align: top;
+$great-button-cursor: pointer;
+$great-button-appearance: none;
+$great-button-outline: 2px solid transparent;
+
+// Placeholder for base button styles
+%great-button-base {
+    font-family: 'Noto SemiBold';
+    font-size: $great-button-font-size;
+    box-sizing: $great-button-box-sizing;
+    display: $great-button-display;
+    position: $great-button-position;
+    width: $great-button-width;
+    margin: $great-button-margin;
+    border: $great-button-border-width solid rgba(0, 0, 0, 0);
+    border-bottom: none;
+    border-radius: $great-button-border-radius;
+    text-align: $great-button-text-align;
+    text-decoration: none;
+    vertical-align: $great-button-vertical-align;
+    cursor: $great-button-cursor;
+    -webkit-appearance: $great-button-appearance;
+    padding: $great-button-padding;
+    line-height: $great-button-line-height;
+    -webkit-font-smoothing: auto;
+
+    @include govuk-media-query($from: tablet) {
+        width: auto;
+    }
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: -2px;
+        right: -2px;
+        bottom: -4px;
+        left: -2px;
+        background: rgba(0, 0, 0, 0);
+    }
+}
+
+// Mixin for button states
+@mixin great-button-states($bg-color, $bg-hover, $text-color, $border, $border-hover, $has-border: false) {
+    background-color: $bg-color;
+    color: $text-color;
+    box-shadow: 0 $great-button-shadow-size 0 $border;
+
+    @if $has-border {
+        border: $great-button-border-width solid $border;
+        border-bottom: none;
+    }
+
+    &:hover,
+    &:focus:hover,
+    &:active:not(:focus) {
+        color: $text-color;
+        background-color: $bg-hover;
+        box-shadow: 0 $great-button-shadow-size 0 $border-hover;
+
+        @if $has-border {
+            color: $border-hover;
+            border: $great-button-border-width solid $border-hover;
+            border-bottom: none;
+        }
+    }
+
+    &:active:not(:focus) {
+        border: $great-button-border-width solid $border-hover;
+        box-shadow: none;
+    }
+
+    &:focus:not(:hover) {
+        outline: $great-button-outline;
+        color: $great-button-colour-focus-text;
+    }
+
+    &:focus:not(:active):not(:hover) {
+        background-color: $great-button-colour-focus-background;
+        border: $great-button-border-width solid $great-button-colour-focus-border;
+        border-bottom: none;
+        box-shadow: 0 $great-button-shadow-size 0 $great-button-colour-focus-border;
+    }
+
+    &:focus:active {
+        background: $great-button-colour-focus-background;
+        border: $great-button-border-width solid $great-button-colour-focus-border;
+        box-shadow: none;
+        color: $great-button-colour-focus-text;
+    }
+}
+
+// Mixin for warning and transactional button shared styles
+@mixin great-button-warning-transactional-states($bg-color, $bg-hover, $text-color, $border, $border-hover) {
+    @include great-button-states($bg-color, $bg-hover, $text-color, $border, $border-hover);
+
+    &:active:not(:focus),
+    &:focus:hover,
+    &:hover {
+        border: $great-button-border-width solid transparent;
+        border-bottom: none;
+    }
+
+    &:hover,
+    &:focus:hover {
+        box-shadow: 0 $great-button-shadow-size 0 $border-hover;
+    }
+}
+
+// Placeholder for primary button styles
+%great-button-primary {
+    @include great-button-states(
+        $great-button-colour-primary-background,
+        $great-button-colour-primary-background-hover,
+        $great-button-colour-primary-text-colour,
+        $great-button-colour-primary-border,
+        $great-button-colour-primary-border-hover
+    );
+}
+
+// Placeholder for secondary button styles
+%great-button-secondary {
+    @include great-button-states(
+        $great-button-colour-secondary-background,
+        $great-button-colour-secondary-background,
+        $great-button-colour-secondary-text-colour,
+        $great-button-colour-secondary-border,
+        $great-button-colour-secondary-border-hover,
+        true
+    );
+
+    &:hover,
+    &:focus:hover {
+        border: $great-button-border-width solid $great-button-colour-secondary-border-hover;
+        border-bottom: none;
+    }
+}
+
+// Placeholder for warning button styles
+%great-button-warning {
+    @include great-button-warning-transactional-states(
+        $great-button-colour-warning-background,
+        $great-button-colour-warning-hover,
+        $great-button-colour-warning-text-colour,
+        $great-button-colour-warning-border,
+        $great-button-colour-warning-border-hover
+    );
+}
+
+// Placeholder for transactional button styles
+%great-button-transactional {
+    @include great-button-warning-transactional-states(
+        $great-button-colour-transactional-background,
+        $great-button-colour-transactional-background-hover,
+        $great-button-colour-transactional-text-colour,
+        $great-button-colour-transactional-border,
+        $great-button-colour-transactional-border-hover
+    );
+}
+
+// Placeholder for CTA button styles
+%great-button-cta {
+    display: inline-flex;
+    min-height: auto;
+    justify-content: center;
+
+    .great-icon--chevron {
+        margin-left: 10px;
+        vertical-align: middle;
+        flex-shrink: 0;
+        align-self: center;
+    }
+}
+
+// Placeholder for inline button styles
+%great-button-inline {
+    padding: $great-button-inline-padding;
+}
+
+// Base button styles
+.great-button {
+    @extend %great-button-base;
+    @extend %great-button-primary;
+}
+
+// Secondary button styles
+.great-button--secondary {
+    @extend %great-button-base;
+    @extend %great-button-secondary;
+}
+
+// Warning button styles
+.great-button--warning {
+    @extend %great-button-base;
+    @extend %great-button-warning;
+}
+
+// Transactional button styles
+.great-button--transactional {
+    @extend %great-button-base;
+    @extend %great-button-transactional;
+}
+
+// CTA button styles
+.great-button--cta {
+    @extend %great-button-base;
+    @extend %great-button-secondary;
+    @extend %great-button-cta;
+}
+
+// Inline button styles
+.great-button--inline {
+    @extend %great-button-base;
+    @extend %great-button-inline;
+}
+
+// Toggle button styles
+.great-button--toggle {
+    @extend %great-button-base;
+    @extend %great-button-secondary;
+    @extend %great-button-inline;
+}

@@ -1,0 +1,9 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% set button1Data = { params: { text: "Save and continue", classes: "great-button--inline" } } %}
+    {% set button2Data = { params: { text: "Cancel", classes: "great-button--secondary great-button--inline" } } %}
+
+    {{ "button" | component(button1Data) }}
+    {{ "button" | component(button2Data) }}
+{% endblock %}

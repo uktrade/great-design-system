@@ -3,6 +3,7 @@
 @import './variables/spacing';
 @import './variables/icon';
 // @import './variables/border';
+
 @import './variables/components/button';
 @import './variables/components/forms';
 @import './variables/components/tab';
@@ -17,7 +18,7 @@
 @import "govuk-frontend/dist/govuk/utilities/";
 @import "govuk-frontend/dist/govuk/overrides/";
 
-@import './govuk/components/';
-
 @import "./base/fonts";
 @import "./base/typography";
+
+@import "../components/button/button";

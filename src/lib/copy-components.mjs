@@ -44,7 +44,7 @@ glob(`${sourceDir}/*/_*.njk`, async (err, files) => {
       if (await fs.stat(scssFile).catch(() => false)) {
         const targetScssPath = path.join(
           targetComponentDir,
-          `${componentName}.scss`,
+          `_${componentName}.scss`,
         );
         await fs.copyFile(scssFile, targetScssPath);
         console.log(`Copied ${scssFile} to ${targetScssPath}`);
