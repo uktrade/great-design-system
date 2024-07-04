@@ -178,8 +178,22 @@ $great-button-outline: 2px solid transparent;
     min-height: auto;
     justify-content: center;
 
-    .great-icon--chevron {
+    .great-icon--svg {
         margin-left: 10px;
+        vertical-align: middle;
+        flex-shrink: 0;
+        align-self: center;
+    }
+}
+
+
+// Placeholder for icon button styles
+%great-button-icon {
+    display: inline-flex;
+    min-height: auto;
+    justify-content: center;
+
+    .great-icon--svg {
         vertical-align: middle;
         flex-shrink: 0;
         align-self: center;
@@ -233,4 +247,11 @@ $great-button-outline: 2px solid transparent;
     @extend %great-button-base;
     @extend %great-button-secondary;
     @extend %great-button-inline;
+}
+
+// Icon button styles
+.great-button--icon {
+    @extend %great-button-base;
+    @extend %great-button-inline;
+    @extend %great-button-icon;
 }
