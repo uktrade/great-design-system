@@ -1,8 +1,8 @@
 {% extends "layout/_example.njk" %}
 
 {% block content %}
-    {% set button1Data = { params: { text: "Show", classes: "great-button--toggle" } } %}
-    {% set button2Data = { params: { text: "Hide", classes: "great-button--toggle" } } %}
+    {% set button1Data = { text: "Show", classes: "great-button--toggle" } %}
+    {% set button2Data = { text: "Hide", classes: "great-button--toggle" } %}
 
     {{ "button" | component(button1Data) }}
     {{ "button" | component(button2Data) }}

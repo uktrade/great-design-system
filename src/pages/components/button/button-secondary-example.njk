@@ -1,7 +1,7 @@
 {% extends "layout/_example.njk" %}
 
 {% block content %}
-    {% set buttonData = { params: { text: "Cancel", classes: "great-button--secondary" } } %}
+    {% set buttonData = { text: "Cancel", classes: "great-button--secondary" } %}
 
     {{ "button" | component(buttonData) }}
 {% endblock %}

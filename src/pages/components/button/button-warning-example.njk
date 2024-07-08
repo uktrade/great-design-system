@@ -1,7 +1,7 @@
 {% extends "layout/_example.njk" %}
 
 {% block content %}
-    {% set buttonData = { params: { text: "Delete", classes: "great-button--warning" } } %}
+    {% set buttonData = { text: "Delete", classes: "great-button--warning" } %}
 
     {{ "button" | component(buttonData) }}
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "layout/_example.njk" %}
 
 {% block content %}
-    {% set buttonData = { params: { text: "Complete", classes: "great-button--transactional" } } %}
+    {% set buttonData = { text: "Complete", classes: "great-button--transactional" } %}
 
     {{ "button" | component(buttonData) }}
 {% endblock %}

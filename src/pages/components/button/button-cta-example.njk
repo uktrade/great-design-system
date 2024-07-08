@@ -1,7 +1,7 @@
 {% extends "layout/_example.njk" %}
 
 {% block content %}
-    {% set buttonData = { params: { text: "Get started", href: "#", classes: "great-button--cta", cta: true } } %}
+    {% set buttonData = { text: "Get started", href: "#", classes: "great-button--cta", cta: true } %}
 
     {{ "button" | component(buttonData) }}
 {% endblock %}
