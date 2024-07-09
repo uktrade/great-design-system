@@ -1,5 +1,8 @@
 <div class="govuk-breadcrumbs {{ classes }}{% if collapseOnMobile %} govuk-breadcrumbs--collapse-on-mobile{% endif %}">
     <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a href="{{ homeURL }}">Home</a>
+        </li>
         {% for item in itemsList %}
             <li class="govuk-breadcrumbs__list-item">
                 <a class="govuk-breadcrumbs__link" href="{{ item.url }}">{{ item.title }}</a>
