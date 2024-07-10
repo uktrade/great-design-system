@@ -1,0 +1,16 @@
+---
+navTitle: "Guidance: content"
+
+---
+{% extends "layout/_base.njk" %}
+{% block title %}Great Design System - Guidance{% endblock %}
+
+{% block content %}
+    <section>
+        <h2 class="govuk-heading-l">Content</h2>
+        <p>List all items here:</p>
+        {% for content in collections.content %}
+        <aside><p class="govuk-body">{{content.data.navTitle}} <span class="govuk-body-xs">(status: {{content.data.status}})</span></p></aside>
+        {%endfor%}
+    </section>
+{% endblock %}

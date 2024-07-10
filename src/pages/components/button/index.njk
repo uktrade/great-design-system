@@ -1,7 +1,11 @@
+---
+figma: https://www.figma.com/design/wVCT2ObiDNlUwziUFQB3yI/Great-Design-System?node-id=834-7441&t=2SBeNr3SF05LvfGq-11
+---
 {% extends "layout/_base.njk" %}
 {% block title %}Great Design System - Button{% endblock %}
 
 {% block content %}
+    {% if figma %}<p class="govuk-body">Figma: <a class="govuk-link" href="{{figma}}" target="_blank">Button</a>{% endif %}
     <p class="govuk-body">Primary button example</p>
     {% exampleIframe "/components/button/button-example/" %}
     <p class="govuk-body">Secondary button example</p>
