@@ -34,7 +34,7 @@ const fetchAndProcessFigmaHistory = async () => {
       figmaVersion.forEach(nonNull);
 
       function nonNull(figmaVersion, index) {
-        if(figmaVersion.label!==null){
+        if(figmaVersion.label!==null){ // Only return those versions with a version name defined (don't include autosave items)
           console.log(chalk.cyan("Release: ")+figmaVersion.label+
             chalk.cyan("\nDescription:\n")+figmaVersion.description+
             chalk.cyan("\nOn: ")+figmaVersion.created_at+
