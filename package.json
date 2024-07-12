@@ -25,6 +25,7 @@
     "build:components": "node ./src/lib/copy-components.mjs",
     "build:scss": "node ./src/lib/copy-core-scss.mjs",
     "figma:token-fetch": "node ./src/lib/figma/fetch-figma-tokens.mjs",
+    "figma:history-fetch": "node ./src/lib/figma/fetch-figma-history.mjs",
     "npm:package": "npm run clean && npm run build:webpack:package && npm run build:components && npm run build:scss",
     "clean": "rm -rf ./dist",
     "test": "jest",
