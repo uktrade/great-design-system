@@ -17,7 +17,11 @@ export const createDirectories = async () => {
   await fs.mkdir(componentsDir, { recursive: true });
   console.log(chalk.blue(`Created directory: ${componentsDir}`));
 
-  return { scssDir, componentsDir };
+  const colorsDir = path.join(scssDir, "colors");
+  await fs.mkdir(colorsDir, { recursive: true });
+  console.log(chalk.blue(`Created directory: ${colorsDir}`));
+
+  return { scssDir, componentsDir, colorsDir };
 };
 
 const readFileContent = async (filePath) => {

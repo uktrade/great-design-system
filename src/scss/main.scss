@@ -1,13 +1,13 @@
-@import './variables/colour';
+@import './variables/colors/primitive';
+@import './variables/colors/border';
+@import './variables/colors/interaction';
+@import './variables/colors/surface';
+@import './variables/colors/text';
 @import './variables/type';
 @import './variables/spacing';
 @import './variables/icon';
-// @import './variables/border';
 
 @import './variables/components/button';
-@import './variables/components/forms';
-@import './variables/components/tab';
-@import './variables/components/tag';
 
 @import './govuk/variables/';
 

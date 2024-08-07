@@ -38,6 +38,7 @@ $great-button-outline: 2px solid transparent;
     padding: $great-button-padding;
     line-height: $great-button-line-height;
     -webkit-font-smoothing: auto;
+    outline: $great-button-outline;
 
     @include govuk-media-query($from: tablet) {
         width: auto;
@@ -87,21 +88,21 @@ $great-button-outline: 2px solid transparent;
 
     &:focus:not(:hover) {
         outline: $great-button-outline;
-        color: $great-button-colour-focus-text;
+        color: $great-semantic-text-focus-button-label-focus;
     }
 
     &:focus:not(:active):not(:hover) {
-        background-color: $great-button-colour-focus-background;
-        border: $great-button-border-width solid $great-button-colour-focus-border;
+        background-color: $great-semantic-interaction-focus;
+        border: $great-button-border-width solid $great-semantic-border-focus-button-border-focus;
         border-bottom: none;
-        box-shadow: 0 $great-button-shadow-size 0 $great-button-colour-focus-border;
+        box-shadow: 0 $great-button-shadow-size 0 $great-semantic-border-focus-button-border-focus;
     }
 
     &:focus:active {
-        background: $great-button-colour-focus-background;
-        border: $great-button-border-width solid $great-button-colour-focus-border;
+        background: $great-semantic-interaction-focus;
+        border: $great-button-border-width solid $great-semantic-border-focus-button-border-focus;
         box-shadow: none;
-        color: $great-button-colour-focus-text;
+        color: $great-semantic-text-focus-button-label-focus;
     }
 }
 
@@ -125,28 +126,28 @@ $great-button-outline: 2px solid transparent;
 // Placeholder for primary button styles
 %great-button-primary {
     @include great-button-states(
-        $great-button-colour-primary-background,
-        $great-button-colour-primary-background-hover,
-        $great-button-colour-primary-text-colour,
-        $great-button-colour-primary-border,
-        $great-button-colour-primary-border-hover
+        $great-semantic-interaction-default-primary-button,
+        $great-semantic-interaction-hover-primary-button-hover,
+        $great-semantic-text-default-primary-button-label,
+        $great-semantic-border-default-primary-button-border,
+        $great-semantic-border-hover-primary-button-border-hover
     );
 }
 
 // Placeholder for secondary button styles
 %great-button-secondary {
     @include great-button-states(
-        $great-button-colour-secondary-background,
-        $great-button-colour-secondary-background,
-        $great-button-colour-secondary-text-colour,
-        $great-button-colour-secondary-border,
-        $great-button-colour-secondary-border-hover,
+        $great-semantic-interaction-default-secondary-button,
+        $great-semantic-interaction-hover-secondary-button-hover,
+        $great-semantic-text-default-secondary-button-label,
+        $great-semantic-border-default-secondary-button-border,
+        $great-semantic-border-hover-secondary-button-border-hover,
         true
     );
 
     &:hover,
     &:focus:hover {
-        border: $great-button-border-width solid $great-button-colour-secondary-border-hover;
+        border: $great-button-border-width solid $great-semantic-border-hover-secondary-button-border-hover;
         border-bottom: none;
     }
 }
@@ -154,22 +155,22 @@ $great-button-outline: 2px solid transparent;
 // Placeholder for warning button styles
 %great-button-warning {
     @include great-button-warning-transactional-states(
-        $great-button-colour-warning-background,
-        $great-button-colour-warning-hover,
-        $great-button-colour-warning-text-colour,
-        $great-button-colour-warning-border,
-        $great-button-colour-warning-border-hover
+        $great-semantic-interaction-default-error,
+        $great-semantic-interaction-hover-error-hover,
+        $great-semantic-text-default-error-button-label,
+        $great-semantic-border-default-error-button-border,
+        $great-semantic-border-hover-error-border-hover
     );
 }
 
 // Placeholder for transactional button styles
 %great-button-transactional {
     @include great-button-warning-transactional-states(
-        $great-button-colour-transactional-background,
-        $great-button-colour-transactional-background-hover,
-        $great-button-colour-transactional-text-colour,
-        $great-button-colour-transactional-border,
-        $great-button-colour-transactional-border-hover
+        $great-semantic-interaction-default-success,
+        $great-semantic-interaction-hover-success-hover,
+        $great-semantic-text-default-success-button-label,
+        $great-semantic-border-default-success-button-border,
+        $great-semantic-border-hover-success-border-hover
     );
 }
 

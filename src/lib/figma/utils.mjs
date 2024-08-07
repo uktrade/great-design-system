@@ -1,3 +1,5 @@
+import path from "path";
+
 export const sanitizeVariableName = (name) => {
   name = name
     .toLowerCase()
@@ -60,3 +62,79 @@ export const getValue = (value, variables) => {
 };
 
 export const formatVariable = (name, value) => `${name}: ${value};\n`;
+
+export const determineFilePath = (
+  collectionName,
+  category,
+  variableName,
+  componentsDir,
+  colorsDir,
+  scssDir,
+) => {
+  let filePath;
+  if (collectionName === "Components") {
+    filePath = path.join(componentsDir, `${category}.scss`);
+  } else if (collectionName === "Color") {
+    if (variableName.includes("primitive")) {
+      filePath = path.join(colorsDir, "primitive.scss");
+    } else if (variableName.includes("semantic")) {
+      const parts = variableName.split("-");
+      const thirdWord = parts.length > 2 ? parts[2] : "semantic";
+      filePath = path.join(colorsDir, `${thirdWord}.scss`);
+    } else {
+      filePath = path.join(colorsDir, `${category}.scss`);
+    }
+  } else {
+    filePath = path.join(scssDir, `${category}.scss`);
+  }
+  return filePath;
+};
+
+export const handleVariableModes = (
+  modes,
+  valuesByMode,
+  variableName,
+  variables,
+  addedVariables,
+  content,
+  filePath,
+) => {
+  if (modes.length > 1) {
+    const [firstMode, secondMode] = modes.slice(0, 2);
+    const firstModeValue = getValue(valuesByMode[firstMode], variables);
+    const secondModeValue = getValue(valuesByMode[secondMode], variables);
+
+    if (firstModeValue !== undefined && secondModeValue !== undefined) {
+      if (firstModeValue === secondModeValue) {
+        if (!addedVariables.has(variableName)) {
+          content[filePath] += formatVariable(
+            `$${variableName}`,
+            firstModeValue,
+          );
+          addedVariables.add(variableName);
+        }
+      } else {
+        if (!addedVariables.has(variableName)) {
+          content[filePath] += formatVariable(
+            `$${variableName}`,
+            secondModeValue,
+          );
+          addedVariables.add(variableName);
+        }
+        if (!addedVariables.has(`${variableName}-large`)) {
+          content[filePath] += formatVariable(
+            `$${variableName}-large`,
+            firstModeValue,
+          );
+          addedVariables.add(`${variableName}-large`);
+        }
+      }
+    }
+  } else {
+    const value = getValue(valuesByMode[modes[0]], variables);
+    if (value !== undefined && !addedVariables.has(variableName)) {
+      content[filePath] += formatVariable(`$${variableName}`, value);
+      addedVariables.add(variableName);
+    }
+  }
+};

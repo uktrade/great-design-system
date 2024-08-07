@@ -1,15 +1,14 @@
 import axios from "axios";
-import path from "path";
 import chalk from "chalk";
 import {
   sanitizeVariableName,
   topologicalSort,
-  getValue,
-  formatVariable,
+  determineFilePath,
+  handleVariableModes,
 } from "./utils.mjs";
 import { createDirectories, writeFiles } from "./write-scss-files.mjs";
-
 import dotenv from "dotenv";
+
 dotenv.config();
 const accessToken = process.env.ACCESS_TOKEN;
 const fileId = process.env.FILE_ID;
@@ -27,85 +26,72 @@ const fetchAndProcessFigmaTokens = async () => {
     console.log(chalk.green("Fetched data from Figma successfully."));
 
     const { variables, variableCollections } = response.data.meta;
-
-    const { scssDir, componentsDir } = await createDirectories();
+    const { scssDir, componentsDir, colorsDir } = await createDirectories();
 
     const files = {};
     let content = {};
-    const addedVariables = {};
-    const modeIdToName = {};
-    const variableIdToCollection = {};
+    const addedVariables = new Map();
+    const variableIdToCollection = new Map();
 
-    if (variableCollections) {
-      Object.values(variableCollections).forEach((collection) => {
-        if (!collection.hiddenFromPublishing) {
-          if (collection.modes) {
-            collection.modes.forEach((mode) => {
-              modeIdToName[mode.modeId] = mode.name;
-            });
-          }
-          if (collection.variableIds) {
-            collection.variableIds.forEach((variableId) => {
-              variableIdToCollection[variableId] = collection.name;
-            });
-          }
-        }
-      });
-    }
+    Object.values(variableCollections).forEach((collection) => {
+      if (!collection.hiddenFromPublishing) {
+        collection.variableIds.forEach((variableId) => {
+          variableIdToCollection.set(variableId, collection.name);
+        });
+      }
+    });
 
     const sortedVariables = topologicalSort(variables);
 
     sortedVariables.forEach((variable) => {
-      if (variable && variable.valuesByMode && !variable.hiddenFromPublishing) {
-        const collectionName = variableIdToCollection[variable.id];
-        const modes = Object.keys(variable.valuesByMode);
-        const values = Object.values(variable.valuesByMode);
+      if (!variable || !variable.valuesByMode || variable.hiddenFromPublishing)
+        return;
 
-        const allValuesSame = values.every(
-          (val) => JSON.stringify(val) === JSON.stringify(values[0]),
-        );
+      const collectionName = variableIdToCollection.get(variable.id);
+      const valuesByMode = variable.valuesByMode;
+      const modes = Object.keys(valuesByMode);
 
-        const variableName = sanitizeVariableName(variable.name);
-        const category = variableName.split("-")[1];
+      let variableName = sanitizeVariableName(variable.name).replace(
+        /-domestic/,
+        "",
+      );
+      const category = variableName.split("-")[1];
 
-        const dirPath =
-          collectionName === "Components" ? componentsDir : scssDir;
-        const filePath = path.join(dirPath, `${category}.scss`);
+      // Exclude the following groups as these are Figma specific but need to be published
+      if (
+        collectionName === "Site" ||
+        category === "width" ||
+        category === "viewport"
+      )
+        return;
 
-        if (!files[filePath]) {
-          files[filePath] = filePath;
-          content[filePath] = "";
-          addedVariables[filePath] = new Set();
-        }
+      const filePath = determineFilePath(
+        collectionName,
+        category,
+        variableName,
+        componentsDir,
+        colorsDir,
+        scssDir,
+      );
 
-        if (allValuesSame) {
-          const value = getValue(values[0], variables);
-          if (!addedVariables[filePath].has(variableName)) {
-            content[filePath] += formatVariable(`$${variableName}`, value);
-            addedVariables[filePath].add(variableName);
-          }
-        } else {
-          modes.forEach((mode, index) => {
-            const modeName = modeIdToName[mode]
-              ? modeIdToName[mode].toLowerCase()
-              : "";
-            const modeValue = getValue(values[index], variables);
-            const modeVariableName =
-              index !== 0 ? `${variableName}` : `${variableName}-${modeName}`;
-            if (!addedVariables[filePath].has(modeVariableName)) {
-              content[filePath] += formatVariable(
-                `$${modeVariableName}`,
-                modeValue,
-              );
-              addedVariables[filePath].add(modeVariableName);
-            }
-          });
-        }
+      if (!files[filePath]) {
+        files[filePath] = filePath;
+        content[filePath] = "";
+        addedVariables[filePath] = new Set();
       }
+
+      handleVariableModes(
+        modes,
+        valuesByMode,
+        variableName,
+        variables,
+        addedVariables[filePath],
+        content,
+        filePath,
+      );
     });
 
     await writeFiles(files, content);
-
     console.log(chalk.green("SCSS files have been created successfully."));
   } catch (error) {
     console.error(chalk.red("Error fetching data from Figma:", error));
