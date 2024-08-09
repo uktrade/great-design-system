@@ -67,16 +67,13 @@ export const determineFilePath = (
   collectionName,
   category,
   variableName,
-  componentsDir,
   colorsDir,
   scssDir,
 ) => {
   let filePath;
-  if (collectionName === "Components") {
-    filePath = path.join(componentsDir, `${category}.scss`);
-  } else if (collectionName === "Color") {
+  if (collectionName === "Color") {
     if (variableName.includes("primitive")) {
-      filePath = path.join(colorsDir, "primitive.scss");
+      filePath = path.join(colorsDir, "color-primitives.scss");
     } else if (variableName.includes("semantic")) {
       const parts = variableName.split("-");
       const thirdWord = parts.length > 2 ? parts[2] : "semantic";

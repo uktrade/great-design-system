@@ -26,7 +26,7 @@ const fetchAndProcessFigmaTokens = async () => {
     console.log(chalk.green("Fetched data from Figma successfully."));
 
     const { variables, variableCollections } = response.data.meta;
-    const { scssDir, componentsDir, colorsDir } = await createDirectories();
+    const { scssDir, colorsDir } = await createDirectories();
 
     const files = {};
     let content = {};
@@ -69,7 +69,6 @@ const fetchAndProcessFigmaTokens = async () => {
         collectionName,
         category,
         variableName,
-        componentsDir,
         colorsDir,
         scssDir,
       );
