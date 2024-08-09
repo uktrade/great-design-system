@@ -58,12 +58,7 @@ const fetchAndProcessFigmaTokens = async () => {
       const category = variableName.split("-")[1];
 
       // Exclude the following groups as these are Figma specific but need to be published
-      if (
-        collectionName === "Site" ||
-        category === "width" ||
-        category === "viewport"
-      )
-        return;
+      if (category === "width" || category === "viewport") return;
 
       const filePath = determineFilePath(
         collectionName,

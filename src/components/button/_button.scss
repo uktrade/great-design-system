@@ -93,14 +93,14 @@ $great-button-outline: 2px solid transparent;
 
     &:focus:not(:active):not(:hover) {
         background-color: $great-semantic-interaction-focus;
-        border: $great-button-border-width solid $great-semantic-border-focus-button-border-focus;
+        border: $great-button-border-width solid $great-semantic-border-focus-button-border;
         border-bottom: none;
-        box-shadow: 0 $great-button-shadow-size 0 $great-semantic-border-focus-button-border-focus;
+        box-shadow: 0 $great-button-shadow-size 0 $great-semantic-border-focus-button-border;
     }
 
     &:focus:active {
         background: $great-semantic-interaction-focus;
-        border: $great-button-border-width solid $great-semantic-border-focus-button-border-focus;
+        border: $great-button-border-width solid $great-semantic-border-focus-button-border;
         box-shadow: none;
         color: $great-semantic-text-focus-button-label-focus;
     }
@@ -127,10 +127,10 @@ $great-button-outline: 2px solid transparent;
 %great-button-primary {
     @include great-button-states(
         $great-semantic-interaction-default-primary-button,
-        $great-semantic-interaction-hover-primary-button-hover,
+        $great-semantic-interaction-hover-primary-button,
         $great-semantic-text-default-primary-button-label,
         $great-semantic-border-default-primary-button-border,
-        $great-semantic-border-hover-primary-button-border-hover
+        $great-semantic-border-hover-primary-button-border
     );
 }
 
@@ -138,16 +138,16 @@ $great-button-outline: 2px solid transparent;
 %great-button-secondary {
     @include great-button-states(
         $great-semantic-interaction-default-secondary-button,
-        $great-semantic-interaction-hover-secondary-button-hover,
+        $great-semantic-interaction-hover-secondary-button,
         $great-semantic-text-default-secondary-button-label,
         $great-semantic-border-default-secondary-button-border,
-        $great-semantic-border-hover-secondary-button-border-hover,
+        $great-semantic-border-hover-secondary-button-border,
         true
     );
 
     &:hover,
     &:focus:hover {
-        border: $great-button-border-width solid $great-semantic-border-hover-secondary-button-border-hover;
+        border: $great-button-border-width solid $great-semantic-border-hover-secondary-button-border;
         border-bottom: none;
     }
 }
@@ -156,10 +156,10 @@ $great-button-outline: 2px solid transparent;
 %great-button-warning {
     @include great-button-warning-transactional-states(
         $great-semantic-interaction-default-error,
-        $great-semantic-interaction-hover-error-hover,
+        $great-semantic-interaction-hover-error,
         $great-semantic-text-default-error-button-label,
         $great-semantic-border-default-error-button-border,
-        $great-semantic-border-hover-error-border-hover
+        $great-semantic-border-hover-error-border
     );
 }
 
@@ -167,10 +167,10 @@ $great-button-outline: 2px solid transparent;
 %great-button-transactional {
     @include great-button-warning-transactional-states(
         $great-semantic-interaction-default-success,
-        $great-semantic-interaction-hover-success-hover,
+        $great-semantic-interaction-hover-success,
         $great-semantic-text-default-success-button-label,
         $great-semantic-border-default-success-button-border,
-        $great-semantic-border-hover-success-border-hover
+        $great-semantic-border-hover-success-border
     );
 }
 
