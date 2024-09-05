@@ -1,6 +1,4 @@
-<div>
-    <details {%- if id %} id="{{ id }}"{% endif %} class="govuk-details {%- if classes %} {{ classes }}{% endif %}"
-    {{- " open" if open }}>
+<details {%- if id %} id="{{ id }}"{% endif %} class="govuk-details {%- if classes %} {{ classes }}{% endif %}"{{- " open" if open }}>
     <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
         {{ summaryHtml | safe if summaryHtml else summaryText }}
@@ -9,5 +7,4 @@
     <div class="govuk-details__text">
         {{ detailsHtml | safe if detailsHtml else detailsText }}
     </div>
-    </details>
-</div>
+</details>
