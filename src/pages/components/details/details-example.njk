@@ -1,0 +1,14 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% set detailsData = {
+        id: 'detailsElement',
+        open: false,
+        classes: "",
+        summaryText: "This is a summary",
+        summaryHtml: "<div>This is the summary in a div</div>",
+        detailsText: "Now's some much more interestingdetail text after the summary",
+        detailsHtml: "<div>This is the details in a div</div>"
+    } %}
+    {{ "details" | component(detailsData) }}
+{% endblock %}
