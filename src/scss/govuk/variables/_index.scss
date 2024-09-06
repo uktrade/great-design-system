@@ -1,2 +1,29 @@
 $govuk-text-colour: $great-semantic-text-default-text;
+$govuk-link-colour: $great-semantic-text-default-link;
+$govuk-link-hover-colour: $great-semantic-text-hover-link;
+$govuk-link-visited-colour: $great-semantic-text-default-link-visited;
+$govuk-focus-colour: $great-semantic-interaction-focus;
 $govuk-font-family: $great-type-family-great;
+
+$govuk-colours: (
+  "red": $great-primitive-brand-dbt-red,
+  "yellow": $great-primitive-interface-yellow-50,
+  "green": $great-primitive-interface-green-50,
+  "blue": $great-primitive-interface-blue-50,
+  "dark-blue": $great-primitive-interface-blue-70,
+  "light-blue": $great-primitive-interface-light-blue-20,
+  "purple": $great-primitive-interface-purple-50,
+  "black": $great-primitive-interface-mono-100,
+  "dark-grey": $great-primitive-interface-mono-80,
+  "mid-grey": $great-primitive-interface-mono-30,
+  "light-grey": $great-primitive-interface-mono-20,
+  "white": $great-primitive-interface-mono-0,
+  "light-purple": #6f72af,
+  "bright-purple": #912b88,
+  "pink": #d53880,
+  "light-pink": #f499be,
+  "orange": $great-primitive-brand-great-light-red,
+  "brown": $great-primitive-interface-brown-50,
+  "light-green": #85994b,
+  "turquoise": #28a197
+);
