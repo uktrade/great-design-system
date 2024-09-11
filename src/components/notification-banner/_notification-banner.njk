@@ -1,0 +1,28 @@
+<div class="govuk-notification-banner {% if type == 'success' %}govuk-notification-banner--{{ type }}{% endif %}{% if classes %} {{ classes }}{% endif %}" 
+     role="{% if role %}{{ role }}{% elif type == 'success' %}alert{% else %}region{% endif %}" 
+     aria-labelledby="{{ titleId|default('govuk-notification-banner-title') }}" 
+     data-module="govuk-notification-banner"
+     {% if disableAutoFocus is not undefined %} data-disable-auto-focus="{{ disableAutoFocus }}"{% endif %}>
+  <div class="govuk-notification-banner__header">
+    <h{{ titleHeadingLevel|default(2) }} class="govuk-notification-banner__title" id="{{ titleId|default('govuk-notification-banner-title') }}">
+      {% if titleHtml %}
+        {{ titleHtml|safe }}
+      {% elif titleText %}
+        {{ titleText }}
+      {% elif type == "success" %}
+        Success
+      {% else %}
+        Important
+      {% endif %}
+    </h{{ titleHeadingLevel|default(2) }}>
+  </div>
+  <div class="govuk-notification-banner__content">
+  {% if html %}
+    {{ html|safe }}
+  {% elif text %}
+    <p class="govuk-notification-banner__heading">
+      {{ text }}
+    </p>
+  {% endif %}
+  </div>
+</div>
