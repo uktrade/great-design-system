@@ -1,4 +1,2 @@
-function doSomething () {
-}
-
-doSomething()
+import { initAll } from "govuk-frontend";
+initAll();

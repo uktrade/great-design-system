@@ -1,0 +1,17 @@
+<header class="great-header {{ header_classes }}" id="header" role="banner" data-ga-section="header">
+    {% if not request.user.is_authenticated %}
+        <div id="great-global-header" class="great-header__global {{ global_header_classes }} {% if sso_is_logged_in %}signed-in{% endif %}">
+            <div class="great-container">
+                <div class="great-header__international-links">
+                    <a href="/" id="great-global-header-domestic-link" class="great-header__international-links--domestic">For UK businesses</a>
+                    <a href="/international/" id="great-global-header-international-link" class="great-header__international-links--international">For international businesses</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="great-header__main great-container">
+        <a id="header-logo-link" class="great-header__logo" href="/">
+            <img src="/static/images/DBT_White.svg" alt="Department for Business and Trade" />
+        </a>
+    </div>
+</header>

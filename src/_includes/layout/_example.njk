@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
     {% block content %}{% endblock %}
     <script src="/js/main.js"></script>
 </body>
