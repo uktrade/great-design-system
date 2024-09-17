@@ -1,0 +1,26 @@
+.great-list-blue-tick {
+    list-style: none;
+  
+    > li {
+      display: block;
+      clear: left;
+      padding: 7.5px 0;
+  
+      &:before {
+        content: '';
+        height: 30px;
+        width: 30px;
+        min-width: 30px;
+        display: block;
+        float: left;
+        margin-left: 0;
+        margin-right: 10px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background: url('/static/icons/dark-blue-tick.svg');
+        background-size: cover;
+        background-position: center;
+      }
+    }
+  }

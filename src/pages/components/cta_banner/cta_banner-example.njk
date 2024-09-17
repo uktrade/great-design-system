@@ -1,0 +1,11 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% set ctaBannerData = {
+        bg_class: '',
+        loginUrl: 'login.com',
+        landscapeImagePath: '/static/images/lte-signup-promo-landscape.png',
+        portraitImagePath: '/static/images/lte-signup-promo-portrait.png'
+    } %}
+    {{ "cta_banner" | component(ctaBannerData) }}
+{% endblock %}
