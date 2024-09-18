@@ -1,0 +1,25 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% set footerData = {
+        id: 'detailsElement',
+        featureFlags: [],
+        campaign_site_page: false,
+        footer_image_path: '/static/images/DBT_Red_DIGI.svg',
+        currentYear: '2024',
+        urls: {
+            contact: '/contact/',
+            dit_on_govuk: '/',
+            privacy: '/',
+            cookies: '/',
+            terms_and_conditions: '/',
+            accessibility_statement: '/',
+            performance_dashboard: '/',
+            campaign_site_page: '',
+            international: '/international/',
+            get_help_with_account: 'contact/triage/great-account',
+            export_support: export-support,
+        }
+    } %}
+    {{ "footer" | component(footerData) }}
+{% endblock %}
