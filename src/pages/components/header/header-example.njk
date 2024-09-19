@@ -1,5 +1,6 @@
 {% extends "layout/_example.njk" %}
+{% from "../../../components/header/_header.njk" import greatHeader %}
 
 {% block content %}
-    {{ "header" | component() }}
+    {{ greatHeader({}) }}
 {% endblock %}

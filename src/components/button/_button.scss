@@ -20,7 +20,7 @@ $great-button-outline: 2px solid transparent;
 
 // Placeholder for base button styles
 %great-button-base {
-    font-family: 'Noto SemiBold';
+    font-family: $great-type-family-great-bold;
     font-size: $great-button-font-size;
     box-sizing: $great-button-box-sizing;
     display: $great-button-display;
@@ -39,6 +39,15 @@ $great-button-outline: 2px solid transparent;
     line-height: $great-button-line-height;
     -webkit-font-smoothing: auto;
     outline: $great-button-outline;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    .great-icon--svg {
+        vertical-align: middle;
+        flex-shrink: 0;
+        align-self: center;
+    }
 
     @include govuk-media-query($from: tablet) {
         width: auto;
@@ -57,7 +66,7 @@ $great-button-outline: 2px solid transparent;
 }
 
 // Mixin for button states
-@mixin great-button-states($bg-color, $bg-hover, $text-color, $border, $border-hover, $has-border: false) {
+@mixin great-button-states($bg-color, $bg-hover, $text-color, $border, $border-hover, $has-border: false, $has-small-shadow: false) {
     background-color: $bg-color;
     color: $text-color;
     box-shadow: 0 $great-button-shadow-size 0 $border;
@@ -65,6 +74,10 @@ $great-button-outline: 2px solid transparent;
     @if $has-border {
         border: $great-button-border-width solid $border;
         border-bottom: none;
+    }
+
+    @if $has-small-shadow {
+        box-shadow: 0 1px 0 $border;
     }
 
     &:hover,
@@ -78,6 +91,10 @@ $great-button-outline: 2px solid transparent;
             color: $border-hover;
             border: $great-button-border-width solid $border-hover;
             border-bottom: none;
+        }
+
+        @if $has-small-shadow {
+            box-shadow: 0 1px 0 $border;
         }
     }
 
@@ -193,6 +210,7 @@ $great-button-outline: 2px solid transparent;
     display: inline-flex;
     min-height: auto;
     justify-content: center;
+    align-items: center;
     padding: $great-button-icon-padding;
 
     .great-icon--svg {
@@ -200,12 +218,70 @@ $great-button-outline: 2px solid transparent;
         flex-shrink: 0;
         align-self: center;
     }
+
+    &:focus {
+        z-index: 2;
+    }
+}
+
+// Placeholder for icon button prefix styles
+%great-button-icon-prefix {
+    .great-icon--svg {
+       margin-right: 10px;
+    }
+}
+
+// Placeholder for icon button suffix styles
+%great-button-icon-suffix {
+    .great-icon--svg {
+       margin-left: 10px;
+    }
+}
+
+// Placeholder for inverted button styles
+%great-button-inverted {
+    @include great-button-states(
+        transparent,
+        $great-semantic-interaction-hover-primary-button,
+        $great-semantic-surface-background-white,
+        $great-semantic-surface-background-white,
+        $great-semantic-surface-background-white,
+        true,
+        true
+    );
+    margin-bottom: 0;
+    font-family: $great-type-family-great;
 }
 
 // Placeholder for icon inline styles
 %great-button-inline {
     padding: $great-button-inline-padding;
 }
+
+// Placeholder for search button styles
+%great-button-search {
+    margin: 0 0 0 -2px;
+    height: 54px;
+    width: 60px;
+    box-shadow: none;
+
+    &:focus {
+        border: none !important;
+        box-shadow: none !important;
+        outline: 1px solid $great-semantic-border-focus-button-border !important;
+    }
+}
+
+// Placeholder for full width button styles
+%great-button-full-width {
+    width: 100%;
+}
+
+// Placeholder for auto width button styles
+%great-button-auto-width {
+    width: auto;
+}
+
 
 // Base button styles
 .great-button {
@@ -251,8 +327,44 @@ $great-button-outline: 2px solid transparent;
     @extend %great-button-inline;
 }
 
+// Inverted button styles
+.great-button--inverted {
+    @extend %great-button-base;
+    @extend %great-button-inverted;
+}
+
 // Icon button styles
 .great-button--icon {
     @extend %great-button-base;
     @extend %great-button-icon;
+}
+
+// Icon prefix button styles
+.great-button--icon-prefix {
+    @extend %great-button-base;
+    @extend %great-button-icon-prefix;
+}
+
+// Icon suffix button styles
+.great-button--icon-suffix {
+    @extend %great-button-base;
+    @extend %great-button-icon-suffix;
+}
+
+// Full width button styles
+.great-button--full-width {
+    @extend %great-button-base;
+    @extend %great-button-full-width;
+}
+
+// Auto width button styles
+.great-button--auto-width {
+    @extend %great-button-base;
+    @extend %great-button-auto-width;
+}
+
+// Search (with inline input) button styles
+.great-button--search {
+    @extend %great-button-base;
+    @extend %great-button-search;
 }

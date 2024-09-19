@@ -1,17 +1,132 @@
-<header class="great-header {{ header_classes }}" id="header" role="banner" data-ga-section="header">
-    {% if not request.user.is_authenticated %}
-        <div id="great-global-header" class="great-header__global {{ global_header_classes }} {% if sso_is_logged_in %}signed-in{% endif %}">
-            <div class="great-container">
-                <div class="great-header__international-links">
-                    <a href="/" id="great-global-header-domestic-link" class="great-header__international-links--domestic">For UK businesses</a>
-                    <a href="/international/" id="great-global-header-international-link" class="great-header__international-links--international">For international businesses</a>
+{% from "../button/_button.njk" import greatButton %}
+{% from "../text-input/_text-input.njk" import textInput %}
+
+{% macro greatHeader(params) %}
+<header class="great-header {{ params.header_classes }}" id="header" role="banner" data-ga-section="header">
+    <div id="great-global-header" class="great-container great-header__global {{ params.global_header_classes }} {% if params.sso_is_logged_in %}signed-in{% endif %}">
+        <div class="great-header__dbt-logo">
+            <img class="great-header__dbt-logo-image" src="/static/images/DBT_logo.svg" alt="Department for Business and Trade" />
+        </div>
+        <ul class="great-header__international-links">
+            <li class="great-header__international-link-item great-header__international-link-item--active great-header__international-link-item--domestic">
+                <a href="/" id="great-global-header-domestic-link" class="great-header__international-link">For UK businesses</a>
+            </li>
+            <li class="great-header__international-link-item great-header__international-link-item--international">
+                <a href="/international/" id="great-global-header-international-link" class="great-header__international-link">For international businesses</a>
+            </li>
+        </ul>
+    </div>
+    <div class="great-header__main">
+        <div class="great-header__main-inner great-container">
+            <div class="great-header__logo-container">
+                <a id="header-logo-link" class="great-header__great-logo" href="/">
+                    <img class="great-header__great-logo-image" src="/static/images/Great_logo.svg" alt="GREAT logo" />
+                </a>
+            </div>
+            <div class="great-header__nav-container">
+                <div class="great-header__nav-action">
+                    {% if params.is_authenticated %}
+                        <a href="/" class="great-header__action-link">Dashboard</a>
+                    {% else %}
+                        <a href="/" class="great-header__action-link">Sign in</a>
+                    {% endif %}
+                </div>
+                <div class="great-header__nav-lower">
+                    <nav class="great-header__nav">
+                        <ul class="great-header__nav-list">
+                                <li class="great-header__nav-item">
+                                    <a href="/" class="great-header__nav-link">Learn to export</a>
+                                </li>
+                            {% if params.is_authenticated %}
+                                <li class="great-header__nav-item">
+                                    <a href="/" class="great-header__nav-link">Where to export</a>
+                                </li>
+                                <li class="great-header__nav-item">
+                                    <a href="/" class="great-header__nav-link">Make an export plan</a>
+                                </li>                        
+                            {% else %}
+                                <li class="great-header__nav-item">
+                                    <a href="/" class="great-header__nav-link">Markets</a>
+                                </li>
+                                <li class="great-header__nav-item">
+                                    <a href="/" class="great-header__nav-link">Services</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    <div class="great-header__search">
+                        <form id="great-header-search-form" class="great-header__search-form" action="/" method="get">
+                            {{ textInput({
+                                classes: "great-text-input--search",
+                                id: "great-header-search-input",
+                                label: "Search",
+                                placeholder: "Search",
+                                labelClasses: "govuk-visually-hidden"
+                            }) }}
+                            
+                            {{ greatButton({
+                                classes: "great-button--icon great-button--search",
+                                html: '<svg xmlns="http://www.w3.org/2000/svg" class="great-icon--svg" width="20" height="20" viewBox="0 0 18 18" fill="currentColor">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.77589 13.722C6.26697 13.8589 4.79933 13.386 3.64011 12.4016C1.2472 10.3681 0.933108 6.74217 2.94069 4.31856C4.06024 2.96784 5.66793 2.27198 7.28695 2.27198C8.57164 2.27198 9.86443 2.7113 10.9249 3.61205C12.0841 4.59641 12.7949 5.97992 12.9268 7.50687C13.0588 9.03299 12.5957 10.5206 11.6235 11.6943C10.6505 12.868 9.28401 13.5884 7.77589 13.722ZM18 15.5071L13.5606 11.7361C14.3256 10.4247 14.6737 8.91169 14.5393 7.36344C14.3702 5.40128 13.4562 3.62271 11.9651 2.35558C8.88816 -0.258992 4.28286 0.148357 1.70133 3.26536C-0.881003 6.38072 -0.477867 11.0427 2.59908 13.6573C3.92344 14.7826 5.56107 15.3834 7.26914 15.3834C7.48447 15.3834 7.70061 15.3744 7.91756 15.3555C9.44591 15.2203 10.8569 14.6097 11.9999 13.6196L16.4385 17.3914L18 15.5071Z"/>
+                                </svg>'
+                            }) }}
+                        </form>
+                    </div>
+                    <div class="great-header__menu">
+                        {{ greatButton({
+                            text: "Menu",
+                            classes: "great-button--inverted great-button--icon-prefix great-button--auto-width govuk-!-margin-left-3",
+                            attributes: "data-reveal-button data-reveal-modal aria-controls=header-menu",
+                            iconPrefix: '<svg class="great-icon--svg" width="16" height="17" viewBox="0 0 16 17" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 3.5C1 2.94687 1.44687 2.5 2 2.5H14C14.5531 2.5 15 2.94687 15 3.5C15 4.05313 14.5531 4.5 14 4.5H2C1.44687 4.5 1 4.05313 1 3.5ZM1 8.5C1 7.94688 1.44687 7.5 2 7.5H14C14.5531 7.5 15 7.94688 15 8.5C15 9.05312 14.5531 9.5 14 9.5H2C1.44687 9.5 1 9.05312 1 8.5ZM15 13.5C15 14.0531 14.5531 14.5 14 14.5H2C1.44687 14.5 1 14.0531 1 13.5C1 12.9469 1.44687 12.5 2 12.5H14C14.5531 12.5 15 12.9469 15 13.5Z"/>
+                            </svg>'
+                        }) }}
+
+                        <ul id="header-menu" class="great-header__menu-list">
+                            {% if params.is_authenticated %}
+                                <li class="great-header__menu-item great-header__menu-item--user">
+                                    Hi {{ params.user }}
+                                </li>
+                                <li class="great-header__menu-item">
+                                    <a href="/" class="great-header__menu-link">Dashboard</a>
+                                </li>
+                                <li class="great-header__menu-item">
+                                    <a href="/" class="great-header__menu-link">Where to export</a>
+                                </li>
+                                <li class="great-header__menu-item">
+                                    <a href="/" class="great-header__menu-link">Make an export plan</a>
+                                </li>
+                                <li class="great-header__menu-item">
+                                    <a href="/" class="great-header__menu-link">Account</a>
+                                </li>
+                            {% endif %}
+                                <li class="great-header__menu-item">
+                                    <a href="/" class="great-header__menu-link">Learn to export</a>
+                                </li>
+                                <li class="great-header__menu-item">
+                                    <a href="/" class="great-header__menu-link">Markets</a>
+                                </li>
+                                <li class="great-header__menu-item">
+                                    <a href="/" class="great-header__menu-link">Services</a>
+                                </li>
+                            {% if params.is_authenticated %}
+                                <li class="great-header__menu-item">
+                                    <a href="/" class="great-header__menu-link">Sign out</a>
+                                </li>
+                            {% else %}
+                                <li class="great-header__menu-item">
+                                    {{ greatButton({
+                                        text: "Sign in",
+                                        classes: "great-button--full-width govuk-!-margin-0",
+                                        href: "/sign-in"
+                                    }) }}
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    {% endif %}
-    <div class="great-header__main great-container">
-        <a id="header-logo-link" class="great-header__logo" href="/">
-            <img src="/static/images/DBT_White.svg" alt="Department for Business and Trade" />
-        </a>
     </div>
 </header>
+{% endmacro %}

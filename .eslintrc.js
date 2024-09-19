@@ -1,5 +1,11 @@
 module.exports = {
   parser: "@babel/eslint-parser",
+  parserOptions: {
+    requireConfigFile: false,
+    babelOptions: {
+      presets: ["@babel/preset-env"],
+    },
+  },
   extends: [
     "eslint:recommended",
     "plugin:import/errors",
@@ -12,11 +18,6 @@ module.exports = {
     browser: true,
     node: true,
     jest: true,
-  },
-  parserOptions: {
-    ecmaVersion: 2021,
-    sourceType: "module",
-    requireConfigFile: false,
   },
   rules: {
     "prettier/prettier": "error",

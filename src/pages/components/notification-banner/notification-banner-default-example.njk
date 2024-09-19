@@ -1,15 +1,9 @@
 {% extends "layout/_example.njk" %}
 
-{% block content %}
-    {% set html %}
-        <p class="govuk-notification-banner__heading">
-            You have 7 days left to send your application.
-            <a class="govuk-notification-banner__link" href="#">View application</a>.
-        </p>
-    {% endset %}
-    {% set notificationBannerData = {
-        html: html
-    } %}
+{% from "../../../components/notification-banner/_notification-banner.njk" import greatNotificationBanner %}
 
-    {{ "notification-banner" | component(notificationBannerData) }}
+{% block content %}
+    {{ greatNotificationBanner({
+        html: "<p class=\"govuk-notification-banner__heading\">You have 7 days left to send your application. <a class=\"govuk-notification-banner__link\" href=\"#\">View application</a>.</p>"
+    }) }}
 {% endblock %}

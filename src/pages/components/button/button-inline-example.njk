@@ -1,9 +1,7 @@
 {% extends "layout/_example.njk" %}
+{% from "../../../components/button/_button.njk" import greatButton %}
 
 {% block content %}
-    {% set button1Data = { text: "Save and continue", classes: "great-button--inline" } %}
-    {% set button2Data = { text: "Cancel", classes: "great-button--secondary great-button--inline" } %}
-
-    {{ "button" | component(button1Data) }}
-    {{ "button" | component(button2Data) }}
+    {{ greatButton({ text: "Save and continue", classes: "great-button--inline" }) }}
+    {{ greatButton({ text: "Cancel", classes: "great-button--secondary great-button--inline" }) }}
 {% endblock %}
