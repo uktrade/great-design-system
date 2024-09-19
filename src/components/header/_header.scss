@@ -121,6 +121,25 @@
     height: 110px;
     margin-left: -1px;
     background-color: $great-semantic-surface-background-great-red;
+    
+    &:focus {
+        box-shadow: none !important;
+
+        .great-header__great-logo-image {
+            path {
+                fill: $great-semantic-text-default-text;
+            }
+            path.great-header__great-logo-path--horizontal {
+                fill: url(#logo-gradient-horizontal);   
+            }
+            path.great-header__great-logo-path--horizontal-reverse {
+                fill: url(#logo-gradient-horizontal-reverse);   
+            }
+            path.great-header__great-logo-path--vertical {
+                fill: url(#logo-gradient-vertical);   
+            }
+        }
+    }
 }
 
 .great-header__nav-container {
