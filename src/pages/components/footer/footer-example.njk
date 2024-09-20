@@ -1,8 +1,10 @@
 {% extends "layout/_example.njk" %}
 
+{% from "../../../components/footer/_footer.njk" import greatFooter %}
+
 {% block content %}
-    {% set footerData = {
-        id: 'detailsElement',
+    {{ greatFooter(
+        { id: 'detailsElement',
         featureFlags: [],
         campaign_site_page: false,
         footer_image_path: '/static/images/DBT_Red_DIGI.svg',
@@ -18,8 +20,8 @@
             campaign_site_page: '',
             international: '/international/',
             get_help_with_account: 'contact/triage/great-account',
-            export_support: export-support,
+            export_support: export-support
         }
-    } %}
-    {{ "footer" | component(footerData) }}
+    }
+    ) }}
 {% endblock %}

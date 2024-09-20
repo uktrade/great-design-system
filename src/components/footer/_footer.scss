@@ -48,7 +48,8 @@ footer {
     }
 
     ul {
-      margin: 80px $great-spacing-6-large $great-spacing-6-large;
+      margin: 80px 0px $great-spacing-6-large;
+      padding-inline-start: 0px;
       max-width: 1230px;
       display: inline-flex;
       gap: $great-spacing-4-large;
@@ -70,5 +71,9 @@ footer {
         cursor: pointer;
       }
     }
+  }
+  .great-global-footer-logo-image {
+    height: 30px;
+    min-width: 270px;
   }
 }
