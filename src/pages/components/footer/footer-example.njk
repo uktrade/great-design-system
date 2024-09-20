@@ -3,9 +3,8 @@
 {% from "../../../components/footer/_footer.njk" import greatFooter %}
 
 {% block content %}
-    {{ greatFooter(
-        { id: 'detailsElement',
-        featureFlags: [],
+    {{ greatFooter({ 
+        id: 'detailsElement',
         campaign_site_page: false,
         footer_image_path: '/static/images/DBT_Red_DIGI.svg',
         currentYear: '2024',
@@ -22,6 +21,6 @@
             get_help_with_account: 'contact/triage/great-account',
             export_support: export-support
         }
-    }
-    ) }}
+    }) 
+    }}
 {% endblock %}
