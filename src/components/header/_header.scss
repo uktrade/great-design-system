@@ -52,6 +52,13 @@
     &:hover {
         border-bottom: 4px solid $great-semantic-surface-background-great-red;
     }
+
+    .great-header--international & {
+        &--active, 
+        &:hover {
+            border-bottom: 4px solid $great-semantic-surface-background-great-blue;
+        }
+    }
 }
 
 .great-header__international-link {
@@ -61,6 +68,10 @@
 .great-header__main {
     background-color: $great-semantic-surface-background-great-blue;
     position: relative;
+
+    .great-header--international & {
+        background-color: $great-semantic-surface-background-great-red;
+    }
 
     a {
         color: $great-semantic-text-default-white-text;
@@ -74,6 +85,7 @@
         }
     }
 }
+
 
 .great-header__global {
     position: relative;
@@ -96,22 +108,24 @@
     display: flex;
     align-items: center;
     padding-right: $great-spacing-6;
-
-    &::before {
-        content: '';
-        position: absolute;
-        top: -15px;
-        bottom: 0;
-        right: 100%;
-        width: 100vw;
-        height: 100%;
-        background-color: $great-semantic-surface-background-great-red;
-        border-top: 15px solid $great-semantic-surface-background-great-blue;
-        border-bottom: 15px solid $great-semantic-surface-background-great-blue;
-    }
     z-index: 998;
     width: auto;
     display: inline-block;
+
+    .great-header:not(.great-header--international) & {
+        &::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            bottom: 0;
+            right: 100%;
+            width: 100vw;
+            height: 100%;
+            background-color: $great-semantic-surface-background-great-red;
+            border-top: 15px solid $great-semantic-surface-background-great-blue;
+            border-bottom: 15px solid $great-semantic-surface-background-great-blue;
+        }
+    }
 }
 
 .great-header__great-logo {

@@ -2,5 +2,29 @@
 {% from "../../../components/header/_header.njk" import greatHeader %}
 
 {% block content %}
-    {{ greatHeader({}) }}
+    {{ greatHeader({
+        navItemsList: [
+            { href: "#", text: "Learn to export" },
+            { href: "#", text: "Where to export", requiresAuth: true },
+            { href: "#", text: "Make an export plan", requiresAuth: true },
+            { href: "#", text: "Markets", requiresNoAuth: true },
+            { href: "#", text: "Services", requiresNoAuth: true }
+        ],
+        menuItemsList: [
+            { text: "Hi " + params.user, userGreeting: true, requiresAuth: true },
+            { href: "#", text: "Dashboard", requiresAuth: true },
+            { href: "#", text: "Where to export", requiresAuth: true },
+            { href: "#", text: "Make an export plan", requiresAuth: true },
+            { href: "#", text: "Account", requiresAuth: true },
+            { href: "#", text: "Learn to export" },
+            { href: "#", text: "Markets" },
+            { href: "#", text: "Services" },
+            { text: "Sign out", href: "#", button: true, requiresAuth: true },
+            { text: "Sign in", href: "#", button: true, requiresNoAuth: true }
+        ],
+        actionLinkList: [
+            { href: "#", text: "Dashboard", requiresAuth: true },
+            { href: "#", text: "Sign in", requiresNoAuth: true }
+        ]
+    }) }}
 {% endblock %}

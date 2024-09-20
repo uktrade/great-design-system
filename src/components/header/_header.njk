@@ -1,17 +1,24 @@
 {% from "../button/_button.njk" import greatButton %}
 {% from "../text-input/_text-input.njk" import textInput %}
+{% from "./_masthead.njk" import greatMasthead %}
 
 {% macro greatHeader(params) %}
-<header class="great-header {{ params.header_classes }}" id="header" role="banner" data-ga-section="header">
+<header class="great-header {{ params.header_classes }} {% if params.isInternational %}great-header--international{% endif %}" id="header" role="banner" data-ga-section="header">
     <div id="great-global-header" class="great-container great-header__global {{ params.global_header_classes }} {% if params.sso_is_logged_in %}signed-in{% endif %}">
         <div class="great-header__dbt-logo">
-            <img class="great-header__dbt-logo-image" src="/static/images/DBT_logo.svg" alt="Department for Business and Trade" />
+            {% if params.isInternational %}
+                {{ greatMasthead({
+                    isInternational: true
+                }) }}
+            {% else %}
+                {{ greatMasthead() }}
+            {% endif %}
         </div>
         <ul class="great-header__international-links">
-            <li class="great-header__international-link-item great-header__international-link-item--active great-header__international-link-item--domestic">
+            <li class="great-header__international-link-item {% if not params.isInternational %}great-header__international-link-item--active{% endif %} great-header__international-link-item--domestic">
                 <a href="/" id="great-global-header-domestic-link" class="great-header__international-link">For UK businesses</a>
             </li>
-            <li class="great-header__international-link-item great-header__international-link-item--international">
+            <li class="great-header__international-link-item great-header__international-link-item--international {% if params.isInternational %}great-header__international-link-item--active{% endif %}">
                 <a href="/international/" id="great-global-header-international-link" class="great-header__international-link">For international businesses</a>
             </li>
         </ul>
@@ -19,7 +26,7 @@
     <div class="great-header__main">
         <div class="great-header__main-inner great-container">
             <div class="great-header__logo-container">
-                <a id="header-logo-link" class="great-header__great-logo" href="/">
+                <a id="header-logo-link" alt="Great" class="great-header__great-logo" href="/">
                     <svg class="great-header__great-logo-image" width="200" height="99" viewBox="0 0 200 99" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M176.227 45.0524V23.8516L138.716 42.655H129.995L167.506 23.8516H125.775V45.0524H176.227Z" fill="white"/>
                         <path d="M176.227 78.3348V61.5527H125.681V71.3305L128.119 82.7536H176.227L138.716 63.9502H147.484L176.227 78.3348Z" fill="white"/>
@@ -76,36 +83,28 @@
                 </a>
             </div>
             <div class="great-header__nav-container">
-                <div class="great-header__nav-action">
-                    {% if params.is_authenticated %}
-                        <a href="/" class="great-header__action-link">Dashboard</a>
-                    {% else %}
-                        <a href="/" class="great-header__action-link">Sign in</a>
-                    {% endif %}
-                </div>
+                {% if params.actionLinkList %}
+                    <div class="great-header__nav-action">
+                        {% for item in params.actionLinkList %}
+                            {% if (item.requiresAuth and params.isAuthenticated) or (item.requiresNoAuth and not params.isAuthenticated) %}
+                                <a href="{{ item.href }}" class="great-header__action-link">{{ item.text }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
                 <div class="great-header__nav-lower">
                     <nav class="great-header__nav">
                         <ul class="great-header__nav-list">
-                                <li class="great-header__nav-item">
-                                    <a href="/" class="great-header__nav-link">Learn to export</a>
-                                </li>
-                            {% if params.is_authenticated %}
-                                <li class="great-header__nav-item">
-                                    <a href="/" class="great-header__nav-link">Where to export</a>
-                                </li>
-                                <li class="great-header__nav-item">
-                                    <a href="/" class="great-header__nav-link">Make an export plan</a>
-                                </li>                        
-                            {% else %}
-                                <li class="great-header__nav-item">
-                                    <a href="/" class="great-header__nav-link">Markets</a>
-                                </li>
-                                <li class="great-header__nav-item">
-                                    <a href="/" class="great-header__nav-link">Services</a>
-                                </li>
-                            {% endif %}
+                            {% for item in params.navItemsList %}
+                                {% if (item.requiresAuth and params.isAuthenticated) or (item.requiresNoAuth and not params.isAuthenticated) or (not item.requiresAuth and not item.requiresNoAuth) %}
+                                    <li class="great-header__nav-item">
+                                        <a href="{{ item.href }}" class="great-header__nav-link{% if item.isCurrent %} great-header__nav-link--current{% endif %}">{{ item.text }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
                         </ul>
                     </nav>
+                    {% if not params.hideSearch %}
                     <div class="great-header__search">
                         <form id="great-header-search-form" class="great-header__search-form" action="/" method="get">
                             {{ textInput({
@@ -126,6 +125,7 @@
                             }) }}
                         </form>
                     </div>
+                    {% endif %}
                     <div class="great-header__menu">
                         {{ greatButton({
                             text: "Menu",
@@ -137,45 +137,23 @@
                         }) }}
 
                         <ul id="header-menu" class="great-header__menu-list">
-                            {% if params.is_authenticated %}
-                                <li class="great-header__menu-item great-header__menu-item--user">
-                                    Hi {{ params.user }}
-                                </li>
-                                <li class="great-header__menu-item">
-                                    <a href="/" class="great-header__menu-link">Dashboard</a>
-                                </li>
-                                <li class="great-header__menu-item">
-                                    <a href="/" class="great-header__menu-link">Where to export</a>
-                                </li>
-                                <li class="great-header__menu-item">
-                                    <a href="/" class="great-header__menu-link">Make an export plan</a>
-                                </li>
-                                <li class="great-header__menu-item">
-                                    <a href="/" class="great-header__menu-link">Account</a>
-                                </li>
-                            {% endif %}
-                                <li class="great-header__menu-item">
-                                    <a href="/" class="great-header__menu-link">Learn to export</a>
-                                </li>
-                                <li class="great-header__menu-item">
-                                    <a href="/" class="great-header__menu-link">Markets</a>
-                                </li>
-                                <li class="great-header__menu-item">
-                                    <a href="/" class="great-header__menu-link">Services</a>
-                                </li>
-                            {% if params.is_authenticated %}
-                                <li class="great-header__menu-item">
-                                    <a href="/" class="great-header__menu-link">Sign out</a>
-                                </li>
-                            {% else %}
-                                <li class="great-header__menu-item">
-                                    {{ greatButton({
-                                        text: "Sign in",
-                                        classes: "great-button--full-width govuk-!-margin-0",
-                                        href: "/sign-in"
-                                    }) }}
-                                </li>
-                            {% endif %}
+                            {% for item in params.menuItemsList %}
+                                {% if (item.requiresAuth and params.isAuthenticated) or (item.requiresNoAuth and not params.isAuthenticated) or (not item.requiresAuth and not item.requiresNoAuth) %}
+                                    <li class="great-header__menu-item{% if item.userGreeting %} great-header__menu-item--user{% endif %}">
+                                        {% if item.href and not item.button %}
+                                            <a href="{{ item.href }}" class="great-header__menu-link">{{ item.text }}</a>
+                                        {% elif item.button %}
+                                            {{ greatButton({
+                                                text: item.text,
+                                                classes: "great-button--full-width govuk-!-margin-0",
+                                                href: item.href
+                                            }) }}
+                                        {% else %}
+                                            {{ item.text }}
+                                        {% endif %}
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
