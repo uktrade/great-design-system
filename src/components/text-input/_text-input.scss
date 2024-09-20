@@ -1,0 +1,9 @@
+.great-text-input--search {
+    height: 58px;
+    padding-left: 10px;
+    border-color: $great-semantic-surface-background-great-blue;
+
+    &:focus {
+        z-index: 2;
+    }
+}

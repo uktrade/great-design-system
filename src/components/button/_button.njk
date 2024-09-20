@@ -1,44 +1,48 @@
-{% if href %}
-    <a href="{{ href }}"
-        role="button"
-        draggable="false"
-        class="great-button{% if classes %} {{ classes }}{% endif %}{% if cta %} great-button--cta{% endif %}"
-        data-module="great-button"
-        {% if id %} id="{{ id }}" {% endif %}>
-        {% if html %}{{ html|safe }}{% else %}{{ text }}{% endif %}
-        {% if cta %}
-            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 17 17" fill="currentColor" class="great-icon--svg">
-                <path d="M7.15792 2.6001L7.85005 1.90746C8.14311 1.61418 8.617 1.61418 8.90694 1.90746L14.9677 7.9696C15.2608 8.26288 15.2608 8.73712 14.9677 9.02728L8.90694 15.0925C8.61388 15.3858 8.13999 15.3858 7.85005 15.0925L7.15792 14.3999C6.86175 14.1035 6.86798 13.6199 7.17039 13.3297L10.9272 9.748H1.96699C1.55234 9.748 1.21875 9.41416 1.21875 8.9992V8.0008C1.21875 7.58584 1.55234 7.252 1.96699 7.252H10.9272L7.17039 3.67025C6.86486 3.38009 6.85863 2.8965 7.15792 2.6001Z" />
-            </svg>
-        {% endif %}
-    </a>
-
-{% elif input %}
-    <input
-        value="{{ text }}"
-        type="{% if type %}{{ type }}{% else %}input{% endif %}"
-        class="great-button{% if classes %} {{ classes }}{% endif %}"
-        data-module="great-button"
-        {% if id %} id="{{ id }}" {% endif %}
-        {% if name %} name="{{ name }}" {% endif %}
-        {% if disabled %} disabled aria-disabled="true" {% endif %}
-        {% if preventDoubleClick is not none %} data-prevent-double-click="{{ preventDoubleClick }}" {% endif %}>
-
-{% else %}
-    <button
-        {% if value %} value="{{ value }}" {% endif %}
-        type="{% if type %}{{ type }}{% else %}submit{% endif %}"
-        class="great-button{% if classes %} {{ classes }}{% endif %}{% if cta %} great-button--cta{% endif %}"
-        data-module="great-button"
-        {% if id %} id="{{ id }}" {% endif %}
-        {% if name %} name="{{ name }}" {% endif %}
-        {% if disabled %} disabled aria-disabled="true" {% endif %}
-        {% if preventDoubleClick is not none %} data-prevent-double-click="{{ preventDoubleClick }}" {% endif %}>
-        {% if html %}{{ html|safe }}{% else %}{{ text }}{% endif %}
-        {% if cta %}
-            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 17 17" fill="currentColor" class="great-icon--svg">
-                <path d="M7.15792 2.6001L7.85005 1.90746C8.14311 1.61418 8.617 1.61418 8.90694 1.90746L14.9677 7.9696C15.2608 8.26288 15.2608 8.73712 14.9677 9.02728L8.90694 15.0925C8.61388 15.3858 8.13999 15.3858 7.85005 15.0925L7.15792 14.3999C6.86175 14.1035 6.86798 13.6199 7.17039 13.3297L10.9272 9.748H1.96699C1.55234 9.748 1.21875 9.41416 1.21875 8.9992V8.0008C1.21875 7.58584 1.55234 7.252 1.96699 7.252H10.9272L7.17039 3.67025C6.86486 3.38009 6.85863 2.8965 7.15792 2.6001Z" />
-            </svg>
-        {% endif %}
-    </button>
-{% endif %}
+{% macro greatButton(params) %}
+    {% if params.href %}
+        <a href="{{ params.href }}"
+            role="button"
+            draggable="false"
+            class="great-button{% if params.classes %} {{ params.classes }}{% endif %}{% if params.cta %} great-button--cta{% endif %}"
+            data-module="great-button"
+            {% if params.id %} id="{{ params.id }}" {% endif %}>
+            {% if params.html %}{{ params.html | safe }}{% else %}{{ params.text }}{% endif %}
+            {% if params.cta %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 17 17" fill="currentColor" class="great-icon--svg">
+                    <path d="M7.15792 2.6001L7.85005 1.90746C8.14311 1.61418 8.617 1.61418 8.90694 1.90746L14.9677 7.9696C15.2608 8.26288 15.2608 8.73712 14.9677 9.02728L8.90694 15.0925C8.61388 15.3858 8.13999 15.3858 7.85005 15.0925L7.15792 14.3999C6.86175 14.1035 6.86798 13.6199 7.17039 13.3297L10.9272 9.748H1.96699C1.55234 9.748 1.21875 9.41416 1.21875 8.9992V8.0008C1.21875 7.58584 1.55234 7.252 1.96699 7.252H10.9272L7.17039 3.67025C6.86486 3.38009 6.85863 2.8965 7.15792 2.6001Z" />
+                </svg>
+            {% endif %}
+        </a>
+    {% elif params.input %}
+        <input
+            value="{{ params.text }}"
+            type="{% if params.type %}{{ params.type }}{% else %}input{% endif %}"
+            class="great-button{% if params.classes %} {{ params.classes }}{% endif %}"
+            data-module="great-button"
+            {% if params.id %} id="{{ params.id }}" {% endif %}
+            {% if params.name %} name="{{ params.name }}" {% endif %}
+            {% if params.disabled %} disabled aria-disabled="true" {% endif %}
+            {% if params.preventDoubleClick is not none %} data-prevent-double-click="{{ params.preventDoubleClick }}" {% endif %}>
+    {% else %}
+        <button
+            {% if params.value %} value="{{ params.value }}" {% endif %}
+            type="{% if params.type %}{{ params.type }}{% else %}submit{% endif %}"
+            class="great-button{% if params.classes %} {{ params.classes }}{% endif %}{% if params.cta %} great-button--cta{% endif %}"
+            data-module="great-button"
+            {% if params.id %} id="{{ params.id }}" {% endif %}
+            {% if params.attributes %}{{ params.attributes | safe }}{% endif %}
+            {% if params.name %} name="{{ params.name }}" {% endif %}
+            {% if params.disabled %} disabled aria-disabled="true" {% endif %}
+            {% if params.preventDoubleClick is not none %} data-prevent-double-click="{{ params.preventDoubleClick }}" {% endif %}>
+            {% if params.iconPrefix %}{{ params.iconPrefix | safe }}{% endif %}
+            {% if params.html %}{{ params.html | safe }}{% endif %}
+            {% if params.text %}{{ params.text }}{% endif %}
+            {% if params.iconSuffix %}{{ params.iconSuffix | safe }}{% endif %}
+            {% if params.cta %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 17 17" fill="currentColor" class="great-icon--svg">
+                    <path d="M7.15792 2.6001L7.85005 1.90746C8.14311 1.61418 8.617 1.61418 8.90694 1.90746L14.9677 7.9696C15.2608 8.26288 15.2608 8.73712 14.9677 9.02728L8.90694 15.0925C8.61388 15.3858 8.13999 15.3858 7.85005 15.0925L7.15792 14.3999C6.86175 14.1035 6.86798 13.6199 7.17039 13.3297L10.9272 9.748H1.96699C1.55234 9.748 1.21875 9.41416 1.21875 8.9992V8.0008C1.21875 7.58584 1.55234 7.252 1.96699 7.252H10.9272L7.17039 3.67025C6.86486 3.38009 6.85863 2.8965 7.15792 2.6001Z" />
+                </svg>
+            {% endif %}
+        </button>
+    {% endif %}
+{% endmacro %}

@@ -1,7 +1,6 @@
 {% extends "layout/_example.njk" %}
+{% from "../../../components/button/_button.njk" import greatButton %}
 
 {% block content %}
-    {% set buttonData = { text: "Get started", href: "#", classes: "great-button--cta", cta: true } %}
-
-    {{ "button" | component(buttonData) }}
+    {{ greatButton({ text: "Get started", href: "#", classes: "great-button--cta", cta: true }) }}
 {% endblock %}

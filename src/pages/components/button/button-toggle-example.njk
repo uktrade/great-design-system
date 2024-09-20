@@ -1,9 +1,7 @@
 {% extends "layout/_example.njk" %}
+{% from "../../../components/button/_button.njk" import greatButton %}
 
 {% block content %}
-    {% set button1Data = { text: "Show", classes: "great-button--toggle" } %}
-    {% set button2Data = { text: "Hide", classes: "great-button--toggle" } %}
-
-    {{ "button" | component(button1Data) }}
-    {{ "button" | component(button2Data) }}
+    {{ greatButton({ text: "Show", classes: "great-button--toggle" }) }}
+    {{ greatButton({ text: "Hide", classes: "great-button--toggle" }) }}
 {% endblock %}

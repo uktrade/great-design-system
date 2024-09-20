@@ -1,7 +1,6 @@
 {% extends "layout/_example.njk" %}
+{% from "../../../components/button/_button.njk" import greatButton %}
 
 {% block content %}
-    {% set buttonData = { text: "Delete", classes: "great-button--warning" } %}
-
-    {{ "button" | component(buttonData) }}
+    {{ greatButton({ text: "Delete", classes: "great-button--warning" }) }}
 {% endblock %}

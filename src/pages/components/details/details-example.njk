@@ -1,7 +1,8 @@
 {% extends "layout/_example.njk" %}
+{% from "../../../components/details/_details.njk" import greatDetails %}
 
 {% block content %}
-    {% set detailsData = {
+    {{ greatDetails({
         id: 'detailsElement',
         open: false,
         classes: "",
@@ -9,6 +10,6 @@
         summaryHtml: "<div>This is the summary in a div</div>",
         detailsText: "Now's some much more interesting detailed text after the summary",
         detailsHtml: "<div>This is the details in a div</div>"
-    } %}
-    {{ "details" | component(detailsData) }}
+    }) }}
 {% endblock %}
+
