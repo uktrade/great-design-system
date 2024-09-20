@@ -2,5 +2,7 @@
 {% from "../../../components/header/_header.njk" import greatHeader %}
 
 {% block content %}
-    {{ greatHeader({}) }}
+    {{ greatHeader({
+        is_authenticated: true
+    }) }}
 {% endblock %}
