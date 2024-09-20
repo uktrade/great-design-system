@@ -219,6 +219,10 @@ $great-button-outline: 2px solid transparent;
         align-self: center;
     }
 
+    .great-button__text {
+        display: none;
+    }
+
     &:focus {
         z-index: 2;
     }

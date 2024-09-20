@@ -1,0 +1,8 @@
+{% extends "layout/_example.njk" %}
+{% from "../../../components/header/_header.njk" import greatHeader %}
+
+{% block content %}
+    {{ greatHeader({
+        is_authenticated: true
+    }) }}
+{% endblock %}
