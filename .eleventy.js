@@ -29,7 +29,9 @@ module.exports = function(eleventyConfig) {
     });
 
     eleventyConfig.addShortcode("exampleIframe", function(src, width="100%", height="100%") {
-        return `<div class="app-iframe-wrapper"><iframe src="${src}" frameborder="0" width="${width}" height="${height}"></iframe></div>`;
+        return `<div class="app-iframe-wrapper" style="resize: both; overflow: auto;">
+                    <iframe src="${src}" frameborder="0" style="width: ${width}; height: ${height};"></iframe>
+                </div>`;
     });
     
 
