@@ -14,14 +14,16 @@
                 {{ greatMastheadLogo() }}
             {% endif %}
         </div>
-        <ul class="great-header__international-links">
-            <li class="great-header__international-link-item {% if not params.isInternational %}great-header__international-link-item--active{% endif %} great-header__international-link-item--domestic">
-                <a href="{{ params.domesticLink.href }}" id="great-global-header-domestic-link" class="great-header__international-link">{{ params.domesticLink.text }}</a>
-            </li>
-            <li class="great-header__international-link-item great-header__international-link-item--international {% if params.isInternational %}great-header__international-link-item--active{% endif %}">
-                <a href="{{ params.internationalLink.href }}" id="great-global-header-international-link" class="great-header__international-link">{{ params.internationalLink.text }}</a>
-            </li>
-        </ul>
+        {% if params.domesticLink and params.internationalLink %}
+            <ul class="great-header__international-links">
+                <li class="great-header__international-link-item {% if not params.isInternational %}great-header__international-link-item--active{% endif %} great-header__international-link-item--domestic">
+                    <a href="{{ params.domesticLink.href }}" id="great-global-header-domestic-link" class="great-header__international-link">{{ params.domesticLink.text }}</a>
+                </li>
+                <li class="great-header__international-link-item great-header__international-link-item--international {% if params.isInternational %}great-header__international-link-item--active{% endif %}">
+                    <a href="{{ params.internationalLink.href }}" id="great-global-header-international-link" class="great-header__international-link">{{ params.internationalLink.text }}</a>
+                </li>
+         </ul>
+        {% endif %}
     </div>
     <div class="great-header__main">
         <div class="great-header__main-inner great-container">
@@ -29,6 +31,11 @@
                 <a id="header-logo-link" alt="Great" class="great-header__great-logo" href="/">
                     {% include "./_header-great-logo.njk" %}
                 </a>
+                {% if params.siteTitle %}
+                    <div class="great-header__site-title">
+                        <span class="great-header__site-title-text">{{ params.siteTitle }}</span>
+                    </div>
+                {% endif %}
             </div>
             <div class="great-header__nav-container">
                 {% if params.actionLinkList %}
@@ -41,72 +48,89 @@
                     </div>
                 {% endif %}
                 <div class="great-header__nav-lower">
-                    <nav class="great-header__nav">
-                        <ul class="great-header__nav-list">
-                            {% for item in params.navItemsList %}
-                                {% if (item.requiresAuth and params.isAuthenticated) or (item.requiresNoAuth and not params.isAuthenticated) or (not item.requiresAuth and not item.requiresNoAuth) %}
-                                    <li class="great-header__nav-item">
-                                        <a href="{{ item.href }}" class="great-header__nav-link{% if item.isCurrent %} great-header__nav-link--current{% endif %}">{{ item.text }}</a>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </nav>
+                    {% if params.navItemsList %}
+                        <nav class="great-header__nav">
+                            <ul class="great-header__nav-list">
+                                {% for item in params.navItemsList %}
+                                    {% if (item.requiresAuth and params.isAuthenticated) or (item.requiresNoAuth and not params.isAuthenticated) or (not item.requiresAuth and not item.requiresNoAuth) %}
+                                        <li class="great-header__nav-item">
+                                            <a href="{{ item.href }}" class="great-header__nav-link{% if item.isCurrent %} great-header__nav-link--current{% endif %}">{{ item.text }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    {% endif %}
                     {% if not params.hideSearch %}
-                    <div class="great-header__search">
-                        <form id="great-header-search-form" class="great-header__search-form" action="{{ params.searchFormAction }}" method="get">
-                            {{ textInput({
-                                classes: "great-text-input--search",
-                                id: "great-header-search-input",
-                                label: "Search",
-                                name: "search",
-                                placeholder: "Search",
-                                labelClasses: "govuk-visually-hidden"
-                            }) }}
-                            
+                        <div class="great-header__search">
+                            <form id="great-header-search-form" class="great-header__search-form" action="{{ params.searchFormAction }}" method="get">
+                                {{ textInput({
+                                    classes: "great-text-input--search",
+                                    id: "great-header-search-input",
+                                    label: "Search",
+                                    name: "search",
+                                    placeholder: "Search",
+                                    labelClasses: "govuk-visually-hidden"
+                                }) }}
+                                
+                                {{ greatButton({
+                                    classes: "great-button--icon great-button--search",
+                                    text: "Search",
+                                    html: '<svg xmlns="http://www.w3.org/2000/svg" class="great-icon--svg" width="20" height="20" viewBox="0 0 18 18" fill="currentColor">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.77589 13.722C6.26697 13.8589 4.79933 13.386 3.64011 12.4016C1.2472 10.3681 0.933108 6.74217 2.94069 4.31856C4.06024 2.96784 5.66793 2.27198 7.28695 2.27198C8.57164 2.27198 9.86443 2.7113 10.9249 3.61205C12.0841 4.59641 12.7949 5.97992 12.9268 7.50687C13.0588 9.03299 12.5957 10.5206 11.6235 11.6943C10.6505 12.868 9.28401 13.5884 7.77589 13.722ZM18 15.5071L13.5606 11.7361C14.3256 10.4247 14.6737 8.91169 14.5393 7.36344C14.3702 5.40128 13.4562 3.62271 11.9651 2.35558C8.88816 -0.258992 4.28286 0.148357 1.70133 3.26536C-0.881003 6.38072 -0.477867 11.0427 2.59908 13.6573C3.92344 14.7826 5.56107 15.3834 7.26914 15.3834C7.48447 15.3834 7.70061 15.3744 7.91756 15.3555C9.44591 15.2203 10.8569 14.6097 11.9999 13.6196L16.4385 17.3914L18 15.5071Z"/>
+                                    </svg>'
+                                }) }}
+                            </form>
+                        </div>
+                    {% endif %}
+                    {% if params.menuItemsList %}
+                        <div class="great-header__menu{% if params.hideMenuOnDesktop %} great-header__menu--hidden-on-desktop{% endif %}">
                             {{ greatButton({
-                                classes: "great-button--icon great-button--search",
-                                text: "Search",
-                                html: '<svg xmlns="http://www.w3.org/2000/svg" class="great-icon--svg" width="20" height="20" viewBox="0 0 18 18" fill="currentColor">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.77589 13.722C6.26697 13.8589 4.79933 13.386 3.64011 12.4016C1.2472 10.3681 0.933108 6.74217 2.94069 4.31856C4.06024 2.96784 5.66793 2.27198 7.28695 2.27198C8.57164 2.27198 9.86443 2.7113 10.9249 3.61205C12.0841 4.59641 12.7949 5.97992 12.9268 7.50687C13.0588 9.03299 12.5957 10.5206 11.6235 11.6943C10.6505 12.868 9.28401 13.5884 7.77589 13.722ZM18 15.5071L13.5606 11.7361C14.3256 10.4247 14.6737 8.91169 14.5393 7.36344C14.3702 5.40128 13.4562 3.62271 11.9651 2.35558C8.88816 -0.258992 4.28286 0.148357 1.70133 3.26536C-0.881003 6.38072 -0.477867 11.0427 2.59908 13.6573C3.92344 14.7826 5.56107 15.3834 7.26914 15.3834C7.48447 15.3834 7.70061 15.3744 7.91756 15.3555C9.44591 15.2203 10.8569 14.6097 11.9999 13.6196L16.4385 17.3914L18 15.5071Z"/>
+                                text: "Menu",
+                                classes: "great-button--inverted great-button--icon-prefix great-button--auto-width govuk-!-margin-left-3",
+                                attributes: "data-reveal-button data-reveal-modal aria-controls=header-menu",
+                                iconPrefix: '<svg class="great-icon--svg" width="16" height="17" viewBox="0 0 16 17" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 3.5C1 2.94687 1.44687 2.5 2 2.5H14C14.5531 2.5 15 2.94687 15 3.5C15 4.05313 14.5531 4.5 14 4.5H2C1.44687 4.5 1 4.05313 1 3.5ZM1 8.5C1 7.94688 1.44687 7.5 2 7.5H14C14.5531 7.5 15 7.94688 15 8.5C15 9.05312 14.5531 9.5 14 9.5H2C1.44687 9.5 1 9.05312 1 8.5ZM15 13.5C15 14.0531 14.5531 14.5 14 14.5H2C1.44687 14.5 1 14.0531 1 13.5C1 12.9469 1.44687 12.5 2 12.5H14C14.5531 12.5 15 12.9469 15 13.5Z"/>
                                 </svg>'
                             }) }}
-                        </form>
-                    </div>
-                    {% endif %}
-                    <div class="great-header__menu">
-                        {{ greatButton({
-                            text: "Menu",
-                            classes: "great-button--inverted great-button--icon-prefix great-button--auto-width govuk-!-margin-left-3",
-                            attributes: "data-reveal-button data-reveal-modal aria-controls=header-menu",
-                            iconPrefix: '<svg class="great-icon--svg" width="16" height="17" viewBox="0 0 16 17" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 3.5C1 2.94687 1.44687 2.5 2 2.5H14C14.5531 2.5 15 2.94687 15 3.5C15 4.05313 14.5531 4.5 14 4.5H2C1.44687 4.5 1 4.05313 1 3.5ZM1 8.5C1 7.94688 1.44687 7.5 2 7.5H14C14.5531 7.5 15 7.94688 15 8.5C15 9.05312 14.5531 9.5 14 9.5H2C1.44687 9.5 1 9.05312 1 8.5ZM15 13.5C15 14.0531 14.5531 14.5 14 14.5H2C1.44687 14.5 1 14.0531 1 13.5C1 12.9469 1.44687 12.5 2 12.5H14C14.5531 12.5 15 12.9469 15 13.5Z"/>
-                            </svg>'
-                        }) }}
 
-                        <ul id="header-menu" class="great-header__menu-list">
-                            {% for item in params.menuItemsList %}
-                                {% if (item.requiresAuth and params.isAuthenticated) or (item.requiresNoAuth and not params.isAuthenticated) or (not item.requiresAuth and not item.requiresNoAuth) %}
-                                    <li class="great-header__menu-item{% if item.userGreeting %} great-header__menu-item--user{% endif %}">
-                                        {% if item.href and not item.button %}
-                                            <a href="{{ item.href }}" class="great-header__menu-link">{{ item.text }}</a>
-                                        {% elif item.button %}
-                                            {{ greatButton({
-                                                text: item.text,
-                                                classes: "great-button--full-width govuk-!-margin-0",
-                                                href: item.href
-                                            }) }}
-                                        {% else %}
-                                            {{ item.text }}
-                                        {% endif %}
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
+                            <ul id="header-menu" class="great-header__menu-list">
+                                {% for item in params.menuItemsList %}
+                                    {% if (item.requiresAuth and params.isAuthenticated) or (item.requiresNoAuth and not params.isAuthenticated) or (not item.requiresAuth and not item.requiresNoAuth) %}
+                                        <li class="great-header__menu-item{% if item.userGreeting %} great-header__menu-item--user{% endif %}">
+                                            {% if item.href and not item.button %}
+                                                <a href="{{ item.href }}" class="great-header__menu-link">{{ item.text }}</a>
+                                            {% elif item.button %}
+                                                {{ greatButton({
+                                                    text: item.text,
+                                                    classes: "great-button--full-width govuk-!-margin-0",
+                                                    href: item.href
+                                                }) }}
+                                            {% else %}
+                                                {{ item.text }}
+                                            {% endif %}
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
+    {% if params.subnavItemsList %}
+        <div class="great-header__subnav">
+            <nav class="great-header__subnav-container great-container" aria-label="Sub-menu">
+                <ul class="great-header__subnav-list">
+                    {% for item in params.subnavItemsList %}
+                        <li class="great-header__subnav-item">
+                            <a class="great-header__subnav-link" href="{{ item.href }}" data-location="{{ item.location }}" data-title="{{ item.text }}">{{ item.text }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    {% endif %}
 </header>
 {% endmacro %}
