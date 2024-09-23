@@ -11,3 +11,24 @@
     font-weight: 600;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'Euclid Flex Regular';
+    src: url('/static/fonts/EuclidFlexB-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Euclid Flex Medium';
+    src: url('/static/fonts/EuclidFlexB-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Euclid Flex Bold';
+    src: url('/static/fonts/EuclidFlexB-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}

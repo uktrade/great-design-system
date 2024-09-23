@@ -4,6 +4,9 @@
 {% block content %}
     {{ greatHeader({
         isAuthenticated: true,
+        domesticLink: { href: "#", text: "For UK businesses" },
+        internationalLink: { href: "#", text: "For international businesses" },
+        searchFormAction: "#",
         navItemsList: [
             { href: "#", text: "Learn to export" },
             { href: "#", text: "Where to export", requiresAuth: true },
