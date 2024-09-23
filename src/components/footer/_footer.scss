@@ -1,4 +1,4 @@
-.great-footer {
+.great-footer__footer {
   background-color: $great-primitive-brand-great-blue;
   justify-content: center;
   display: flex;
@@ -9,7 +9,7 @@
   }
 }
 
-.great-footer-list {
+.great-footer__footer-link-list {
   margin: 80px 0px $great-spacing-6-large;
   padding-inline-start: 0px;
   max-width: 1230px;
@@ -34,7 +34,7 @@
   }
 }
 
-.great-copyright-container {
+.great-footer__copyright-container {
   background-color: $great-primitive-interface-mono-0;
   display: flex;
   justify-content: center;
@@ -62,7 +62,7 @@
   }
 }
 
-.great-copy-right {
+.great-footer__copy-right {
   font-size: 18px;
   padding-top: 3px;
   margin: 0;
@@ -72,7 +72,7 @@
   }
 }
 
-.great-footer-logo-image {
+.great-footer__logo-image {
   height: 30px;
   min-width: 270px;
 }
