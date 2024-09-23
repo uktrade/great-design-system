@@ -2,5 +2,16 @@
 {% from "../../../components/header/_header.njk" import greatHeader %}
 
 {% block content %}
-    {{ greatHeader({}) }}
+    {{ greatHeader({
+        isInternational: true,
+        hideSearch: true,
+        domesticLink: { href: "#", text: "For UK businesses" },
+        internationalLink: { href: "#", text: "For international businesses" },
+        searchFormAction: "#",
+        navItemsList: [
+            { href: "#", text: "Expand your business" },
+            { href: "#", text: "Investment opportunities"},
+            { href: "#", text: "By from the UK" }
+        ]
+    }) }}
 {% endblock %}

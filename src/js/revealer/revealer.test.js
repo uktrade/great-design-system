@@ -118,39 +118,40 @@ describe("Revealer", () => {
     expect(hideAllSpy).toHaveBeenCalled();
   });
 
-  test('hideAll hides all visible elements', () => {
+  test("hideAll hides all visible elements", () => {
     const mockButton1 = {
-      getAttribute: jest.fn().mockReturnValue('target1'),
+      getAttribute: jest.fn().mockReturnValue("target1"),
       setAttribute: jest.fn(),
       hasAttribute: jest.fn().mockReturnValue(false),
     };
     const mockButton2 = {
-      getAttribute: jest.fn().mockReturnValue('target2'),
+      getAttribute: jest.fn().mockReturnValue("target2"),
       setAttribute: jest.fn(),
       hasAttribute: jest.fn().mockReturnValue(false),
     };
-  
+
     const mockTarget1 = {
-      getAttribute: jest.fn().mockReturnValue('false'),
+      getAttribute: jest.fn().mockReturnValue("false"),
       setAttribute: jest.fn(),
       style: {},
     };
     const mockTarget2 = {
-      getAttribute: jest.fn().mockReturnValue('true'),
+      getAttribute: jest.fn().mockReturnValue("true"),
       setAttribute: jest.fn(),
       style: {},
     };
-  
+
     revealer.buttons = [mockButton1, mockButton2];
-    mockDocument.getElementById = jest.fn()
+    mockDocument.getElementById = jest
+      .fn()
       .mockReturnValueOnce(mockTarget1)
       .mockReturnValueOnce(mockTarget2);
-  
+
     // Mock the toggleReveal method
     revealer.toggleReveal = jest.fn();
-  
+
     revealer.hideAll();
-  
+
     expect(revealer.toggleReveal).toHaveBeenCalledWith(mockButton1);
     expect(revealer.toggleReveal).not.toHaveBeenCalledWith(mockButton2);
   });
