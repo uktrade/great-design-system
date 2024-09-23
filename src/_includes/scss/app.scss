@@ -2,6 +2,12 @@ body {
     margin: 0;
 }
 
+.app-site-wrapper {
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 20px;
+}
+
 .app-iframe-wrapper {
     border: 1px solid #ddd;
     padding: 40px 40px 0;
