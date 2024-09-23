@@ -37,14 +37,14 @@
                 <li>
                     <a href="{{ params.urls.performance_dashboard }}" title="Performance">Performance</a>
                 </li>
-                {% if campaign_site_page %}
+                {% if params.urls.campaign_site_page %}
                     <li>
                         <a href="{{ params.urls.campaign_site_page }}"
                         title="Support for UK export or investment">Get support for UK export or investment at great.gov.uk</a>
                     </li>
                 {% else %}
                     <li>
-                        <a href="urls.international" title="International business">Go to the page for international business</a>
+                        <a href="{{ params.urls.international }}" title="International business">Go to the page for international business</a>
                     </li>
                 {% endif %}
             </ul>
