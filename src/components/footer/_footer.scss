@@ -2,6 +2,11 @@
   background-color: $great-primitive-brand-great-blue;
   justify-content: center;
   display: flex;
+
+  padding: 0 15px;
+  @media only screen and (min-width: 1025px) {
+    padding: 0 30px;
+  }
 }
 
 .great-footer-list {
@@ -39,10 +44,10 @@
     display: inline-flex;
     flex-direction: row;
     justify-content: space-between;
-    max-width: 1230px;
+    max-width: 1230px; // TO DO Add desktop-width variable?
     padding: $great-spacing-4-large $great-spacing-6-large;
     gap: $great-spacing-4-large;
-    @media only screen and (max-width: 640px) {
+    @media only screen and (max-width: 640px) {  // TO DO Add mobile-width variable?
       padding: $great-spacing-4-large;
       flex-direction: column;
       align-items: flex-start;
@@ -70,10 +75,6 @@
 .great-footer-logo-image {
   height: 30px;
   min-width: 270px;
-}
-
-.great-background-white {
-  background-color: $great-primitive-interface-mono-0;
 }
 
 .great-display-block{
