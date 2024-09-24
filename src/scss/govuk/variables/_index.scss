@@ -5,6 +5,7 @@ $govuk-link-hover-colour: $great-semantic-text-hover-link;
 $govuk-link-visited-colour: $great-semantic-text-default-link-visited;
 $govuk-focus-colour: $great-semantic-interaction-focus;
 
+// Override default govuk colours
 $govuk-colours: (
   "red": $great-primitive-brand-dbt-red,
   "yellow": $great-primitive-interface-yellow-50,
@@ -27,3 +28,126 @@ $govuk-colours: (
   "light-green": #85994b,
   "turquoise": #28a197
 );
+
+// Override default govuk typography scale
+$govuk-typography-scale: (
+  80: (
+    null: (
+      font-size: 53px,
+      line-height: 55px
+    ),
+    tablet: (
+      font-size: 80px,
+      line-height: 80px
+    ),
+    print: (
+      font-size: 53pt,
+      line-height: 1.1
+    )
+  ),
+  48: (
+    null: (
+      font-size: $great-type-size-heading-xl,
+      line-height: $great-type-line-height-heading-xl
+    ),
+    tablet: (
+      font-size: $great-type-size-heading-xl-large,
+      line-height: $great-type-line-height-heading-xl-large
+    ),
+    print: (
+      font-size: 32pt,
+      line-height: 1.15
+    )
+  ),
+  36: (
+    null: (
+      font-size: $great-type-size-heading-l,
+      line-height: $great-type-line-height-heading-l
+    ),
+    tablet: (
+      font-size: $great-type-size-heading-l-large,
+      line-height: $great-type-line-height-heading-l-large
+    ),
+    print: (
+      font-size: 24pt,
+      line-height: 1.05
+    )
+  ),
+  27: (
+    null:
+      (
+        font-size: $great-type-size-caption-xl,
+        line-height: $great-type-line-height-caption-xl
+      ),
+    tablet: (
+      font-size: $great-type-size-caption-xl-large,
+      line-height: $great-type-line-height-caption-xl-large
+    ),
+    print: (
+      font-size: 18pt,
+      line-height: 1.15
+    )
+  ),
+  24: (
+    null:
+      (
+        font-size: $great-type-size-heading-m,
+        line-height: $great-type-line-height-heading-m
+      ),
+    tablet: (
+      font-size: $great-type-size-heading-m-large,
+      line-height: $great-type-line-height-heading-m
+    ),
+    print: (
+      font-size: 18pt,
+      line-height: 1.15
+    )
+  ),
+  19: (
+    null:
+      (
+        font-size: 19px,
+        line-height: 25px
+      ),
+    print: (
+      font-size: 14pt,
+      line-height: 1.15
+    )
+  ),
+  18: (
+    null:
+      (
+        font-size: $great-type-size-body,
+        line-height: $great-type-line-height-body
+      ),
+    print: (
+      font-size: 14pt,
+      line-height: 1.15
+    )
+  ),
+  16: (
+    // Stay at 16/20 at all sizes
+    null:
+      (
+        font-size: $great-type-size-body-small,
+        line-height: $great-type-line-height-body-small
+      ),
+    print: (
+      font-size: 14pt,
+      line-height: 1.2
+    )
+  ),
+  14: (
+    // Stay at 14/20 at all sizes (consider deprecating this size)
+    null:
+      (
+        font-size: 14px,
+        line-height: 20px
+      ),
+    print: (
+      font-size: 12pt,
+      line-height: 1.2
+    )
+  )
+);
+
