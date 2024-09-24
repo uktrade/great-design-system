@@ -246,7 +246,7 @@ $great-button-outline: 2px solid transparent;
 %great-button-inverted {
     @include great-button-states(
         transparent,
-        $great-semantic-interaction-hover-primary-button,
+        rgba(0, 0, 0, 0.3),
         $great-semantic-surface-background-white,
         $great-semantic-surface-background-white,
         $great-semantic-surface-background-white,
