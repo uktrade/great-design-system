@@ -1,25 +1,33 @@
 {% macro greatFooter(params) %}
     <footer id="footer"
         dir="ltr"
-        data-ga-section="footer">
-        <div class="great-footer__footer">
-            <ul class="great-footer__footer-link-list">
-                {% for link in params.footerLinks %}     
-                    <li>
-                        <a href="{{ link.href }}"
-                        title="{{ link.title }}"
-                        {% if link.target %} target="{{ link.target }}" {% endif %}
-                        {% if link.rel %} rel="{{ link.rel }}" {% endif %} >
-                        {{ link.text }}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
+        data-ga-section="footer"
+        class="great-footer">
+        <div class="great-container great-footer__container {% if params.isInternational %}great-footer__container--international{% endif %}">
+            <div>
+                <ul class="great-footer__link-list {% if params.isInternational %}great-footer__link-list--international{% endif %}">
+                    {% for link in params.footerLinks %}     
+                        <li>
+                            <a href="{{ link.href }}"
+                            title="{{ link.title }}"
+                            {% if link.target %} target="{{ link.target }}" {% endif %}
+                            {% if link.rel %} rel="{{ link.rel }}" {% endif %} >
+                            {{ link.text }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% if params.isInternational %}
+                <div  role="img" alt="Expand your business in the UK, start of service" aria-label="great.gov.uk logo" class="great-footer__great-logo-container great-footer__container-item">
+                    <image class="great-footer__great-logo-image" src="/static/images/_footer-great-logo.png"></image>
+                </div>
+            {% endif %}
         </div>
         <div class="great-footer__copyright-container">
             <div>
                 {% include "./_footer-dbt-logo.njk" %}
-                <p class="great-footer__copy-right">© Crown copyright {{ params.currentYear }}. All rights reserved.</p>
+                <p class="great-footer__copyright{% if params.isInternational %} great-footer__copyright--international {% endif %}">© Crown copyright {{ params.currentYear }}. All rights reserved.</p>
             </div>
         </div>
     </footer>
