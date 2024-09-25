@@ -6,9 +6,8 @@ $great-type-family-great-international-bold: "Euclid Flex Bold", arial, sans-ser
 
 body {
     font-family: $great-type-family-great;
-    font-size: $great-type-size-body;
     color: $great-semantic-text-default-text;
-    line-height: $great-type-line-height-body;
+    @include govuk-font-size($size: 18);
 }
 
 h1, h2, h3, h4, h5, h6 {

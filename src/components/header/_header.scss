@@ -21,11 +21,6 @@
     font-family: $great-type-family-great-international-bold;
 }
 
-.great-header__main {
-    padding: 20px 0;
-    min-height: 90px;
-}
-
 .great-header__dbt-logo {
     align-self: center;
     margin: 10px 0 4px;
@@ -36,10 +31,17 @@
     height: 26px;
 }
 
+.great-header__global {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+
 .great-header__international-links {
     display: none;
     justify-content: space-between;
-    font-size: $great-type-size-body-small;
 
     @include govuk-media-query($from: desktop) {
         display: flex;
@@ -53,7 +55,8 @@
 
 .great-header__international-link-item {
     padding: $great-spacing-2 $great-spacing-4;
-    
+    @include govuk-font-size($size: 16);
+
     &:first-child {
         margin-right: 5px;
     }
@@ -76,6 +79,8 @@
 }
 
 .great-header__main {
+    padding: 20px 0;
+    min-height: 90px;
     background-color: $great-semantic-surface-background-great-blue;
     position: relative;
 
@@ -94,13 +99,6 @@
             @include govuk-focused-text;
         }
     }
-}
-
-.great-header__global {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .great-header__main-inner {
@@ -175,7 +173,7 @@
 
 .great-header__site-title {
     color: $great-semantic-text-default-white-text;
-    font-size: $great-type-size-heading-l;
+    @include govuk-font-size($size: 24);
 
     @include govuk-media-query($from: desktop) {
         margin-left: $great-spacing-9;
