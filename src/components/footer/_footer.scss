@@ -5,43 +5,28 @@
 .great-footer__container {
   justify-content: center;
   display: flex;
-  padding: 0 15px;
-
-  @include govuk-media-query ($from: 1025px) {
-    padding: 0 30px;
-  }
 }
 
 .great-footer__container--international {
-  align-items: flex-end;
-  padding-top: 40px;
+  padding-top: $great-spacing-4-large;
+  margin-bottom: $great-spacing-4-large;
+  padding-right: 0px;
+  margin-right: 0px;
   flex-direction: column;
-
-  @include govuk-media-query ($from: 640px) {
-    flex-direction: row;
-  }
-
   > div {
-    margin-right: 15px;
-    margin-bottom: 50px;
-    margin-left: 15px; 
+    width:100%;
   }
 }
 
 .great-footer__link-list {
-  margin: 115px $great-spacing-4-large 52px $great-spacing-4-large;
+  margin-top: 80px;
+  margin-bottom: $great-spacing-4-large;
   padding-inline-start: 0px;
-  max-width: 1230px;
   display: inline-flex;
   gap: $great-spacing-4-large;
   flex-wrap: wrap;
   list-style-type: none;
-  flex-direction: column;
-
-  @media only screen and (min-width: 640px) {
-    flex-direction: row;
-    margin: 80px 0px $great-spacing-6-large;
-  }
+  flex-direction: row;
 
   > li a {
     font-family: $great-type-family-great;
@@ -55,8 +40,9 @@
 }
 
 .great-footer__link-list--international {
-  flex-direction: row;
   margin: 0;
+  align-self: flex-start;
+  margin-right: $great-spacing-7-large;
 
   > li a {
     font-family: $great-type-family-great-international;
@@ -66,36 +52,25 @@
 .great-footer__copyright-container {
   background-color: $great-semantic-surface-background-white;
   display: flex;
-  justify-content: center;
   div {
     width: 100%;
     display: inline-flex;
-    padding: $great-spacing-4-large;
+    padding-top: $great-spacing-4-large;
+    padding-bottom: $great-spacing-4-large;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    max-width: 1230px;
     gap: $great-spacing-4-large;
 
     @media only screen and (min-width: 640px) {
-      padding: $great-spacing-4-large $great-spacing-6-large;
       flex-direction: row;
       align-items: center;
-    }
-
-    @media only screen and (min-width: (1290px + ($great-spacing-6-large * 2) )) {
-      padding: 40px 0 $great-spacing-4-large 0;
-    }
-
-    @media only screen and (min-width: calc(1230px + (2 * $great-spacing-6-large))) {
-      padding: $great-spacing-4-large 0;
     }
   }
 }
 
 .great-footer__copyright {
   font-size: $great-type-size-body-small;
-  padding-top: 3px;
   margin: 0;
 
   @media only screen and (min-width: 640px) {
@@ -116,17 +91,21 @@
   position: relative;
   display: flex;
   align-items: start;
-  height: 114px;
-  min-width: 260px;
+  height: 76px;
+  float:right;
+  max-width: 270px;
   background-color: $great-semantic-surface-background-great-red;
   margin-top: 10px;
   align-items: center;
+  margin-bottom: $great-spacing-4-large;
+  align-self: flex-end;
 }
 
 .great-footer__great-logo-image {
+  margin-top: -25px;
+  margin-left: -40px;
   min-width: 230px;
   height: 86px;
-  margin-top: 10px;
-  margin: auto;
+  float:left;
+  overflow: visible;
 }
-
