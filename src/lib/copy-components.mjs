@@ -54,6 +54,22 @@ function convertNunjucksToHtml(content) {
     },
   );
 
+  // Convert .njk to .html in include statements
+  htmlContent = htmlContent.replace(
+    /{%\s*include\s*"([^"]+)\.njk"\s*%}/g,
+    (match, includePath) => {
+      return `{% include "${includePath}.html" %}`;
+    },
+  );
+
+  // Convert .njk to .html in include statements with parameters
+  htmlContent = htmlContent.replace(
+    /{%\s*include\s*"([^"]+)\.njk"\s*with\s+([^%]+)\s*%}/g,
+    (match, includePath, params) => {
+      return `{% include "${includePath}.html" with ${params} %}`;
+    },
+  );
+
   return htmlContent;
 }
 
