@@ -236,6 +236,10 @@
 
 .great-header__nav-item:not(:last-child) {
     padding: 0 $great-spacing-6-large 0 0;
+
+    .great-header--international & {
+        @include govuk-font-size($size: 19);
+    }
 }
 
 .great-header__search {
