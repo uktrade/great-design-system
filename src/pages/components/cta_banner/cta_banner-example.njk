@@ -1,11 +1,19 @@
 {% extends "layout/_example.njk" %}
+{% from "../../../components/cta_banner/_cta_banner.njk" import greatCtaBanner %}
 
 {% block content %}
-    {% set ctaBannerData = {
+    {{ greatCtaBanner({
+        headingText: 'Accelerate your learning',
+        leadingText: "Sign up to Great.gov.uk and you'll be able to:",
+        listItems: [ 
+            "track your learning progress and read case studies",
+            "join live events from the UK Export Academy",
+            "compare markets using live export data"
+        ],
         bg_class: '',
+        signUpLink: { href: '#', preLinkText: 'Already signed up?', linkText: 'Sign in'},
         loginUrl: 'login.com',
         landscapeImagePath: '/static/images/lte-signup-promo-landscape.png',
         portraitImagePath: '/static/images/lte-signup-promo-portrait.png'
-    } %}
-    {{ "cta_banner" | component(ctaBannerData) }}
+    }) }}
 {% endblock %}

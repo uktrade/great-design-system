@@ -24,3 +24,17 @@
       }
     }
   }
+
+.great-link-button--chevron {
+  svg {
+    position: relative;
+    top: 2px;
+  }
+
+  &:hover,
+  &:focus {
+    path {
+      fill: $govuk-brand-colour;
+    }
+  }
+}
