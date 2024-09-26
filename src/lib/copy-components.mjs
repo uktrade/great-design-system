@@ -25,15 +25,10 @@ function convertNunjucksToHtml(content) {
     },
   );
 
-  // Convert {% set ... %} to {% with ... %}
+  // Remove {% set ... %} blocks, including multiline ones
   htmlContent = htmlContent.replace(
-    /{% set (\w+) = ([\s\S]*?) %}/g,
-    (match, varName, varContent) => {
-      if (varContent.startsWith("'") && varContent.endsWith("'")) {
-        varContent = varContent.replace(/'/g, "\\'");
-      }
-      return `{% with ${varName}=${varContent} %}`;
-    },
+    /{% set [\s\S]*?%}/g,
+    "", // Remove the entire set block
   );
 
   // Replace macro calls with include statements
@@ -41,6 +36,7 @@ function convertNunjucksToHtml(content) {
     /{{ (\w+)\(([\s\S]*?)\) }}/g,
     (match, macroName, args) => {
       if (imports[macroName]) {
+        // Remove line breaks, extra spaces, and commas from args
         const formattedArgs = args
           .replace(/\s+/g, " ")
           .replace(/,\s*/g, " ")
@@ -53,7 +49,7 @@ function convertNunjucksToHtml(content) {
           return `{% include "${imports[macroName]}" %}`;
         }
       }
-      return match;
+      return match; // Keep the macro call if not found in imports
     },
   );
 
@@ -80,20 +76,6 @@ function convertNunjucksToHtml(content) {
       return `{% include "${includePath.split("/").pop()}.html" with ${params} %}`;
     },
   );
-
-  // Move {% with ... %} to the beginning of the content
-  const withStatements = [];
-  htmlContent = htmlContent.replace(/{% with [^%]+%}/g, (match) => {
-    withStatements.push(match);
-    return "";
-  });
-
-  htmlContent = withStatements.join("\n") + "\n" + htmlContent;
-
-  // Add {% endwith %} at the end of the content if there are any with statements
-  if (htmlContent.includes("{% with ")) {
-    htmlContent += "\n{% endwith %}";
-  }
 
   return htmlContent;
 }
@@ -124,9 +106,10 @@ glob(`${sourceDir}/*/_*.njk`, async (err, files) => {
         `_${componentName}.njk`,
       );
 
+      // Read the Nunjucks file
       const content = await fs.readFile(file, "utf-8");
 
-      // Copy the original Nunjucks file
+      // Copy the original Nunjucks file without changes
       await fs.writeFile(targetNjkPath, content, "utf8");
       console.log(`Copied original Nunjucks file to ${targetNjkPath}`);
 

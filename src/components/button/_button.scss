@@ -1,49 +1,49 @@
 // Variables
-$great-button-shadow-size: 3px;
-$great-button-padding: 13px 20px 12px;
-$great-button-inline-padding: 8px 15px 7px;
-$great-button-icon-padding: 8px 10px 7px;
-$great-button-font-size: 20px;
-$great-button-line-height: 1.3;
-$great-button-box-sizing: border-box;
-$great-button-display: inline-block;
-$great-button-position: relative;
-$great-button-width: 100%;
-$great-button-margin: 0 0 20px;
-$great-button-border-width: 1px;
-$great-button-border-radius: 0;
-$great-button-text-align: center;
-$great-button-vertical-align: top;
-$great-button-cursor: pointer;
-$great-button-appearance: none;
-$great-button-outline: 2px solid transparent;
+$great-ds-button-shadow-size: 3px;
+$great-ds-button-padding: 13px 20px 12px;
+$great-ds-button-inline-padding: 8px 15px 7px;
+$great-ds-button-icon-padding: 8px 10px 7px;
+$great-ds-button-font-size: 20px;
+$great-ds-button-line-height: 1.3;
+$great-ds-button-box-sizing: border-box;
+$great-ds-button-display: inline-block;
+$great-ds-button-position: relative;
+$great-ds-button-width: 100%;
+$great-ds-button-margin: 0 0 20px;
+$great-ds-button-border-width: 1px;
+$great-ds-button-border-radius: 0;
+$great-ds-button-text-align: center;
+$great-ds-button-vertical-align: top;
+$great-ds-button-cursor: pointer;
+$great-ds-button-appearance: none;
+$great-ds-button-outline: 2px solid transparent;
 
 // Placeholder for base button styles
-%great-button-base {
-    font-family: $great-type-family-great-bold;
-    font-size: $great-button-font-size;
-    box-sizing: $great-button-box-sizing;
-    display: $great-button-display;
-    position: $great-button-position;
-    width: $great-button-width;
-    margin: $great-button-margin;
-    border: $great-button-border-width solid rgba(0, 0, 0, 0);
+%great-ds-button-base {
+    font-family: $great-ds-type-family-great-ds-bold;
+    font-size: $great-ds-button-font-size;
+    box-sizing: $great-ds-button-box-sizing;
+    display: $great-ds-button-display;
+    position: $great-ds-button-position;
+    width: $great-ds-button-width;
+    margin: $great-ds-button-margin;
+    border: $great-ds-button-border-width solid rgba(0, 0, 0, 0);
     border-bottom: none;
-    border-radius: $great-button-border-radius;
-    text-align: $great-button-text-align;
+    border-radius: $great-ds-button-border-radius;
+    text-align: $great-ds-button-text-align;
     text-decoration: none;
-    vertical-align: $great-button-vertical-align;
-    cursor: $great-button-cursor;
-    -webkit-appearance: $great-button-appearance;
-    padding: $great-button-padding;
-    line-height: $great-button-line-height;
+    vertical-align: $great-ds-button-vertical-align;
+    cursor: $great-ds-button-cursor;
+    -webkit-appearance: $great-ds-button-appearance;
+    padding: $great-ds-button-padding;
+    line-height: $great-ds-button-line-height;
     -webkit-font-smoothing: auto;
-    outline: $great-button-outline;
+    outline: $great-ds-button-outline;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    .great-icon--svg {
+    .great-ds-icon--svg {
         vertical-align: middle;
         flex-shrink: 0;
         align-self: center;
@@ -66,13 +66,13 @@ $great-button-outline: 2px solid transparent;
 }
 
 // Mixin for button states
-@mixin great-button-states($bg-color, $bg-hover, $text-color, $border, $border-hover, $has-border: false, $has-small-shadow: false) {
+@mixin great-ds-button-states($bg-color, $bg-hover, $text-color, $border, $border-hover, $has-border: false, $has-small-shadow: false) {
     background-color: $bg-color;
     color: $text-color;
-    box-shadow: 0 $great-button-shadow-size 0 $border;
+    box-shadow: 0 $great-ds-button-shadow-size 0 $border;
 
     @if $has-border {
-        border: $great-button-border-width solid $border;
+        border: $great-ds-button-border-width solid $border;
         border-bottom: none;
     }
 
@@ -85,11 +85,11 @@ $great-button-outline: 2px solid transparent;
     &:active:not(:focus) {
         color: $text-color;
         background-color: $bg-hover;
-        box-shadow: 0 $great-button-shadow-size 0 $border-hover;
+        box-shadow: 0 $great-ds-button-shadow-size 0 $border-hover;
 
         @if $has-border {
             color: $border-hover;
-            border: $great-button-border-width solid $border-hover;
+            border: $great-ds-button-border-width solid $border-hover;
             border-bottom: none;
         }
 
@@ -99,105 +99,105 @@ $great-button-outline: 2px solid transparent;
     }
 
     &:active:not(:focus) {
-        border: $great-button-border-width solid $border-hover;
+        border: $great-ds-button-border-width solid $border-hover;
         box-shadow: none;
     }
 
     &:focus:not(:hover) {
-        outline: $great-button-outline;
-        color: $great-semantic-text-focus-button-label-focus;
+        outline: $great-ds-button-outline;
+        color: $great-ds-semantic-text-focus-button-label-focus;
     }
 
     &:focus:not(:active):not(:hover) {
-        background-color: $great-semantic-interaction-focus;
-        border: $great-button-border-width solid $great-semantic-border-focus-button-border;
+        background-color: $great-ds-semantic-interaction-focus;
+        border: $great-ds-button-border-width solid $great-ds-semantic-border-focus-button-border;
         border-bottom: none;
-        box-shadow: 0 $great-button-shadow-size 0 $great-semantic-border-focus-button-border;
+        box-shadow: 0 $great-ds-button-shadow-size 0 $great-ds-semantic-border-focus-button-border;
     }
 
     &:focus:active {
-        background: $great-semantic-interaction-focus;
-        border: $great-button-border-width solid $great-semantic-border-focus-button-border;
+        background: $great-ds-semantic-interaction-focus;
+        border: $great-ds-button-border-width solid $great-ds-semantic-border-focus-button-border;
         box-shadow: none;
-        color: $great-semantic-text-focus-button-label-focus;
+        color: $great-ds-semantic-text-focus-button-label-focus;
     }
 }
 
 // Mixin for warning and transactional button shared styles
-@mixin great-button-warning-transactional-states($bg-color, $bg-hover, $text-color, $border, $border-hover) {
-    @include great-button-states($bg-color, $bg-hover, $text-color, $border, $border-hover);
+@mixin great-ds-button-warning-transactional-states($bg-color, $bg-hover, $text-color, $border, $border-hover) {
+    @include great-ds-button-states($bg-color, $bg-hover, $text-color, $border, $border-hover);
 
     &:active:not(:focus),
     &:focus:hover,
     &:hover {
-        border: $great-button-border-width solid transparent;
+        border: $great-ds-button-border-width solid transparent;
         border-bottom: none;
     }
 
     &:hover,
     &:focus:hover {
-        box-shadow: 0 $great-button-shadow-size 0 $border-hover;
+        box-shadow: 0 $great-ds-button-shadow-size 0 $border-hover;
     }
 }
 
 // Placeholder for primary button styles
-%great-button-primary {
-    @include great-button-states(
-        $great-semantic-interaction-default-primary-button,
-        $great-semantic-interaction-hover-primary-button,
-        $great-semantic-text-default-primary-button-label,
-        $great-semantic-border-default-primary-button-border,
-        $great-semantic-border-hover-primary-button-border
+%great-ds-button-primary {
+    @include great-ds-button-states(
+        $great-ds-semantic-interaction-default-primary-button,
+        $great-ds-semantic-interaction-hover-primary-button,
+        $great-ds-semantic-text-default-primary-button-label,
+        $great-ds-semantic-border-default-primary-button-border,
+        $great-ds-semantic-border-hover-primary-button-border
     );
 }
 
 // Placeholder for secondary button styles
-%great-button-secondary {
-    @include great-button-states(
-        $great-semantic-interaction-default-secondary-button,
-        $great-semantic-interaction-hover-secondary-button,
-        $great-semantic-text-default-secondary-button-label,
-        $great-semantic-border-default-secondary-button-border,
-        $great-semantic-border-hover-secondary-button-border,
+%great-ds-button-secondary {
+    @include great-ds-button-states(
+        $great-ds-semantic-interaction-default-secondary-button,
+        $great-ds-semantic-interaction-hover-secondary-button,
+        $great-ds-semantic-text-default-secondary-button-label,
+        $great-ds-semantic-border-default-secondary-button-border,
+        $great-ds-semantic-border-hover-secondary-button-border,
         true
     );
 
     &:hover,
     &:focus:hover {
-        border: $great-button-border-width solid $great-semantic-border-hover-secondary-button-border;
+        border: $great-ds-button-border-width solid $great-ds-semantic-border-hover-secondary-button-border;
         border-bottom: none;
     }
 }
 
 // Placeholder for warning button styles
-%great-button-warning {
-    @include great-button-warning-transactional-states(
-        $great-semantic-interaction-default-error,
-        $great-semantic-interaction-hover-error,
-        $great-semantic-text-default-error-button-label,
-        $great-semantic-border-default-error-button-border,
-        $great-semantic-border-hover-error-border
+%great-ds-button-warning {
+    @include great-ds-button-warning-transactional-states(
+        $great-ds-semantic-interaction-default-error,
+        $great-ds-semantic-interaction-hover-error,
+        $great-ds-semantic-text-default-error-button-label,
+        $great-ds-semantic-border-default-error-button-border,
+        $great-ds-semantic-border-hover-error-border
     );
 }
 
 // Placeholder for transactional button styles
-%great-button-transactional {
-    @include great-button-warning-transactional-states(
-        $great-semantic-interaction-default-success,
-        $great-semantic-interaction-hover-success,
-        $great-semantic-text-default-success-button-label,
-        $great-semantic-border-default-success-button-border,
-        $great-semantic-border-hover-success-border
+%great-ds-button-transactional {
+    @include great-ds-button-warning-transactional-states(
+        $great-ds-semantic-interaction-default-success,
+        $great-ds-semantic-interaction-hover-success,
+        $great-ds-semantic-text-default-success-button-label,
+        $great-ds-semantic-border-default-success-button-border,
+        $great-ds-semantic-border-hover-success-border
     );
 }
 
 // Placeholder for CTA button styles
-%great-button-cta {
+%great-ds-button-cta {
     display: inline-flex;
     min-height: auto;
     justify-content: center;
 
-    .great-icon--svg {
+    .great-ds-icon--svg {
         margin-left: 10px;
         vertical-align: middle;
         flex-shrink: 0;
@@ -206,20 +206,20 @@ $great-button-outline: 2px solid transparent;
 }
 
 // Placeholder for icon button styles
-%great-button-icon {
+%great-ds-button-icon {
     display: inline-flex;
     min-height: auto;
     justify-content: center;
     align-items: center;
-    padding: $great-button-icon-padding;
+    padding: $great-ds-button-icon-padding;
 
-    .great-icon--svg {
+    .great-ds-icon--svg {
         vertical-align: middle;
         flex-shrink: 0;
         align-self: center;
     }
 
-    .great-button__text {
+    .great-ds-button__text {
         display: none;
     }
 
@@ -229,41 +229,41 @@ $great-button-outline: 2px solid transparent;
 }
 
 // Placeholder for icon button prefix styles
-%great-button-icon-prefix {
-    .great-icon--svg {
+%great-ds-button-icon-prefix {
+    .great-ds-icon--svg {
        margin-right: 10px;
     }
 }
 
 // Placeholder for icon button suffix styles
-%great-button-icon-suffix {
-    .great-icon--svg {
+%great-ds-button-icon-suffix {
+    .great-ds-icon--svg {
        margin-left: 10px;
     }
 }
 
 // Placeholder for inverted button styles
-%great-button-inverted {
-    @include great-button-states(
+%great-ds-button-inverted {
+    @include great-ds-button-states(
         transparent,
         rgba(0, 0, 0, 0.3),
-        $great-semantic-surface-background-white,
-        $great-semantic-surface-background-white,
-        $great-semantic-surface-background-white,
+        $great-ds-semantic-surface-background-white,
+        $great-ds-semantic-surface-background-white,
+        $great-ds-semantic-surface-background-white,
         true,
         true
     );
     margin-bottom: 0;
-    font-family: $great-type-family-great;
+    font-family: $great-ds-type-family-great;
 }
 
 // Placeholder for icon inline styles
-%great-button-inline {
-    padding: $great-button-inline-padding;
+%great-ds-button-inline {
+    padding: $great-ds-button-inline-padding;
 }
 
 // Placeholder for search button styles
-%great-button-search {
+%great-ds-button-search {
     margin: 0 0 0 -2px;
     height: 54px;
     width: 60px;
@@ -272,103 +272,103 @@ $great-button-outline: 2px solid transparent;
     &:focus {
         border: none !important;
         box-shadow: none !important;
-        outline: 1px solid $great-semantic-border-focus-button-border !important;
+        outline: 1px solid $great-ds-semantic-border-focus-button-border !important;
     }
 }
 
 // Placeholder for full width button styles
-%great-button-full-width {
+%great-ds-button-full-width {
     width: 100%;
 }
 
 // Placeholder for auto width button styles
-%great-button-auto-width {
+%great-ds-button-auto-width {
     width: auto;
 }
 
 
 // Base button styles
-.great-button {
-    @extend %great-button-base;
-    @extend %great-button-primary;
+.great-ds-button {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-primary;
 }
 
 // Secondary button styles
-.great-button--secondary {
-    @extend %great-button-base;
-    @extend %great-button-secondary;
+.great-ds-button--secondary {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-secondary;
 }
 
 // Warning button styles
-.great-button--warning {
-    @extend %great-button-base;
-    @extend %great-button-warning;
+.great-ds-button--warning {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-warning;
 }
 
 // Transactional button styles
-.great-button--transactional {
-    @extend %great-button-base;
-    @extend %great-button-transactional;
+.great-ds-button--transactional {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-transactional;
 }
 
 // CTA button styles
-.great-button--cta {
-    @extend %great-button-base;
-    @extend %great-button-secondary;
-    @extend %great-button-cta;
+.great-ds-button--cta {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-secondary;
+    @extend %great-ds-button-cta;
 }
 
 // Inline button styles
-.great-button--inline {
-    @extend %great-button-base;
-    @extend %great-button-inline;
+.great-ds-button--inline {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-inline;
 }
 
 // Toggle button styles
-.great-button--toggle {
-    @extend %great-button-base;
-    @extend %great-button-secondary;
-    @extend %great-button-inline;
+.great-ds-button--toggle {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-secondary;
+    @extend %great-ds-button-inline;
 }
 
 // Inverted button styles
-.great-button--inverted {
-    @extend %great-button-base;
-    @extend %great-button-inverted;
+.great-ds-button--inverted {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-inverted;
 }
 
 // Icon button styles
-.great-button--icon {
-    @extend %great-button-base;
-    @extend %great-button-icon;
+.great-ds-button--icon {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-icon;
 }
 
 // Icon prefix button styles
-.great-button--icon-prefix {
-    @extend %great-button-base;
-    @extend %great-button-icon-prefix;
+.great-ds-button--icon-prefix {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-icon-prefix;
 }
 
 // Icon suffix button styles
-.great-button--icon-suffix {
-    @extend %great-button-base;
-    @extend %great-button-icon-suffix;
+.great-ds-button--icon-suffix {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-icon-suffix;
 }
 
 // Full width button styles
-.great-button--full-width {
-    @extend %great-button-base;
-    @extend %great-button-full-width;
+.great-ds-button--full-width {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-full-width;
 }
 
 // Auto width button styles
-.great-button--auto-width {
-    @extend %great-button-base;
-    @extend %great-button-auto-width;
+.great-ds-button--auto-width {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-auto-width;
 }
 
 // Search (with inline input) button styles
-.great-button--search {
-    @extend %great-button-base;
-    @extend %great-button-search;
+.great-ds-button--search {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-search;
 }
