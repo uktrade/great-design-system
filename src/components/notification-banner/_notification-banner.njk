@@ -1,28 +1,28 @@
-{% macro greatNotificationBanner(params) %}
-<div class="govuk-notification-banner {% if params.type == 'success' %}govuk-notification-banner--{{ params.type }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" 
-     role="{% if params.role %}{{ params.role }}{% elif params.type == 'success' %}alert{% else %}region{% endif %}" 
-     aria-labelledby="{{ params.titleId|default('govuk-notification-banner-title') }}" 
+{% macro greatNotificationBanner(type, classes, role, titleId, disableAutoFocus, titleHeadingLevel, titleHtml, titleText, html, text) %}
+<div class="govuk-notification-banner {% if type == 'success' %}govuk-notification-banner--{{ type }}{% endif %}{% if classes %} {{ classes }}{% endif %}" 
+     role="{% if role %}{{ role }}{% elif type == 'success' %}alert{% else %}region{% endif %}" 
+     aria-labelledby="{{ titleId | default('govuk-notification-banner-title') }}" 
      data-module="govuk-notification-banner"
-     {% if params.disableAutoFocus is not undefined %} data-disable-auto-focus="{{ params.disableAutoFocus }}"{% endif %}>
+     {% if disableAutoFocus is not undefined %} data-disable-auto-focus="{{ disableAutoFocus }}"{% endif %}>
   <div class="govuk-notification-banner__header">
-    <h{{ params.titleHeadingLevel|default(2) }} class="govuk-notification-banner__title" id="{{ params.titleId|default('govuk-notification-banner-title') }}">
-      {% if params.titleHtml %}
-        {{ params.titleHtml|safe }}
-      {% elif params.titleText %}
-        {{ params.titleText }}
-      {% elif params.type == "success" %}
+    <h{{ titleHeadingLevel | default(2) }} class="govuk-notification-banner__title" id="{{ titleId | default('govuk-notification-banner-title') }}">
+      {% if titleHtml %}
+        {{ titleHtml | safe }}
+      {% elif titleText %}
+        {{ titleText }}
+      {% elif type == "success" %}
         Success
       {% else %}
         Important
       {% endif %}
-    </h{{ params.titleHeadingLevel|default(2) }}>
+    </h{{ titleHeadingLevel | default(2) }}>
   </div>
   <div class="govuk-notification-banner__content">
-  {% if params.html %}
-    {{ params.html|safe }}
-  {% elif params.text %}
+  {% if html %}
+    {{ html | safe }}
+  {% elif text %}
     <p class="govuk-notification-banner__heading">
-      {{ params.text }}
+      {{ text }}
     </p>
   {% endif %}
   </div>

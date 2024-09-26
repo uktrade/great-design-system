@@ -2,9 +2,9 @@
 {% from "../../../components/accordion/_accordion.njk" import greatAccordion %}
 
 {% block content %}
-    {{ greatAccordion({
-        id: "accordion-default",
-        items: [
+    {{ greatAccordion(
+        id="accordion-default",
+        items=[
             {
                 heading: {
                     text: "Writing well for the web"
@@ -50,5 +50,5 @@
                 }
             }
         ]
-    }) }}
+    ) }}
 {% endblock %}

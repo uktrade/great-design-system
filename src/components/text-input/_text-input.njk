@@ -1,10 +1,10 @@
-{% macro textInput(params) %}
-<label for="{{ params.id }}" class="{{ params.labelClasses }}">{{ params.label }}</label>
+{% macro textInput(id, label, labelClasses, classes, placeholder, name="q", type="text") %}
+<label for="{{ id }}" class="{{ labelClasses }}">{{ label }}</label>
 <input 
-    id="{{ params.id }}" 
-    class="great-text-input govuk-input {{ params.classes }}" 
-    type="text" 
-    name="q" 
-    placeholder="{{ params.placeholder }}"
+    id="{{ id }}" 
+    class="great-text-input govuk-input {{ classes }}" 
+    type="{{ type }}" 
+    name="{{ name }}" 
+    placeholder="{{ placeholder }}"
 >
 {% endmacro %}

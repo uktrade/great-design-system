@@ -25,24 +25,35 @@ function convertNunjucksToHtml(content) {
     },
   );
 
-  // Replace macro calls with include statements and format
+  // Convert {% set ... %} to {% with ... %}
+  htmlContent = htmlContent.replace(
+    /{% set (\w+) = ([\s\S]*?) %}/g,
+    (match, varName, varContent) => {
+      if (varContent.startsWith("'") && varContent.endsWith("'")) {
+        varContent = varContent.replace(/'/g, "\\'");
+      }
+      return `{% with ${varName}=${varContent} %}`;
+    },
+  );
+
+  // Replace macro calls with include statements
   htmlContent = htmlContent.replace(
     /{{ (\w+)\(([\s\S]*?)\) }}/g,
     (match, macroName, args) => {
       if (imports[macroName]) {
         const formattedArgs = args
-          .replace(/^\s*{\s*([\s\S]*?)\s*}\s*$/, "$1") // Remove surrounding curly braces
-          .replace(/,\s*/g, " ") // Remove any existing commas
-          .replace(/(\w+):\s*/g, "$1="); // Change ':' to '=' for key-value pairs
+          .replace(/\s+/g, " ")
+          .replace(/,\s*/g, " ")
+          .trim();
 
         // Check if there are any arguments
-        if (formattedArgs.trim()) {
+        if (formattedArgs) {
           return `{% include "${imports[macroName]}" with ${formattedArgs} %}`;
         } else {
           return `{% include "${imports[macroName]}" %}`;
         }
       }
-      return match; // Keep the macro call if not found in imports
+      return match;
     },
   );
 
@@ -69,6 +80,20 @@ function convertNunjucksToHtml(content) {
       return `{% include "${includePath.split("/").pop()}.html" with ${params} %}`;
     },
   );
+
+  // Move {% with ... %} to the beginning of the content
+  const withStatements = [];
+  htmlContent = htmlContent.replace(/{% with [^%]+%}/g, (match) => {
+    withStatements.push(match);
+    return "";
+  });
+
+  htmlContent = withStatements.join("\n") + "\n" + htmlContent;
+
+  // Add {% endwith %} at the end of the content if there are any with statements
+  if (htmlContent.includes("{% with ")) {
+    htmlContent += "\n{% endwith %}";
+  }
 
   return htmlContent;
 }
@@ -99,10 +124,9 @@ glob(`${sourceDir}/*/_*.njk`, async (err, files) => {
         `_${componentName}.njk`,
       );
 
-      // Read the Nunjucks file
       const content = await fs.readFile(file, "utf-8");
 
-      // Copy the original Nunjucks file without changes
+      // Copy the original Nunjucks file
       await fs.writeFile(targetNjkPath, content, "utf8");
       console.log(`Copied original Nunjucks file to ${targetNjkPath}`);
 
