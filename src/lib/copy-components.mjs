@@ -19,7 +19,7 @@ function convertNunjucksToHtml(content) {
     (match, importPath, importedMacros) => {
       importedMacros.split(",").forEach((macro) => {
         const [macroName, alias] = macro.trim().split(" as ");
-        imports[alias || macroName] = importPath;
+        imports[alias || macroName] = importPath.replace(".njk", ".html");
       });
       return ""; // Remove import statement from HTML content
     },
@@ -34,7 +34,13 @@ function convertNunjucksToHtml(content) {
           .replace(/^\s*{\s*([\s\S]*?)\s*}\s*$/, "$1") // Remove surrounding curly braces
           .replace(/,\s*/g, " ") // Remove any existing commas
           .replace(/(\w+):\s*/g, "$1="); // Change ':' to '=' for key-value pairs
-        return `{% include "${imports[macroName]}" with ${formattedArgs} %}`;
+
+        // Check if there are any arguments
+        if (formattedArgs.trim()) {
+          return `{% include "${imports[macroName]}" with ${formattedArgs} %}`;
+        } else {
+          return `{% include "${imports[macroName]}" %}`;
+        }
       }
       return match; // Keep the macro call if not found in imports
     },
@@ -45,6 +51,22 @@ function convertNunjucksToHtml(content) {
     /{% macro [^%]+%}([\s\S]*?){% endmacro %}/g,
     (match, macroContent) => {
       return macroContent.trim();
+    },
+  );
+
+  // Convert .njk to .html in include statements and remove relative paths
+  htmlContent = htmlContent.replace(
+    /{%\s*include\s*"(?:\.\.\/)*(.+?)(?:\.njk|\.html)"\s*%}/g,
+    (match, includePath) => {
+      return `{% include "${includePath.split("/").pop()}.html" %}`;
+    },
+  );
+
+  // Convert .njk to .html in include statements with parameters and remove relative paths
+  htmlContent = htmlContent.replace(
+    /{%\s*include\s*"(?:\.\.\/)*(.+?)(?:\.njk|\.html)"\s*with\s+([^%]+)\s*%}/g,
+    (match, includePath, params) => {
+      return `{% include "${includePath.split("/").pop()}.html" with ${params} %}`;
     },
   );
 
@@ -70,7 +92,7 @@ glob(`${sourceDir}/*/_*.njk`, async (err, files) => {
 
       const targetHtmlPath = path.join(
         targetComponentDir,
-        `${componentName}.html`,
+        `_${componentName}.html`,
       );
       const targetNjkPath = path.join(
         targetComponentDir,

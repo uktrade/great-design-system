@@ -41,7 +41,7 @@
                 {% if params.actionLinkList %}
                     <div class="great-header__nav-action">
                         {% for item in params.actionLinkList %}
-                            {% if (item.requiresAuth and params.isAuthenticated) or (item.requiresNoAuth and not params.isAuthenticated) %}
+                            {% if item.requiresAuth and params.isAuthenticated or item.requiresNoAuth and not params.isAuthenticated %}
                                 <a href="{{ item.href }}" class="great-header__action-link">{{ item.text }}</a>
                             {% endif %}
                         {% endfor %}
@@ -52,7 +52,7 @@
                         <nav class="great-header__nav">
                             <ul class="great-header__nav-list">
                                 {% for item in params.navItemsList %}
-                                    {% if (item.requiresAuth and params.isAuthenticated) or (item.requiresNoAuth and not params.isAuthenticated) or (not item.requiresAuth and not item.requiresNoAuth) %}
+                                    {% if item.requiresAuth and params.isAuthenticated or item.requiresNoAuth and not params.isAuthenticated or not item.requiresAuth and not item.requiresNoAuth %}
                                         <li class="great-header__nav-item">
                                             <a href="{{ item.href }}" class="great-header__nav-link{% if item.isCurrent %} great-header__nav-link--current{% endif %}">{{ item.text }}</a>
                                         </li>
@@ -96,7 +96,7 @@
 
                             <ul id="header-menu" class="great-header__menu-list">
                                 {% for item in params.menuItemsList %}
-                                    {% if (item.requiresAuth and params.isAuthenticated) or (item.requiresNoAuth and not params.isAuthenticated) or (not item.requiresAuth and not item.requiresNoAuth) %}
+                                    {% if item.requiresAuth and params.isAuthenticated or item.requiresNoAuth and not params.isAuthenticated or not item.requiresAuth and not item.requiresNoAuth %}
                                         <li class="great-header__menu-item{% if item.userGreeting %} great-header__menu-item--user{% endif %}">
                                             {% if item.href and not item.button %}
                                                 <a href="{{ item.href }}" class="great-header__menu-link">{{ item.text }}</a>
