@@ -2,7 +2,7 @@
 {% from "./_responsive_image.njk" import greatResponsiveImage %}
 
 {% macro greatCtaBanner(params) %}
-    <div class="{% if bg_class %}{{ bg_class }}{% else %}great-bg-white{% endif %}">
+    <div class="{% if params.bg_class %}{{ params.bg_class }}{% else %}great-bg-white{% endif %}">
         <div class="great-container govuk-!-padding-top-7">
             <div class="govuk-grid-row great-promo">
                 <div class="govuk-grid-column-one-half">
@@ -11,9 +11,9 @@
                         <p class="govuk-body">{{ params.leadingText }}</p>
                     {% endif %}
                     {% if params.listItems %}
-                        <ul class="great-list-blue-tick govuk-!-margin-bottom-5">
+                        <ul class="great-tick-list govuk-!-margin-bottom-5">
                             {% for item in params.listItems %}
-                                <li> {{ item }} </li>
+                                <li class="great-tick-list-item govuk-body"> {{ item }} </li>
                             {% endfor %}
                         </ul>
                     {% endif %}

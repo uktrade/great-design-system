@@ -1,29 +1,30 @@
-.great-list-blue-tick {
+.great-tick-list {
     list-style: none;
-  
-    > li {
-      display: block;
-      clear: left;
-      padding: 7.5px 0;
-  
-      &:before {
-        content: '';
-        height: 30px;
-        width: 30px;
-        min-width: 30px;
-        display: block;
-        float: left;
-        margin-left: 0;
-        margin-right: 10px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100%;
-        background: url('/static/icons/dark-blue-tick.svg');
-        background-size: cover;
-        background-position: center;
-      }
-    }
+    padding-inline-start: 0px;
+}
+
+.great-tick-list-item {
+  display: block;
+  clear: left;
+  padding: 7.5px 0;
+
+  &:before {
+    content: '';
+    height: 30px;
+    width: 30px;
+    min-width: 30px;
+    display: block;
+    float: left;
+    margin-left: 0;
+    margin-right: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background: url('/static/icons/blue-tick.svg');
+    background-size: cover;
+    background-position: center;
   }
+}
 
 .great-link-button--chevron {
   svg {
@@ -35,6 +36,45 @@
   &:focus {
     path {
       fill: $govuk-brand-colour;
+    }
+  }
+}
+
+.great-picture{
+  > img {
+    @media only screen and (max-width: 640px) {
+      max-width: 100%;
+    }
+  }
+
+}
+
+.bg-navy {
+  background-color: govuk-colour("dark-blue");
+
+  > * {
+    .govuk-heading-m, .govuk-body, .govuk-link {
+      color: $great-semantic-text-default-white-text;
+    }
+    .great-tick-list-item  {
+      &:before{
+        background: url('/static/icons/red-tick.svg');
+      }
+    }
+  }
+}
+
+.bg-green {
+  background-color: $great-semantic-surface-background-light-green;
+
+  > * {
+    .govuk-link {
+      color: $great-semantic-text-default-text;
+    }
+    .great-tick-list-item {
+      &:before{
+        background: url('/static/icons/dark-blue-tick.svg');
+      }
     }
   }
 }
