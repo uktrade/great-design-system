@@ -10,7 +10,7 @@ export const sanitizeVariableName = (name) => {
     .replace(/(\b\w+\b)(-\1)+/g, "$1")
     .replace(/,-/, "-")
     .replace(/-+$/, "");
-  return `great-${name}`;
+  return `great-ds-${name}`;
 };
 
 export const rgbaToHex = (r, g, b, a) => {

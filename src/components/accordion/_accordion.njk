@@ -1,20 +1,20 @@
-{% macro greatAccordion(params) %}
-    <div class="govuk-accordion {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-accordion" id="{{ params.id }}">
-        {% for item in params.items %}
+{% macro greatAccordion(id, items, classes, headingLevel) %}
+    <div class="govuk-accordion {%- if classes %} {{ classes }}{% endif %}" data-module="govuk-accordion" id="{{ id }}">
+        {% for item in items %}
             <div class="govuk-accordion__section {%- if item.expanded %} govuk-accordion__section--expanded{% endif %}">
                 <div class="govuk-accordion__section-header">
-                    <h{{ params.headingLevel|default('3') }} class="govuk-accordion__section-heading">
-                        <span class="govuk-accordion__section-button" id="{{ params.id }}-heading-{{ loop.index }}">
+                    <h{{ headingLevel|default('3') }} class="govuk-accordion__section-heading">
+                        <span class="govuk-accordion__section-button" id="{{ id }}-heading-{{ loop.index }}">
                         {{ item.heading.html|safe|strip if item.heading.html else item.heading.text }}
                         </span>
-                    </h{{ params.headingLevel }}>
+                    </h{{ headingLevel }}>
                     {% if item.summary.html or item.summary.text %}
-                        <div class="govuk-accordion__section-summary govuk-body" id="{{ params.id }}-summary-{{ loop.index }}">
+                        <div class="govuk-accordion__section-summary govuk-body" id="{{ id }}-summary-{{ loop.index }}">
                             {{ item.summary.html | safe if item.summary.html else item.summary.text }}
                         </div>
                     {% endif %}
                 </div>
-                <div id="{{ params.id }}-content-{{ loop.index }}" class="govuk-accordion__section-content">
+                <div id="{{ id }}-content-{{ loop.index }}" class="govuk-accordion__section-content">
                     {% if item.content.html %}
                         {{ item.content.html | safe }}
                     {% elif item.content.text %}

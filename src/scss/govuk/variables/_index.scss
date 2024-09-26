@@ -1,29 +1,153 @@
-$govuk-font-family: $great-type-family-great;
-$govuk-text-colour: $great-semantic-text-default-text;
-$govuk-link-colour: $great-semantic-text-default-link;
-$govuk-link-hover-colour: $great-semantic-text-hover-link;
-$govuk-link-visited-colour: $great-semantic-text-default-link-visited;
-$govuk-focus-colour: $great-semantic-interaction-focus;
+$govuk-font-family: $great-ds-type-family-great;
+$govuk-text-colour: $great-ds-semantic-text-default-text;
+$govuk-link-colour: $great-ds-semantic-text-default-link;
+$govuk-link-hover-colour: $great-ds-semantic-text-hover-link;
+$govuk-link-visited-colour: $great-ds-semantic-text-default-link-visited;
+$govuk-focus-colour: $great-ds-semantic-interaction-focus;
 
+// Override default govuk colours
 $govuk-colours: (
-  "red": $great-primitive-brand-dbt-red,
-  "yellow": $great-primitive-interface-yellow-50,
-  "green": $great-primitive-interface-green-50,
-  "blue": $great-primitive-interface-blue-50,
-  "dark-blue": $great-primitive-interface-blue-70,
-  "light-blue": $great-primitive-interface-light-blue-20,
-  "purple": $great-primitive-interface-purple-50,
-  "black": $great-primitive-interface-mono-100,
-  "dark-grey": $great-primitive-interface-mono-80,
-  "mid-grey": $great-primitive-interface-mono-30,
-  "light-grey": $great-primitive-interface-mono-20,
-  "white": $great-primitive-interface-mono-0,
+  "red": $great-ds-primitive-brand-dbt-red,
+  "yellow": $great-ds-primitive-interface-yellow-50,
+  "green": $great-ds-primitive-interface-green-50,
+  "blue": $great-ds-primitive-interface-blue-50,
+  "dark-blue": $great-ds-primitive-interface-blue-70,
+  "light-blue": $great-ds-primitive-interface-light-blue-20,
+  "purple": $great-ds-primitive-interface-purple-50,
+  "black": $great-ds-primitive-interface-mono-100,
+  "dark-grey": $great-ds-primitive-interface-mono-80,
+  "mid-grey": $great-ds-primitive-interface-mono-30,
+  "light-grey": $great-ds-primitive-interface-mono-20,
+  "white": $great-ds-primitive-interface-mono-0,
   "light-purple": #6f72af,
   "bright-purple": #912b88,
   "pink": #d53880,
   "light-pink": #f499be,
-  "orange": $great-primitive-brand-great-light-red,
-  "brown": $great-primitive-interface-brown-50,
+  "orange": $great-ds-primitive-brand-great-ds-light-red,
+  "brown": $great-ds-primitive-interface-brown-50,
   "light-green": #85994b,
   "turquoise": #28a197
 );
+
+// Override default govuk typography scale
+$govuk-typography-scale: (
+  80: (
+    null: (
+      font-size: 53px,
+      line-height: 55px
+    ),
+    tablet: (
+      font-size: 80px,
+      line-height: 80px
+    ),
+    print: (
+      font-size: 53pt,
+      line-height: 1.1
+    )
+  ),
+  48: (
+    null: (
+      font-size: $great-ds-type-size-heading-xl,
+      line-height: $great-ds-type-line-height-heading-xl
+    ),
+    tablet: (
+      font-size: $great-ds-type-size-heading-xl-large,
+      line-height: $great-ds-type-line-height-heading-xl-large
+    ),
+    print: (
+      font-size: 32pt,
+      line-height: 1.15
+    )
+  ),
+  36: (
+    null: (
+      font-size: $great-ds-type-size-heading-l,
+      line-height: $great-ds-type-line-height-heading-l
+    ),
+    tablet: (
+      font-size: $great-ds-type-size-heading-l-large,
+      line-height: $great-ds-type-line-height-heading-l-large
+    ),
+    print: (
+      font-size: 24pt,
+      line-height: 1.05
+    )
+  ),
+  27: (
+    null:
+      (
+        font-size: $great-ds-type-size-caption-xl,
+        line-height: $great-ds-type-line-height-caption-xl
+      ),
+    tablet: (
+      font-size: $great-ds-type-size-caption-xl-large,
+      line-height: $great-ds-type-line-height-caption-xl-large
+    ),
+    print: (
+      font-size: 18pt,
+      line-height: 1.15
+    )
+  ),
+  24: (
+    null:
+      (
+        font-size: $great-ds-type-size-heading-m,
+        line-height: $great-ds-type-line-height-heading-m
+      ),
+    tablet: (
+      font-size: $great-ds-type-size-heading-m-large,
+      line-height: $great-ds-type-line-height-heading-m
+    ),
+    print: (
+      font-size: 18pt,
+      line-height: 1.15
+    )
+  ),
+  19: (
+    null:
+      (
+        font-size: 19px,
+        line-height: 25px
+      ),
+    print: (
+      font-size: 14pt,
+      line-height: 1.15
+    )
+  ),
+  18: (
+    null:
+      (
+        font-size: $great-ds-type-size-body,
+        line-height: $great-ds-type-line-height-body
+      ),
+    print: (
+      font-size: 14pt,
+      line-height: 1.15
+    )
+  ),
+  16: (
+    // Stay at 16/20 at all sizes
+    null:
+      (
+        font-size: $great-ds-type-size-body-small,
+        line-height: $great-ds-type-line-height-body-small
+      ),
+    print: (
+      font-size: 14pt,
+      line-height: 1.2
+    )
+  ),
+  14: (
+    // Stay at 14/20 at all sizes (consider deprecating this size)
+    null:
+      (
+        font-size: 14px,
+        line-height: 20px
+      ),
+    print: (
+      font-size: 12pt,
+      line-height: 1.2
+    )
+  )
+);
+
