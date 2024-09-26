@@ -5,14 +5,14 @@
         class="great-footer">
         <div class="great-footer__container {% if params.isInternational %}great-footer__container--international{% endif %}">
             {% if params.isInternational %}
-                <div role="img" alt="Expand your business in the UK, start of service" aria-label="great.gov.uk logo" class="great-footer__great-logo-container">
+                <div alt="Expand your business in the UK, start of service"  class="great-footer__great-logo-container">
                     {% include "./_footer-great-logo.njk" %}
                 </div>
             {% endif %}
             <div class="great-container">
                 <ul class="great-footer__link-list {% if params.isInternational %}great-footer__link-list--international{% endif %}">
                     {% for link in params.footerLinks %}     
-                        <li>
+                        <li class="great-footer__link-list-item {% if params.isInternational %}great-footer__link-list-item--international{% endif %}">
                             <a href="{{ link.href }}"
                             title="{{ link.title }}"
                             {% if link.target %} target="{{ link.target }}" {% endif %}
