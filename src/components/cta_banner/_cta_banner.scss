@@ -1,9 +1,61 @@
-.great-tick-list {
+.great-ds-cta_banner--bg-light-blue{
+  background-color: $great-ds-semantic-surface-background-light-blue
+}
+
+.great-ds-cta_banner--bg-dark-blue {
+  background-color: govuk-colour("dark-blue");
+}
+
+.great-ds-cta_banner--bg-green {
+  background-color: $great-ds-semantic-surface-background-light-green;
+}
+
+.great-ds-cta_banner-heading {
+  font-weight: 600;
+  line-height: $great-ds-type-line-height-heading-l-large;
+
+  .great-ds-cta_banner--bg-dark-blue & {
+    color: $great-ds-semantic-text-default-white-text;
+  }
+  .great-ds-cta_banner--bg-green & {
+    color: $great-ds-semantic-text-default-text;
+  }
+}
+
+
+.great-ds-cta_banner-leading-text {
+  .great-ds-cta_banner--bg-dark-blue & {
+    color: $great-ds-semantic-text-default-white-text;
+  }
+  .great-ds-cta_banner--bg-green & {
+    color: $great-ds-semantic-text-default-text;
+  }
+}
+
+.great-ds-cta_banner-signup-link-text {
+  .great-ds-cta_banner--bg-dark-blue & {
+    color: $great-ds-semantic-text-default-white-text;
+  }
+  .great-ds-cta_banner--bg-green & {
+    color: $great-ds-semantic-text-default-text;
+  }
+}
+
+.great-ds-cta_banner-signup-link { // TODO: Duplicate govuk-link and govuk-link-no-visited-state somewhere?
+  .great-ds-cta_banner--bg-dark-blue & {
+    color: $great-ds-semantic-text-default-white-text;
+  }
+  .great-ds-cta_banner--bg-green & {
+    color: $great-ds-semantic-text-default-text;
+  }
+}
+
+.great-ds-cta_banner__tick-list {
     list-style: none;
     padding-inline-start: 0px;
 }
 
-.great-tick-list-item {
+.great-ds-cta_banner__tick-list-item {
   display: block;
   clear: left;
   padding: 7.5px 0;
@@ -24,9 +76,25 @@
     background-size: cover;
     background-position: center;
   }
+
+  .great-ds-cta_banner--bg-dark-blue & {
+    color: $great-ds-semantic-text-default-white-text;
+
+    &:before{
+      background: url('/static/icons/red-tick.svg');
+    }
+  }
+
+  .great-ds-cta_banner--bg-green & {
+    color: $great-ds-semantic-text-default-text;
+
+    &:before{
+      background: url('/static/icons/dark-blue-tick.svg');
+    }
+  }
 }
 
-.great-link-button--chevron {
+.great-ds-cta_banner__link-button-chevron {
   svg {
     position: relative;
     top: 2px;
@@ -36,45 +104,6 @@
   &:focus {
     path {
       fill: $govuk-brand-colour;
-    }
-  }
-}
-
-.great-picture{
-  > img {
-    @media only screen and (max-width: 640px) {
-      max-width: 100%;
-    }
-  }
-
-}
-
-.bg-navy {
-  background-color: govuk-colour("dark-blue");
-
-  > * {
-    .govuk-heading-m, .govuk-body, .govuk-link {
-      color: $great-semantic-text-default-white-text;
-    }
-    .great-tick-list-item  {
-      &:before{
-        background: url('/static/icons/red-tick.svg');
-      }
-    }
-  }
-}
-
-.bg-green {
-  background-color: $great-semantic-surface-background-light-green;
-
-  > * {
-    .govuk-link {
-      color: $great-semantic-text-default-text;
-    }
-    .great-tick-list-item {
-      &:before{
-        background: url('/static/icons/dark-blue-tick.svg');
-      }
     }
   }
 }

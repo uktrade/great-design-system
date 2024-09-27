@@ -1,0 +1,14 @@
+{% extends "layout/_example.njk" %}
+{% from "../../../components/responsive_image/_responsive_image.njk" import greatResponsiveImage %}
+
+{% block content %}
+    {{ greatResponsiveImage(
+        image_src = '/static/images/lte-signup-promo-landscape.png',
+        xs_image_src = '/static/images/lte-signup-promo-landscape.png',
+        s_image_src = '/static/images/lte-signup-promo-landscape.png',
+        m_image_src = '/static/images/lte-signup-promo-portrait.png',
+        l_image_src = '/static/images/lte-signup-promo-portrait.png',
+        xl_image_src = '/static/images/lte-signup-promo-landscape.png',
+        alt_text = 'Lady with pancakes'
+    ) }}
+{% endblock %}

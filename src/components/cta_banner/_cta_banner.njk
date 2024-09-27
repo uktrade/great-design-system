@@ -1,38 +1,39 @@
 {% from "../button/_button.njk" import greatButton %}
-{% from "./_responsive_image.njk" import greatResponsiveImage %}
+{% from "../responsive_image/_responsive_image.njk" import greatResponsiveImage %}
 
-{% macro greatCtaBanner(params) %}
-    <div class="{% if params.bg_class %}{{ params.bg_class }}{% else %}great-bg-white{% endif %}">
-        <div class="great-container govuk-!-padding-top-7">
-            <div class="govuk-grid-row great-promo">
+{% macro greatCtaBanner(headingText, leadingText, listItems, bg_class, signUpLink, loginUrl, landscapeImagePath, portraitImagePath) %}
+    <div class="{% if bg_class %}{{ bg_class }}{% else %}great-ds-cta_banner--bg-light-blue{% endif %}">
+        <div class="great-ds-container govuk-!-padding-top-7">
+            <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-half">
-                    <h2 class="govuk-heading-m">{{ params.headingText}}</h2>
-                    {% if params.leadingText %}
-                        <p class="govuk-body">{{ params.leadingText }}</p>
+                    <h1 class="great-ds-cta_banner-heading">{{ headingText}}</h2>
+                    {% if leadingText %}
+                        <p class="great-ds-cta_banner-leading-text">{{ leadingText }}</p>
                     {% endif %}
-                    {% if params.listItems %}
-                        <ul class="great-tick-list govuk-!-margin-bottom-5">
-                            {% for item in params.listItems %}
-                                <li class="great-tick-list-item govuk-body"> {{ item }} </li>
+                    {% if listItems %}
+                        <ul class="great-ds-cta_banner__tick-list govuk-!-margin-bottom-5">
+                            {% for item in listItems %}
+                                <li class="great-ds-cta_banner__tick-list-item"> {{ item }} </li>
                             {% endfor %}
                         </ul>
                     {% endif %}
-                    {{ greatButton({ text: "Sign up to get started", href: "#", classes: "great-button--cta", cta: true }) }}
-                    {% if params.signUpLink %} 
-                        <p class="govuk-body govuk-!-margin-bottom-9">
-                            {{ params.signUpLink.preLinkText }} <a href="{{ params.signUpLink.href }}" class="govuk-link govuk-link--no-visited-state">{{ params.signUpLink.linkText }}</a>
+                    {{ greatButton(text = "Sign up to get started", href = "#", cta = true) }}
+                    {% if signUpLink %} 
+                        <p class="great-ds-cta_banner-signup-link-text govuk-!-margin-bottom-9">
+                            {{ signUpLink.preLinkText }} <a href="{{ signUpLink.href }}" class="great-ds-cta_banner-signup-link govuk-link govuk-link--no-visited-state">{{ signUpLink.linkText }}</a>
                         </p>
                     {% endif %}
                 </div>
                 <div class="govuk-grid-column-one-half">
-                    {{ greatResponsiveImage({
-                            image_src: '/static/images/lte-signup-promo-landscape.png',
-                            xs_image_src: '/static/images/lte-signup-promo-landscape.png',
-                            s_image_src: '/static/images/lte-signup-promo-landscape.png',
-                            m_image_src: '/static/images/lte-signup-promo-portrait.png',
-                            l_image_src: '/static/images/lte-signup-promo-portrait.png',
-                            xl_image_src: '/static/images/lte-signup-promo-landscape.png'
-                    })
+                    {{ greatResponsiveImage(
+                        image_src = landscapeImagePath,
+                        xs_image_src = landscapeImagePath,
+                        s_image_src = landscapeImagePath,
+                        m_image_src = portraitImagePath,
+                        l_image_src = portraitImagePath,
+                        xl_image_src = landscapeImagePath,
+                        alt_text = 'Lady with pancakes'
+                    )
                     }}
                 </div>
             </div>
