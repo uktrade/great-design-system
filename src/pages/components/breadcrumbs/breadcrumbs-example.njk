@@ -3,13 +3,13 @@
 {% from "../../../components/breadcrumbs/_breadcrumbs.njk" import greatBreadcrumbs %}
 
 {% block content %}
-    {{ greatBreadcrumbs({
-        classes: "",
-        collapseOnMobile: true,
-        homeURL: '/',
-        itemsList: [
+    {{ greatBreadcrumbs(
+        classes="",
+        collapseOnMobile=true,
+        homeURL='/',
+        itemsList=[
             { url: '/page2', title: 'Page 2' },
             { url: '/page3', title: 'Page 3' }
         ]
-    }) }}
+    ) }}
 {% endblock %}

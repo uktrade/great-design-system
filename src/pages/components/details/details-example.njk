@@ -2,14 +2,14 @@
 {% from "../../../components/details/_details.njk" import greatDetails %}
 
 {% block content %}
-    {{ greatDetails({
-        id: 'detailsElement',
-        open: false,
-        classes: "",
-        summaryText: "This is a summary",
-        summaryHtml: "<div>This is the summary in a div</div>",
-        detailsText: "Now's some much more interesting detailed text after the summary",
-        detailsHtml: "<div>This is the details in a div</div>"
-    }) }}
+    {{ greatDetails(
+        id='detailsElement',
+        open=false,
+        classes="",
+        summaryText="This is a summary",
+        summaryHtml="<div>This is the summary in a div</div>",
+        detailsText="Now's some much more interesting detailed text after the summary",
+        detailsHtml="<div>This is the details in a div</div>"
+    ) }}
 {% endblock %}
 

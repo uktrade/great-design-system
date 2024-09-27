@@ -25,18 +25,25 @@ function convertNunjucksToHtml(content) {
     },
   );
 
-  // Replace macro calls with include statements and format
+  // Remove {% set ... %} blocks, including multiline ones
+  htmlContent = htmlContent.replace(
+    /{% set [\s\S]*?%}/g,
+    "", // Remove the entire set block
+  );
+
+  // Replace macro calls with include statements
   htmlContent = htmlContent.replace(
     /{{ (\w+)\(([\s\S]*?)\) }}/g,
     (match, macroName, args) => {
       if (imports[macroName]) {
+        // Remove line breaks, extra spaces, and commas from args
         const formattedArgs = args
-          .replace(/^\s*{\s*([\s\S]*?)\s*}\s*$/, "$1") // Remove surrounding curly braces
-          .replace(/,\s*/g, " ") // Remove any existing commas
-          .replace(/(\w+):\s*/g, "$1="); // Change ':' to '=' for key-value pairs
+          .replace(/\s+/g, " ")
+          .replace(/,\s*/g, " ")
+          .trim();
 
         // Check if there are any arguments
-        if (formattedArgs.trim()) {
+        if (formattedArgs) {
           return `{% include "${imports[macroName]}" with ${formattedArgs} %}`;
         } else {
           return `{% include "${imports[macroName]}" %}`;

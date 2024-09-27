@@ -1,30 +1,30 @@
-$govuk-font-family: $great-type-family-great;
-$govuk-text-colour: $great-semantic-text-default-text;
-$govuk-link-colour: $great-semantic-text-default-link;
-$govuk-link-hover-colour: $great-semantic-text-hover-link;
-$govuk-link-visited-colour: $great-semantic-text-default-link-visited;
-$govuk-focus-colour: $great-semantic-interaction-focus;
+$govuk-font-family: $great-ds-type-family-great;
+$govuk-text-colour: $great-ds-semantic-text-default-text;
+$govuk-link-colour: $great-ds-semantic-text-default-link;
+$govuk-link-hover-colour: $great-ds-semantic-text-hover-link;
+$govuk-link-visited-colour: $great-ds-semantic-text-default-link-visited;
+$govuk-focus-colour: $great-ds-semantic-interaction-focus;
 
 // Override default govuk colours
 $govuk-colours: (
-  "red": $great-primitive-brand-dbt-red,
-  "yellow": $great-primitive-interface-yellow-50,
-  "green": $great-primitive-interface-green-50,
-  "blue": $great-primitive-interface-blue-50,
-  "dark-blue": $great-primitive-interface-blue-70,
-  "light-blue": $great-primitive-interface-light-blue-20,
-  "purple": $great-primitive-interface-purple-50,
-  "black": $great-primitive-interface-mono-100,
-  "dark-grey": $great-primitive-interface-mono-80,
-  "mid-grey": $great-primitive-interface-mono-30,
-  "light-grey": $great-primitive-interface-mono-20,
-  "white": $great-primitive-interface-mono-0,
+  "red": $great-ds-primitive-brand-dbt-red,
+  "yellow": $great-ds-primitive-interface-yellow-50,
+  "green": $great-ds-primitive-interface-green-50,
+  "blue": $great-ds-primitive-interface-blue-50,
+  "dark-blue": $great-ds-primitive-interface-blue-70,
+  "light-blue": $great-ds-primitive-interface-light-blue-20,
+  "purple": $great-ds-primitive-interface-purple-50,
+  "black": $great-ds-primitive-interface-mono-100,
+  "dark-grey": $great-ds-primitive-interface-mono-80,
+  "mid-grey": $great-ds-primitive-interface-mono-30,
+  "light-grey": $great-ds-primitive-interface-mono-20,
+  "white": $great-ds-primitive-interface-mono-0,
   "light-purple": #6f72af,
   "bright-purple": #912b88,
   "pink": #d53880,
   "light-pink": #f499be,
-  "orange": $great-primitive-brand-great-light-red,
-  "brown": $great-primitive-interface-brown-50,
+  "orange": $great-ds-primitive-brand-great-ds-light-red,
+  "brown": $great-ds-primitive-interface-brown-50,
   "light-green": #85994b,
   "turquoise": #28a197
 );
@@ -47,12 +47,12 @@ $govuk-typography-scale: (
   ),
   48: (
     null: (
-      font-size: $great-type-size-heading-xl,
-      line-height: $great-type-line-height-heading-xl
+      font-size: $great-ds-type-size-heading-xl,
+      line-height: $great-ds-type-line-height-heading-xl
     ),
     tablet: (
-      font-size: $great-type-size-heading-xl-large,
-      line-height: $great-type-line-height-heading-xl-large
+      font-size: $great-ds-type-size-heading-xl-large,
+      line-height: $great-ds-type-line-height-heading-xl-large
     ),
     print: (
       font-size: 32pt,
@@ -61,12 +61,12 @@ $govuk-typography-scale: (
   ),
   36: (
     null: (
-      font-size: $great-type-size-heading-l,
-      line-height: $great-type-line-height-heading-l
+      font-size: $great-ds-type-size-heading-l,
+      line-height: $great-ds-type-line-height-heading-l
     ),
     tablet: (
-      font-size: $great-type-size-heading-l-large,
-      line-height: $great-type-line-height-heading-l-large
+      font-size: $great-ds-type-size-heading-l-large,
+      line-height: $great-ds-type-line-height-heading-l-large
     ),
     print: (
       font-size: 24pt,
@@ -76,12 +76,12 @@ $govuk-typography-scale: (
   27: (
     null:
       (
-        font-size: $great-type-size-caption-xl,
-        line-height: $great-type-line-height-caption-xl
+        font-size: $great-ds-type-size-caption-xl,
+        line-height: $great-ds-type-line-height-caption-xl
       ),
     tablet: (
-      font-size: $great-type-size-caption-xl-large,
-      line-height: $great-type-line-height-caption-xl-large
+      font-size: $great-ds-type-size-caption-xl-large,
+      line-height: $great-ds-type-line-height-caption-xl-large
     ),
     print: (
       font-size: 18pt,
@@ -91,12 +91,12 @@ $govuk-typography-scale: (
   24: (
     null:
       (
-        font-size: $great-type-size-heading-m,
-        line-height: $great-type-line-height-heading-m
+        font-size: $great-ds-type-size-heading-m,
+        line-height: $great-ds-type-line-height-heading-m
       ),
     tablet: (
-      font-size: $great-type-size-heading-m-large,
-      line-height: $great-type-line-height-heading-m
+      font-size: $great-ds-type-size-heading-m-large,
+      line-height: $great-ds-type-line-height-heading-m
     ),
     print: (
       font-size: 18pt,
@@ -117,8 +117,8 @@ $govuk-typography-scale: (
   18: (
     null:
       (
-        font-size: $great-type-size-body,
-        line-height: $great-type-line-height-body
+        font-size: $great-ds-type-size-body,
+        line-height: $great-ds-type-line-height-body
       ),
     print: (
       font-size: 14pt,
@@ -129,8 +129,8 @@ $govuk-typography-scale: (
     // Stay at 16/20 at all sizes
     null:
       (
-        font-size: $great-type-size-body-small,
-        line-height: $great-type-line-height-body-small
+        font-size: $great-ds-type-size-body-small,
+        line-height: $great-ds-type-line-height-body-small
       ),
     print: (
       font-size: 14pt,
