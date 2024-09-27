@@ -23,7 +23,12 @@
 
 .great-ds-header__dbt-logo {
     align-self: center;
-    margin: 10px 0 4px;
+    margin: 10px 0;
+}
+
+.great-ds-header__dbt-logo-link {
+    display: block;
+    line-height: 0;
 }
 
 .great-ds-header__dbt-logo-image {
@@ -86,6 +91,7 @@
 
     .great-ds-header--international & {
         background-color: $great-ds-semantic-surface-background-great-ds-red;
+        padding: 5px 0;
     }
 
     a {
@@ -150,7 +156,11 @@
     height: 110px;
     margin-left: -1px;
     background-color: $great-ds-semantic-surface-background-great-ds-red;
-    
+
+    .great-ds-header--international & {
+        height: 95px;
+    }
+
     &:focus {
         box-shadow: none !important;
 
@@ -283,22 +293,22 @@
     }
 }
 
-.great-ds-header__menu-list {
+.great-ds-header__menu-wrapper {
     display: none;
-}
-
-ul.great-ds-header__menu-list {
+    background-color: $great-ds-semantic-surface-background-great-ds-blue;
     position: absolute;
     z-index: 999;
     top: 56px;
     right: 0;
-    width: 340px;
-    background-color: $great-ds-semantic-surface-background-great-ds-blue;
-    padding: $great-ds-spacing-6;
+    width: 100%;
 
-    .great-ds-header--international & {
-        background-color: $great-ds-semantic-surface-background-great-ds-red;
+    @include govuk-media-query($from: desktop) {
+        width: 340px;
     }
+}
+
+ul.great-ds-header__menu-list {
+    padding: $great-ds-spacing-6;
 }
 
 .great-ds-header__menu-item {
@@ -343,7 +353,22 @@ ul.great-ds-header__menu-list {
     padding: 0 $great-ds-spacing-6-large 0 0;
 }
 
-.great-ds-header__subnav-link {
+.great-ds-header__subnav-link,
+.great-ds-header__submenu-link {
     color: $great-ds-semantic-text-default-white-text;
+
+    &:hover, 
+    &--current {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: .3em;
+    }
 }
 
+.great-ds-header__submenu-list {
+    font-family: $great-ds-type-family-great-ds-international;
+}
+
+.great-ds-header__submenu-item {
+    margin: $great-ds-spacing-6 0 $great-ds-spacing-6 $great-ds-spacing-6;
+}

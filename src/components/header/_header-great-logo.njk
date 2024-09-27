@@ -1,4 +1,5 @@
-<svg class="great-ds-header__great-ds-logo-image" width="200" height="99" viewBox="0 0 200 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+{% macro greatLogo(isInternational=false) %}
+<svg class="great-ds-header__great-ds-logo-image" role="img" aria-label="great.gov.uk logo" {% if isInternational %}width="165" height="90" viewBox="0 0 200 99"{% else %}width="200" height="99" viewBox="0 0 200 99"{% endif %} fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M176.227 45.0524V23.8516L138.716 42.655H129.995L167.506 23.8516H125.775V45.0524H176.227Z" fill="white"/>
     <path d="M176.227 78.3348V61.5527H125.681V71.3305L128.119 82.7536H176.227L138.716 63.9502H147.484L176.227 78.3348Z" fill="white"/>
     <path d="M58.8176 28.2234V45.0524H109.27V23.8516H58.8176L96.3287 42.655H87.5605L58.8176 28.2234Z" fill="white"/>
@@ -51,3 +52,4 @@
         </linearGradient>
     </defs>     
 </svg>
+{% endmacro %}

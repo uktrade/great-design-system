@@ -1,7 +1,7 @@
 export default class Revealer {
   constructor() {
-    this.buttons = document.querySelectorAll("[data-reveal-button]");
-    this.modals = document.querySelectorAll("[data-reveal-modal]");
+    this.buttons = document.querySelectorAll("[data-great-ds-reveal-button]");
+    this.modals = document.querySelectorAll("[data-great-ds-reveal-modal]");
     this.overlay = this.createOverlay();
     this.init();
   }
@@ -42,7 +42,7 @@ export default class Revealer {
       target.style.display = isHidden ? "block" : "none";
       button.setAttribute("aria-expanded", isHidden ? "true" : "false");
 
-      if (button.hasAttribute("data-reveal-modal")) {
+      if (button.hasAttribute("data-great-ds-reveal-modal")) {
         this.overlay.style.display = isHidden ? "block" : "none";
       }
     }
@@ -50,7 +50,7 @@ export default class Revealer {
 
   handleOutsideClick(event) {
     if (
-      !event.target.closest("[data-reveal-button]") &&
+      !event.target.closest("[data-great-ds-reveal-button]") &&
       !event.target.closest('[aria-hidden="false"]')
     ) {
       this.hideAll();

@@ -1,15 +1,16 @@
 {% from "../button/_button.njk" import greatButton %}
 {% from "../text-input/_text-input.njk" import textInput %}
 {% from "./_header-masthead-logo.njk" import greatMastheadLogo %}
+{% from "./_header-great-logo.njk" import greatLogo %}
 
-{% macro greatHeader(header_classes, isInternational, global_header_classes, sso_is_logged_in, domesticLink, internationalLink, siteTitle, actionLinkList, isAuthenticated, navItemsList, hideSearch, searchFormAction, hideMenuOnDesktop, menuItemsList, subnavItemsList) %}
+{% macro greatHeader(isInternational, mastheadUrl, header_classes, global_header_classes, sso_is_logged_in, domesticLink, internationalLink, siteTitle, actionLinkList, isAuthenticated, navItemsList, hideSearch, searchFormAction, hideMenuOnDesktop, menuItemsList, subnavItemsList) %}
 <header class="great-ds-header {{ header_classes }} {% if isInternational %}great-ds-header--international{% endif %}" id="header" role="banner" data-ga-section="header">
     <div id="great-ds-global-header" class="great-ds-container great-ds-header__global {{ global_header_classes }} {% if sso_is_logged_in %}signed-in{% endif %}">
         <div class="great-ds-header__dbt-logo">
             {% if isInternational %}
-                {{ greatMastheadLogo(isInternational=true) }}
+                {{ greatMastheadLogo(isInternational=true, mastheadUrl=mastheadUrl) }}
             {% else %}
-                {{ greatMastheadLogo() }}
+                {{ greatMastheadLogo(mastheadUrl=mastheadUrl) }}
             {% endif %}
         </div>
         {% if domesticLink and internationalLink %}
@@ -27,7 +28,11 @@
         <div class="great-ds-header__main-inner great-ds-container">
             <div class="great-ds-header__logo-container">
                 <a id="header-logo-link" alt="Great" class="great-ds-header__great-ds-logo" href="/">
-                    {% include "./_header-great-logo.njk" %}
+                    {% if isInternational %}
+                        {{ greatLogo(isInternational=true) }}
+                    {% else %}
+                        {{ greatLogo() }}
+                    {% endif %}
                 </a>
                 {% if siteTitle %}
                     <div class="great-ds-header__site-title">
@@ -88,29 +93,40 @@
                             {{ greatButton(
                                 text="Menu",
                                 classes="great-ds-button--inverted great-ds-button--icon-prefix great-ds-button--auto-width govuk-!-margin-left-3",
-                                attributes="data-reveal-button data-reveal-modal aria-controls=header-menu",
+                                attributes="data-great-ds-reveal-button data-great-ds-reveal-modal aria-controls=header-menu",
                                 iconPrefix=menu_icon
                             ) }}
-
-                            <ul id="header-menu" class="great-ds-header__menu-list">
-                                {% for item in menuItemsList %}
-                                    {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated or not item.requiresAuth and not item.requiresNoAuth %}
-                                        <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
-                                            {% if item.href and not item.button %}
-                                                <a href="{{ item.href }}" class="great-ds-header__menu-link">{{ item.text }}</a>
-                                            {% elif item.button %}
-                                                {{ greatButton(
-                                                    text=item.text,
-                                                    classes="great-ds-button--full-width govuk-!-margin-0",
-                                                    href=item.href
-                                                ) }}
-                                            {% else %}
-                                                {{ item.text }}
-                                            {% endif %}
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
+                            <div id="header-menu" class="great-ds-header__menu-wrapper">
+                                <ul class="great-ds-header__menu-list">
+                                    {% for item in menuItemsList %}
+                                        {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated or not item.requiresAuth and not item.requiresNoAuth %}
+                                            <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
+                                                {% if item.href and not item.button %}
+                                                    <a href="{{ item.href }}" class="great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}">{{ item.text }}</a>
+                                                {% elif item.button %}
+                                                    {{ greatButton(
+                                                        text=item.text,
+                                                        classes="great-ds-button--full-width govuk-!-margin-0",
+                                                        href=item.href
+                                                    ) }}
+                                                {% else %}
+                                                    {{ item.text }}
+                                                {% endif %}
+                                                
+                                                {% if subnavItemsList and loop.index == 1 %}
+                                                    <ul class="great-ds-header__submenu-list">
+                                                        {% for subItem in subnavItemsList %}
+                                                            <li class="great-ds-header__submenu-item">
+                                                                <a href="{{ subItem.href }}" class="great-ds-header__submenu-link {% if subItem.isCurrent %}great-ds-header__submenu-link--current{% endif %}">{{ subItem.text }}</a>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
                     {% endif %}
                 </div>
@@ -123,7 +139,7 @@
                 <ul class="great-ds-header__subnav-list">
                     {% for item in subnavItemsList %}
                         <li class="great-ds-header__subnav-item">
-                            <a class="great-ds-header__subnav-link" href="{{ item.href }}" data-location="{{ item.location }}" data-title="{{ item.text }}">{{ item.text }}</a>
+                            <a class="great-ds-header__subnav-link {% if item.isCurrent %}great-ds-header__subnav-link--current{% endif %}" href="{{ item.href }}" data-location="{{ item.location }}" data-title="{{ item.text }}">{{ item.text }}</a>
                         </li>
                     {% endfor %}
                 </ul>
