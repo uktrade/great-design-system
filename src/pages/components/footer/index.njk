@@ -1,0 +1,9 @@
+{% extends "layout/_base.njk" %}
+{% block title %}Great Design System - Footer{% endblock %}
+
+{% block content %}
+    <p class="govuk-body">Here is a domestic footer example.</p>
+    {% exampleIframe "/components/footer/footer-example/",  "100%", "300px" %}
+    <p class="govuk-body">Here is an international footer example.</p>
+    {% exampleIframe "/components/footer/footer-international-example/", "100%", "300px" %}
+{% endblock %}

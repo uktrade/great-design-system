@@ -1,0 +1,19 @@
+{% extends "layout/_example.njk" %}
+
+{% from "../../../components/footer/_footer.njk" import greatFooter %}
+
+{% block content %}
+    {{ greatFooter(
+        isInternational = true,
+        currentYear = '2024',
+        footerLinks = [
+            { href: "#", text: "Privacy", title: 'Privacy' },
+            { href: "#", text: "Cookies", title: 'Cookies' },
+            { href: "#", text: "Terms and conditions", title: 'Terms and conditions' },
+            { href: "#", text: "Accessibility", title: 'Accessibility' },
+            { href: "#", text: "Help using this site", title: 'Help using this site' },
+            { href: "#", text: "Department for Business and Trade on GOV.UK", title: 'Department for Business and Trade on GOV.UK', target: '_blank', rel: 'noopener' }
+        ]
+    ) 
+    }}
+{% endblock %}
