@@ -2,17 +2,17 @@
     <footer id="footer"
         dir="ltr"
         data-ga-section="footer"
-        class="great-ds-footer">
-        <div class="great-ds-footer__container {% if isInternational %}great-ds-footer__container--international{% endif %}">
+        class="great-ds-footer {% if isInternational %}great-ds-footer--international{% endif %}">
+        <div class="great-ds-footer__container">
             {% if isInternational %}
                 <div alt="Expand your business in the UK, start of service"  class="great-ds-footer__great-logo-container">
                     {% include "./_footer-great-logo.njk" %}
                 </div>
             {% endif %}
             <div class="great-ds-container">
-                <ul class="great-ds-footer__link-list {% if isInternational %}great-ds-footer__link-list--international{% endif %}">
+                <ul class="great-ds-footer__link-list">
                     {% for link in footerLinks %}     
-                        <li class="great-ds-footer__link-list-item {% if isInternational %}great-ds-footer__link-list-item--international{% endif %}">
+                        <li class="great-ds-footer__link-list-item">
                             <a href="{{ link.href }}"
                             title="{{ link.title }}"
                             {% if link.target %} target="{{ link.target }}" {% endif %}
@@ -27,7 +27,7 @@
         <div class="great-ds-footer__copyright-container">
             <div class="great-ds-container">
                 {% include "./_footer-dbt-logo.njk" %}
-                <p class="great-ds-footer__copyright{% if isInternational %} great-ds-footer__copyright--international {% endif %}">© Crown copyright {{ currentYear }}. All rights reserved.</p>
+                <p class="great-ds-footer__copyright">© Crown copyright {{ currentYear }}. All rights reserved.</p>
             </div>
     </div>
     </footer>

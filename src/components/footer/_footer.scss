@@ -5,16 +5,16 @@
 .great-ds-footer__container {
   justify-content: center;
   display: flex;
-}
 
-.great-ds-footer__container--international {
-  padding-top: $great-ds-spacing-4-large;
-  margin-bottom: $great-ds-spacing-4-large;
-  padding-right: 0px;
-  margin-right: 0px;
-  flex-direction: column;
-  > div {
-    width:100%;
+  .great-ds-footer--international & {
+    padding-top: $great-ds-spacing-4-large;
+    margin-bottom: $great-ds-spacing-4-large;
+    padding-right: 0px;
+    margin-right: 0px;
+    flex-direction: column;
+    > div {
+      width:100%;
+    }
   }
 }
 
@@ -27,13 +27,14 @@
   flex-wrap: wrap;
   list-style-type: none;
   flex-direction: row;
+
+  .great-ds-footer--international & {
+    margin: 0;
+    align-self: flex-start;
+    margin-right: $great-ds-spacing-7-large;
+  }
 }
 
-.great-ds-footer__link-list--international {
-  margin: 0;
-  align-self: flex-start;
-  margin-right: $great-ds-spacing-7-large;
-}
 
 .great-ds-footer__link-list-item {
   > a {
@@ -45,11 +46,11 @@
     text-underline-offset: 3px;
     cursor: pointer;
   }
-}
 
-.great-ds-footer__link-list-item--international {
-  > a {
-    font-family: $great-ds-type-family-great-ds-international;
+  .great-ds-footer--international & {
+    > a {
+      font-family: $great-ds-type-family-great-ds-international;
+    }
   }
 }
 
@@ -80,10 +81,10 @@
   @media only screen and (min-width: 640px) {
     font-size: $great-ds-type-size-body;
   }
-}
 
-.great-ds-footer__copyright--international {
-  font-family: $great-ds-type-family-great-ds-international;
+  .great-ds-footer--international & {
+    font-family: $great-ds-type-family-great-ds-international;
+  }
 }
 
 .great-ds-footer__dbt-logo {
