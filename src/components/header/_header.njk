@@ -7,7 +7,7 @@
 <header class="great-ds-header {{ header_classes }} {% if isInternational %}great-ds-header--international{% endif %} {% if isCampaign %}great-ds-header--campaign{% endif %}" id="header" role="banner" data-ga-section="header">
     <div id="great-ds-global-header" class="great-ds-container great-ds-header__global {{ global_header_classes }} {% if sso_is_logged_in %}signed-in{% endif %}">
         <div class="great-ds-header__dbt-logo">
-            {{ greatMastheadLogo(mastHeadLogo) }}
+            {{ greatMastheadLogo(mastHeadLogo=mastHeadLogo) }}
         </div>
         {% if domesticLink and internationalLink %}
             <ul class="great-ds-header__international-links">
