@@ -1,0 +1,24 @@
+{% extends "layout/_example.njk" %}
+{% from "../../../components/header/_header.njk" import greatHeader %}
+
+{% block content %}
+    {{ greatHeader(
+        isCampaign=true,
+        mastHeadLogo={ type: "dbt", url: "#" },
+        strapline="Get support for UK export or investment at <a href='/'>great.gov.uk</a>",
+        hideSearch=true,
+        hideMenuOnDesktop=true,
+        siteTitle="The Digital Exporting Programme",
+        languages=[
+            { href: "#", text: "English", isCurrent: true },
+            { href: "#", text: "العربية", isCurrent: false }
+        ],
+        subnavItemsList=[
+            { href: "#", text: "Home" },
+            { href: "#", text: "Digital Advisors" },
+            { href: "#", text: "Marketplaces" },
+            { href: "#", text: "Partners and service providers" },
+            { href: "#", text: "Webinars, events and missions" }
+        ]
+    ) }}
+{% endblock %}
