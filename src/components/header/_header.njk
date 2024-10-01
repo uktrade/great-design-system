@@ -112,7 +112,7 @@
                             ) }}
                             <div id="header-menu" class="great-ds-header__menu-wrapper">
                                 <ul class="great-ds-header__menu-list">
-                                    {% for item in (menuItemsList or subnavItemsList) %}
+                                    {% for item in menuItemsList %}
                                         {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated or not item.requiresAuth and not item.requiresNoAuth %}
                                             <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
                                                 {% if item.href and not item.button %}
@@ -140,6 +140,14 @@
                                             </li>
                                         {% endif %}
                                     {% endfor %}
+
+                                    {% if subnavItemsList and not menuItemsList %}
+                                        {% for item in subnavItemsList %}
+                                            <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
+                                                    <a href="{{ item.href }}" class="great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}">{{ item.text }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>
