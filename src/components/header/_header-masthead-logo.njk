@@ -1,6 +1,6 @@
-{% macro greatMastheadLogo(mastHeadLogo) %}
-<a class="great-ds-header__dbt-logo-link" href="{{ mastHeadLogo.url }}">
-  {% if mastHeadLogo.type == "dbt" %}
+{% macro greatMastheadLogo(use_domestic_logo) %}
+  {% if use_domestic_logo %}
+  <a class="great-ds-header__dbt-logo-link" href="https://www.gov.uk/government/organisations/department-for-business-and-trade">
     <svg class="great-ds-header__dbt-logo-image" role="img" aria-label="Department for Business and Trade logo" width="234" height="26" viewBox="0 0 234 26" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_6507_6044)">
         <g clip-path="url(#clip1_6507_6044)">
@@ -175,7 +175,9 @@
         </clipPath>
         </defs>
     </svg>
-  {% elif mastHeadLogo.type == 'ukGov' %}
+  </a>
+{% else %}
+  <a class="great-ds-header__dbt-logo-link" href="https://www.gov.uk">
     <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UK Government logo" width="170" height="26" viewBox="0 0 170 26" fill="none">
       <g clip-path="url(#clip0_6748_1220)">
         <path d="M1.49514 0.086731H0V25.5017H1.49514V0.086731Z" fill="#0055B8"/>
@@ -254,6 +256,6 @@
         </clipPath>
       </defs>
     </svg>
+  </a>
   {% endif %}
-</a>
 {% endmacro %}

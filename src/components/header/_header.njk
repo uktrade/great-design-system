@@ -3,11 +3,11 @@
 {% from "./_header-masthead-logo.njk" import greatMastheadLogo %}
 {% from "./_header-great-logo.njk" import greatLogo %}
 
-{% macro greatHeader(isInternational, isCampaign, mastHeadLogo, header_classes, global_header_classes, strapline, languages, sso_is_logged_in, domesticLink, internationalLink, siteTitle, actionLinkList, isAuthenticated, navItemsList, hideSearch, searchFormAction, hideMenuOnDesktop, menuItemsList, subnavItemsList) %}
-<header class="great-ds-header {{ header_classes }} {% if isInternational %}great-ds-header--international{% endif %} {% if isCampaign %}great-ds-header--campaign{% endif %}" id="header" role="banner" data-ga-section="header">
+{% macro greatHeader(isInternational, isCampaign, rtl, include_link_to_great, use_domestic_logo, header_classes, global_header_classes, strapline, available_languages, current_language, sso_is_logged_in, domesticLink, internationalLink, siteTitle, actionLinkList, isAuthenticated, navItemsList, hideSearch, searchFormAction, hideMenuOnDesktop, menuItemsList, subnavItemsList) %}
+<header class="great-ds-header {{ header_classes }}{% if rtl %} great-ds-header--rtl{% endif %}{% if isInternational %} great-ds-header--international{% endif %}{% if isCampaign %} great-ds-header--campaign{% endif %}" id="header" role="banner" data-ga-section="header">
     <div id="great-ds-global-header" class="great-ds-container great-ds-header__global {{ global_header_classes }} {% if sso_is_logged_in %}signed-in{% endif %}">
         <div class="great-ds-header__dbt-logo">
-            {{ greatMastheadLogo(mastHeadLogo=mastHeadLogo) }}
+            {{ greatMastheadLogo(use_domestic_logo=use_domestic_logo) }}
         </div>
         {% if domesticLink and internationalLink %}
             <ul class="great-ds-header__international-links">
@@ -19,7 +19,7 @@
                 </li>
             </ul>
         {% endif %}
-        {% if strapline %}
+        {% if strapline and include_link_to_great %}
             <div class="great-ds-header__strapline">
                 {{ strapline|safe }}
             </div>
@@ -87,13 +87,13 @@
                             </form>
                         </div>
                     {% endif %}
-                    {% if languages %}
+                    {% if available_languages %}
                         <div class="great-ds-header__languages">
                             <nav class="great-ds-header__languages-container" aria-label="Languages">
                                 <ul class="great-ds-header__languages-list">
-                                    {% for language in languages %}
-                                        <li class="great-ds-header__languages-item{% if language.isCurrent %} great-ds-header__languages-item--current{% endif %}">
-                                            <a class="great-ds-header__languages-link" href="{{ language.href }}" aria-current="{{ language.isCurrent }}" lang="{{ language.code }}">{{ language.text }}</a>
+                                    {% for language in available_languages %}
+                                        <li class="great-ds-header__languages-item{% if current_language == language.language_code %} great-ds-header__languages-item--current{% endif %}">
+                                            <a class="great-ds-header__languages-link" href="?lang={{ language.language_code }}" aria-current="{% if current_language == language.language_code %}true{% else %}false{% endif %}" lang="{{ language.language_code }}">{{ language.display_name }}</a>
                                         </li>
                                     {% endfor %}
                                 </ul>
@@ -101,12 +101,12 @@
                         </div>
                     {% endif %}
                     {% if menuItemsList or subnavItemsList %}
-                        <div class="great-ds-header__menu{% if hideMenuOnDesktop and subnavItemsList.length < 6 %} great-ds-header__menu--hidden-on-desktop{% endif %}">
+                        <div class="great-ds-header__menu{% if hideMenuOnDesktop and subnavItemsList.length < 6 %} great-ds-header__menu--hidden-on-desktop{% endif %}{% if rtl %} govuk-!-margin-right-3{% else %} govuk-!-margin-left-3{% endif %}">
                             {% set menu_icon = '<svg class="great-ds-icon--svg" width="16" height="17" viewBox="0 0 16 17" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 3.5C1 2.94687 1.44687 2.5 2 2.5H14C14.5531 2.5 15 2.94687 15 3.5C15 4.05313 14.5531 4.5 14 4.5H2C1.44687 4.5 1 4.05313 1 3.5ZM1 8.5C1 7.94688 1.44687 7.5 2 7.5H14C14.5531 7.5 15 7.94688 15 8.5C15 9.05312 14.5531 9.5 14 9.5H2C1.44687 9.5 1 9.05312 1 8.5ZM15 13.5C15 14.0531 14.5531 14.5 14 14.5H2C1.44687 14.5 1 14.0531 1 13.5C1 12.9469 1.44687 12.5 2 12.5H14C14.5531 12.5 15 12.9469 15 13.5Z"/>'%}
                             {{ greatButton(
                                 text="Menu",
-                                classes="great-ds-button--inverted great-ds-button--icon-prefix great-ds-button--auto-width govuk-!-margin-left-3",
+                                classes="great-ds-button--inverted great-ds-button--icon-prefix great-ds-button--auto-width ",
                                 attributes="data-great-ds-reveal-button data-great-ds-reveal-modal aria-controls=header-menu",
                                 iconPrefix=menu_icon
                             ) }}
