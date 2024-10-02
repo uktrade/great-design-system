@@ -87,9 +87,11 @@
     align-self: center;
     display: none;
     @include govuk-font-size($size: 16);
+
     @include govuk-media-query($from: desktop) {
         display: block;
     }
+    
     a {
         text-decoration: underline;
     }
@@ -272,7 +274,7 @@
     width: 100%;
 }
 
-.great-ds-header__languages-item:last-child {
+.great-ds-header__languages-item:not(:first-child) {
     @include govuk-media-query($from: 1080px) {
         padding: 0 0 0 $great-ds-spacing-3;
         margin: 0 0 0 $great-ds-spacing-3;
