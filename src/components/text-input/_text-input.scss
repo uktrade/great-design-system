@@ -4,6 +4,11 @@
     border-color: $great-ds-semantic-surface-background-great-ds-blue;
 
     &:focus {
+        border-width: 2px !important;
+        border-color: $great-ds-semantic-surface-background-great-ds-blue !important;
+        color: inherit !important;
         z-index: 2;
     }
 }
+
+// TODO: Remove !important when styles are removed from great-cms
