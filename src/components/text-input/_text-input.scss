@@ -4,6 +4,7 @@
     border-color: $great-ds-semantic-surface-background-great-ds-blue;
 
     &:focus {
+        padding: 5px 5px 5px 10px !important;
         border-width: 2px !important;
         border-color: $great-ds-semantic-surface-background-great-ds-blue !important;
         color: inherit !important;
