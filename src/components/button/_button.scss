@@ -87,6 +87,7 @@ $great-ds-button-outline: 2px solid transparent;
         color: $text-color;
         background-color: $bg-hover;
         box-shadow: 0 $great-ds-button-shadow-size 0 $border-hover;
+        outline: $great-ds-button-outline;
 
         @if $has-border {
             color: $border-hover;

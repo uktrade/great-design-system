@@ -79,8 +79,9 @@
     }
 }
 
-.great-ds-header__international-link {
-    color: $great-ds-semantic-text-default-text;
+.great-ds-header__international-link,
+.great-ds-header__international-link:hover {
+    color: $great-ds-semantic-text-default-text !important; // TODO: Remove !important when styles are removed from great-cms
 }
 
 .great-ds-header__strapline {
@@ -91,7 +92,7 @@
     @include govuk-media-query($from: desktop) {
         display: block;
     }
-    
+
     a {
         text-decoration: underline;
     }
