@@ -105,12 +105,12 @@ $great-ds-button-outline: 2px solid transparent;
         box-shadow: none;
     }
 
-    &:focus:not(:hover) {
+    &:focus {
         outline: $great-ds-button-outline;
         color: $great-ds-semantic-text-focus-button-label-focus;
     }
 
-    &:focus:not(:active):not(:hover) {
+    &:focus:not(:active) {
         background-color: $great-ds-semantic-interaction-focus;
         border: $great-ds-button-border-width solid $great-ds-semantic-border-focus-button-border;
         border-bottom: none;
@@ -257,12 +257,12 @@ $great-ds-button-outline: 2px solid transparent;
 %great-ds-button-inverted {
     @include great-ds-button-states(
         transparent,
-        rgba(0, 0, 0, 0.3),
         $great-ds-semantic-surface-background-white,
         $great-ds-semantic-surface-background-white,
         $great-ds-semantic-surface-background-white,
+        $great-ds-semantic-surface-background-great-ds-blue,
         true,
-        true
+        false
     );
     margin-bottom: 0;
     font-family: $great-ds-type-family-great;

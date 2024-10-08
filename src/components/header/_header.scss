@@ -187,21 +187,9 @@
 
     &:focus {
         box-shadow: none !important;
-
-        .great-ds-header__great-ds-logo-image {
-            path {
-                fill: $great-ds-semantic-text-default-text;
-            }
-            path.great-ds-header__great-ds-logo-path--horizontal {
-                fill: url(#logo-gradient-horizontal);   
-            }
-            path.great-ds-header__great-ds-logo-path--horizontal-reverse {
-                fill: url(#logo-gradient-horizontal-reverse);   
-            }
-            path.great-ds-header__great-ds-logo-path--vertical {
-                fill: url(#logo-gradient-vertical);   
-            }
-        }
+        background-color: #e80000 !important;
+        outline: 5px solid #fd0 !important;
+        outline-offset: -5px;    
     }
 }
 
@@ -407,6 +395,36 @@ ul.great-ds-header__menu-list {
 
     &:first-child {
         padding-top: 0;
+    }
+}
+
+.great-ds-header__site-link-container {
+    display: block;
+    background-color: $great-ds-semantic-surface-background-light-blue;
+    overflow: hidden;
+
+    @include govuk-media-query($from: desktop) {
+        display: none;
+    }
+}
+
+.great-ds-header__site-link {
+    display: flex;
+    align-items: center;
+    margin: $great-ds-spacing-6 $great-ds-spacing-4;
+    color: $great-ds-semantic-text-default-link !important;
+    font-family: $great-ds-type-family-great-ds-bold;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:focus {
+        color: $great-ds-semantic-text-default-text !important;
+    }
+
+    .great-ds-icon--svg {
+        margin-right: $great-ds-spacing-2;
     }
 }
 
