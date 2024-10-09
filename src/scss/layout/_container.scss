@@ -7,8 +7,5 @@
     @include govuk-media-query(1025px) {
       padding: 0 30px;
     }
-  
-    @include govuk-media-query(1280px) {
-      padding: 0;
-    }
+
   }
