@@ -17,14 +17,14 @@ export default class Revealer {
 
   createOverlay() {
     const overlay = document.createElement("div");
-    overlay.classList.add("revealer-overlay");
+    overlay.classList.add("great-ds-revealer-overlay");
     overlay.style.cssText = `
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.5);
             display: none;
             z-index: 998;
         `;

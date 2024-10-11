@@ -343,6 +343,7 @@
     width: auto;
     margin-bottom: 30px;
     color: $great-ds-semantic-text-default-white-text;
+    z-index: 999;
 
     @include govuk-media-query($from: desktop) {
         order: 2;
@@ -372,6 +373,7 @@ body:not(.js-enabled) {
     order: 2;
     margin: 0 -15px;
     width: calc(100% + 30px);
+    z-index: 999;
 
     .great-ds-header--rtl & {
         right: auto;
@@ -380,14 +382,13 @@ body:not(.js-enabled) {
 
     @include govuk-media-query($from: desktop) {
         position: absolute;
-        z-index: 999;
         width: 370px;
-        top: 130px;
-        right: 10px;
+        top: 110px;
+        right: 15px;
         margin: 0;
 
         .great-ds-header__main-inner:not(:has(.great-ds-header__nav-action)) & {
-            top: 105px;
+            top: 75px;
         }
     }
 
