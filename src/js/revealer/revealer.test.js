@@ -12,32 +12,35 @@ describe("Revealer", () => {
       createElement: jest.fn(() => ({
         classList: { add: jest.fn() },
         style: { cssText: "" },
+        contains: jest.fn(),
       })),
       body: { appendChild: jest.fn() },
       getElementById: jest.fn(),
     };
 
-    // Mock buttons and modals
+    // Mock buttons and targets
     const mockButtons = [
       {
         addEventListener: jest.fn(),
         getAttribute: jest.fn(),
         setAttribute: jest.fn(),
+        hasAttribute: jest.fn(),
       },
       {
         addEventListener: jest.fn(),
         getAttribute: jest.fn(),
         setAttribute: jest.fn(),
+        hasAttribute: jest.fn(),
       },
     ];
-    const mockModals = [
+    const mockTargets = [
       { setAttribute: jest.fn(), style: {} },
       { setAttribute: jest.fn(), style: {} },
     ];
 
     mockDocument.querySelectorAll
       .mockReturnValueOnce(mockButtons)
-      .mockReturnValueOnce(mockModals);
+      .mockReturnValueOnce(mockTargets);
 
     global.document = mockDocument;
 
@@ -46,17 +49,22 @@ describe("Revealer", () => {
 
   test("constructor initializes properties correctly", () => {
     expect(revealer.buttons).toBeDefined();
-    expect(revealer.modals).toBeDefined();
+    expect(revealer.targets).toBeDefined();
     expect(revealer.overlay).toBeDefined();
+    expect(revealer.activeTarget).toBeNull();
   });
 
-  test("init adds event listeners to buttons", () => {
-    expect(revealer.buttons[0].addEventListener).toHaveBeenCalledWith(
+  test("init adds event listeners", () => {
+    expect(mockDocument.addEventListener).toHaveBeenCalledWith(
       "click",
       expect.any(Function),
     );
-    expect(revealer.buttons[1].addEventListener).toHaveBeenCalledWith(
-      "click",
+    expect(mockDocument.addEventListener).toHaveBeenCalledWith(
+      "keydown",
+      expect.any(Function),
+    );
+    expect(mockDocument.addEventListener).toHaveBeenCalledWith(
+      "focusout",
       expect.any(Function),
     );
   });
@@ -92,6 +100,7 @@ describe("Revealer", () => {
       "true",
     );
     expect(revealer.overlay.style.display).toBe("block");
+    expect(revealer.activeTarget).toBe(mockTarget);
   });
 
   test("handleOutsideClick hides all elements when clicking outside", () => {
@@ -118,16 +127,29 @@ describe("Revealer", () => {
     expect(hideAllSpy).toHaveBeenCalled();
   });
 
+  test("handleFocusOut hides all elements when focus leaves active target", () => {
+    const mockRelatedTarget = mockDocument.createElement();
+    const mockEvent = {
+      relatedTarget: mockRelatedTarget,
+    };
+
+    revealer.activeTarget = mockDocument.createElement();
+    revealer.activeTarget.contains.mockReturnValue(false);
+    revealer.hideAll = jest.fn(); // Mock hideAll method
+
+    revealer.handleFocusOut(mockEvent);
+
+    expect(revealer.hideAll).toHaveBeenCalled();
+  });
+
   test("hideAll hides all visible elements", () => {
     const mockButton1 = {
       getAttribute: jest.fn().mockReturnValue("target1"),
       setAttribute: jest.fn(),
-      hasAttribute: jest.fn().mockReturnValue(false),
     };
     const mockButton2 = {
       getAttribute: jest.fn().mockReturnValue("target2"),
       setAttribute: jest.fn(),
-      hasAttribute: jest.fn().mockReturnValue(false),
     };
 
     const mockTarget1 = {
@@ -142,17 +164,19 @@ describe("Revealer", () => {
     };
 
     revealer.buttons = [mockButton1, mockButton2];
+    revealer.overlay = { style: {} };
     mockDocument.getElementById = jest
       .fn()
       .mockReturnValueOnce(mockTarget1)
       .mockReturnValueOnce(mockTarget2);
 
-    // Mock the toggleReveal method
     revealer.toggleReveal = jest.fn();
 
     revealer.hideAll();
 
-    expect(revealer.toggleReveal).toHaveBeenCalledWith(mockButton1);
-    expect(revealer.toggleReveal).not.toHaveBeenCalledWith(mockButton2);
+    expect(revealer.toggleReveal).toHaveBeenCalled();
+    expect(revealer.toggleReveal).toHaveBeenCalledTimes(1);
+    expect(revealer.overlay.style.display).toBe("none");
+    expect(revealer.activeTarget).toBeNull();
   });
 });
