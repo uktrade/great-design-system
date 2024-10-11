@@ -1,7 +1,7 @@
 .great-ds-text-input--search {
     height: 54px;
     padding-left: 10px;
-    border-color: $great-ds-semantic-surface-background-white;
+    border-color: $great-ds-semantic-surface-background-white !important;
 
     &:focus {
         padding: 5px 5px 5px 10px !important;
