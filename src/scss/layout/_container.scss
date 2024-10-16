@@ -1,8 +1,9 @@
 
 .great-ds-container {
-    max-width: 1230px;
+    max-width: 1290px;
     margin: auto;
     padding: 0 15px;
+    box-sizing: border-box;
   
     @include govuk-media-query(1025px) {
       padding: 0 30px;
