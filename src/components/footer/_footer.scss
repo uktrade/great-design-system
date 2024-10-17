@@ -5,34 +5,22 @@
 .great-ds-footer__container {
   justify-content: center;
   display: flex;
+  padding-top: $great-ds-spacing-9-large;
+  padding-bottom: $great-ds-spacing-4-large;
 
-  .great-ds-footer--international & {
-    padding-top: $great-ds-spacing-4-large;
-    margin-bottom: $great-ds-spacing-4-large;
-    padding-right: 0px;
-    margin-right: 0px;
-    flex-direction: column;
-    > div {
-      width:100%;
-    }
+  > div {
+    width:100%;
   }
 }
 
 .great-ds-footer__link-list {
-  margin-top: 80px;
-  margin-bottom: $great-ds-spacing-4-large;
   padding-inline-start: 0px;
   display: inline-flex;
   gap: $great-ds-spacing-4-large;
   flex-wrap: wrap;
   list-style-type: none;
   flex-direction: row;
-
-  .great-ds-footer--international & {
-    margin: 0;
-    align-self: flex-start;
-    margin-right: $great-ds-spacing-7-large;
-  }
+  margin: 0;
 }
 
 
@@ -90,27 +78,9 @@
 .great-ds-footer__dbt-logo {
   height: 30px;
   min-width: 270px;
-}
+} 
 
-.great-ds-footer__great-logo-container {
-  position: relative;
-  display: flex;
-  align-items: start;
-  height: 76px;
-  float:right;
-  max-width: 270px;
-  background-color: $great-ds-semantic-surface-background-great-ds-red;
-  margin-top: 10px;
-  align-items: center;
-  margin-bottom: $great-ds-spacing-4-large;
-  align-self: flex-end;
-}
-
-.great-ds-footer__great-logo-image {
-  margin-top: -25px;
-  margin-left: -40px;
-  min-width: 230px;
-  height: 86px;
-  float:left;
-  overflow: visible;
-}
+.great-ds-footer__gov-logo {
+  width: 153px; 
+  height: 30px;
+} 

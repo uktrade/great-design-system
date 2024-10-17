@@ -4,11 +4,6 @@
         data-ga-section="footer"
         class="great-ds-footer {% if isInternational %}great-ds-footer--international{% endif %}">
         <div class="great-ds-footer__container">
-            {% if isInternational %}
-                <div class="great-ds-footer__great-logo-container">
-                    {% include "./_footer-great-logo.njk" %}
-                </div>
-            {% endif %}
             <div class="great-ds-container">
                 <ul class="great-ds-footer__link-list">
                     {% for link in footerLinks %}     
@@ -26,7 +21,11 @@
         </div>
         <div class="great-ds-footer__copyright-container">
             <div class="great-ds-container">
-                {% include "./_footer-dbt-logo.njk" %}
+                {% if isInternational %}
+                    {% include "./_footer-gov-logo.njk" %}
+                {% else %}
+                    {% include "./_footer-dbt-logo.njk" %}
+                {% endif %}
                 <p class="great-ds-footer__copyright">© Crown copyright {{ currentYear }}. All rights reserved.</p>
             </div>
     </div>
