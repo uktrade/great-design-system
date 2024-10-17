@@ -25,6 +25,11 @@
 
 
 .great-ds-footer__link-list-item {
+  width: 100%;
+  @include govuk-media-query($from: tablet) {
+    width: auto;
+  }
+
   > a {
     font-family: $great-ds-type-family-great;
     font-size: $great-ds-type-size-body;
