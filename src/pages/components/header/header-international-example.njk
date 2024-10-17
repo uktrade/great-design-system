@@ -4,8 +4,8 @@
 {% block content %}
     {{ greatHeader(
         isInternational=true,
+        use_domestic_logo=false,
         hideSearch=true,
-        mastheadUrl="#",
         hideMenuOnDesktop=true,
         domesticLink={ href: "#", text: "For UK businesses" },
         internationalLink={ href: "#", text: "For international businesses" },
@@ -24,6 +24,7 @@
             { href: "#", text: "Expand your business" },
             { href: "#", text: "Investment opportunities"},
             { href: "#", text: "Buy from the UK" }
-        ]
+        ],
+        mobileSiteLink={ href: "#", text: "Export help for UK businesses" }
     ) }}
 {% endblock %}

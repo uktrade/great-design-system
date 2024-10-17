@@ -42,6 +42,7 @@ $great-ds-button-outline: 2px solid transparent;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    direction: ltr;
 
     .great-ds-icon--svg {
         vertical-align: middle;
@@ -86,6 +87,8 @@ $great-ds-button-outline: 2px solid transparent;
         color: $text-color;
         background-color: $bg-hover;
         box-shadow: 0 $great-ds-button-shadow-size 0 $border-hover;
+        outline: $great-ds-button-outline;
+        text-decoration: none !important;
 
         @if $has-border {
             color: $border-hover;
@@ -97,29 +100,23 @@ $great-ds-button-outline: 2px solid transparent;
             box-shadow: 0 1px 0 $border;
         }
     }
-
-    &:active:not(:focus) {
-        border: $great-ds-button-border-width solid $border-hover;
-        box-shadow: none;
-    }
-
-    &:focus:not(:hover) {
-        outline: $great-ds-button-outline;
-        color: $great-ds-semantic-text-focus-button-label-focus;
-    }
-
-    &:focus:not(:active):not(:hover) {
-        background-color: $great-ds-semantic-interaction-focus;
+    
+    &:focus:hover {
         border: $great-ds-button-border-width solid $great-ds-semantic-border-focus-button-border;
         border-bottom: none;
-        box-shadow: 0 $great-ds-button-shadow-size 0 $great-ds-semantic-border-focus-button-border;
     }
 
-    &:focus:active {
-        background: $great-ds-semantic-interaction-focus;
-        border: $great-ds-button-border-width solid $great-ds-semantic-border-focus-button-border;
-        box-shadow: none;
+    &:focus {
+        outline: $great-ds-button-outline;
         color: $great-ds-semantic-text-focus-button-label-focus;
+        background-color: $great-ds-semantic-interaction-focus;
+        box-shadow: 0 $great-ds-button-shadow-size 0 $great-ds-semantic-border-focus-button-border;
+        border: $great-ds-button-border-width solid $great-ds-semantic-border-focus-button-border;
+        border-bottom: none;
+
+        @if $has-small-shadow {
+            box-shadow: 0 1px 0 $great-ds-semantic-border-focus-button-border;
+        }
     }
 }
 
@@ -140,6 +137,23 @@ $great-ds-button-outline: 2px solid transparent;
     }
 }
 
+// Mixin for search button styles
+@mixin great-ds-button-search-states($bg-color, $bg-hover-color, $text-color, $outline-color, $border-color) {
+    margin: 0 0 0 -2px;
+    height: 54px;
+    width: 60px;
+    box-shadow: none;
+
+    &:focus {
+        background-color: $bg-hover-color !important;
+        color: $text-color !important;
+        outline: 3px solid $outline-color;
+        outline-offset: 0;
+        border: 4px solid $border-color !important;
+        padding: 10px 10px 8px 11px;
+    }
+}
+
 // Placeholder for primary button styles
 %great-ds-button-primary {
     @include great-ds-button-states(
@@ -149,6 +163,23 @@ $great-ds-button-outline: 2px solid transparent;
         $great-ds-semantic-border-default-primary-button-border,
         $great-ds-semantic-border-hover-primary-button-border
     );
+}
+
+// New placeholder for primary button styles on dark background
+%great-ds-button-primary-on-dark {
+    @include great-ds-button-states(
+        $great-ds-semantic-interaction-default-primary-button,
+        $great-ds-semantic-surface-background-white,
+        $great-ds-semantic-text-default-primary-button-label,
+        $great-ds-semantic-border-default-primary-button-border,
+        $great-ds-semantic-border-hover-primary-button-border
+    );
+
+    &:hover,
+    &:active:not(:focus),
+    &:focus:hover {
+        color: $great-ds-semantic-interaction-default-primary-button;
+    }
 }
 
 // Placeholder for secondary button styles
@@ -255,7 +286,7 @@ $great-ds-button-outline: 2px solid transparent;
 %great-ds-button-inverted {
     @include great-ds-button-states(
         transparent,
-        rgba(0, 0, 0, 0.3),
+        $great-ds-semantic-interaction-hover-primary-button,
         $great-ds-semantic-surface-background-white,
         $great-ds-semantic-surface-background-white,
         $great-ds-semantic-surface-background-white,
@@ -264,6 +295,20 @@ $great-ds-button-outline: 2px solid transparent;
     );
     margin-bottom: 0;
     font-family: $great-ds-type-family-great;
+
+    &:focus,
+    &:focus:hover {
+        border: $great-ds-button-border-width solid $great-ds-semantic-interaction-focus !important;
+        box-shadow: 0 1px 0 $great-ds-semantic-interaction-focus !important;
+        border-bottom: none !important;
+    }
+
+    // International variant for inverted buttons
+    &.great-ds-button--international {
+        &:hover:not(:focus) {
+            background-color: $great-ds-semantic-interaction-hover-error;
+        }
+    }
 }
 
 // Placeholder for icon inline styles
@@ -273,15 +318,35 @@ $great-ds-button-outline: 2px solid transparent;
 
 // Placeholder for search button styles
 %great-ds-button-search {
-    margin: 0 0 0 -2px;
-    height: 54px;
-    width: 60px;
-    box-shadow: none;
+    @include great-ds-button-search-states(
+        $great-ds-semantic-interaction-default-primary-button,
+        $great-ds-semantic-interaction-hover-primary-button,
+        $great-ds-semantic-text-default-primary-button-label,
+        $great-ds-semantic-interaction-focus,
+        $great-ds-semantic-border-focus-button-border
+    );
+}
 
-    &:focus {
-        border: none !important;
-        box-shadow: none !important;
-        outline: 1px solid $great-ds-semantic-border-focus-button-border !important;
+// Placeholder for menu button styles
+%great-ds-button-menu {
+    .great-ds-icon--menu {
+        width: 16px;
+        height: 17px;
+
+        .great-ds-icon--menu-close {
+            opacity: 0;
+        }
+    }
+
+    &[aria-expanded="true"] {
+        .great-ds-icon--menu {
+            .great-ds-icon--menu-bars {
+                opacity: 0;
+            }
+            .great-ds-icon--menu-close {
+                opacity: 1;
+            }
+        }
     }
 }
 
@@ -294,7 +359,6 @@ $great-ds-button-outline: 2px solid transparent;
 %great-ds-button-auto-width {
     width: auto;
 }
-
 
 // Base button styles
 .great-ds-button {
@@ -375,8 +439,20 @@ $great-ds-button-outline: 2px solid transparent;
     @extend %great-ds-button-auto-width;
 }
 
-// Search (with inline input) button styles
+// Search button styles
 .great-ds-button--search {
     @extend %great-ds-button-base;
     @extend %great-ds-button-search;
+}
+
+// Menu button styles
+.great-ds-button--menu {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-menu;
+}
+
+// Add this new class at the end of the file
+.great-ds-button--primary-on-dark {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-primary-on-dark;
 }
