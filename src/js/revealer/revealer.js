@@ -14,7 +14,6 @@ export default class Revealer {
 
     document.addEventListener("click", (e) => this.handleOutsideClick(e));
     document.addEventListener("keydown", (e) => this.handleEscapeKey(e));
-
     document.addEventListener("focusout", (e) => this.handleFocusOut(e));
   }
 
@@ -44,6 +43,13 @@ export default class Revealer {
       target.setAttribute("aria-hidden", isHidden ? "false" : "true");
       target.style.display = isHidden ? "block" : "none";
       button.setAttribute("aria-expanded", isHidden ? "true" : "false");
+      if (isHidden) {
+        target.classList.add("is-active");
+        button.classList.add("is-active");
+      } else {
+        target.classList.remove("is-active");
+        button.classList.remove("is-active");
+      }
 
       if (button.hasAttribute("data-great-ds-reveal-modal")) {
         this.overlay.style.display = isHidden ? "block" : "none";

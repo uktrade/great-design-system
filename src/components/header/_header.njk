@@ -29,11 +29,7 @@
         <div class="great-ds-header__main-inner great-ds-container">
             <div class="great-ds-header__logo-container">
                 <a id="header-logo-link" alt="Great" class="great-ds-header__great-ds-logo" href="/">
-                    {% if isInternational %}
-                        {{ greatLogo(isInternational=true) }}
-                    {% else %}
-                        {{ greatLogo() }}
-                    {% endif %}
+                    {{ greatLogo() }}
                 </a>
             </div>
             {% if siteTitle %}
@@ -46,7 +42,7 @@
                     <div class="great-ds-header__nav-action">
                         {% for item in actionLinkList %}
                             {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated %}
-                                <a href="{{ item.href }}" class="great-ds-header__action-link">{{ item.text }}</a>
+                                <a href="{{ item.href }}" class="great-ds-header__link great-ds-header__action-link">{{ item.text }}</a>
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -58,7 +54,7 @@
                                 {% for item in navItemsList %}
                                     {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated or not item.requiresAuth and not item.requiresNoAuth %}
                                         <li class="great-ds-header__nav-item">
-                                            <a href="{{ item.href }}" class="great-ds-header__nav-link{% if item.isCurrent %} great-ds-header__nav-link--current{% endif %}">{{ item.text }}</a>
+                                            <a href="{{ item.href }}" class="great-ds-header__link great-ds-header__nav-link{% if item.isCurrent %} great-ds-header__nav-link--current{% endif %}">{{ item.text }}</a>
                                         </li>
                                     {% endif %}
                                 {% endfor %}
@@ -94,7 +90,7 @@
                                 <ul class="great-ds-header__languages-list">
                                     {% for language in available_languages %}
                                         <li class="great-ds-header__languages-item{% if current_language == language.language_code %} great-ds-header__languages-item--current{% endif %}">
-                                            <a class="great-ds-header__languages-link" href="?lang={{ language.language_code }}" aria-current="{% if current_language == language.language_code %}true{% else %}false{% endif %}" lang="{{ language.language_code }}">{{ language.display_name }}</a>
+                                            <a class="great-ds-header__languages-link great-ds-header__link" href="?lang={{ language.language_code }}" aria-current="{% if current_language == language.language_code %}true{% else %}false{% endif %}" lang="{{ language.language_code }}">{{ language.display_name }}</a>
                                         </li>
                                     {% endfor %}
                                 </ul>
@@ -119,7 +115,7 @@
                                 {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated or not item.requiresAuth and not item.requiresNoAuth %}
                                     <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
                                         {% if item.href and not item.button %}
-                                            <a href="{{ item.href }}" class="great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}">{{ item.text }}</a>
+                                            <a href="{{ item.href }}" class="great-ds-header__link great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}">{{ item.text }}</a>
                                         {% elif item.button %}
                                             {{ greatButton(
                                                 text=item.text,
@@ -135,7 +131,7 @@
                                             <ul class="great-ds-header__submenu-list">
                                                 {% for subItem in subnavItemsList %}
                                                     <li class="great-ds-header__submenu-item">
-                                                        <a href="{{ subItem.href }}" class="great-ds-header__submenu-link {% if subItem.isCurrent %}great-ds-header__submenu-link--current{% endif %}">{{ subItem.text }}</a>
+                                                        <a href="{{ subItem.href }}" class="great-ds-header__link great-ds-header__submenu-link {% if subItem.isCurrent %}great-ds-header__submenu-link--current{% endif %}">{{ subItem.text }}</a>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
@@ -147,7 +143,7 @@
                             {% if subnavItemsList and not menuItemsList %}
                                 {% for item in subnavItemsList %}
                                     <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
-                                            <a href="{{ item.href }}" class="great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}">{{ item.text }}</a>
+                                            <a href="{{ item.href }}" class="great-ds-header__link great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}">{{ item.text }}</a>
                                     </li>
                                 {% endfor %}
                             {% endif %}
@@ -184,7 +180,7 @@
                 <ul class="great-ds-header__subnav-list">
                     {% for item in subnavItemsList %}
                         <li class="great-ds-header__subnav-item">
-                            <a class="great-ds-header__subnav-link {% if item.isCurrent %}great-ds-header__subnav-link--current{% endif %}" href="{{ item.href }}" data-location="{{ item.location }}" data-title="{{ item.text }}">{{ item.text }}</a>
+                            <a class="great-ds-header__link great-ds-header__subnav-link {% if item.isCurrent %}great-ds-header__subnav-link--current{% endif %}" href="{{ item.href }}" data-location="{{ item.location }}" data-title="{{ item.text }}">{{ item.text }}</a>
                         </li>
                     {% endfor %}
                 </ul>
