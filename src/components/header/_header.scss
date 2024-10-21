@@ -22,7 +22,8 @@
         @include great-ds-link-decorator;
     }
 
-    &:focus {
+    &:focus,
+    &:focus:active {
         @include govuk-focused-text;
     }
 }
