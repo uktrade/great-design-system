@@ -81,12 +81,39 @@ $great-ds-button-outline: 2px solid transparent;
         box-shadow: 0 2px 0 $border;
     }
 
-    &:hover,
-    &:active:not(:focus) {
-        color: $text-color;
-        background-color: $bg-hover;
-        box-shadow: 0 $great-ds-button-shadow-size 0 $border-hover;
-        outline: $great-ds-button-outline;
+    $focus-styles: (
+        outline: $great-ds-button-outline,
+        color: $great-ds-semantic-text-focus-button-label-focus,
+        background-color: $great-ds-semantic-interaction-focus,
+        box-shadow: 0 $great-ds-button-shadow-size 0 $great-ds-semantic-border-focus-button-border,
+        border: $great-ds-button-border-width solid $great-ds-semantic-border-focus-button-border,
+        border-bottom: none
+    );
+
+    $hover-styles: (
+        color: $text-color,
+        background-color: $bg-hover,
+        box-shadow: 0 $great-ds-button-shadow-size 0 $border-hover,
+        outline: $great-ds-button-outline,
+        text-decoration: none
+    );
+
+    &:focus,
+    &:focus:hover {
+        @each $property, $value in $focus-styles {
+            #{$property}: $value;
+        }
+
+        @if $is-inverted {
+            box-shadow: 0 1px 0 $great-ds-semantic-border-focus-button-border;
+        }
+    }
+
+    &:hover:not(:focus),
+    &:active {
+        @each $property, $value in $hover-styles {
+            #{$property}: $value;
+        }
         text-decoration: none !important;
 
         @if $has-border {
@@ -103,17 +130,13 @@ $great-ds-button-outline: 2px solid transparent;
         }
     }
 
-    &:focus,
-    &:focus:hover {
-        outline: $great-ds-button-outline;
-        color: $great-ds-semantic-text-focus-button-label-focus;
-        background-color: $great-ds-semantic-interaction-focus;
-        box-shadow: 0 $great-ds-button-shadow-size 0 $great-ds-semantic-border-focus-button-border;
-        border: $great-ds-button-border-width solid $great-ds-semantic-border-focus-button-border;
-        border-bottom: none;
-
-        @if $is-inverted {
-            box-shadow: 0 1px 0 $great-ds-semantic-border-focus-button-border;
+    &:active,
+    &:active:hover {
+        @if not $has-border {
+            border-color: transparent;
+            box-shadow: 0 1px 0 $border-hover;
+        } @else {
+            box-shadow: 0 2px 0 $border-hover;
         }
     }
 }
@@ -156,9 +179,28 @@ $great-ds-button-outline: 2px solid transparent;
         $great-ds-semantic-border-hover-primary-button-border
     );
 
+    $active-hover-styles: (
+        border-color: transparent,
+        color: $great-ds-semantic-interaction-default-primary-button,
+    );
+
     &:hover:not(:focus),
     &:active:not(:focus) {
-        color: $great-ds-semantic-interaction-default-primary-button;
+        @each $property, $value in $active-hover-styles {
+            #{$property}: $value;
+        }
+        box-shadow: 0 $great-ds-button-shadow-size 0 $great-ds-semantic-interaction-default-primary-button;
+    }
+
+    &:active {
+        @each $property, $value in $active-hover-styles {
+            #{$property}: $value;
+        }
+        box-shadow: 0 1px 0 $great-ds-semantic-interaction-default-primary-button;
+    }
+
+    &:focus {
+        border-color: transparent;
     }
 }
 
@@ -172,12 +214,6 @@ $great-ds-button-outline: 2px solid transparent;
         $great-ds-semantic-border-hover-secondary-button-border,
         true
     );
-
-    &:hover,
-    &:focus:hover {
-        border: $great-ds-button-border-width solid $great-ds-semantic-border-hover-secondary-button-border;
-        border-bottom: none;
-    }
 }
 
 // Placeholder for warning button styles
@@ -276,11 +312,12 @@ $great-ds-button-outline: 2px solid transparent;
     margin-bottom: 0;
     font-family: $great-ds-type-family-great;
 
-    &:focus,
+    &:focus:not(:active),
     &:focus:hover {
-        border: $great-ds-button-border-width solid $great-ds-semantic-interaction-focus !important;
-        box-shadow: 0 2px 0 $great-ds-semantic-interaction-focus !important;
-        border-bottom: none !important;
+        border: $great-ds-button-border-width solid $great-ds-semantic-interaction-focus;
+        box-shadow: 0 2px 0 $great-ds-semantic-interaction-focus;
+        border-bottom: none;
+        background-color: $great-ds-semantic-interaction-focus;
     }
 }
 
@@ -441,3 +478,4 @@ $great-ds-button-outline: 2px solid transparent;
     @extend %great-ds-button-base;
     @extend %great-ds-button-primary-on-dark;
 }
+
