@@ -47,7 +47,8 @@
 .great-ds-header__dbt-logo-link {
     display: block;
     line-height: 0;
-    &:focus {
+    &:focus,
+    &:focus:active {
         @include govuk-focused-text;
     }
 }
@@ -93,7 +94,8 @@
 
 .great-ds-header__international-link {
     text-decoration: none;
-    &:focus {
+    &:focus,
+    &:focus:active {
         @include govuk-focused-text;
     }
 }
