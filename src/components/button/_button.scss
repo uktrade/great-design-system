@@ -185,25 +185,22 @@ $great-ds-button-outline: 2px solid transparent;
         color: $great-ds-semantic-interaction-default-primary-button,
     );
 
-    &:hover:not(:focus),
-    &:active:not(:focus) {
+    &:hover:not(:focus) {
         @each $property, $value in $active-hover-styles {
             #{$property}: $value;
         }
+        background-color: $great-ds-semantic-surface-background-white;
         box-shadow: 0 $great-ds-button-shadow-size 0 $great-ds-semantic-interaction-default-primary-button;
     }
 
     &:active,
+    &:active:hover,
     &:focus:active {
         @each $property, $value in $active-hover-styles {
             #{$property}: $value;
         }
         background-color: $great-ds-semantic-surface-background-white;
         box-shadow: 0 1px 0 $great-ds-semantic-interaction-default-primary-button;
-    }
-
-    &:focus {
-        border-color: transparent;
     }
 }
 
