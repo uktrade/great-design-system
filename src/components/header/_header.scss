@@ -159,6 +159,7 @@
 
 .great-ds-header__great-ds-logo {
     position: relative;
+    box-sizing: content-box;
     display: flex;
     align-items: start;
     height: 110px;
@@ -180,13 +181,12 @@
     .great-ds-header:not(.great-ds-header--international) & {
         &::before {
             content: '';
-            box-sizing: border-box;
             position: absolute;
             top: -15px;
             bottom: 0;
             right: 100%;
             width: 100vw;
-            height: 128px;
+            height: 100%;
             background-color: $great-ds-semantic-surface-background-great-ds-red;
             border-top: 15px solid $great-ds-semantic-surface-background-great-ds-blue;
             border-bottom: 3px solid $great-ds-semantic-surface-background-great-ds-blue;
