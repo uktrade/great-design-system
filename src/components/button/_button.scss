@@ -134,6 +134,7 @@ $great-ds-button-outline: 2px solid transparent;
     &:active,
     &:active:hover {
         @if not $has-border {
+            top: 2px;
             border-color: transparent;
             box-shadow: 0 1px 0 $border-hover;
         } @else {
@@ -319,6 +320,10 @@ $great-ds-button-outline: 2px solid transparent;
         border-bottom: none;
         background-color: $great-ds-semantic-interaction-focus;
     }
+
+    &:active {
+        top: 0px;
+    }
 }
 
 // Placeholder for icon inline styles
@@ -335,6 +340,10 @@ $great-ds-button-outline: 2px solid transparent;
         $great-ds-semantic-interaction-focus,
         $great-ds-semantic-border-focus-button-border
     );
+
+    &:active {
+        top: 0px;
+    }
 }
 
 // Placeholder for menu button styles
