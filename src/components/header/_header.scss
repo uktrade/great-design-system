@@ -180,12 +180,13 @@
     .great-ds-header:not(.great-ds-header--international) & {
         &::before {
             content: '';
+            box-sizing: border-box;
             position: absolute;
             top: -15px;
             bottom: 0;
             right: 100%;
             width: 100vw;
-            height: 100%;
+            height: 128px;
             background-color: $great-ds-semantic-surface-background-great-ds-red;
             border-top: 15px solid $great-ds-semantic-surface-background-great-ds-blue;
             border-bottom: 3px solid $great-ds-semantic-surface-background-great-ds-blue;
