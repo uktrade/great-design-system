@@ -314,15 +314,12 @@ $great-ds-button-outline: 2px solid transparent;
     font-family: $great-ds-type-family-great;
 
     &:focus:not(:active),
-    &:focus:hover {
+    &:focus:hover:not(:active) {
+        color: $great-ds-semantic-text-focus-button-label-focus;
         border: $great-ds-button-border-width solid $great-ds-semantic-interaction-focus;
         box-shadow: 0 2px 0 $great-ds-semantic-interaction-focus;
         border-bottom: none;
         background-color: $great-ds-semantic-interaction-focus;
-    }
-
-    &:active {
-        top: 0px;
     }
 }
 

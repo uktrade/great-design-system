@@ -350,6 +350,10 @@
     }
 }
 
+.great-ds-header__nav-link--current {
+    @include great-ds-link-decorator;
+}
+
 .great-ds-header__search {
     order: 3;
     width: 100%;

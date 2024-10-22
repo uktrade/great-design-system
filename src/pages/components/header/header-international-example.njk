@@ -4,6 +4,7 @@
 {% block content %}
     {{ greatHeader(
         isInternational=true,
+        isAuthenticated=true,
         use_domestic_logo=false,
         hideSearch=true,
         hideMenuOnDesktop=true,
@@ -11,17 +12,27 @@
         internationalLink={ href: "#", text: "For international businesses" },
         searchFormAction="#",
         navItemsList=[
-            { href: "#", text: "Expand your business" },
-            { href: "#", text: "Investment opportunities"},
-            { href: "#", text: "Buy from the UK" }
-        ],
-        subnavItemsList=[
-            { href: "#", text: "UK nations and regions" },
-            { href: "#", text: "Sectors" },
-            { href: "#", text: "Find opportunities" }
+            {
+                href: "#", 
+                text: "Expand your business",
+                isCurrent: true,
+                navItemsListChildren: [
+                    { href: "#", text: "Sign in", requiresNoAuth: true },
+                    { href: "#", text: "Sign out", requiresAuth: true },
+                    { href: "#", text: "Profile", requiresAuth: true }
+                ]
+            },
+            { 
+                href: "#", 
+                text: "Investment opportunities"
+            },
+            { 
+                href: "#", 
+                text: "Buy from the UK" 
+            }
         ],
         menuItemsList=[
-            { href: "#", text: "Expand your business" },
+            { href: "#", text: "Expand your business", isCurrent: true },
             { href: "#", text: "Investment opportunities"},
             { href: "#", text: "Buy from the UK" }
         ],
