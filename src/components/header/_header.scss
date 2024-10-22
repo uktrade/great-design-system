@@ -429,12 +429,12 @@ body:not(.js-enabled) {
     @include govuk-media-query($from: desktop) {
         position: absolute;
         width: 370px;
-        top: 109px;
+        top: 111px;
         right: 15px;
         margin: 0;
 
         .great-ds-header__main-inner:not(:has(.great-ds-header__nav-action)) & {
-            top: 83px;
+            top: 85px;
         }
     }
 
