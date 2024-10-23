@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     width:fit-content;
-
+    
     &:hover {
         > * .great-ds-action-link__image-icon-background {
             fill: $great-ds-semantic-interaction-hover-icon-link;
@@ -17,9 +17,7 @@
             fill: $great-ds-semantic-interaction-default-icon;
         }
         .great-ds-action-link__text {
-            color: $great-ds-semantic-text-focus-link-focus;
-            background-color: $great-ds-semantic-interaction-focus;
-            border-bottom: 3px solid $great-ds-semantic-border-focus-link-border;
+            @include govuk-focused-text;
         }
     }
 }
