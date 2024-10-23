@@ -535,6 +535,7 @@ a.great-ds-header__site-link {
     &:focus:active {
         text-decoration: none;
         outline: none;
+        background: none;
 
         .great-ds-header__site-link-text {
             @include govuk-focused-text;
