@@ -4,7 +4,6 @@
 {% block content %}
     {{ greatHeader(
         isInternational=true,
-        isAuthenticated=true,
         use_domestic_logo=false,
         hideSearch=true,
         hideMenuOnDesktop=true,
@@ -17,7 +16,7 @@
                 text: "Expand your business",
                 isCurrent: true,
                 navItemsListChildren: [
-                    { href: "#", text: "Sign in", requiresNoAuth: true },
+                    { href: "#", text: "Sign in", requiresNoAuth: true, isCurrent: true },
                     { href: "#", text: "Sign out", requiresAuth: true },
                     { href: "#", text: "Profile", requiresAuth: true }
                 ]

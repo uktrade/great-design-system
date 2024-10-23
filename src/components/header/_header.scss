@@ -248,6 +248,19 @@
     }
 }
 
+.great-ds-header__site-title-link {
+    text-decoration: none;
+
+    &:hover {
+        @include great-ds-link-decorator;
+    }
+
+    &:focus,
+    &:focus:active {
+        @include govuk-focused-text;
+    }
+}
+
 .great-ds-header__nav-container {
     width: 100%;
     display: flex;
@@ -518,7 +531,8 @@ a.great-ds-header__site-link {
         color: $great-ds-semantic-text-hover-link;
     }
 
-    &:focus {
+    &:focus,
+    &:focus:active {
         text-decoration: none;
         outline: none;
 

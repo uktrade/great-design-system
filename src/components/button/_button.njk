@@ -5,6 +5,7 @@
             draggable="false"
             class="great-ds-button{% if classes %} {{ classes }}{% endif %}{% if cta %} great-ds-button--cta{% endif %}{% if isInternational %} great-ds-button--international{% endif %}"
             data-module="great-ds-button"
+            {% if attributes %}{{ attributes | safe }}{% endif %}
             {% if id %} id="{{ id }}" {% endif %}>
             {% if html %}{{ html | safe }}{% else %}{{ text }}{% endif %}
             {% if cta %}
@@ -19,6 +20,7 @@
             type="{% if type %}{{ type }}{% else %}input{% endif %}"
             class="great-ds-button{% if classes %} {{ classes }}{% endif %}{% if isInternational %} great-ds-button--international{% endif %}"
             data-module="great-ds-button"
+            {% if attributes %}{{ attributes | safe }}{% endif %}
             {% if id %} id="{{ id }}" {% endif %}
             {% if name %} name="{{ name }}" {% endif %}
             {% if disabled %} disabled aria-disabled="true" {% endif %}

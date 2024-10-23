@@ -3,7 +3,7 @@
 {% from "./_header-masthead-logo.njk" import greatMastheadLogo %}
 {% from "./_header-great-logo.njk" import greatLogo %}
 
-{% macro greatHeader(isInternational, isCampaign, rtl, include_link_to_great, use_domestic_logo, header_classes, global_header_classes, strapline, available_languages, current_language, sso_is_logged_in, domesticLink, internationalLink, siteTitle, actionLinkList, isAuthenticated, navItemsList, hideSearch, searchFormAction, hideMenuOnDesktop, menuItemsList, subnavItemsList, mobileSiteLink) %}
+{% macro greatHeader(isInternational, isCampaign, rtl, include_link_to_great, use_domestic_logo, header_classes, global_header_classes, strapline, available_languages, current_language, sso_is_logged_in, domesticLink, internationalLink, siteTitle, actionLinkList, isAuthenticated, navItemsList, hideSearch, hideMainNav, searchFormAction, hideMenuOnDesktop, menuItemsList, subnavItemsList, mobileSiteLink) %}
 <header class="great-ds-header {{ header_classes }}{% if rtl %} great-ds-header--rtl{% endif %}{% if isInternational %} great-ds-header--international{% endif %}{% if isCampaign %} great-ds-header--campaign{% endif %}" id="header" role="banner" data-ga-section="header">
     <div id="great-ds-global-header" class="great-ds-container great-ds-header__global {{ global_header_classes }} {% if sso_is_logged_in %}signed-in{% endif %}">
         <div class="great-ds-header__dbt-logo">
@@ -34,7 +34,7 @@
             </div>
             {% if siteTitle %}
                 <div class="great-ds-header__site-title">
-                    <span class="great-ds-header__site-title-text">{{ siteTitle }}</span>
+                    <span class="great-ds-header__site-title-text">{% if siteTitle.href %}<a class="great-ds-header__site-title-link" href="{{ siteTitle.href }}">{{ siteTitle.text }}</a>{% else %}{{ siteTitle }}{% endif %}</span>
                 </div>
             {% endif %}
             <div class="great-ds-header__nav-container">
@@ -42,19 +42,19 @@
                     <div class="great-ds-header__nav-action">
                         {% for item in actionLinkList %}
                             {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated %}
-                                <a href="{{ item.href }}" class="great-ds-header__link great-ds-header__action-link">{{ item.text }}</a>
+                                <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes }} {% endif %}class="great-ds-header__link great-ds-header__action-link">{{ item.text }}</a>
                             {% endif %}
                         {% endfor %}
                     </div>
                 {% endif %}
                 <div class="great-ds-header__nav-lower">
-                    {% if navItemsList %}
+                    {% if not hideMainNav and navItemsList %}
                         <nav class="great-ds-header__nav">
                             <ul class="great-ds-header__nav-list">
                                 {% for item in navItemsList %}
                                     {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated or not item.requiresAuth and not item.requiresNoAuth %}
                                         <li class="great-ds-header__nav-item">
-                                            <a href="{{ item.href }}" class="great-ds-header__link great-ds-header__nav-link{% if item.isCurrent %} great-ds-header__nav-link--current{% endif %}">{{ item.text }}</a>
+                                            <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes }} {% endif %}class="great-ds-header__link great-ds-header__nav-link{% if item.isCurrent %} great-ds-header__nav-link--current{% endif %}">{{ item.text }}</a>
                                         </li>
                                     {% endif %}
                                 {% endfor %}
@@ -114,7 +114,7 @@
                                     {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated or not item.requiresAuth and not item.requiresNoAuth %}
                                         <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
                                             {% if item.href and not item.button %}
-                                                <a href="{{ item.href }}" class="great-ds-header__link great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}">{{ item.text }}</a>
+                                                <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes }} {% endif %}class="great-ds-header__link great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}">{{ item.text }}</a>
                                             {% elif item.button %}
                                                 {{ greatButton(
                                                     text=item.text,
@@ -145,7 +145,7 @@
                                 {% if subnavItemsList and not menuItemsList %}
                                     {% for item in subnavItemsList %}
                                         <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
-                                                <a href="{{ item.href }}" class="great-ds-header__link great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}">{{ item.text }}</a>
+                                                <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes }} {% endif %}class="great-ds-header__link great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}">{{ item.text }}</a>
                                         </li>
                                     {% endfor %}
                                 {% endif %}
@@ -172,7 +172,6 @@
                             {% endif %}
                         </div>
                     {% endif %}
-
                 </div>
             </div>
         </div>
@@ -189,7 +188,8 @@
                 </ul>
             </nav>
         </div>
-    {% elif navItemsList %}
+    {# TODO: This is seperate as it will probably be removed when international drops it #}
+    {% elif navItemsList %} 
         {% for item in navItemsList %}
             {% if item.isCurrent and item.navItemsListChildren %}
                 <div class="great-ds-header__subnav">
@@ -198,7 +198,7 @@
                             {% for child in item.navItemsListChildren %}
                                 {% if child.requiresAuth and isAuthenticated or child.requiresNoAuth and not isAuthenticated or not child.requiresAuth and not child.requiresNoAuth %}
                                     <li class="great-ds-header__subnav-item">
-                                        <a class="great-ds-header__link great-ds-header__subnav-link" href="{{ child.href }}" data-location="{{ child.location }}" data-title="{{ child.text }}">{{ child.text }}</a>
+                                        <a class="great-ds-header__link great-ds-header__subnav-link {% if child.isCurrent %}great-ds-header__subnav-link--current{% endif %}" href="{{ child.href }}" data-location="{{ child.location }}" data-title="{{ child.text }}">{{ child.text }}</a>
                                     </li>
                                 {% endif %}
                             {% endfor %}
