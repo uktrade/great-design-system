@@ -28,7 +28,7 @@
     <div class="great-ds-header__main">
         <div class="great-ds-header__main-inner great-ds-container">
             <div class="great-ds-header__logo-container">
-                <a id="header-logo-link" alt="Great" class="great-ds-header__great-ds-logo" href="/">
+                <a id="header-logo-link" alt="Great" class="great-ds-header__great-ds-logo" href="{% if isInternational %}/international{% else %}/{% endif %}">
                     {{ greatLogo() }}
                 </a>
             </div>
