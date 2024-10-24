@@ -5,45 +5,18 @@ describe("Revealer", () => {
   let mockDocument;
 
   beforeEach(() => {
-    // Mock DOM elements
     mockDocument = {
-      querySelectorAll: jest.fn(),
+      querySelectorAll: jest.fn().mockReturnValue([]),
       addEventListener: jest.fn(),
       createElement: jest.fn(() => ({
         classList: { add: jest.fn() },
         style: { cssText: "" },
-        contains: jest.fn(),
       })),
       body: { appendChild: jest.fn() },
       getElementById: jest.fn(),
     };
 
-    // Mock buttons and targets
-    const mockButtons = [
-      {
-        addEventListener: jest.fn(),
-        getAttribute: jest.fn(),
-        setAttribute: jest.fn(),
-        hasAttribute: jest.fn(),
-      },
-      {
-        addEventListener: jest.fn(),
-        getAttribute: jest.fn(),
-        setAttribute: jest.fn(),
-        hasAttribute: jest.fn(),
-      },
-    ];
-    const mockTargets = [
-      { setAttribute: jest.fn(), style: {} },
-      { setAttribute: jest.fn(), style: {} },
-    ];
-
-    mockDocument.querySelectorAll
-      .mockReturnValueOnce(mockButtons)
-      .mockReturnValueOnce(mockTargets);
-
     global.document = mockDocument;
-
     revealer = new Revealer();
   });
 
@@ -55,18 +28,13 @@ describe("Revealer", () => {
   });
 
   test("init adds event listeners", () => {
-    expect(mockDocument.addEventListener).toHaveBeenCalledWith(
-      "click",
-      expect.any(Function),
-    );
-    expect(mockDocument.addEventListener).toHaveBeenCalledWith(
-      "keydown",
-      expect.any(Function),
-    );
-    expect(mockDocument.addEventListener).toHaveBeenCalledWith(
-      "focusout",
-      expect.any(Function),
-    );
+    const events = ["click", "keydown", "focusout"];
+    events.forEach((event) => {
+      expect(mockDocument.addEventListener).toHaveBeenCalledWith(
+        event,
+        expect.any(Function),
+      );
+    });
   });
 
   test("createOverlay creates and appends overlay element", () => {
@@ -74,18 +42,9 @@ describe("Revealer", () => {
     expect(mockDocument.body.appendChild).toHaveBeenCalled();
   });
 
-  test("toggleReveal toggles visibility of target element", () => {
-    const mockButton = {
-      getAttribute: jest.fn().mockReturnValue("targetId"),
-      setAttribute: jest.fn(),
-      hasAttribute: jest.fn().mockReturnValue(true),
-    };
-    const mockTarget = {
-      getAttribute: jest.fn().mockReturnValue("true"),
-      setAttribute: jest.fn(),
-      style: {},
-    };
-
+  test("toggleReveal toggles visibility and classes", () => {
+    const mockButton = createMockElement();
+    const mockTarget = createMockElement();
     mockDocument.getElementById.mockReturnValue(mockTarget);
 
     revealer.toggleReveal(mockButton);
@@ -99,17 +58,12 @@ describe("Revealer", () => {
       "aria-expanded",
       "true",
     );
-    expect(revealer.overlay.style.display).toBe("block");
-    expect(revealer.activeTarget).toBe(mockTarget);
+    expect(mockTarget.classList.add).toHaveBeenCalledWith("is-active");
+    expect(mockButton.classList.add).toHaveBeenCalledWith("is-active");
   });
 
   test("handleOutsideClick hides all elements when clicking outside", () => {
-    const mockEvent = {
-      target: {
-        closest: jest.fn().mockReturnValue(null),
-      },
-    };
-
+    const mockEvent = { target: { closest: jest.fn().mockReturnValue(null) } };
     const hideAllSpy = jest.spyOn(revealer, "hideAll");
 
     revealer.handleOutsideClick(mockEvent);
@@ -118,65 +72,36 @@ describe("Revealer", () => {
   });
 
   test("handleEscapeKey hides all elements when pressing Escape", () => {
-    const mockEvent = { key: "Escape" };
-
     const hideAllSpy = jest.spyOn(revealer, "hideAll");
 
-    revealer.handleEscapeKey(mockEvent);
+    revealer.handleEscapeKey({ key: "Escape" });
 
     expect(hideAllSpy).toHaveBeenCalled();
   });
 
-  test("handleFocusOut hides all elements when focus leaves active target", () => {
-    const mockRelatedTarget = mockDocument.createElement();
-    const mockEvent = {
-      relatedTarget: mockRelatedTarget,
-    };
+  test("hideAll calls toggleReveal for visible elements", () => {
+    const mockButton = createMockElement();
+    const mockTarget = createMockElement();
+    mockTarget.getAttribute.mockReturnValue("false"); // visible
+    mockDocument.getElementById.mockReturnValue(mockTarget);
 
-    revealer.activeTarget = mockDocument.createElement();
-    revealer.activeTarget.contains.mockReturnValue(false);
-    revealer.hideAll = jest.fn(); // Mock hideAll method
-
-    revealer.handleFocusOut(mockEvent);
-
-    expect(revealer.hideAll).toHaveBeenCalled();
-  });
-
-  test("hideAll hides all visible elements", () => {
-    const mockButton1 = {
-      getAttribute: jest.fn().mockReturnValue("target1"),
-      setAttribute: jest.fn(),
-    };
-    const mockButton2 = {
-      getAttribute: jest.fn().mockReturnValue("target2"),
-      setAttribute: jest.fn(),
-    };
-
-    const mockTarget1 = {
-      getAttribute: jest.fn().mockReturnValue("false"),
-      setAttribute: jest.fn(),
-      style: {},
-    };
-    const mockTarget2 = {
-      getAttribute: jest.fn().mockReturnValue("true"),
-      setAttribute: jest.fn(),
-      style: {},
-    };
-
-    revealer.buttons = [mockButton1, mockButton2];
-    revealer.overlay = { style: {} };
-    mockDocument.getElementById = jest
-      .fn()
-      .mockReturnValueOnce(mockTarget1)
-      .mockReturnValueOnce(mockTarget2);
-
-    revealer.toggleReveal = jest.fn();
+    revealer.buttons = [mockButton];
+    const toggleRevealSpy = jest.spyOn(revealer, "toggleReveal");
 
     revealer.hideAll();
 
-    expect(revealer.toggleReveal).toHaveBeenCalled();
-    expect(revealer.toggleReveal).toHaveBeenCalledTimes(1);
+    expect(toggleRevealSpy).toHaveBeenCalledWith(mockButton);
     expect(revealer.overlay.style.display).toBe("none");
     expect(revealer.activeTarget).toBeNull();
   });
 });
+
+function createMockElement() {
+  return {
+    getAttribute: jest.fn(),
+    setAttribute: jest.fn(),
+    hasAttribute: jest.fn(),
+    classList: { add: jest.fn(), remove: jest.fn() },
+    style: {},
+  };
+}

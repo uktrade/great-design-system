@@ -7,11 +7,32 @@
         use_domestic_logo=false,
         hideSearch=true,
         hideMenuOnDesktop=true,
-        siteTitle="Expand your business in the UK",
-        subnavItemsList=[
-            { href: "#", text: "UK nations and regions" },
-            { href: "#", text: "Sectors" },
-            { href: "#", text: "Find opportunities" }
+        hideMainNav=true,
+        domesticLink={ href: "#", text: "Export from the UK" },
+        internationalLink={ href: "#", text: "Invest in the UK" },
+        siteTitle={
+            text: "Expand your business in the UK",
+            href: "#"
+        },
+        navItemsList=[
+            {
+                href: "#", 
+                text: "Expand your business",
+                isCurrent: true,
+                navItemsListChildren: [
+                    { href: "#", text: "Sign in", requiresNoAuth: true },
+                    { href: "#", text: "Sign out", requiresAuth: true },
+                    { href: "#", text: "Profile", requiresAuth: true }
+                ]
+            },
+            { 
+                href: "#", 
+                text: "Investment opportunities"
+            },
+            { 
+                href: "#", 
+                text: "Buy from the UK" 
+            }
         ],
         menuItemsList=[
             { href: "#", text: "Expand your business" },

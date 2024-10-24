@@ -10,7 +10,7 @@ $great-ds-button-display: inline-block;
 $great-ds-button-position: relative;
 $great-ds-button-width: 100%;
 $great-ds-button-margin: 0 0 20px;
-$great-ds-button-border-width: 1px;
+$great-ds-button-border-width: 2px;
 $great-ds-button-border-radius: 0;
 $great-ds-button-text-align: center;
 $great-ds-button-vertical-align: top;
@@ -67,7 +67,7 @@ $great-ds-button-outline: 2px solid transparent;
 }
 
 // Mixin for button states
-@mixin great-ds-button-states($bg-color, $bg-hover, $text-color, $border, $border-hover, $has-border: false, $has-small-shadow: false) {
+@mixin great-ds-button-states($bg-color, $bg-hover, $text-color, $border, $border-hover, $has-border: false, $is-inverted: false) {
     background-color: $bg-color;
     color: $text-color;
     box-shadow: 0 $great-ds-button-shadow-size 0 $border;
@@ -77,17 +77,44 @@ $great-ds-button-outline: 2px solid transparent;
         border-bottom: none;
     }
 
-    @if $has-small-shadow {
-        box-shadow: 0 1px 0 $border;
+    @if $is-inverted {
+        box-shadow: 0 2px 0 $border;
     }
 
-    &:hover,
-    &:focus:hover,
-    &:active:not(:focus) {
-        color: $text-color;
-        background-color: $bg-hover;
-        box-shadow: 0 $great-ds-button-shadow-size 0 $border-hover;
-        outline: $great-ds-button-outline;
+    $focus-styles: (
+        outline: $great-ds-button-outline,
+        color: $great-ds-semantic-text-focus-button-label-focus,
+        background-color: $great-ds-semantic-interaction-focus,
+        box-shadow: 0 $great-ds-button-shadow-size 0 $great-ds-semantic-border-focus-button-border,
+        border: $great-ds-button-border-width solid $great-ds-semantic-border-focus-button-border,
+        border-bottom: none
+    );
+
+    $hover-styles: (
+        color: $text-color,
+        background-color: $bg-hover,
+        box-shadow: 0 $great-ds-button-shadow-size 0 $border-hover,
+        outline: $great-ds-button-outline,
+        text-decoration: none
+    );
+
+    &:focus,
+    &:focus:hover {
+        @each $property, $value in $focus-styles {
+            #{$property}: $value;
+        }
+
+        @if $is-inverted {
+            box-shadow: 0 1px 0 $great-ds-semantic-border-focus-button-border;
+        }
+    }
+
+    &:hover:not(:focus),
+    &:active,
+    &:focus:active {
+        @each $property, $value in $hover-styles {
+            #{$property}: $value;
+        }
         text-decoration: none !important;
 
         @if $has-border {
@@ -96,51 +123,30 @@ $great-ds-button-outline: 2px solid transparent;
             border-bottom: none;
         }
 
-        @if $has-small-shadow {
-            box-shadow: 0 1px 0 $border;
+        @if $is-inverted {
+            border: $great-ds-button-border-width solid $border;
+            box-shadow: 0 2px 0 $border;
+            color: $bg-color;
+            border-bottom: none;
         }
     }
-    
-    &:focus:hover {
-        border: $great-ds-button-border-width solid $great-ds-semantic-border-focus-button-border;
-        border-bottom: none;
-    }
 
-    &:focus {
-        outline: $great-ds-button-outline;
-        color: $great-ds-semantic-text-focus-button-label-focus;
-        background-color: $great-ds-semantic-interaction-focus;
-        box-shadow: 0 $great-ds-button-shadow-size 0 $great-ds-semantic-border-focus-button-border;
-        border: $great-ds-button-border-width solid $great-ds-semantic-border-focus-button-border;
-        border-bottom: none;
-
-        @if $has-small-shadow {
-            box-shadow: 0 1px 0 $great-ds-semantic-border-focus-button-border;
+    &:active,
+    &:active:hover {
+        @if not $has-border {
+            top: 2px;
+            border-color: transparent;
+            box-shadow: 0 1px 0 $border-hover;
+        } @else {
+            box-shadow: 0 2px 0 $border-hover;
         }
-    }
-}
-
-// Mixin for warning and transactional button shared styles
-@mixin great-ds-button-warning-transactional-states($bg-color, $bg-hover, $text-color, $border, $border-hover) {
-    @include great-ds-button-states($bg-color, $bg-hover, $text-color, $border, $border-hover);
-
-    &:active:not(:focus),
-    &:focus:hover,
-    &:hover {
-        border: $great-ds-button-border-width solid transparent;
-        border-bottom: none;
-    }
-
-    &:hover,
-    &:focus:hover {
-        box-shadow: 0 $great-ds-button-shadow-size 0 $border-hover;
     }
 }
 
 // Mixin for search button styles
 @mixin great-ds-button-search-states($bg-color, $bg-hover-color, $text-color, $outline-color, $border-color) {
     margin: 0 0 0 -2px;
-    height: 54px;
+    height: 56px;
     width: 60px;
     box-shadow: none;
 
@@ -150,7 +156,7 @@ $great-ds-button-outline: 2px solid transparent;
         outline: 3px solid $outline-color;
         outline-offset: 0;
         border: 4px solid $border-color !important;
-        padding: 10px 10px 8px 11px;
+        padding: 10px 10px 7px 11px;
     }
 }
 
@@ -175,10 +181,27 @@ $great-ds-button-outline: 2px solid transparent;
         $great-ds-semantic-border-hover-primary-button-border
     );
 
-    &:hover,
-    &:active:not(:focus),
-    &:focus:hover {
-        color: $great-ds-semantic-interaction-default-primary-button;
+    $active-hover-styles: (
+        border-color: transparent,
+        color: $great-ds-semantic-interaction-default-primary-button,
+    );
+
+    &:hover:not(:focus) {
+        @each $property, $value in $active-hover-styles {
+            #{$property}: $value;
+        }
+        background-color: $great-ds-semantic-surface-background-white;
+        box-shadow: 0 $great-ds-button-shadow-size 0 $great-ds-semantic-interaction-default-primary-button;
+    }
+
+    &:active,
+    &:active:hover,
+    &:focus:active {
+        @each $property, $value in $active-hover-styles {
+            #{$property}: $value;
+        }
+        background-color: $great-ds-semantic-surface-background-white !important;
+        box-shadow: 0 1px 0 $great-ds-semantic-interaction-default-primary-button;
     }
 }
 
@@ -192,17 +215,11 @@ $great-ds-button-outline: 2px solid transparent;
         $great-ds-semantic-border-hover-secondary-button-border,
         true
     );
-
-    &:hover,
-    &:focus:hover {
-        border: $great-ds-button-border-width solid $great-ds-semantic-border-hover-secondary-button-border;
-        border-bottom: none;
-    }
 }
 
 // Placeholder for warning button styles
 %great-ds-button-warning {
-    @include great-ds-button-warning-transactional-states(
+    @include great-ds-button-states(
         $great-ds-semantic-interaction-default-error,
         $great-ds-semantic-interaction-hover-error,
         $great-ds-semantic-text-default-error-button-label,
@@ -213,7 +230,7 @@ $great-ds-button-outline: 2px solid transparent;
 
 // Placeholder for transactional button styles
 %great-ds-button-transactional {
-    @include great-ds-button-warning-transactional-states(
+    @include great-ds-button-states(
         $great-ds-semantic-interaction-default-success,
         $great-ds-semantic-interaction-hover-success,
         $great-ds-semantic-text-default-success-button-label,
@@ -282,32 +299,27 @@ $great-ds-button-outline: 2px solid transparent;
     }
 }
 
-// Placeholder for inverted button styles
-%great-ds-button-inverted {
+// Mixin for inverted button styles
+@mixin great-ds-button-inverted($background, $hover-background, $hover-text-color) {
     @include great-ds-button-states(
-        transparent,
-        $great-ds-semantic-interaction-hover-primary-button,
+        $background,
         $great-ds-semantic-surface-background-white,
         $great-ds-semantic-surface-background-white,
-        $great-ds-semantic-surface-background-white,
+        $hover-background,
+        $hover-text-color,
         true,
         true
     );
     margin-bottom: 0;
     font-family: $great-ds-type-family-great;
 
-    &:focus,
-    &:focus:hover {
-        border: $great-ds-button-border-width solid $great-ds-semantic-interaction-focus !important;
-        box-shadow: 0 1px 0 $great-ds-semantic-interaction-focus !important;
-        border-bottom: none !important;
-    }
-
-    // International variant for inverted buttons
-    &.great-ds-button--international {
-        &:hover:not(:focus) {
-            background-color: $great-ds-semantic-interaction-hover-error;
-        }
+    &:focus:not(:active),
+    &:focus:hover:not(:active) {
+        color: $great-ds-semantic-text-focus-button-label-focus;
+        border: $great-ds-button-border-width solid $great-ds-semantic-interaction-focus;
+        box-shadow: 0 2px 0 $great-ds-semantic-interaction-focus;
+        border-bottom: none;
+        background-color: $great-ds-semantic-interaction-focus;
     }
 }
 
@@ -325,6 +337,10 @@ $great-ds-button-outline: 2px solid transparent;
         $great-ds-semantic-interaction-focus,
         $great-ds-semantic-border-focus-button-border
     );
+
+    &:active {
+        top: 0px;
+    }
 }
 
 // Placeholder for menu button styles
@@ -403,10 +419,22 @@ $great-ds-button-outline: 2px solid transparent;
     @extend %great-ds-button-inline;
 }
 
-// Inverted button styles
+// Base inverted button styles (domestic)
 .great-ds-button--inverted {
-    @extend %great-ds-button-base;
-    @extend %great-ds-button-inverted;
+    @include great-ds-button-inverted(
+        $great-ds-semantic-surface-background-great-ds-blue,
+        $great-ds-semantic-surface-background-white,
+        $great-ds-semantic-surface-background-great-ds-blue
+    );
+}
+
+// International variant for inverted buttons
+.great-ds-button--inverted.great-ds-button--international {
+    @include great-ds-button-inverted(
+        $great-ds-semantic-surface-background-great-ds-red,
+        $great-ds-semantic-surface-background-white,
+        $great-ds-semantic-surface-background-great-ds-red
+    );
 }
 
 // Icon button styles
@@ -456,3 +484,4 @@ $great-ds-button-outline: 2px solid transparent;
     @extend %great-ds-button-base;
     @extend %great-ds-button-primary-on-dark;
 }
+
