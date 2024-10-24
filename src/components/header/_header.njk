@@ -198,7 +198,7 @@
                             {% for child in item.navItemsListChildren %}
                                 {% if child.requiresAuth and isAuthenticated or child.requiresNoAuth and not isAuthenticated or not child.requiresAuth and not child.requiresNoAuth %}
                                     <li class="great-ds-header__subnav-item">
-                                        <a class="great-ds-header__link great-ds-header__subnav-link {% if child.isCurrent %}great-ds-header__subnav-link--current{% endif %}" href="{{ child.href }}"{% if child.location %} data-location="{{ child.location }}" data-title="{{ child.text }}"{% endif %}{% if child.isCurrent %} aria-current="page"{% endif %}{% if item.attributes %} {{ item.attributes | safe }}{% endif %}>{{ child.text }}</a>
+                                        <a class="great-ds-header__link great-ds-header__subnav-link {% if child.isCurrent %}great-ds-header__subnav-link--current{% endif %}" href="{{ child.href }}"{% if child.location %} data-location="{{ child.location }}" data-title="{{ child.text }}"{% endif %}{% if child.isCurrent %} aria-current="page"{% endif %}{% if child.attributes %} {{ child.attributes | safe }}{% endif %}>{{ child.text }}</a>
                                     </li>
                                 {% endif %}
                             {% endfor %}
