@@ -42,7 +42,7 @@
                     <div class="great-ds-header__nav-action">
                         {% for item in actionLinkList %}
                             {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated %}
-                                <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes }} {% endif %}class="great-ds-header__link great-ds-header__action-link">{{ item.text }}</a>
+                                <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes | safe }} {% endif %}class="great-ds-header__link great-ds-header__action-link"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}>{{ item.text }}</a>
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -54,7 +54,7 @@
                                 {% for item in navItemsList %}
                                     {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated or not item.requiresAuth and not item.requiresNoAuth %}
                                         <li class="great-ds-header__nav-item">
-                                            <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes }} {% endif %}class="great-ds-header__link great-ds-header__nav-link{% if item.isCurrent %} great-ds-header__nav-link--current{% endif %}">{{ item.text }}</a>
+                                            <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes | safe }} {% endif %}class="great-ds-header__link great-ds-header__nav-link{% if item.isCurrent %} great-ds-header__nav-link--current{% endif %}"{% if item.isCurrent %} aria-current="page"{% endif %}{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}>{{ item.text }}</a>
                                         </li>
                                     {% endif %}
                                 {% endfor %}
@@ -90,7 +90,7 @@
                                 <ul class="great-ds-header__languages-list">
                                     {% for language in available_languages %}
                                         <li class="great-ds-header__languages-item{% if current_language == language.language_code %} great-ds-header__languages-item--current{% endif %}">
-                                            <a class="great-ds-header__languages-link great-ds-header__link" href="?lang={{ language.language_code }}" aria-current="{% if current_language == language.language_code %}true{% else %}false{% endif %}" lang="{{ language.language_code }}">{{ language.display_name }}</a>
+                                            <a class="great-ds-header__languages-link great-ds-header__link" href="?lang={{ language.language_code }}" aria-current="{% if current_language == language.language_code %}true{% else %}false{% endif %}" lang="{{ language.language_code }}"{% if language.location %} data-location="{{ language.location }}" data-title="{{ language.display_name }}"{% endif %}>{{ language.display_name }}</a>
                                         </li>
                                     {% endfor %}
                                 </ul>
@@ -114,7 +114,7 @@
                                     {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated or not item.requiresAuth and not item.requiresNoAuth %}
                                         <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
                                             {% if item.href and not item.button %}
-                                                <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes }} {% endif %}class="great-ds-header__link great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}">{{ item.text }}</a>
+                                                <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes | safe }} {% endif %}class="great-ds-header__link great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}>{{ item.text }}</a>
                                             {% elif item.button %}
                                                 {{ greatButton(
                                                     text=item.text,
@@ -131,7 +131,7 @@
                                                         {% for child in subItem.navItemsListChildren %}
                                                             {% if child.requiresAuth and isAuthenticated or child.requiresNoAuth and not isAuthenticated or not child.requiresAuth and not child.requiresNoAuth %}
                                                                 <li class="great-ds-header__submenu-item">
-                                                                    <a class="great-ds-header__link great-ds-header__submenu-link {% if child.isCurrent %}great-ds-header__submenu-link--current{% endif %}" href="{{ child.href }}" data-location="{{ child.location }}" data-title="{{ child.text }}">{{ child.text }}</a>
+                                                                    <a {% if item.attributes %}{{ item.attributes | safe }} {% endif %}class="great-ds-header__link great-ds-header__submenu-link {% if child.isCurrent %}great-ds-header__submenu-link--current{% endif %}" href="{{ child.href }}"{% if child.location %} data-location="{{ child.location }}" data-title="{{ child.text }}"{% endif %}{% if child.isCurrent %} aria-current="page"{% endif %}>{{ child.text }}</a>
                                                                 </li>
                                                             {% endif %}
                                                         {% endfor %}
@@ -145,7 +145,7 @@
                                 {% if subnavItemsList and not menuItemsList %}
                                     {% for item in subnavItemsList %}
                                         <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
-                                                <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes }} {% endif %}class="great-ds-header__link great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}">{{ item.text }}</a>
+                                                <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes | safe }} {% endif %}class="great-ds-header__link great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}"{% if item.isCurrent %} aria-current="page"{% endif %}{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}>{{ item.text }}</a>
                                         </li>
                                     {% endfor %}
                                 {% endif %}
@@ -182,7 +182,7 @@
                 <ul class="great-ds-header__subnav-list">
                     {% for item in subnavItemsList %}
                         <li class="great-ds-header__subnav-item">
-                            <a class="great-ds-header__link great-ds-header__subnav-link {% if item.isCurrent %}great-ds-header__subnav-link--current{% endif %}" href="{{ item.href }}" data-location="{{ item.location }}" data-title="{{ item.text }}">{{ item.text }}</a>
+                            <a class="great-ds-header__link great-ds-header__subnav-link {% if item.isCurrent %}great-ds-header__subnav-link--current{% endif %}" href="{{ item.href }}"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}{% if item.isCurrent %} aria-current="page"{% endif %}>{{ item.text }}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -198,7 +198,7 @@
                             {% for child in item.navItemsListChildren %}
                                 {% if child.requiresAuth and isAuthenticated or child.requiresNoAuth and not isAuthenticated or not child.requiresAuth and not child.requiresNoAuth %}
                                     <li class="great-ds-header__subnav-item">
-                                        <a class="great-ds-header__link great-ds-header__subnav-link {% if child.isCurrent %}great-ds-header__subnav-link--current{% endif %}" href="{{ child.href }}" data-location="{{ child.location }}" data-title="{{ child.text }}">{{ child.text }}</a>
+                                        <a class="great-ds-header__link great-ds-header__subnav-link {% if child.isCurrent %}great-ds-header__subnav-link--current{% endif %}" href="{{ child.href }}"{% if child.location %} data-location="{{ child.location }}" data-title="{{ child.text }}"{% endif %}{% if child.isCurrent %} aria-current="page"{% endif %}>{{ child.text }}</a>
                                     </li>
                                 {% endif %}
                             {% endfor %}
