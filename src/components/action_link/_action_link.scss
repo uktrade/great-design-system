@@ -3,8 +3,11 @@
     align-items: center;
     width:fit-content;
     outline: none;
+    @include great-ds-link-decorator;
     
     &:hover {
+        text-decoration-color: $great-ds-semantic-text-hover-link;
+
         > * .great-ds-action-link__image-icon-background {
             fill: $great-ds-semantic-interaction-hover-icon-link;
         }
@@ -14,6 +17,7 @@
     }
     &:focus {
         text-decoration: none;
+
         > * .great-ds-action-link__image-icon-background {
             fill: $great-ds-semantic-interaction-default-icon;
         }
