@@ -25,11 +25,8 @@ function convertNunjucksToHtml(content) {
     },
   );
 
-  // Remove {% set ... %} blocks, including multiline ones
-  htmlContent = htmlContent.replace(
-    /{% set [\s\S]*?%}/g,
-    "", // Remove the entire set block
-  );
+  // Remove {% set ... %} blocks
+  htmlContent = htmlContent.replace(/{% set [\s\S]*?%}/g, "");
 
   // Replace macro calls with include statements
   htmlContent = htmlContent.replace(
@@ -49,7 +46,7 @@ function convertNunjucksToHtml(content) {
           return `{% include "${imports[macroName]}" %}`;
         }
       }
-      return match; // Keep the macro call if not found in imports
+      return match;
     },
   );
 

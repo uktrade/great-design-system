@@ -1,10 +1,11 @@
-{% macro greatButton(href, input, text, classes, cta, id, html, type, name, disabled, preventDoubleClick, value, attributes, iconPrefix, iconSuffix) %}
+{% macro greatButton(href, input, text, classes, cta, id, html, type, name, disabled, preventDoubleClick, value, attributes, iconPrefix, iconSuffix, isInternational) %}
     {% if href %}
         <a href="{{ href }}"
             role="button"
             draggable="false"
-            class="great-ds-button{% if classes %} {{ classes }}{% endif %}{% if cta %} great-ds-button--cta{% endif %}"
+            class="great-ds-button{% if classes %} {{ classes }}{% endif %}{% if cta %} great-ds-button--cta{% endif %}{% if isInternational %} great-ds-button--international{% endif %}"
             data-module="great-ds-button"
+            {% if attributes %}{{ attributes | safe }}{% endif %}
             {% if id %} id="{{ id }}" {% endif %}>
             {% if html %}{{ html | safe }}{% else %}{{ text }}{% endif %}
             {% if cta %}
@@ -17,8 +18,9 @@
         <input
             value="{{ text }}"
             type="{% if type %}{{ type }}{% else %}input{% endif %}"
-            class="great-ds-button{% if classes %} {{ classes }}{% endif %}"
+            class="great-ds-button{% if classes %} {{ classes }}{% endif %}{% if isInternational %} great-ds-button--international{% endif %}"
             data-module="great-ds-button"
+            {% if attributes %}{{ attributes | safe }}{% endif %}
             {% if id %} id="{{ id }}" {% endif %}
             {% if name %} name="{{ name }}" {% endif %}
             {% if disabled %} disabled aria-disabled="true" {% endif %}
@@ -27,7 +29,7 @@
         <button
             {% if value %} value="{{ value }}" {% endif %}
             type="{% if type %}{{ type }}{% else %}submit{% endif %}"
-            class="great-ds-button{% if classes %} {{ classes }}{% endif %}{% if cta %} great-ds-button--cta{% endif %}"
+            class="great-ds-button{% if classes %} {{ classes }}{% endif %}{% if cta %} great-ds-button--cta{% endif %}{% if isInternational %} great-ds-button--international{% endif %}"
             data-module="great-ds-button"
             {% if id %} id="{{ id }}" {% endif %}
             {% if attributes %}{{ attributes | safe }}{% endif %}

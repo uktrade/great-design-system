@@ -1,0 +1,33 @@
+{% macro greatFooter(isInternational, currentYear, footerLinks) %}
+    <footer id="footer"
+        dir="ltr"
+        data-ga-section="footer"
+        class="great-ds-footer {% if isInternational %}great-ds-footer--international{% endif %}">
+        <div class="great-ds-footer__container">
+            <div class="great-ds-container">
+                <ul class="great-ds-footer__link-list">
+                    {% for link in footerLinks %}     
+                        <li class="great-ds-footer__link-list-item">
+                            <a href="{{ link.href }}"
+                            title="{{ link.title }}"
+                            {% if link.target %} target="{{ link.target }}" {% endif %}
+                            {% if link.rel %} rel="{{ link.rel }}" {% endif %} >
+                            {{ link.text }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="great-ds-footer__copyright-container">
+            <div class="great-ds-container">
+                {% if isInternational %}
+                    {% include "./_footer-gov-logo.njk" %}
+                {% else %}
+                    {% include "./_footer-dbt-logo.njk" %}
+                {% endif %}
+                <p class="great-ds-footer__copyright">© Crown copyright {{ currentYear }}. All rights reserved.</p>
+            </div>
+    </div>
+    </footer>
+{% endmacro %}

@@ -1,0 +1,91 @@
+.great-ds-footer {
+  background-color: $great-ds-semantic-surface-background-great-ds-blue;
+}
+
+.great-ds-footer__container {
+  justify-content: center;
+  display: flex;
+  padding-top: $great-ds-spacing-9-large;
+  padding-bottom: $great-ds-spacing-4-large;
+
+  > div {
+    width:100%;
+  }
+}
+
+.great-ds-footer__link-list {
+  padding-inline-start: 0px;
+  display: inline-flex;
+  gap: $great-ds-spacing-4-large;
+  flex-wrap: wrap;
+  list-style-type: none;
+  flex-direction: row;
+  margin: 0;
+}
+
+
+.great-ds-footer__link-list-item {
+  width: 100%;
+  @include govuk-media-query($from: tablet) {
+    width: auto;
+  }
+
+  > a {
+    font-family: $great-ds-type-family-great;
+    font-size: $great-ds-type-size-body;
+    color: $great-ds-semantic-surface-background-white;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  .great-ds-footer--international & {
+    > a {
+      font-family: $great-ds-type-family-great-ds-international;
+    }
+  }
+}
+
+.great-ds-footer__copyright-container {
+  background-color: $great-ds-semantic-surface-background-white;
+  display: flex;
+  div {
+    width: 100%;
+    display: inline-flex;
+    padding-top: $great-ds-spacing-4-large;
+    padding-bottom: $great-ds-spacing-4-large;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $great-ds-spacing-4-large;
+
+    @media only screen and (min-width: 640px) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}
+
+.great-ds-footer__copyright {
+  font-size: $great-ds-type-size-body-small;
+  margin: 0;
+
+  @media only screen and (min-width: 640px) {
+    font-size: $great-ds-type-size-body;
+  }
+
+  .great-ds-footer--international & {
+    font-family: $great-ds-type-family-great-ds-international;
+  }
+}
+
+.great-ds-footer__dbt-logo {
+  height: 30px;
+  min-width: 270px;
+} 
+
+.great-ds-footer__gov-logo {
+  width: 153px; 
+  height: 30px;
+} 

@@ -4,8 +4,9 @@
 {% block content %}
     {{ greatHeader(
         isAuthenticated=true,
-        domesticLink={ href: "#", text: "For UK businesses" },
-        internationalLink={ href: "#", text: "For international businesses" },
+        use_domestic_logo=true,
+        domesticLink={ href: "#", text: "Export from the UK" },
+        internationalLink={ href: "#", text: "Invest in the UK" },
         searchFormAction="#",
         navItemsList=[
             { href: "#", text: "Learn to export" },
@@ -29,6 +30,7 @@
         actionLinkList=[
             { href: "#", text: "Dashboard", requiresAuth: true },
             { href: "#", text: "Sign in", requiresNoAuth: true }
-        ]
+        ],
+        mobileSiteLink={ href: "#", text: "Site for international businesses" }
     ) }}
 {% endblock %}
