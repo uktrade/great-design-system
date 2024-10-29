@@ -2,7 +2,7 @@
 {% from "../action_link/_action_link.njk" import greatActionLink %}
 {% from "../responsive_image/_responsive_image.njk" import greatResponsiveImage %}
 
-{% macro greatCtaBanner(backgroundClass, headingText, leadingText, listItems, ctaButtonText, signUpLink, loginUrl, landscapeImagePath, portraitImagePath) %}
+{% macro greatCtaBanner(backgroundClass, headingText, leadingText, listItems, ctaButtonText, signUpLink, loginUrl, landscapeImagePath, portraitImagePath, actionLinkClass) %}
     <div class="{% if backgroundClass %}{{ backgroundClass }}{% else %}great-ds-cta_banner--bg-light-blue{% endif %}">
         <div class="great-ds-container govuk-!-padding-top-7">
             <div class="govuk-grid-row">
@@ -19,7 +19,7 @@
                         </ul>
                     {% endif %}
                     <div class="great-ds-cta_banner__action-link-container">
-                        {{ greatActionLink(linkText = "Sign up to get started", linkHref = "#") }}
+                        {{ greatActionLink(linkText = "Sign up to get started", linkHref = "#", linkClass = actionLinkClass) }}
                     </div>
                     {% if signUpLink %} 
                         <p class="great-ds-cta_banner-signup-link-text govuk-!-margin-bottom-9">
