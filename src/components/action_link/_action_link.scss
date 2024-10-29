@@ -18,12 +18,13 @@
     }
     &:focus {
         text-decoration: none;
+        @include govuk-focused-text;
 
         > * .great-ds-action-link__image-icon-background {
             fill: $great-ds-semantic-interaction-default-icon;
         }
         .great-ds-action-link__text {
-            @include govuk-focused-text;
+            color: $great-ds-semantic-text-default-text;
         }
     }
 }
@@ -46,9 +47,14 @@
 
     .great-ds-action-link__text {
         color: $great-ds-semantic-text-default-white-text;
-        
-        &:hover {
-            color: $great-ds-semantic-text-default-white-text;
+    }
+
+    &:hover {
+        > * .great-ds-action-link__image-icon-background {
+            fill: $great-ds-semantic-interaction-default-icon-white;
+        }
+        > * .great-ds-action-link__image-icon-arrow {
+            fill: $great-ds-semantic-interaction-default-icon-link;
         }
     }
 }
@@ -58,9 +64,14 @@
 
     .great-ds-action-link__text {
         color: $great-ds-semantic-text-default-text;
+    }
 
-        &:hover {
-            color: $great-ds-semantic-text-default-text;
+    &:hover {
+        > * .great-ds-action-link__image-icon-background {
+            fill: $great-ds-semantic-interaction-default-icon-great-ds-blue;
+        }
+        > * .great-ds-action-link__image-icon-arrow {
+            fill: $great-ds-semantic-interaction-default-icon-white;
         }
     }
 }
