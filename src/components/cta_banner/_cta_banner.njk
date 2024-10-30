@@ -3,7 +3,7 @@
 {% from "../responsive_image/_responsive_image.njk" import greatResponsiveImage %}
 
 {% macro greatCtaBanner(backgroundClass, headingText, leadingText, listItems, ctaButtonText, signUpLink, loginUrl, landscapeImagePath, portraitImagePath, actionLinkClass) %}
-    <div class="great-ds-cta-banner {% if backgroundClass %}{{ backgroundClass }}{% else %}great-ds-cta-banner--bg-light-blue{% endif %}">
+    <div class="great-ds-cta-banner {% if backgroundClass %}{{ backgroundClass }}{% endif %}">
         <div class="great-ds-container govuk-!-padding-top-7">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-half">
