@@ -1,65 +1,68 @@
-.great-ds-cta_banner--bg-light-blue{
+.great-ds-cta-banner--bg-light-blue{
   background-color: $great-ds-semantic-surface-background-light-blue
 }
 
-.great-ds-cta_banner--bg-dark-blue {
+.great-ds-cta-banner--bg-dark-blue {
   background-color: govuk-colour("dark-blue");
 }
 
-.great-ds-cta_banner--bg-green {
+.great-ds-cta-banner--bg-green {
   background-color: $great-ds-semantic-surface-background-light-green;
 }
 
-.great-ds-cta_banner-heading {
+.great-ds-cta-banner-heading {
   font-weight: 600;
   line-height: $great-ds-type-line-height-heading-l-large;
+  font-size: $great-ds-type-size-heading-l-large;
 
-  .great-ds-cta_banner--bg-dark-blue & {
+  .great-ds-cta-banner--bg-dark-blue & {
     color: $great-ds-semantic-text-default-white-text;
   }
-  .great-ds-cta_banner--bg-green & {
+  .great-ds-cta-banner--bg-green & {
     color: $great-ds-semantic-text-default-text;
   }
 }
 
 
-.great-ds-cta_banner-leading-text {
-  .great-ds-cta_banner--bg-dark-blue & {
+.great-ds-cta-banner-leading-text {
+  .great-ds-cta-banner--bg-dark-blue & {
     color: $great-ds-semantic-text-default-white-text;
   }
-  .great-ds-cta_banner--bg-green & {
+  .great-ds-cta-banner--bg-green & {
     color: $great-ds-semantic-text-default-text;
   }
 }
 
-.great-ds-cta_banner-signup-link-text {
-  .great-ds-cta_banner--bg-dark-blue & {
+.great-ds-cta-banner-signup-link-text {
+  .great-ds-cta-banner--bg-dark-blue & {
     color: $great-ds-semantic-text-default-white-text;
   }
-  .great-ds-cta_banner--bg-green & {
+  .great-ds-cta-banner--bg-green & {
     color: $great-ds-semantic-text-default-text;
   }
 }
 
-.great-ds-cta_banner-signup-link { // TODO: Duplicate govuk-link and govuk-link-no-visited-state somewhere?
-  .great-ds-cta_banner--bg-dark-blue & {
+.great-ds-cta-banner-signup-link { // TODO: Duplicate govuk-link and govuk-link-no-visited-state somewhere?
+  .great-ds-cta-banner--bg-dark-blue & {
     color: $great-ds-semantic-text-default-white-text;
   }
-  .great-ds-cta_banner--bg-green & {
+  .great-ds-cta-banner--bg-green & {
     color: $great-ds-semantic-text-default-text;
   }
 }
 
-.great-ds-cta_banner__tick-list {
+.great-ds-cta-banner__tick-list {
     list-style: none;
     padding-inline-start: 0px;
     margin-bottom: 0px;
 }
 
-.great-ds-cta_banner__tick-list-item {
+.great-ds-cta-banner__tick-list-item {
   display: block;
   clear: left;
   padding: 7.5px 0;
+  font-size: $great-ds-type-size-body-small;
+  line-height: $great-ds-type-line-height-body-small;
 
   &:before {
     content: '';
@@ -78,7 +81,7 @@
     background-position: center;
   }
 
-  .great-ds-cta_banner--bg-dark-blue & {
+  .great-ds-cta-banner--bg-dark-blue & {
     color: $great-ds-semantic-text-default-white-text;
 
     &:before{
@@ -88,12 +91,12 @@
     }
   }
 
-  .great-ds-cta_banner--bg-green & {
+  .great-ds-cta-banner--bg-green & {
     color: $great-ds-semantic-text-default-text;
   }
 }
 
-.great-ds-cta_banner__action-link-container {
-  margin-top: $great-ds-spacing-fixed-spacing-2;
-  margin-bottom: $great-ds-spacing-fixed-spacing-2;
+.great-ds-cta-banner__action-link-container {
+  margin-top: $great-ds-spacing-fixed-spacing-4;
+  margin-bottom: $great-ds-spacing-fixed-spacing-4;
 }

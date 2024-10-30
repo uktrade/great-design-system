@@ -3,27 +3,27 @@
 {% from "../responsive_image/_responsive_image.njk" import greatResponsiveImage %}
 
 {% macro greatCtaBanner(backgroundClass, headingText, leadingText, listItems, ctaButtonText, signUpLink, loginUrl, landscapeImagePath, portraitImagePath, actionLinkClass) %}
-    <div class="{% if backgroundClass %}{{ backgroundClass }}{% else %}great-ds-cta_banner--bg-light-blue{% endif %}">
+    <div class="great-ds-cta-banner {% if backgroundClass %}{{ backgroundClass }}{% else %}great-ds-cta-banner--bg-light-blue{% endif %}">
         <div class="great-ds-container govuk-!-padding-top-7">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-half">
-                    <h1 class="great-ds-cta_banner-heading">{{ headingText}}</h2>
+                    <h1 class="great-ds-cta-banner-heading">{{ headingText}}</h2>
                     {% if leadingText %}
-                        <p class="great-ds-cta_banner-leading-text">{{ leadingText }}</p>
+                        <p class="great-ds-cta-banner-leading-text">{{ leadingText }}</p>
                     {% endif %}
                     {% if listItems %}
-                        <ul class="great-ds-cta_banner__tick-list">
+                        <ul class="great-ds-cta-banner__tick-list">
                             {% for item in listItems %}
-                                <li class="great-ds-cta_banner__tick-list-item"> {{ item }} </li>
+                                <li class="great-ds-cta-banner__tick-list-item"> {{ item }} </li>
                             {% endfor %}
                         </ul>
                     {% endif %}
-                    <div class="great-ds-cta_banner__action-link-container">
+                    <div class="great-ds-cta-banner__action-link-container">
                         {{ greatActionLink(linkText = "Sign up to get started", linkHref = "#", linkClass = actionLinkClass) }}
                     </div>
                     {% if signUpLink %} 
-                        <p class="great-ds-cta_banner-signup-link-text govuk-!-margin-bottom-9">
-                            {{ signUpLink.preLinkText }} <a href="{{ signUpLink.href }}" class="great-ds-cta_banner-signup-link govuk-link govuk-link--no-visited-state">{{ signUpLink.linkText }}</a>
+                        <p class="great-ds-cta-banner-signup-link-text govuk-!-margin-bottom-9">
+                            {{ signUpLink.preLinkText }} <a href="{{ signUpLink.href }}" class="great-ds-cta-banner-signup-link govuk-link govuk-link--no-visited-state">{{ signUpLink.linkText }}</a>
                         </p>
                     {% endif %}
                 </div>
