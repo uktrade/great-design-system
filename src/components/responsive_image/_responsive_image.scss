@@ -1,7 +1,7 @@
 .great-ds-responsive-image{
     > img {
       @media only screen and (max-width: 640px) {
-        max-width: 100%; // TODO: autoscale with width 100% or cut off both sides like in figma?
+        max-width: 100%;
       }
     }
   }
