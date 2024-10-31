@@ -138,7 +138,7 @@
     position: absolute;
     top: 15px;
     left: 15px;
-    z-index: 998;
+    z-index: 2;
     width: auto;
     padding-right: $great-ds-spacing-6;
 
@@ -245,6 +245,15 @@
         width: auto;
         flex-grow: 0;
         flex: 1;
+    }
+
+
+    .great-ds-header__main-inner:not(:has(.great-ds-header__languages)) & {
+        margin-top: 20px;
+
+        @include govuk-media-query($from: desktop) {
+            margin-top: 0;
+        }
     }
 }
 
@@ -392,7 +401,7 @@
     width: auto;
     margin-bottom: 30px;
     color: $great-ds-semantic-text-default-white-text;
-    z-index: 999;
+    z-index: 3;
 
     .great-ds-header__main-inner:not(:has(.great-ds-header__nav-action)) & {
         margin-top: 20px;

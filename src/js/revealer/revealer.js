@@ -28,7 +28,7 @@ export default class Revealer {
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             display: none;
-            z-index: 998;
+            z-index: 2;
         `;
     document.body.appendChild(overlay);
     return overlay;

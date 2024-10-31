@@ -3,7 +3,7 @@
 {% from "./_header-masthead-logo.njk" import greatMastheadLogo %}
 {% from "./_header-great-logo.njk" import greatLogo %}
 
-{% macro greatHeader(isInternational, isCampaign, rtl, include_link_to_great, use_domestic_logo, header_classes, global_header_classes, strapline, available_languages, current_language, sso_is_logged_in, domesticLink, internationalLink, siteTitle, actionLinkList, isAuthenticated, navItemsList, hideSearch, hideMainNav, searchFormAction, hideMenuOnDesktop, menuItemsList, subnavItemsList, mobileSiteLink) %}
+{% macro greatHeader(isInternational, isCampaign, rtl, include_link_to_great, greatLogoHref, use_domestic_logo, header_classes, global_header_classes, strapline, available_languages, current_language, sso_is_logged_in, domesticLink, internationalLink, siteTitle, actionLinkList, isAuthenticated, navItemsList, hideSearch, hideMainNav, searchFormAction, hideMenuOnDesktop, menuItemsList, subnavItemsList, mobileSiteLink) %}
 <header class="great-ds-header {{ header_classes }}{% if rtl %} great-ds-header--rtl{% endif %}{% if isInternational %} great-ds-header--international{% endif %}{% if isCampaign %} great-ds-header--campaign{% endif %}" id="header" role="banner" data-ga-section="header">
     <div id="great-ds-global-header" class="great-ds-container great-ds-header__global {{ global_header_classes }} {% if sso_is_logged_in %}signed-in{% endif %}">
         <div class="great-ds-header__dbt-logo">
@@ -28,7 +28,7 @@
     <div class="great-ds-header__main">
         <div class="great-ds-header__main-inner great-ds-container">
             <div class="great-ds-header__logo-container">
-                <a id="header-logo-link" alt="Great" class="great-ds-header__great-ds-logo" href="{% if isInternational %}/international{% else %}/{% endif %}">
+                <a id="header-logo-link" alt="Great" class="great-ds-header__great-ds-logo" href="{% if greatLogoHref %}{{ greatLogoHref }}{% elif isInternational %}/international/{% else %}/{% endif %}">
                     {{ greatLogo() }}
                 </a>
             </div>
