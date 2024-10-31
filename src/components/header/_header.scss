@@ -608,6 +608,11 @@ a.great-ds-header__site-link {
     @include govuk-font-size($size: 16);
 }
 
+.great-ds-header__submenu-list {
+    position: relative;
+    z-index: 1;
+}
+
 .great-ds-header__submenu-item {
     margin: $great-ds-spacing-6 0 $great-ds-spacing-6 $great-ds-spacing-6;
 }
