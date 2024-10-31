@@ -27,18 +27,20 @@
                         </p>
                     {% endif %}
                 </div>
-                <div class="govuk-grid-column-one-half">
-                    {{ greatResponsiveImage(
-                        image_src = landscapeImagePath,
-                        xs_image_src = landscapeImagePath,
-                        s_image_src = landscapeImagePath,
-                        m_image_src = portraitImagePath,
-                        l_image_src = portraitImagePath,
-                        xl_image_src = landscapeImagePath,
-                        alt_text = 'Lady with pancakes'
-                    )
-                    }}
-                </div>
+                {% if listItems %}
+                    <div class="govuk-grid-column-one-half">
+                        {{ greatResponsiveImage(
+                            image_src = landscapeImagePath,
+                            xs_image_src = landscapeImagePath,
+                            s_image_src = landscapeImagePath,
+                            m_image_src = portraitImagePath,
+                            l_image_src = portraitImagePath,
+                            xl_image_src = landscapeImagePath,
+                            alt_text = 'Lady with pancakes'
+                        )
+                        }}
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
