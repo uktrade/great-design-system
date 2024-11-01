@@ -1,4 +1,4 @@
-{% macro greatFooter(isInternational, currentYear, footerLinks) %}
+{% macro greatFooter(isInternational, currentYear, footerLinks, logoLinkHref) %}
     <footer id="footer"
         dir="ltr"
         data-ga-section="footer"
@@ -21,11 +21,13 @@
         </div>
         <div class="great-ds-footer__copyright-container">
             <div class="great-ds-container">
-                {% if isInternational %}
-                    {% include "./_footer-gov-logo.njk" %}
-                {% else %}
-                    {% include "./_footer-dbt-logo.njk" %}
-                {% endif %}
+                <a class="great-ds-footer__logo-link" href = {{ logoLinkHref }}>   
+                    {% if isInternational %}        
+                        {% include "./_footer-gov-logo.njk" %}
+                    {% else %}
+                        {% include "./_footer-dbt-logo.njk" %}
+                    {% endif %}
+                </a>
                 <p class="great-ds-footer__copyright">© Crown copyright {{ currentYear }}. All rights reserved.</p>
             </div>
     </div>
