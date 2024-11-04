@@ -78,7 +78,7 @@
 .great-ds-footer__logo-link {
   border-bottom: 5px solid transparent;
 
-  &:focus {
+  &:focus, &:focus:active {
     @include govuk-focused-text;
     > * .great-ds-footer__dbt-logo-ribbon {
       fill: $great-ds-semantic-border-focus-link-border;
