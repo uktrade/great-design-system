@@ -80,7 +80,7 @@
 
   &:focus {
     @include govuk-focused-text;
-    > * .great-ds-footer__dbt__dbt-logo-ribbon {
+    > * .great-ds-footer__dbt-logo-ribbon {
       fill: $great-ds-semantic-border-focus-link-border;
     }
     > * .great-ds-footer__gov-logo-ribbon {
