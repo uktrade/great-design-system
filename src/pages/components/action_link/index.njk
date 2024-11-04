@@ -3,5 +3,12 @@
 
 {% block content %}
     <p class="govuk-body">Action Link Example</p>
-    {% exampleIframe "/components/action_link/action-link-example/" %}
+    <p class="govuk-body"> This is the default action link </p>
+    {% exampleIframe "/components/action_link/action-link-example-default/", "100%", "200px" %}
+    <p class="govuk-body"> This is a dark blue action link </p>
+    {% exampleIframe "/components/action_link/action-link-example-dark-blue/", "100%", "200px" %}
+    <p class="govuk-body"> This is a white action link </p>
+    <div class="great-ds-cta-banner--bg-dark-blue">
+        {% exampleIframe "/components/action_link/action-link-example-white/", "100%", "200px" %}
+    </div>
 {% endblock %}

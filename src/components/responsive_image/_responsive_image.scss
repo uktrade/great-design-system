@@ -1,0 +1,7 @@
+.great-ds-responsive-image{
+    > img {
+      @media only screen and (max-width: 640px) {
+        max-width: 100%;
+      }
+    }
+  }

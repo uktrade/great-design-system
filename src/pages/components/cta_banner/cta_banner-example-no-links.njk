@@ -1,0 +1,13 @@
+{% extends "layout/_example.njk" %}
+{% from "../../../components/cta_banner/_cta_banner.njk" import greatCtaBanner %}
+
+{% block content %}
+    {{ greatCtaBanner(
+        headingText = 'Accelerate your learning',
+        signUpLink = { href: '#', preLinkText: 'Already signed up?', linkText: 'Sign in'},
+        loginUrl = 'login.com',
+        landscapeImagePath = '/static/images/lte-signup-promo-landscape.png',
+        portraitImagePath = '/static/images/lte-signup-promo-portrait.png',
+        actionLinkClass = 'great-ds-action-link--black'
+    ) }}
+{% endblock %}

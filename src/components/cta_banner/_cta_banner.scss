@@ -1,0 +1,102 @@
+.great-ds-cta-banner{
+  background-color: $great-ds-semantic-surface-background-light-blue
+}
+
+.great-ds-cta-banner--bg-dark-blue {
+  background-color: $great-ds-semantic-surface-background-great-ds-blue;
+}
+
+.great-ds-cta-banner--bg-green {
+  background-color: $great-ds-semantic-surface-background-light-green;
+}
+
+.great-ds-cta-banner-heading {
+  font-weight: 600;
+  line-height: $great-ds-type-line-height-heading-l-large;
+  font-size: $great-ds-type-size-heading-l-large;
+
+  .great-ds-cta-banner--bg-dark-blue & {
+    color: $great-ds-semantic-text-default-white-text;
+  }
+  .great-ds-cta-banner--bg-green & {
+    color: $great-ds-semantic-text-default-text;
+  }
+}
+
+
+.great-ds-cta-banner-leading-text {
+  .great-ds-cta-banner--bg-dark-blue & {
+    color: $great-ds-semantic-text-default-white-text;
+  }
+  .great-ds-cta-banner--bg-green & {
+    color: $great-ds-semantic-text-default-text;
+  }
+}
+
+.great-ds-cta-banner-signup-link-text {
+  .great-ds-cta-banner--bg-dark-blue & {
+    color: $great-ds-semantic-text-default-white-text;
+  }
+  .great-ds-cta-banner--bg-green & {
+    color: $great-ds-semantic-text-default-text;
+  }
+}
+
+.great-ds-cta-banner-signup-link {
+  .great-ds-cta-banner--bg-dark-blue & {
+    color: $great-ds-semantic-text-default-white-text;
+  }
+  .great-ds-cta-banner--bg-green & {
+    color: $great-ds-semantic-text-default-text;
+  }
+}
+
+.great-ds-cta-banner__tick-list {
+    list-style: none;
+    padding-inline-start: 0px;
+    margin-bottom: 0px;
+}
+
+.great-ds-cta-banner__tick-list-item {
+  display: block;
+  clear: left;
+  padding: 7.5px 0;
+  font-size: $great-ds-type-size-body-small;
+  line-height: $great-ds-type-line-height-body-small;
+
+  &:before {
+    content: '';
+    height: 30px;
+    width: 30px;
+    min-width: 30px;
+    display: block;
+    float: left;
+    margin-left: 0;
+    margin-right: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background: url('/static/icons/black-tick.svg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .great-ds-cta-banner--bg-dark-blue & {
+    color: $great-ds-semantic-text-default-white-text;
+
+    &:before{
+      background-image: url('/static/icons/light-blue-tick.svg');
+      fill: $great-ds-semantic-interaction-default-tag-success;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .great-ds-cta-banner--bg-green & {
+    color: $great-ds-semantic-text-default-text;
+  }
+}
+
+.great-ds-cta-banner__action-link-container {
+  margin-top: $great-ds-spacing-fixed-spacing-4;
+  margin-bottom: $great-ds-spacing-fixed-spacing-4;
+}
