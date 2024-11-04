@@ -38,11 +38,10 @@
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
     cursor: pointer;
-  }
 
-  .great-ds-footer--international & {
-    > a {
-      font-family: $great-ds-type-family-great-ds-international;
+    &:focus,
+    &:focus:active {
+        @include govuk-focused-text;
     }
   }
 }
@@ -74,9 +73,28 @@
   @media only screen and (min-width: 640px) {
     font-size: $great-ds-type-size-body;
   }
+}
+
+.great-ds-footer__logo-link {
+  border-bottom: 5px solid transparent;
+
+  &:focus {
+    @include govuk-focused-text;
+    > * .great-ds-footer__dbt__dbt-logo-ribbon {
+      fill: $great-ds-semantic-border-focus-link-border;
+    }
+    > * .great-ds-footer__gov-logo-ribbon {
+      fill: $great-ds-semantic-border-focus-link-border;
+    }
+  }
+  &:hover:not(:focus){
+    border-bottom: 5px solid $great-ds-semantic-surface-background-great-ds-red;
+  }
 
   .great-ds-footer--international & {
-    font-family: $great-ds-type-family-great-ds-international;
+    &:hover:not(:focus) {
+      border-bottom: 5px solid $great-ds-semantic-surface-background-great-ds-blue;
+    }
   }
 }
 
@@ -86,6 +104,5 @@
 } 
 
 .great-ds-footer__gov-logo {
-  width: 153px; 
   height: 30px;
 } 
