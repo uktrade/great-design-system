@@ -37,7 +37,6 @@
 
 .great-ds-header__dbt-logo {
     align-self: center;
-    margin: 10px 0;
 }
 
 .great-ds-header__dbt-logo-link {
@@ -46,12 +45,28 @@
     &:focus,
     &:focus:active {
         @include govuk-focused-text;
+        box-shadow: inset 0px -4px 0px $great-ds-semantic-border-focus-button-border;
+    }
+    &:hover {
+        box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-ds-red;
+    }
+
+    .great-ds-header--international & {
+        &:hover {
+            box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-ds-blue;
+        }
     }
 }
 
 .great-ds-header__dbt-logo-image {
-    width: 240px;
-    height: 30px;
+    width: 298px;
+    height: 50px;
+
+    .great-ds-header--international & {
+        width: 184px;
+        height: 30px;
+        margin: 10px 0;
+    }
 }
 
 .great-ds-header__international-links {
