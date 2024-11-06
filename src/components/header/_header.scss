@@ -47,6 +47,9 @@
 
     &:focus,
     &:focus:active {
+        outline: none;
+        background: none;
+
         .great-ds-header__dbt-logo-image {
             @include govuk-focused-text;
             box-shadow: inset 0px -4px 0px $great-ds-semantic-border-focus-button-border;
