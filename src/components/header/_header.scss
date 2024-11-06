@@ -1,4 +1,5 @@
 .great-ds-header {
+    box-sizing: border-box;
     background-color: $great-ds-semantic-surface-background-white;
     
     // TO DO: remove when we have a list style class
@@ -68,6 +69,7 @@
 }
 
 .great-ds-header__dbt-logo-image {
+    box-sizing: content-box;
     width: 298px;
     height: 30px;
     margin: 10px 0 5px;
