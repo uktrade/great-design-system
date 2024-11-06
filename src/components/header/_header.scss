@@ -42,17 +42,26 @@
 .great-ds-header__dbt-logo-link {
     display: block;
     line-height: 0;
+    outline: none;
+
     &:focus,
     &:focus:active {
-        @include govuk-focused-text;
-        box-shadow: inset 0px -4px 0px $great-ds-semantic-border-focus-button-border;
+        .great-ds-header__dbt-logo-image {
+            @include govuk-focused-text;
+            box-shadow: inset 0px -4px 0px $great-ds-semantic-border-focus-button-border;
+        }
     }
-    &:hover {
+
+    &:hover:not(:focus) {
         box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-ds-red;
     }
 
+    &:focus .great-ds-header__dbt-logo-stripe {
+        fill: #0B0C0C;
+    }
+
     .great-ds-header--international & {
-        &:hover {
+        &:hover:not(:focus) {
             box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-ds-blue;
         }
     }
@@ -60,12 +69,14 @@
 
 .great-ds-header__dbt-logo-image {
     width: 298px;
-    height: 50px;
+    height: 30px;
+    margin: 10px 0 5px;
+    padding: 0 0 5px;
 
     .great-ds-header--international & {
         width: 184px;
-        height: 30px;
-        margin: 10px 0;
+        padding: 5px 0;
+        margin: 5px 0;
     }
 }
 
