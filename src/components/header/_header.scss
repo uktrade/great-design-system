@@ -78,7 +78,7 @@
     margin: 10px 0 5px;
     padding: 0 0 5px;
 
-    .great-ds-header--international & {
+    &.great-ds-header__dbt-logo-image--ukgov  {
         width: 184px;
         padding: 5px 0;
         margin: 5px 0;
@@ -625,6 +625,10 @@ a.great-ds-header__site-link {
 
 .great-ds-header__subnav-item:not(:last-child) {
     padding: 0 $great-ds-spacing-6-large 0 0;
+
+    .great-ds-header--rtl & {
+        padding: 0 0 0 $great-ds-spacing-6-large;
+    }
 }
 
 .great-ds-header__subnav-link,
