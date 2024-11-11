@@ -419,6 +419,7 @@
 
     @include govuk-media-query($from: 1080px) {
         flex-grow: 0;
+        max-width: 290px;
     }
 }
 

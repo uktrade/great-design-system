@@ -1,16 +1,24 @@
 {% macro greatAccordion(id, items, classes, headingLevel) %}
-    <div class="govuk-accordion {%- if classes %} {{ classes }}{% endif %}" data-module="govuk-accordion" id="{{ id }}">
+    <div class="govuk-accordion{% if classes %} {{ classes }}{% endif %}" data-module="govuk-accordion" id="{{ id }}">
         {% for item in items %}
-            <div class="govuk-accordion__section {%- if item.expanded %} govuk-accordion__section--expanded{% endif %}">
+            <div class="govuk-accordion__section {% if item.expanded %} govuk-accordion__section--expanded{% endif %}">
                 <div class="govuk-accordion__section-header">
-                    <h{{ headingLevel|default('3') }} class="govuk-accordion__section-heading">
+                    <h{% if headingLevel %}{{ headingLevel }}{% else %}3{% endif %} class="govuk-accordion__section-heading">
                         <span class="govuk-accordion__section-button" id="{{ id }}-heading-{{ loop.index }}">
-                        {{ item.heading.html|safe|strip if item.heading.html else item.heading.text }}
+                        {% if item.heading.html %}
+                            {{ item.heading.html | safe }}
+                        {% else %}
+                            {{ item.heading.text }}
+                        {% endif %}
                         </span>
-                    </h{{ headingLevel }}>
+                    </h{% if headingLevel %}{{ headingLevel }}{% else %}3{% endif %}>
                     {% if item.summary.html or item.summary.text %}
                         <div class="govuk-accordion__section-summary govuk-body" id="{{ id }}-summary-{{ loop.index }}">
-                            {{ item.summary.html | safe if item.summary.html else item.summary.text }}
+                            {% if item.summary.html %}
+                                {{ item.summary.html | safe }}
+                            {% else %}
+                                {{ item.summary.text }}
+                            {% endif %}
                         </div>
                     {% endif %}
                 </div>
