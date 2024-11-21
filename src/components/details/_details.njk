@@ -1,12 +1,12 @@
 {% macro greatDetails(id, classes, open, summaryText, summaryHtml, detailsText, detailsHtml) %}
-    <details {%- if id %} id="{{ id }}"{% endif %} class="govuk-details {%- if classes %} {{ classes }}{% endif %}"{{- " open" if open }}>
+    <details {% if id %} id="{{ id }}"{% endif %} class="govuk-details {% if classes %} {{ classes }}{% endif %}"{% if open %} open{% endif %}>
         <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">
-            {{ summaryHtml | safe if summaryHtml else summaryText }}
+                {% if summaryHtml %}{{ summaryHtml | safe }}{% else %}{{ summaryText }}{% endif %}
             </span>
         </summary>
         <div class="govuk-details__text">
-            {{ detailsHtml | safe if detailsHtml else detailsText }}
+            {% if detailsHtml %}{{ detailsHtml | safe }}{% else %}{{ detailsText }}{% endif %}
         </div>
     </details>
 {% endmacro %}
