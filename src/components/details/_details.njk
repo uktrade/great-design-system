@@ -1,5 +1,5 @@
-{% macro greatDetails(id, classes, open, summaryText, summaryHtml, detailsText, detailsHtml) %}
-    <details {% if id %} id="{{ id }}"{% endif %} class="govuk-details {% if classes %} {{ classes }}{% endif %}"{% if open %} open{% endif %}>
+{% macro greatDetails(id, classes, open, summaryText, summaryHtml, detailsText, detailsHtml, attributes) %}
+    <details {% if id %} id="{{ id }}"{% endif %} class="govuk-details {% if classes %} {{ classes }}{% endif %}"{% if open %} open{% endif %}{% if attributes %} {{ attributes | safe }}{% endif %}>
         <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">
                 {% if summaryHtml %}{{ summaryHtml | safe }}{% else %}{{ summaryText }}{% endif %}
