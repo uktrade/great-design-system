@@ -44,7 +44,7 @@ $great-ds-button-outline: 2px solid transparent;
     justify-content: center;
     direction: ltr;
 
-    .great-ds-icon--svg {
+    .great-ds-icon-svg {
         vertical-align: middle;
         flex-shrink: 0;
         align-self: center;
@@ -254,7 +254,7 @@ $great-ds-button-outline: 2px solid transparent;
     min-height: auto;
     justify-content: center;
 
-    .great-ds-icon--svg {
+    .great-ds-icon-svg {
         margin-left: 10px;
         vertical-align: middle;
         flex-shrink: 0;
@@ -270,7 +270,7 @@ $great-ds-button-outline: 2px solid transparent;
     align-items: center;
     padding: $great-ds-button-icon-padding;
 
-    .great-ds-icon--svg {
+    .great-ds-icon-svg {
         vertical-align: middle;
         flex-shrink: 0;
         align-self: center;
@@ -287,14 +287,14 @@ $great-ds-button-outline: 2px solid transparent;
 
 // Placeholder for icon button prefix styles
 %great-ds-button-icon-prefix {
-    .great-ds-icon--svg {
+    .great-ds-icon-svg {
        margin-right: 10px;
     }
 }
 
 // Placeholder for icon button suffix styles
 %great-ds-button-icon-suffix {
-    .great-ds-icon--svg {
+    .great-ds-icon-svg {
        margin-left: 10px;
     }
 }
