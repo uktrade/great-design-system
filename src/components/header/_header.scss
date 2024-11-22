@@ -582,14 +582,14 @@ a.great-ds-header__site-link {
             @include govuk-focused-text;
         }
         
-        .great-ds-icon--svg {
+        .great-ds-icon-svg {
             & g > path:first-child {
                 fill: $great-ds-semantic-border-focus-button-border;
             }
         }
     }
 
-    .great-ds-icon--svg {
+    .great-ds-icon-svg {
         margin-right: $great-ds-spacing-2;
     }
 }

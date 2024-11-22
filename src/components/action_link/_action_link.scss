@@ -1,8 +1,9 @@
 .great-ds-action-link__link {
     display: flex;
     align-items: center;
-    width:fit-content;
+    width: fit-content;
     outline: none;
+    font-family: $great-ds-type-family-great-ds-bold;
     @include great-ds-link-decorator;
     
     &:hover {
