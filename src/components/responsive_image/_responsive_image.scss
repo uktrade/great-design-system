@@ -1,5 +1,6 @@
 .great-ds-responsive-image{
     > img {
+      vertical-align: bottom;
       @media only screen and (max-width: 640px) {
         max-width: 100%;
       }
