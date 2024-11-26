@@ -1,11 +1,15 @@
 {% macro greatNotificationBanner(type, classes, role, titleId, disableAutoFocus, titleHeadingLevel, titleHtml, titleText, html, text) %}
 <div class="govuk-notification-banner {% if type == 'success' %}govuk-notification-banner--{{ type }}{% endif %}{% if classes %} {{ classes }}{% endif %}" 
      role="{% if role %}{{ role }}{% elif type == 'success' %}alert{% else %}region{% endif %}" 
-     aria-labelledby="{{ titleId | default('govuk-notification-banner-title') }}" 
+     aria-labelledby="{% if titleId %}{{ titleId }}{% else %}govuk-notification-banner-title{% endif %}" 
      data-module="govuk-notification-banner"
      {% if disableAutoFocus is not undefined %} data-disable-auto-focus="{{ disableAutoFocus }}"{% endif %}>
   <div class="govuk-notification-banner__header">
-    <h{{ titleHeadingLevel | default(2) }} class="govuk-notification-banner__title" id="{{ titleId | default('govuk-notification-banner-title') }}">
+    {% if titleHeadingLevel %}
+      <h{{ titleHeadingLevel }} class="govuk-notification-banner__title" id="{% if titleId %}{{ titleId }}{% else %}govuk-notification-banner-title{% endif %}">
+    {% else %}
+      <h2 class="govuk-notification-banner__title" id="{% if titleId %}{{ titleId }}{% else %}govuk-notification-banner-title{% endif %}">
+    {% endif %}
       {% if titleHtml %}
         {{ titleHtml | safe }}
       {% elif titleText %}
@@ -15,7 +19,7 @@
       {% else %}
         Important
       {% endif %}
-    </h{{ titleHeadingLevel | default(2) }}>
+    </h{% if titleHeadingLevel %}{{ titleHeadingLevel }}{% else %}2{% endif %}>
   </div>
   <div class="govuk-notification-banner__content">
   {% if html %}
