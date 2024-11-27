@@ -10,6 +10,10 @@
   background-color: $great-ds-semantic-surface-background-light-green;
 }
 
+.great-ds-cta-banner--bg-white {
+  background-color: $great-ds-semantic-surface-background-white;
+}
+
 .great-ds-cta-banner-heading {
   font-weight: 600;
   line-height: $great-ds-type-line-height-heading-l-large;
@@ -36,19 +40,19 @@
 
 .great-ds-cta-banner-signup-link-text {
   .great-ds-cta-banner--bg-dark-blue & {
-    color: $great-ds-semantic-text-default-white-text;
+    color: $great-ds-semantic-text-default-white-text !important;
   }
   .great-ds-cta-banner--bg-green & {
-    color: $great-ds-semantic-text-default-text;
+    color: $great-ds-semantic-text-default-text !important;
   }
 }
 
 .great-ds-cta-banner-signup-link {
   .great-ds-cta-banner--bg-dark-blue & {
-    color: $great-ds-semantic-text-default-white-text;
+    color: $great-ds-semantic-text-default-white-text !important;
   }
   .great-ds-cta-banner--bg-green & {
-    color: $great-ds-semantic-text-default-text;
+    color: $great-ds-semantic-text-default-text !important;
   }
 }
 
