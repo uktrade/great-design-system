@@ -1,7 +1,13 @@
-{% extends "layout/_base.njk" %}
-{% block title %}Great Design System - Breadcrumbs{% endblock %}
+---
+eleventyNavigation:
+  key: Breadcrumbs
+  parent: Components
+  title: Breadcrumbs
+---
+{% extends "layout/_page.njk" %}
 
 {% block content %}
+    <h1 class="govuk-heading-l">Breadcrumbs</h1>
     <p class="govuk-body">Here is a breadcrumbs example.</p>
     <p class="govuk-body">Uses govuk breadcrumbs component front end.</p>
     {% exampleIframe "/components/breadcrumbs/breadcrumbs-example/" %}

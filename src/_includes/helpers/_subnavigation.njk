@@ -1,0 +1,48 @@
+{% set navPages = collections.all | eleventyNavigation %}
+{% set parentKey = eleventyNavigation.parent if eleventyNavigation.parent else eleventyNavigation.key %}
+
+{# Get all unique groups #}
+{% set groups = [] %}
+{% for item in navPages %}
+    {% if item.key === parentKey %}
+        {% for child in item.children | sort(false, false, 'title') %}
+            {% if child.group and (groups.indexOf(child.group) === -1) %}
+                {% set groups = (groups.push(child.group), groups) %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+
+{# Sort groups alphabetically #}
+{% set groups = groups | sort %}
+
+<ul class="govuk-list">
+    {# First render grouped items #}
+    {% for group in groups %}
+        <h3 class="govuk-caption-m govuk-!-margin-bottom-2 {% if not loop.first %}govuk-!-margin-top-6{% endif %}">{{ group }}</h3>
+        {% for item in navPages %}
+            {% if item.key === parentKey %}
+                {% for child in item.children | sort(false, false, 'title') %}
+                    {% if child.group === group %}
+                        <li class="app-site-navigation__item govuk-!-margin-bottom-2">
+                            <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline app-site-navigation__link{% if child.url === page.url %} app-site-navigation__link--current{% endif %}" href="{{ child.url }}">{{ child.title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    {# Then render ungrouped items #}
+    {% for item in navPages %}
+        {% if item.key === parentKey %}
+            {% for child in item.children | sort(false, false, 'title') %}
+                {% if not child.group %}
+                    <li class="app-site-navigation__item govuk-!-margin-bottom-2">
+                        <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline app-site-navigation__link{% if child.url === page.url %} app-site-navigation__link--current{% endif %}" href="{{ child.url }}">{{ child.title }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+</ul>

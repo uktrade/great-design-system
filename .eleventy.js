@@ -1,8 +1,9 @@
 const nunjucks = require("nunjucks");
+const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy({ "src/static": "static" });
-
+    eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
     eleventyConfig.addGlobalData("eleventyComputed", {
         permalink: (data) => {
@@ -10,12 +11,12 @@ module.exports = function(eleventyConfig) {
                 return `/index.html`;
             } 
             else if (data.page.filePathStem.endsWith("/index")) {
-                const newPath = data.page.filePathStem.replace(/^\/pages/, '').replace(/\/index$/, '');
-                return `${newPath}/index.html`;
+                const newPath = data.page.filePathStem.replace(/^\/pages/, '');
+                return `${newPath}.html`;
             }
             else if(data.page.filePathStem.startsWith("/pages")) {
                 const newPath = data.page.filePathStem.replace(/^\/pages/, '');
-                return `${newPath}/index.html`;
+                return `${newPath}.html`;
             }
             return data.permalink;
         }
@@ -33,7 +34,10 @@ module.exports = function(eleventyConfig) {
                     <iframe src="${src}" frameborder="0" style="width: ${width}; height: ${height};"></iframe>
                 </div>`;
     });
-    
+
+    eleventyConfig.addFilter("debug", function(value) {
+        return JSON.stringify(value, null, 2);
+    });
 
     return {
         dir: {

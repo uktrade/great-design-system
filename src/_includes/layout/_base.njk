@@ -3,35 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Great Design system{% endblock %}</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <title>{% block title %}Great Design System - {{ page.title }}{% endblock %}</title>
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-    <header>
-        <div class="app-site-wrapper">
-            <nav class="govuk-main-wrapper">
-                <h1 class="govuk-heading-xl govuk-!-static-margin-bottom-2">Great Design System</h1>
-                <p>Great Design System provides components, styles and patterns.</p>
-                <ul class="govuk-list">
-                    {% for page in collections.all %}
-                        {% if page.data.navTitle %}
-                            <li><a class="govuk-link" href="{{ page.url }}">{{ page.data.navTitle }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </nav>
-            <hr>
-        </div>
-    </header>
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    {% from "../../components/header/_header.njk" import greatHeader %}
+    {% set navItemsList = [] %}
+    {% for entry in collections.all | eleventyNavigation %}
+        {% set children = [] %}
+        
+        {% set overviewItem = {
+            text: entry.title + " overview",
+            href: entry.url,
+            isCurrent: entry.url === page.url
+        } %}
+
+        {% set children = (children.push(overviewItem), children) %}
+        
+        {% for child in entry.children %}
+            {% set childItem = {
+                text: child.title,
+                href: child.url,
+                isCurrent: child.url === page.url
+            } %}
+            {% set children = (children.push(childItem), children) %}
+        {% endfor %}
+
+        {% set navItem = {
+            text: entry.title,
+            href: entry.url,
+            isCurrent: entry.url === page.url,
+            children: children
+        } %}
+        {% set navItemsList = (navItemsList.push(navItem), navItemsList) %}
+    {% endfor %}
+
+    {{ greatHeader(
+        siteTitle="Design System",
+        largeTitle=true,
+        subnavItemsList=navItemsList,
+        hideMasthead=true,
+        isCampaign=true,
+        minimalSearchAndMenu=true,
+        autocompleteSearch=true,
+        accordionMobileMenu=true
+    ) }}
+
     <div class="app-site-wrapper">
-        <main class="govuk-main-wrapper">
+        {% block navigation %}{% endblock %}
+        <main class="app-site-main">
             {% block content %}{% endblock %}
         </main>
     </div>
-    <footer>
-        
-    </footer>
+
+    {% from "../../components/footer/_footer.njk" import greatFooter %}
+    {{ greatFooter(
+        currentYear = '2024',
+        footerLinks = [
+            { href: "#", text: "Accessibility statement", title: 'Accessibility statement' },
+            { href: "#", text: "Cookies", title: 'Cookies' },
+            { href: "#", text: "Privacy policy", title: 'Privacy policy' }
+        ],
+        logoLinkHref = '#'
+    ) 
+    }}
 
     <script src="/js/main.js"></script>
 </body>

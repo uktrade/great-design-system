@@ -1,16 +1,11 @@
 ---
-navTitle: "Components"
+eleventyNavigation:
+  key: Components
 ---
-{% extends "layout/_base.njk" %}
-{% block title %}Great Design System - Components{% endblock %}
+
+{% extends "layout/_page.njk" %}
 
 {% block content %}
-    <section>
-        <h2 class="govuk-heading-l">Components</h2>
-        <ul class="govuk-list">
-            {% for item in collections.componentIndexes %}
-                <li><a class="govuk-link" href="{{ item.url }}">{{ item.data.title or item.fileSlug }}</a></li>
-            {% endfor %}
-        </ul>
-    </section>
+    <h1 class="govuk-heading-l">Components</h1>
 {% endblock %}
+

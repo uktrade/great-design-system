@@ -1,7 +1,13 @@
-{% extends "layout/_base.njk" %}
-{% block title %}Great Design System - Accordion{% endblock %}
+---
+eleventyNavigation:
+  key: Accordion
+  parent: Components
+  title: Accordion
+---
+{% extends "layout/_page.njk" %}
 
 {% block content %}
+    <h1 class="govuk-heading-l">Accordion</h1>
     <p class="govuk-body">Here is an accordion example.</p>
     <p class="govuk-body">Uses govuk accordion component front end.</p>
     {% exampleIframe "/components/accordion/accordion-example/", "100%", "600px" %}

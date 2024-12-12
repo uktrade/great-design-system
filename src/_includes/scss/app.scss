@@ -1,11 +1,47 @@
+@import "../../scss/main.scss";
 body {
     margin: 0;
 }
 
 .app-site-wrapper {
-    max-width: 1400px;
-    margin: auto;
-    padding: 0 20px;
+    max-width: 1290px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 20px;
+
+    @include govuk-media-query($from: desktop) {
+        flex-direction: row;
+        padding: 0;
+    }
+}
+
+.app-site-navigation {
+    order: 1;
+    @include govuk-media-query($from: desktop) {
+        flex: 0 0 auto;
+        order: 0;
+        width: 200px;
+        padding: 50px 15px;
+    }
+
+    @include govuk-media-query($from: 1025px) {
+        padding: 50px 30px;
+    }
+
+}
+
+.app-site-main {
+    order: 0;
+    @include govuk-media-query($from: desktop) {
+        flex: 1 1 100%;
+        order: 1;
+        padding: 50px 15px 50px 0;
+    }
+
+    @include govuk-media-query($from: 1025px) {
+        padding: 50px 30px 50px 0;
+    }
 }
 
 .app-iframe-wrapper {

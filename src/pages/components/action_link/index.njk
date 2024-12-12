@@ -1,7 +1,13 @@
-{% extends "layout/_base.njk" %}
-{% block title %}Great Design System - Action Link{% endblock %}
+---
+eleventyNavigation:
+  key: Action link
+  parent: Components
+  title: Action link
+---
+{% extends "layout/_page.njk" %}
 
 {% block content %}
+    <h1 class="govuk-heading-l">Action link</h1>
     <p class="govuk-body">Action Link Example</p>
     <p class="govuk-body"> This is the default action link </p>
     {% exampleIframe "/components/action_link/action-link-example-default/", "100%", "200px" %}

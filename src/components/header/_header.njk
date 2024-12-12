@@ -3,28 +3,30 @@
 {% from "./_header-masthead-logo.njk" import greatMastheadLogo %}
 {% from "./_header-great-logo.njk" import greatLogo %}
 
-{% macro greatHeader(isInternational, isCampaign, rtl, include_link_to_great, greatLogoHref, use_domestic_logo, header_classes, global_header_classes, strapline, available_languages, current_language, sso_is_logged_in, domesticLink, internationalLink, siteTitle, actionLinkList, isAuthenticated, navItemsList, hideSearch, hideMainNav, searchFormAction, hideMenuOnDesktop, menuItemsList, subnavItemsList, mobileSiteLink) %}
+{% macro greatHeader(hideMasthead, isInternational, isCampaign, rtl, include_link_to_great, greatLogoHref, use_domestic_logo, header_classes, global_header_classes, strapline, available_languages, current_language, sso_is_logged_in, domesticLink, internationalLink, siteTitle, largeTitle, actionLinkList, isAuthenticated, navItemsList, hideSearch, hideMainNav, searchFormAction, minimalSearchAndMenu, autocompleteSearch, hideMenuOnDesktop, menuItemsList, subnavItemsList, accordionMobileMenu, mobileSiteLink) %}
 <header class="great-ds-header {{ header_classes }}{% if rtl %} great-ds-header--rtl{% endif %}{% if isInternational %} great-ds-header--international{% endif %}{% if isCampaign %} great-ds-header--campaign{% endif %}" id="header" role="banner" data-ga-section="header">
-    <div id="great-ds-global-header" class="great-ds-container great-ds-header__global {{ global_header_classes }} {% if sso_is_logged_in %}signed-in{% endif %}">
-        <div class="great-ds-header__dbt-logo">
-            {{ greatMastheadLogo(use_domestic_logo=use_domestic_logo) }}
-        </div>
-        {% if domesticLink and internationalLink %}
-            <ul class="great-ds-header__international-links">
-                <li class="great-ds-header__international-link-item {% if not isInternational %}great-ds-header__international-link-item--active{% endif %} great-ds-header__international-link-item--domestic">
-                    <a href="{{ domesticLink.href }}" id="great-ds-global-header-domestic-link" class="great-ds-header__international-link">{{ domesticLink.text }}</a>
-                </li>
-                <li class="great-ds-header__international-link-item great-ds-header__international-link-item--international {% if isInternational %}great-ds-header__international-link-item--active{% endif %}">
-                    <a href="{{ internationalLink.href }}" id="great-ds-global-header-international-link" class="great-ds-header__international-link">{{ internationalLink.text }}</a>
-                </li>
-            </ul>
-        {% endif %}
-        {% if strapline and include_link_to_great %}
-            <div class="great-ds-header__strapline">
-                {{ strapline|safe }}
+    {% if not hideMasthead %}
+        <div id="great-ds-global-header" class="great-ds-container great-ds-header__global {{ global_header_classes }} {% if sso_is_logged_in %}signed-in{% endif %}">
+            <div class="great-ds-header__dbt-logo">
+                {{ greatMastheadLogo(use_domestic_logo=use_domestic_logo) }}
             </div>
-        {% endif %}
-    </div>
+            {% if domesticLink and internationalLink %}
+                <ul class="great-ds-header__international-links">
+                    <li class="great-ds-header__international-link-item {% if not isInternational %}great-ds-header__international-link-item--active{% endif %} great-ds-header__international-link-item--domestic">
+                        <a href="{{ domesticLink.href }}" id="great-ds-global-header-domestic-link" class="great-ds-header__international-link">{{ domesticLink.text }}</a>
+                    </li>
+                    <li class="great-ds-header__international-link-item great-ds-header__international-link-item--international {% if isInternational %}great-ds-header__international-link-item--active{% endif %}">
+                        <a href="{{ internationalLink.href }}" id="great-ds-global-header-international-link" class="great-ds-header__international-link">{{ internationalLink.text }}</a>
+                    </li>
+                </ul>
+            {% endif %}
+            {% if strapline and include_link_to_great %}
+                <div class="great-ds-header__strapline">
+                    {{ strapline|safe }}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
     <div class="great-ds-header__main">
         <div class="great-ds-header__main-inner great-ds-container">
             <div class="great-ds-header__logo-container">
@@ -33,7 +35,7 @@
                 </a>
             </div>
             {% if siteTitle %}
-                <div class="great-ds-header__site-title">
+                <div class="great-ds-header__site-title{% if largeTitle %} great-ds-header__site-title--large{% endif %}">
                     <span class="great-ds-header__site-title-text">{% if siteTitle.href %}<a class="great-ds-header__site-title-link" href="{{ siteTitle.href }}">{{ siteTitle.text }}</a>{% else %}{{ siteTitle }}{% endif %}</span>
                 </div>
             {% endif %}
@@ -61,27 +63,42 @@
                             </ul>
                         </nav>
                     {% endif %}
+
+                    {% set search_icon = '<svg xmlns="http://www.w3.org/2000/svg" class="great-ds-icon-svg" width="20" height="20" viewBox="0 0 18 18" fill="currentColor">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.77589 13.722C6.26697 13.8589 4.79933 13.386 3.64011 12.4016C1.2472 10.3681 0.933108 6.74217 2.94069 4.31856C4.06024 2.96784 5.66793 2.27198 7.28695 2.27198C8.57164 2.27198 9.86443 2.7113 10.9249 3.61205C12.0841 4.59641 12.7949 5.97992 12.9268 7.50687C13.0588 9.03299 12.5957 10.5206 11.6235 11.6943C10.6505 12.868 9.28401 13.5884 7.77589 13.722ZM18 15.5071L13.5606 11.7361C14.3256 10.4247 14.6737 8.91169 14.5393 7.36344C14.3702 5.40128 13.4562 3.62271 11.9651 2.35558C8.88816 -0.258992 4.28286 0.148357 1.70133 3.26536C-0.881003 6.38072 -0.477867 11.0427 2.59908 13.6573C3.92344 14.7826 5.56107 15.3834 7.26914 15.3834C7.48447 15.3834 7.70061 15.3744 7.91756 15.3555C9.44591 15.2203 10.8569 14.6097 11.9999 13.6196L16.4385 17.3914L18 15.5071Z"/>' %}
+
                     {% if not hideSearch %}
-                        <div class="great-ds-header__search">
-                            <form id="great-ds-header-search-form" class="great-ds-header__search-form" action="{{ searchFormAction }}" method="get">
-                                {{ textInput(
-                                    classes="great-ds-text-input--search",
-                                    id="great-ds-header-search-input",
-                                    label="Search",
-                                    name="q",
-                                    type="text",
-                                    placeholder="Search",
-                                    labelClasses="govuk-visually-hidden"
-                                ) }}
-                                
-                                {% set search_icon = '<svg xmlns="http://www.w3.org/2000/svg" class="great-ds-icon-svg" width="20" height="20" viewBox="0 0 18 18" fill="currentColor">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.77589 13.722C6.26697 13.8589 4.79933 13.386 3.64011 12.4016C1.2472 10.3681 0.933108 6.74217 2.94069 4.31856C4.06024 2.96784 5.66793 2.27198 7.28695 2.27198C8.57164 2.27198 9.86443 2.7113 10.9249 3.61205C12.0841 4.59641 12.7949 5.97992 12.9268 7.50687C13.0588 9.03299 12.5957 10.5206 11.6235 11.6943C10.6505 12.868 9.28401 13.5884 7.77589 13.722ZM18 15.5071L13.5606 11.7361C14.3256 10.4247 14.6737 8.91169 14.5393 7.36344C14.3702 5.40128 13.4562 3.62271 11.9651 2.35558C8.88816 -0.258992 4.28286 0.148357 1.70133 3.26536C-0.881003 6.38072 -0.477867 11.0427 2.59908 13.6573C3.92344 14.7826 5.56107 15.3834 7.26914 15.3834C7.48447 15.3834 7.70061 15.3744 7.91756 15.3555C9.44591 15.2203 10.8569 14.6097 11.9999 13.6196L16.4385 17.3914L18 15.5071Z"/>'%}
-                                {{ greatButton(
-                                    classes="great-ds-button--icon great-ds-button--search",
-                                    text="Search",
-                                    html=search_icon
-                                ) }}
-                            </form>
+                        <div class="great-ds-header__search"{% if autocompleteSearch %} id="header-search"{% endif %}>
+                            {% if autocompleteSearch %}
+                                <div class="great-ds-header__search-autocomplete">
+                                    {{ textInput(
+                                        classes="great-ds-text-input--autocomplete",
+                                        id="great-ds-header-autocomplete-input",
+                                        label="Search",
+                                        type="text",
+                                        placeholder="Search design system",
+                                        labelClasses="govuk-visually-hidden"
+                                    ) }}
+                                </div>
+                            {% else %}
+                                <form id="great-ds-header-search-form" class="great-ds-header__search-form" action="{{ searchFormAction }}" method="get">
+                                    {{ textInput(
+                                        classes="great-ds-text-input--search",
+                                        id="great-ds-header-search-input",
+                                        label="Search",
+                                        name="q",
+                                        type="text",
+                                        placeholder="Search",
+                                        labelClasses="govuk-visually-hidden"
+                                    ) }}
+                                    
+                                    {{ greatButton(
+                                        classes="great-ds-button--icon great-ds-button--search",
+                                        text="Search",
+                                        html=search_icon
+                                    ) }}
+                                </form>                            
+                            {% endif %}
                         </div>
                     {% endif %}
                     {% if available_languages|length > 1 %}
@@ -97,55 +114,85 @@
                             </nav>
                         </div>
                     {% endif %}
+                    {% if minimalSearchAndMenu %}
+                        <div class="great-ds-header__menu-wrapper--minimal-search">
+                            {{ greatButton(
+                                classes="great-ds-button--header-search-menu great-ds-button--icon-prefix great-ds-button--auto-width",
+                                attributes="data-great-ds-reveal-button aria-controls=header-search",
+                                iconPrefix=search_icon
+                            ) }}
+                        </div>  
+                    {% endif %}
                     {% if menuItemsList or subnavItemsList %}
                         <div class="great-ds-header__menu{% if hideMenuOnDesktop and subnavItemsList|length < 6 %} great-ds-header__menu--hidden-on-desktop{% endif %}{% if rtl %} govuk-!-margin-right-3{% else %} govuk-!-margin-left-3{% endif %}">
                             {% set menu_icon = '<svg class="great-ds-icon-svg great-ds-icon--menu" width="16" height="17" viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" class="great-ds-icon--menu-bars" d="M1 3.5C1 2.94687 1.44687 2.5 2 2.5H14C14.5531 2.5 15 2.94687 15 3.5C15 4.05313 14.5531 4.5 14 4.5H2C1.44687 4.5 1 4.05313 1 3.5ZM1 8.5C1 7.94688 1.44687 7.5 2 7.5H14C14.5531 7.5 15 7.94688 15 8.5C15 9.05312 14.5531 9.5 14 9.5H2C1.44687 9.5 1 9.05312 1 8.5ZM15 13.5C15 14.0531 14.5531 14.5 14 14.5H2C1.44687 14.5 1 14.0531 1 13.5C1 12.9469 1.44687 12.5 2 12.5H14C14.5531 12.5 15 12.9469 15 13.5Z"/><path fill="currentColor" class="great-ds-icon--menu-close" d="M10.085 8.5L13.2122 5.37281C13.5959 4.98906 13.5959 4.36687 13.2122 3.98281L12.5172 3.28781C12.1334 2.90406 11.5113 2.90406 11.1272 3.28781L8 6.415L4.87281 3.28781C4.48906 2.90406 3.86688 2.90406 3.48281 3.28781L2.78781 3.98281C2.40406 4.36656 2.40406 4.98875 2.78781 5.37281L5.915 8.5L2.78781 11.6272C2.40406 12.0109 2.40406 12.6331 2.78781 13.0172L3.48281 13.7122C3.86656 14.0959 4.48906 14.0959 4.87281 13.7122L8 10.585L11.1272 13.7122C11.5109 14.0959 12.1334 14.0959 12.5172 13.7122L13.2122 13.0172C13.5959 12.6334 13.5959 12.0113 13.2122 11.6272L10.085 8.5Z"/>' %}
-                            {{ greatButton(
-                                text="Menu",
-                                classes="great-ds-button--menu great-ds-button--inverted great-ds-button--icon-prefix great-ds-button--auto-width",
-                                attributes="data-great-ds-reveal-button data-great-ds-reveal-modal aria-controls=header-menu",
-                                iconPrefix=menu_icon,
-                                isInternational=isInternational
-                            ) }}
+                            {% if minimalSearchAndMenu %}
+                                {{ greatButton(
+                                    classes="great-ds-button--header-search-menu great-ds-button--icon-prefix great-ds-button--auto-width",
+                                    attributes="data-great-ds-reveal-button aria-controls=header-menu",
+                                    iconPrefix=menu_icon
+                                ) }}
+                            {% else %}
+                                {{ greatButton(
+                                    text="Menu",
+                                    classes="great-ds-button--menu great-ds-button--inverted great-ds-button--icon-prefix great-ds-button--auto-width",
+                                    attributes="data-great-ds-reveal-button data-great-ds-reveal-modal aria-controls=header-menu",
+                                    iconPrefix=menu_icon,
+                                    isInternational=isInternational
+                                ) }}
+                            {% endif %}
                         </div>
                         <div class="great-ds-header__menu-wrapper" id="header-menu">
                             <ul class="great-ds-header__menu-list">
-                                {% for item in menuItemsList %}
-                                    {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated or not item.requiresAuth and not item.requiresNoAuth %}
-                                        <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
-                                            {% if item.href and not item.button %}
-                                                <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes | safe }} {% endif %}class="great-ds-header__link great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}>{{ item.text }}</a>
-                                            {% elif item.button %}
-                                                {{ greatButton(
-                                                    text=item.text,
-                                                    classes="great-ds-button--primary-on-dark great-ds-button--full-width great-ds-button--inline govuk-!-margin-0",
-                                                    href=item.href,
-                                                    attributes=item.attributes
-                                                ) }}
-                                            {% else %}
-                                                {{ item.text }}
-                                            {% endif %}
-                                            {% for subItem in navItemsList %}
-                                                {% if item.isCurrent and subItem.isCurrent and subItem.navItemsListChildren %}
-                                                    <ul class="great-ds-header__submenu-list">
-                                                        {% for child in subItem.navItemsListChildren %}
-                                                            {% if child.requiresAuth and isAuthenticated or child.requiresNoAuth and not isAuthenticated or not child.requiresAuth and not child.requiresNoAuth %}
-                                                                <li class="great-ds-header__submenu-item">
-                                                                    <a {% if child.attributes %}{{ child.attributes | safe }} {% endif %}class="great-ds-header__link great-ds-header__submenu-link {% if child.isCurrent %}great-ds-header__submenu-link--current{% endif %}" href="{{ child.href }}"{% if child.location %} data-location="{{ child.location }}" data-title="{{ child.text }}"{% endif %}{% if child.isCurrent %} aria-current="page"{% else %} aria-current="true"{% endif %}>{{ child.text }}</a>
-                                                                </li>
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    </ul>
+                                {% if menuItemsList %}
+                                    {% for item in menuItemsList %}
+                                        {% if item.requiresAuth and isAuthenticated or item.requiresNoAuth and not isAuthenticated or not item.requiresAuth and not item.requiresNoAuth %}
+                                            <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
+                                                {% if item.href and not item.button %}
+                                                    <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes | safe }} {% endif %}class="great-ds-header__link great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}>{{ item.text }}</a>
+                                                {% elif item.button %}
+                                                    {{ greatButton(
+                                                        text=item.text,
+                                                        classes="great-ds-button--primary-on-dark great-ds-button--full-width great-ds-button--inline govuk-!-margin-0",
+                                                        href=item.href,
+                                                        attributes=item.attributes
+                                                    ) }}
+                                                {% else %}
+                                                    {{ item.text }}
                                                 {% endif %}
-                                            {% endfor %}
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
+                                                {% for subItem in navItemsList %}
+                                                    {% if item.isCurrent and subItem.isCurrent and subItem.navItemsListChildren %}
+                                                        <ul class="great-ds-header__submenu-list">
+                                                            {% for child in subItem.navItemsListChildren %}
+                                                                {% if child.requiresAuth and isAuthenticated or child.requiresNoAuth and not isAuthenticated or not child.requiresAuth and not child.requiresNoAuth %}
+                                                                    <li class="great-ds-header__submenu-item">
+                                                                        <a {% if child.attributes %}{{ child.attributes | safe }} {% endif %}class="great-ds-header__link great-ds-header__submenu-link {% if child.isCurrent %}great-ds-header__submenu-link--current{% endif %}" href="{{ child.href }}"{% if child.location %} data-location="{{ child.location }}" data-title="{{ child.text }}"{% endif %}{% if child.isCurrent %} aria-current="page"{% else %} aria-current="true"{% endif %}>{{ child.text }}</a>
+                                                                    </li>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </ul>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
 
                                 {% if subnavItemsList and not menuItemsList %}
                                     {% for item in subnavItemsList %}
                                         <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
-                                                <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes | safe }} {% endif %}class="great-ds-header__link great-ds-header__menu-link {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}"{% if item.isCurrent %} aria-current="page"{% endif %}{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}>{{ item.text }}</a>
+                                            {% if accordionMobileMenu %}
+                                                <button class="great-ds-header__link great-ds-header__menu-link great-ds-header__menu-link--accordion {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}" aria-controls="header-sub-menu" aria-expanded="false" data-great-ds-reveal-button aria-label="Open child menu">{{ item.text }}</button>
+                                                <ul id="header-sub-menu" class="great-ds-header__menu-link-children great-ds-header__menu-link-children--hidden">
+                                                    {% for child in item.children %}
+                                                        <li class="great-ds-header__menu-link-child">
+                                                            <a class="great-ds-header__link great-ds-header__menu-link {% if child.isCurrent %}great-ds-header__subnav-link--current{% endif %}" href="{{ child.href }}"{% if child.location %} data-location="{{ child.location }}" data-title="{{ child.text }}"{% endif %}{% if child.isCurrent %} aria-current="page"{% endif %}{% if child.attributes %} {{ child.attributes | safe }}{% endif %}>{{ child.text }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                <a class="great-ds-header__link great-ds-header__subnav-link {% if item.isCurrent %}great-ds-header__subnav-link--current{% endif %}" href="{{ item.href }}"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}{% if item.isCurrent %} aria-current="page"{% endif %}{% if item.attributes %} {{ item.attributes | safe }}{% endif %}>{{ item.text }}</a>
+                                            {% endif %}
                                         </li>
                                     {% endfor %}
                                 {% endif %}

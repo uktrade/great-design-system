@@ -323,9 +323,32 @@ $great-ds-button-outline: 2px solid transparent;
     }
 }
 
-// Placeholder for icon inline styles
+// Placeholder for inline button styles
 %great-ds-button-inline {
     padding: $great-ds-button-inline-padding;
+}
+
+// Placeholder for header search menu button styles
+%great-ds-button-header-search-menu {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 16px 20px;
+
+    &:focus {
+        background-color: $great-ds-semantic-surface-background-light-blue !important;
+    }
+
+    &:focus-visible {
+        background-color: $great-ds-semantic-interaction-focus !important;
+    }
+
+    .great-ds-icon-svg {
+        margin: 0;
+    }
+
+    &.is-active .great-ds-icon-svg path {
+        fill: $great-ds-semantic-text-default-text;
+    }
 }
 
 // Placeholder for search button styles
@@ -346,9 +369,6 @@ $great-ds-button-outline: 2px solid transparent;
 // Placeholder for menu button styles
 %great-ds-button-menu {
     .great-ds-icon--menu {
-        width: 16px;
-        height: 17px;
-
         .great-ds-icon--menu-close {
             opacity: 0;
         }
@@ -485,3 +505,10 @@ $great-ds-button-outline: 2px solid transparent;
     @extend %great-ds-button-primary-on-dark;
 }
 
+// Header search menu button styles
+.great-ds-button--header-search-menu {
+    @extend %great-ds-button-base;
+    @extend %great-ds-button-menu;
+    @extend .great-ds-button--inverted;
+    @extend %great-ds-button-header-search-menu;
+}

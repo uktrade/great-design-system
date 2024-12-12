@@ -1,7 +1,6 @@
 export default class Revealer {
   constructor() {
     this.buttons = document.querySelectorAll("[data-great-ds-reveal-button]");
-    this.targets = document.querySelectorAll("[data-great-ds-reveal-target]");
     this.overlay = this.createOverlay();
     this.activeTarget = null;
     this.init();
@@ -59,12 +58,20 @@ export default class Revealer {
   }
 
   handleOutsideClick(event) {
-    if (
-      !event.target.closest("[data-great-ds-reveal-button]") &&
-      !event.target.closest('[aria-hidden="false"]')
-    ) {
-      this.hideAll();
-    }
+    const activeButtons = document.querySelectorAll(
+      '[data-great-ds-reveal-button][aria-expanded="true"]',
+    );
+    activeButtons.forEach((button) => {
+      const buttonController = button.getAttribute("aria-controls");
+      const targetElement = document.getElementById(buttonController);
+
+      if (
+        !targetElement.contains(event.target) &&
+        !button.contains(event.target)
+      ) {
+        this.toggleReveal(button);
+      }
+    });
   }
 
   handleEscapeKey(event) {
@@ -75,7 +82,7 @@ export default class Revealer {
 
   handleFocusOut(event) {
     if (this.activeTarget && !this.activeTarget.contains(event.relatedTarget)) {
-      this.hideAll();
+      // this.hideAll();
     }
   }
 
