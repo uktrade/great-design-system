@@ -28,7 +28,22 @@ body {
     @include govuk-media-query($from: 1025px) {
         padding: 50px 30px;
     }
+}
 
+.app-site-navigation__link--current {
+    border-left: 4px solid $great-ds-semantic-text-default-link;
+    padding-left: 15px;
+    margin-left: -20px;
+
+    @include govuk-media-query($from: tablet) {
+        padding-left: 11px;
+        margin-left: -15px;
+    }
+
+    @include govuk-media-query($from: 1025px) {
+        padding-left: 15px;
+        margin-left: -19px;
+    }
 }
 
 .app-site-main {

@@ -180,10 +180,10 @@
 
                                 {% if subnavItemsList and not menuItemsList %}
                                     {% for item in subnavItemsList %}
-                                        <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}">
+                                        <li class="great-ds-header__menu-item{% if item.userGreeting %} great-ds-header__menu-item--user{% endif %}{% if accordionMobileMenu %} great-ds-header__menu-item--accordion{% endif %}">
                                             {% if accordionMobileMenu %}
-                                                <button class="great-ds-header__link great-ds-header__menu-link great-ds-header__menu-link--accordion {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}" aria-controls="header-sub-menu" aria-expanded="false" data-great-ds-reveal-button aria-label="Open child menu">{{ item.text }}</button>
-                                                <ul id="header-sub-menu" class="great-ds-header__menu-link-children great-ds-header__menu-link-children--hidden">
+                                                <button class="great-ds-header__link great-ds-header__menu-link great-ds-header__menu-link--accordion {% if item.isCurrent %}great-ds-header__menu-link--current{% endif %}" aria-controls="header-sub-menu-{{ loop.index }}" aria-expanded="false" data-great-ds-reveal-button aria-label="Open child menu">{{ item.text }}</button>
+                                                <ul id="header-sub-menu-{{ loop.index }}" class="great-ds-header__menu-link-children great-ds-header__menu-link-children--hidden">
                                                     {% for child in item.children %}
                                                         <li class="great-ds-header__menu-link-child">
                                                             <a class="great-ds-header__link great-ds-header__menu-link {% if child.isCurrent %}great-ds-header__subnav-link--current{% endif %}" href="{{ child.href }}"{% if child.location %} data-location="{{ child.location }}" data-title="{{ child.text }}"{% endif %}{% if child.isCurrent %} aria-current="page"{% endif %}{% if child.attributes %} {{ child.attributes | safe }}{% endif %}>{{ child.text }}</a>

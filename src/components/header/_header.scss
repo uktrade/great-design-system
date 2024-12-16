@@ -610,6 +610,10 @@ ul.great-ds-header__menu-list {
         margin-top: $great-ds-spacing-2;
     }
 
+    &--accordion:has(.is-active) {
+        border-bottom: none !important;
+    }
+
     &--user {
         background-color: $great-ds-semantic-interaction-active-blue;
         border-bottom: none;
@@ -635,9 +639,10 @@ ul.great-ds-header__menu-list {
         bottom: 0;
         left: 0;
         right: 0;
-        top: 0;
+        height: 4px;
         opacity: 0;
         transition: opacity 0.3s ease;
+        pointer-events: none;
     }
 
     &.is-active::after,
@@ -658,12 +663,56 @@ ul.great-ds-header__menu-list {
     outline: none;
     border: none;
     background: transparent;
+    padding: 0 0 0 30px;
     color: $great-ds-semantic-text-default-text;
     @include govuk-font-size($size: 18);
     font-family: $great-ds-type-family-great;
+    position: relative;
+    padding-right: 20px;
+
+    &::before {
+        content: "";
+        left: 0;
+        top: 4px;
+        position: absolute;
+        width: 18px;
+        height: 19px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='19' viewBox='0 0 18 19' fill='none'%3E%3Cpath d='M8.40324 13.9115L1.57087 7.07905C1.24135 6.74953 1.24135 6.2153 1.57087 5.88581L2.36776 5.08893C2.69671 4.75997 3.22986 4.75934 3.55959 5.08752L8.99988 10.5023L14.4401 5.08752C14.7699 4.75934 15.303 4.75997 15.632 5.08893L16.4288 5.88581C16.7584 6.21533 16.7584 6.74957 16.4288 7.07905L9.59651 13.9115C9.26699 14.2409 8.73276 14.2409 8.40324 13.9115Z' fill='%2304043F'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 18px 19px;
+    }
+
+    &.is-active {
+        &::before {
+            transform: rotate(180deg);
+        }
+    }
 }
 
-.great-ds-header__menu-link-children {
+ul.great-ds-header__menu-link-children {
+    background-color: $great-ds-semantic-surface-background-great-ds-blue;
+    width: 100%;
+    margin: 15px -15px 0;
+    padding: 5px 15px 10px;
+    width: calc(100%);
+
+    .great-ds-header__menu-link-child {
+        padding: $great-ds-spacing-2 0;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);    
+        }
+
+        .great-ds-header__menu-link {
+            color: $great-ds-semantic-text-default-white-text;
+
+            &:focus {
+                color: $great-ds-semantic-text-default-text;
+            }
+        }
+    }
+
     &--hidden {
         display: none;
     }
