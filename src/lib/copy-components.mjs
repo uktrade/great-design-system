@@ -9,7 +9,10 @@ const __dirname = path.dirname(__filename);
 const sourceDir = path.join(__dirname, "../components");
 const targetDir = path.join(__dirname, "../../dist/components");
 
-function convertNunjucksToHtml(content) {
+function convertNunjucksToHtml(
+  content,
+  options = { preserveLineBreaks: false },
+) {
   const imports = {};
   let htmlContent = content;
 
@@ -33,11 +36,10 @@ function convertNunjucksToHtml(content) {
     /{{ (\w+)\(([\s\S]*?)\) }}/g,
     (match, macroName, args) => {
       if (imports[macroName]) {
-        // Remove line breaks, extra spaces, and commas from args
-        const formattedArgs = args
-          .replace(/\s+/g, " ")
-          .replace(/,\s*/g, " ")
-          .trim();
+        // Only format args if we're not preserving line breaks
+        const formattedArgs = options.preserveLineBreaks
+          ? args.trim()
+          : args.replace(/\s+/g, " ").replace(/,\s*/g, " ").trim();
 
         // Check if there are any arguments
         if (formattedArgs) {
@@ -131,3 +133,5 @@ glob(`${sourceDir}/*/_*.njk`, async (err, files) => {
     }
   }
 });
+
+export { convertNunjucksToHtml };
