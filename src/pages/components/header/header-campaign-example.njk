@@ -1,26 +1,27 @@
 {% extends "layout/_example.njk" %}
-{% from "../../../components/header/_header.njk" import greatHeader %}
 
 {% block content %}
-    {{ greatHeader(
-        isCampaign=true,
-        use_domestic_logo=true,
-        strapline="Get support for UK export or investment at <a class='great-ds-header__link' href='/'>great.gov.uk</a>",
-        hideSearch=true,
-        hideMenuOnDesktop=true,
-        siteTitle="The Digital Exporting Programme",
-        available_languages=[
-            { language_code: "en", display_name: "English" },
-            { language_code: "ar", display_name: "العربية" }
-        ],
-        current_language="en",
-        include_link_to_great=true,
-        subnavItemsList=[
-            { href: "#", text: "Home" },
-            { href: "#", text: "Digital Advisors" },
-            { href: "#", text: "Marketplaces" },
-            { href: "#", text: "Partners and service providers" },
-            { href: "#", text: "Webinars, events and missions" }
-        ]
-    ) }}
+    {% from "../../../components/header/_header.njk" import greatHeader %}
+
+{{ greatHeader(
+    isCampaign=true,
+    use_domestic_logo=true,
+    strapline="Get support for UK export or investment at <a class='great-ds-header__link' href='/'>great.gov.uk</a>",
+    hideSearch=true,
+    hideMenuOnDesktop=true,
+    siteTitle="The Digital Exporting Programme",
+    available_languages=[
+        { language_code: "en", display_name: "English" },
+        { language_code: "ar", display_name: "العربية" }
+    ],
+    current_language="en",
+    include_link_to_great=true,
+    subnavItemsList=[
+        { href: "#", text: "Home" },
+        { href: "#", text: "Digital Advisors" },
+        { href: "#", text: "Marketplaces" },
+        { href: "#", text: "Partners and service providers" },
+        { href: "#", text: "Webinars, events and missions" }
+    ]
+) }}
 {% endblock %}

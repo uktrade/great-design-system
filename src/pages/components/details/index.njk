@@ -1,8 +1,13 @@
-{% extends "layout/_base.njk" %}
-{% block title %}Great Design System - Details{% endblock %}
+---
+eleventyNavigation:
+  key: Details
+  parent: Components
+  title: Details
+---
+{% extends "layout/_page.njk" %}
 
 {% block content %}
     <p class="govuk-body">Here is a details example.</p>
     <p class="govuk-body">Uses govuk details component front end.</p>
-    {% exampleIframe "/components/details/details-example/" %}
+    {% exampleWithCode "/components/details/details-example/", "details-example", "100%", "100%" %}
 {% endblock %}

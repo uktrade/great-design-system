@@ -9,6 +9,13 @@ const __dirname = path.dirname(__filename);
 const sourceDir = path.join(__dirname, "../components");
 const targetDir = path.join(__dirname, "../../dist/components");
 
+function removeEmptyLines(str) {
+  return str
+    .split("\n")
+    .filter((line) => line.trim() !== "")
+    .join("\n");
+}
+
 function convertNunjucksToHtml(
   content,
   options = { preserveLineBreaks: false },
@@ -76,7 +83,8 @@ function convertNunjucksToHtml(
     },
   );
 
-  return htmlContent;
+  // Clean the output before returning
+  return removeEmptyLines(htmlContent);
 }
 
 glob(`${sourceDir}/*/_*.njk`, async (err, files) => {

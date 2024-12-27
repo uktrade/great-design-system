@@ -32,4 +32,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
   });
+
+  // Add copy button functionality
+  document.querySelectorAll(".app-copy-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      const codeBlock = button.nextElementSibling.querySelector("code");
+      const text = codeBlock.innerText;
+
+      navigator.clipboard
+        .writeText(text)
+        .then(() => {
+          // Visual feedback
+          button.textContent = "Copied!";
+          setTimeout(() => {
+            button.textContent = "Copy code";
+          }, 2000);
+        })
+        .catch((err) => {
+          console.error("Failed to copy:", err);
+          button.textContent = "Failed to copy";
+        });
+    });
+  });
 });

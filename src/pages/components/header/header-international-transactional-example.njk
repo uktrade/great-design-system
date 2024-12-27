@@ -1,44 +1,45 @@
 {% extends "layout/_example.njk" %}
-{% from "../../../components/header/_header.njk" import greatHeader %}
 
 {% block content %}
-    {{ greatHeader(
-        isInternational=true,
-        use_domestic_logo=false,
-        hideSearch=true,
-        hideMenuOnDesktop=true,
-        hideMainNav=true,
-        domesticLink={ href: "#", text: "Export from the UK" },
-        internationalLink={ href: "#", text: "Invest in the UK" },
-        siteTitle={
-            text: "Expand your business in the UK",
-            href: "#"
+    {% from "../../../components/header/_header.njk" import greatHeader %}
+
+{{ greatHeader(
+    isInternational=true,
+    use_domestic_logo=false,
+    hideSearch=true,
+    hideMenuOnDesktop=true,
+    hideMainNav=true,
+    domesticLink={ href: "#", text: "Export from the UK" },
+    internationalLink={ href: "#", text: "Invest in the UK" },
+    siteTitle={
+        text: "Expand your business in the UK",
+        href: "#"
+    },
+    navItemsList=[
+        {
+            href: "#", 
+            text: "Expand your business",
+            isCurrent: true,
+            navItemsListChildren: [
+                { href: "#", text: "Sign in", requiresNoAuth: true },
+                { href: "#", text: "Sign out", requiresAuth: true },
+                { href: "#", text: "Profile", requiresAuth: true }
+            ]
         },
-        navItemsList=[
-            {
-                href: "#", 
-                text: "Expand your business",
-                isCurrent: true,
-                navItemsListChildren: [
-                    { href: "#", text: "Sign in", requiresNoAuth: true },
-                    { href: "#", text: "Sign out", requiresAuth: true },
-                    { href: "#", text: "Profile", requiresAuth: true }
-                ]
-            },
-            { 
-                href: "#", 
-                text: "Investment opportunities"
-            },
-            { 
-                href: "#", 
-                text: "Buy from the UK" 
-            }
-        ],
-        menuItemsList=[
-            { href: "#", text: "Expand your business" },
-            { href: "#", text: "Investment opportunities"},
-            { href: "#", text: "Buy from the UK" }
-        ],
-        mobileSiteLink={ href: "#", text: "Export help for UK businesses" }
-    ) }}
+        { 
+            href: "#", 
+            text: "Investment opportunities"
+        },
+        { 
+            href: "#", 
+            text: "Buy from the UK" 
+        }
+    ],
+    menuItemsList=[
+        { href: "#", text: "Expand your business" },
+        { href: "#", text: "Investment opportunities"},
+        { href: "#", text: "Buy from the UK" }
+    ],
+    mobileSiteLink={ href: "#", text: "Export help for UK businesses" }
+) }}
 {% endblock %}

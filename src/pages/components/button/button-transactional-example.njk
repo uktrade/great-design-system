@@ -1,6 +1,6 @@
 {% extends "layout/_example.njk" %}
-{% from "../../../components/button/_button.njk" import greatButton %}
-
 {% block content %}
-    {{ greatButton(text="Complete", classes="great-ds-button--transactional") }}
+    {% from "../../../components/button/_button.njk" import greatButton %}
+
+{{ greatButton(text="Complete", classes="great-ds-button--transactional") }}
 {% endblock %}

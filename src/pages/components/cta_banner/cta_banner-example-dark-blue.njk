@@ -1,20 +1,21 @@
 {% extends "layout/_example.njk" %}
-{% from "../../../components/cta_banner/_cta_banner.njk" import greatCtaBanner %}
 
 {% block content %}
-    {{ greatCtaBanner(
-        headingText = 'Accelerate your learning',
-        leadingText = "Sign up to Great.gov.uk and you'll be able to:",
-        listItems = [ 
-            "Track your learning progress and read case studies",
-            "Join live events from the UK Export Academy",
-            "Compare markets using live export data"
-        ],
-        backgroundClass = 'great-ds-cta-banner--bg-dark-blue',
-        signInLink = { href: '#', preLinkText: 'Already signed up?', linkText: 'Sign in'},
-        signUpLink = { href: '#', linkText: 'Sign up to get started'},
-        landscapeImagePath = '/static/images/lte-signup-promo-landscape.png',
-        portraitImagePath = '/static/images/lte-signup-promo-portrait.png',
-        actionLinkClass = 'great-ds-action-link--white'
-    ) }}
+    {% from "../../../components/cta_banner/_cta_banner.njk" import greatCtaBanner %}
+
+{{ greatCtaBanner(
+    headingText = 'Accelerate your learning',
+    leadingText = "Sign up to Great.gov.uk and you'll be able to:",
+    listItems = [ 
+        "Track your learning progress and read case studies",
+        "Join live events from the UK Export Academy",
+        "Compare markets using live export data"
+    ],
+    backgroundClass = 'great-ds-cta-banner--bg-dark-blue',
+    signInLink = { href: '#', preLinkText: 'Already signed up?', linkText: 'Sign in'},
+    signUpLink = { href: '#', linkText: 'Sign up to get started'},
+    landscapeImagePath = '/static/images/lte-signup-promo-landscape.png',
+    portraitImagePath = '/static/images/lte-signup-promo-portrait.png',
+    actionLinkClass = 'great-ds-action-link--white'
+) }}
 {% endblock %}

@@ -1,12 +1,17 @@
-{% extends "layout/_base.njk" %}
-{% block title %}Great Design System - CTA Banner{% endblock %}
+---
+eleventyNavigation:
+  key: CTA Banner
+  parent: Components
+  title: CTA Banner
+---
+{% extends "layout/_page.njk" %}
 
 {% block content %}
     <p class="govuk-body">Here is a CTA Banner example.</p>
     <p class="govuk-body">Uses our own design.</p>
-    {% exampleIframe "/components/cta_banner/cta_banner-example-default/", "100%", "300px"  %}
-    {% exampleIframe "/components/cta_banner/cta_banner-example-green/", "100%", "300px"  %}
-    {% exampleIframe "/components/cta_banner/cta_banner-example-dark-blue/", "100%", "300px"  %}
-    {% exampleIframe "/components/cta_banner/cta_banner-example-no-links/", "100%", "300px"  %}
-    {% exampleIframe "/components/cta_banner/cta_banner-example-no-links-dark-blue/", "100%", "300px"  %}
+    {% exampleWithCode "/components/cta_banner/cta_banner-example-default/", "cta_banner-example-default", "100%", "600px" %}
+    {% exampleWithCode "/components/cta_banner/cta_banner-example-green/", "cta_banner-example-green", "100%", "600px" %}
+    {% exampleWithCode "/components/cta_banner/cta_banner-example-dark-blue/", "cta_banner-example-dark-blue", "100%", "600px" %}
+    {% exampleWithCode "/components/cta_banner/cta_banner-example-no-links/", "cta_banner-example-no-links", "100%", "300px"  %}
+    {% exampleWithCode "/components/cta_banner/cta_banner-example-no-links-dark-blue/", "cta_banner-example-no-links-dark-blue", "100%", "300px"  %}
 {% endblock %}

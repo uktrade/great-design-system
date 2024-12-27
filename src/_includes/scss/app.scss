@@ -68,10 +68,6 @@ body {
 .app-open-component__link {
     @include great-ds-link-decorator;
     @include govuk-font-size($size: 16);
-
-    &:focus {
-        @include govuk-focused-text;
-    }
 }
 
 .app-iframe-wrapper {
@@ -84,6 +80,17 @@ body {
 
     code[class*=language-] {
         white-space: pre-wrap !important;
+    }
+
+    pre {
+        padding-top: 60px !important;
+        border: 3px solid transparent;
+        outline: 3px solid transparent;
+
+        &:focus {
+            border: 3px solid #0b0c0c;
+            outline: 3px solid #fd0;
+        }
     }
 
     &__tabs {
@@ -112,9 +119,18 @@ body {
     }
 
     &__content {
-        padding: 1rem;
+        padding: 20px;
         background: #fff;
         border: 1px solid $great-ds-semantic-border-default-light-grey-border;
         border-top: none;
+        position: relative;
     }
+}
+
+
+.app-copy-button {
+    position: absolute;
+    right: 30px;
+    top: 40px;
+    @include govuk-font-size($size: 14);
 }

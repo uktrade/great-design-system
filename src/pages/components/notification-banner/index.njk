@@ -1,9 +1,14 @@
-{% extends "layout/_base.njk" %}
-{% block title %}Great Design System - Notification banner{% endblock %}
+---
+eleventyNavigation:
+  key: Notification banner
+  parent: Components
+  title: Notification banner
+---
+{% extends "layout/_page.njk" %}
 
 {% block content %}
     <p class="govuk-body">Here is an notification banner example.</p>
     <p class="govuk-body">Uses govuk notification banner component front end.</p>
-    {% exampleIframe "/components/notification-banner/notification-banner-example/", "100%", "200px" %}
-    {% exampleIframe "/components/notification-banner/notification-banner-default-example/", "100%", "200px" %}
+    {% exampleWithCode "/components/notification-banner/notification-banner-example/", "notification-banner-example", "100%", "200px" %}
+    {% exampleWithCode "/components/notification-banner/notification-banner-default-example/", "notification-banner-default-example", "100%", "200px" %}
 {% endblock %}
