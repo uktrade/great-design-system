@@ -2,6 +2,7 @@ const nunjucks = require("nunjucks");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const path = require('path');
 const fs = require('fs');
+const lunr = require('lunr');
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy({ "src/static": "static" });
@@ -139,6 +140,46 @@ module.exports = function(eleventyConfig) {
 
     eleventyConfig.addFilter("debug", function(value) {
         return JSON.stringify(value, null, 2);
+    });
+
+    // Create search index and documents
+    eleventyConfig.addCollection("searchIndex", function(collection) {
+        const pages = collection.getFilteredByGlob("src/pages/**/*.njk");
+        
+        const documents = {};
+        
+        const index = lunr(function() {
+            this.ref('url');
+            this.field('title', { boost: 10 });
+            this.field('type', { boost: 5 });
+            this.field('synonyms', { boost: 8 });
+            
+            pages.forEach(page => {
+                if (page.fileSlug.includes('-example')) {
+                    return;
+                }
+
+                // Combine title and synonyms for better matching
+                const synonymsText = page.data.eleventyNavigation?.synonyms 
+                    ? page.data.eleventyNavigation.synonyms.join(' ')
+                    : '';
+
+                const doc = {
+                    url: page.url,
+                    title: page.data.eleventyNavigation?.title || page.data.title || '',
+                    type: page.data.eleventyNavigation?.parent || page.data.eleventyNavigation?.key,
+                    synonyms: synonymsText
+                };
+                
+                documents[page.url] = doc;
+                this.add(doc);
+            });
+        });
+
+        fs.writeFileSync('./dist/search-index.json', JSON.stringify(index));
+        fs.writeFileSync('./dist/search-documents.json', JSON.stringify(documents));
+
+        return index;
     });
 
     return {
