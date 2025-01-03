@@ -467,17 +467,81 @@
 }
 
 .great-ds-header__search-autocomplete {
+    display: none;
     background-color: $great-ds-semantic-surface-background-light-blue;
     margin: 0 -15px;
     padding: 15px;
     width: calc(100%);
+    position: relative;
 
     @include govuk-media-query($from: desktop) {
-        min-width: 280px;
+        min-width: 300px;
         padding: 0;
         margin: 0;
         background-color: transparent;
-    }   
+    }
+
+    body.js-enabled & {
+        display: block;
+    }
+}
+
+.great-ds-header__search-autocomplete-results {
+    position: absolute;
+    top: 82%;
+    left: 0;
+    width: 100%;
+
+    @include govuk-media-query($from: desktop) {
+        width: 300px;
+        top: 100%;
+    }
+}
+
+.great-ds-header__search-autocomplete-results-list {
+    border: 3px solid $great-ds-semantic-border-default-input-border;
+    background-color: $great-ds-semantic-surface-background-white;
+    border-top: none;
+    margin: 0 15px 15px !important;
+
+    @include govuk-media-query($from: desktop) {
+        margin: 0 !important;
+    }
+}
+
+.great-ds-header__search-autocomplete-results-item {
+    list-style: none;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid $great-ds-semantic-border-default-light-grey-border;
+    }
+}
+
+.great-ds-header__search-autocomplete-results-item-link {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+
+    &:hover, 
+    &:focus, 
+    &:active,
+    &.selected {
+        background-color: $great-ds-semantic-surface-background-light-blue;
+        outline: none;
+    }
+}
+
+.great-ds-header__search-autocomplete-results-item-link-text {
+    color: $great-ds-semantic-text-default-text;
+    @include govuk-font-size($size: 18);
+    font-family: $great-ds-type-family-great-ds-bold;
+    display: block;
+    margin: 0;
+}
+
+.great-ds-header__search-autocomplete-results-item-link-type {
+    color: $great-ds-semantic-text-default-secondary-text;
+    @include govuk-font-size($size: 16);
 }
 
 .great-ds-header__search-form {

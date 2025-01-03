@@ -1,3 +1,12 @@
+const Search = require("./search-autosuggest");
+
+// Initialize search when DOM is ready
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => new Search());
+} else {
+  new Search();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".app-code-viewer__content").forEach((content) => {
     content.hidden = true;
