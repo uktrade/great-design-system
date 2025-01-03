@@ -1,10 +1,10 @@
 {% extends "layout/_example.njk" %}
 
-{% from "../../../components/notification-banner/_notification-banner.njk" import greatNotificationBanner %}
-
 {% block content %}
-    {{ greatNotificationBanner(
-        html="<h3 class=\"govuk-notification-banner__heading\">Training outcome recorded and trainee withdrawn</h3><p class=\"govuk-body\">Contact <a class=\"govuk-notification-banner__link\" href=\"#\">example@department.gov.uk</a> if you think there's a problem.</p>",
-        type="success"
-    ) }}
+    {% from "../../../components/notification-banner/_notification-banner.njk" import greatNotificationBanner %}
+
+{{ greatNotificationBanner(
+    html="<h3 class=\"govuk-notification-banner__heading\">Training outcome recorded and trainee withdrawn</h3><p class=\"govuk-body\">Contact <a class=\"govuk-notification-banner__link\" href=\"#\">example@department.gov.uk</a> if you think there's a problem.</p>",
+    type="success"
+) }}
 {% endblock %}

@@ -1,13 +1,19 @@
-{% extends "layout/_base.njk" %}
-{% block title %}Great Design System - Header{% endblock %}
+---
+eleventyNavigation:
+  key: Header
+  parent: Components
+  title: Header
+---
+{% extends "layout/_page.njk" %}
 
 {% block content %}
     <p class="govuk-body">Here is a header example.</p>
-    {% exampleIframe "/components/header/header-example/", "100%", "300px" %}
+    {% exampleWithCode "/components/header/header-example/", "header-example", "100%", "300px" %}
     <p class="govuk-body">Here is a header example for a logged in user.</p>
-    {% exampleIframe "/components/header/header-logged-in-example/", "100%", "300px" %}
+    {% exampleWithCode "/components/header/header-logged-in-example/", "header-logged-in-example", "100%", "300px" %}
     <p class="govuk-body">Here is a campaign header example.</p>
-    {% exampleIframe "/components/header/header-campaign-example/", "100%", "300px" %}
+    {% exampleWithCode "/components/header/header-campaign-example/", "header-campaign-example", "100%", "300px" %}
     <p class="govuk-body">Here is an international header example.</p>
-    {% exampleIframe "/components/header/header-international-example/", "100%", "300px" %}
+    {% exampleWithCode "/components/header/header-international-example/", "header-international-example", "100%", "300px" %}
 {% endblock %}
+

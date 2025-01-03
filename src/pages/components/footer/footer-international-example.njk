@@ -1,10 +1,10 @@
 {% extends "layout/_example.njk" %}
 
-{% from "../../../components/footer/_footer.njk" import greatFooter %}
-
 {% block content %}
-    {{ greatFooter(
-        isInternational = true,
+    {% from "../../../components/footer/_footer.njk" import greatFooter %}
+
+{{ greatFooter(
+    isInternational = true,
         currentYear = '2024',
         footerLinks = [
             { href: "#", text: "Help using this site", title: 'Help using this site' },
@@ -16,5 +16,5 @@
         ],
         logoLinkHref = '#'
     ) 
-    }}
+ }}
 {% endblock %}

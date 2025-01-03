@@ -1,22 +1,27 @@
-{% extends "layout/_base.njk" %}
-{% block title %}Great Design System - Button{% endblock %}
+---
+eleventyNavigation:
+  key: Button
+  parent: Components
+  title: Button
+---
+{% extends "layout/_page.njk" %}
 
 {% block content %}
     <p class="govuk-body">Primary button example</p>
-    {% exampleIframe "/components/button/button-example/" %}
-    <p class="govuk-body">Secondary button example</p>
-    {% exampleIframe "/components/button/button-secondary-example/" %}
-    <p class="govuk-body">Warning button example</p>
-    {% exampleIframe "/components/button/button-warning-example/" %}
-    <p class="govuk-body">Transactional button example</p>
-    {% exampleIframe "/components/button/button-transactional-example/" %}
-    <p class="govuk-body">CTA button example</p>
-    {% exampleIframe "/components/button/button-cta-example/" %}
-    <p class="govuk-body">Inline button example</p>
-    {% exampleIframe "/components/button/button-inline-example/" %}
-    <p class="govuk-body">Toggle button example</p>
-    {% exampleIframe "/components/button/button-toggle-example/" %}
-    <p class="govuk-body">Icon button example</p>
-    {% exampleIframe "/components/button/button-icon-example/" %}
+    {% exampleWithCode "/components/button/button-example/", "button", "100%", "80px" %}
 
+    <p class="govuk-body">Secondary button example</p>
+    {% exampleWithCode "/components/button/button-secondary-example/", "button", "100%", "80px" %}
+    <p class="govuk-body">Warning button example</p>
+    {% exampleWithCode "/components/button/button-warning-example/", "button", "100%", "80px" %}
+    <p class="govuk-body">Transactional button example</p>
+    {% exampleWithCode "/components/button/button-transactional-example/", "button", "100%", "80px" %}
+    <p class="govuk-body">CTA button example</p>
+    {% exampleWithCode "/components/button/button-cta-example/", "button", "100%", "80px" %}
+    <p class="govuk-body">Inline button example</p>
+    {% exampleWithCode "/components/button/button-inline-example/", "button", "100%", "80px" %}
+    <p class="govuk-body">Toggle button example</p>
+    {% exampleWithCode "/components/button/button-toggle-example/", "button", "100%", "80px" %}
+    <p class="govuk-body">Icon button example</p>
+    {% exampleWithCode "/components/button/button-icon-example/", "button", "100%", "80px" %}
 {% endblock %}

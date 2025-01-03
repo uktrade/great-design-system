@@ -1,12 +1,13 @@
 {% extends "layout/_example.njk" %}
-{% from "../../../components/cta_banner/_cta_banner.njk" import greatCtaBanner %}
 
 {% block content %}
-    {{ greatCtaBanner(
-        headingText = 'Accelerate your learning',
-        signInLink = { href: '#', preLinkText: 'Already signed up?', linkText: 'Sign in'},
-        signUpLink = { href: '#', linkText: 'Sign up to get started'},
-        actionLinkClass = 'great-ds-action-link--white',
-        backgroundClass = 'great-ds-cta-banner--bg-dark-blue'
-    ) }}
+    {% from "../../../components/cta_banner/_cta_banner.njk" import greatCtaBanner %}
+
+{{ greatCtaBanner(
+    headingText = 'Accelerate your learning',
+    signInLink = { href: '#', preLinkText: 'Already signed up?', linkText: 'Sign in'},
+    signUpLink = { href: '#', linkText: 'Sign up to get started'},
+    actionLinkClass = 'great-ds-action-link--white',
+    backgroundClass = 'great-ds-cta-banner--bg-dark-blue'
+) }}
 {% endblock %}

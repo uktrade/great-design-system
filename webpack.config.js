@@ -12,6 +12,7 @@ const entries = {
 
 if (!isPackageBuild) {
   entries.app_css = "./src/_includes/scss/app.scss";
+  entries.app_js = "./src/_includes/js/app.js";
 }
 
 module.exports = {

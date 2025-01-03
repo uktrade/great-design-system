@@ -1,7 +1,7 @@
 {% extends "layout/_example.njk" %}
-{% from "../../../components/accordion/_accordion.njk" import greatAccordion %}
-
 {% block content %}
+    {% from "../../../components/accordion/_accordion.njk" import greatAccordion %}
+
     {{ greatAccordion(
         id="accordion-default",
         items=[
