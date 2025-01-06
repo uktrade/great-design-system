@@ -1,0 +1,25 @@
+---
+layout: layout/_page.njk
+content: main
+eleventyNavigation:
+  key: Call To Action Banner
+  parent: Components
+  title: Call To Action Banner
+  synonyms:
+    - cta
+    - full width banner
+    - banner
+    - promo banner
+---
+
+# Call To Action Banner
+
+Here is a Call To Action Banner example.
+
+Uses our own design.
+
+{% exampleWithCode "/components/cta_banner/cta_banner-example-default/", "cta_banner-example-default", "100%", "600px" %}
+{% exampleWithCode "/components/cta_banner/cta_banner-example-green/", "cta_banner-example-green", "100%", "600px" %}
+{% exampleWithCode "/components/cta_banner/cta_banner-example-dark-blue/", "cta_banner-example-dark-blue", "100%", "600px" %}
+{% exampleWithCode "/components/cta_banner/cta_banner-example-no-links/", "cta_banner-example-no-links", "100%", "300px"  %}
+{% exampleWithCode "/components/cta_banner/cta_banner-example-no-links-dark-blue/", "cta_banner-example-no-links-dark-blue", "100%", "300px"  %}

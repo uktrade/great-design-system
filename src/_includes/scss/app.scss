@@ -3,6 +3,24 @@ body {
     margin: 0;
 }
 
+.app-site-main {
+    h1 {
+        @extend .govuk-heading-xl;
+    }
+
+    h2 {
+        @extend .govuk-heading-l;
+    }
+
+    h3 {
+        @extend .govuk-heading-m;
+    }
+
+    h4, h5 {
+        @extend .govuk-heading-s;
+    }
+}
+
 .app-site-wrapper {
     max-width: 1290px;
     margin: 0 auto;
@@ -79,7 +97,8 @@ body {
     margin: 0 0 40px;
 
     code[class*=language-] {
-        white-space: pre-wrap !important;
+        white-space: pre !important;
+        tab-size: 4;
     }
 
     pre {

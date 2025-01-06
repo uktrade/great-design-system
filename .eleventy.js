@@ -8,6 +8,12 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy({ "src/static": "static" });
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
+    eleventyConfig.setNunjucksEnvironmentOptions({
+        trimBlocks: false,
+        lstripBlocks: false,
+        keepWhitespace: true
+    });
+
     eleventyConfig.addGlobalData("eleventyComputed", {
         permalink: (data) => {
             if (data.page.filePathStem === "/pages/index") {
@@ -137,14 +143,10 @@ module.exports = function(eleventyConfig) {
             return `<div class="app-example">Error: ${err.message}</div>`;
         }
     });
-
-    eleventyConfig.addFilter("debug", function(value) {
-        return JSON.stringify(value, null, 2);
-    });
-
+    
     // Create search index and documents
     eleventyConfig.addCollection("searchIndex", function(collection) {
-        const pages = collection.getFilteredByGlob("src/pages/**/*.njk");
+        const pages = collection.getFilteredByGlob("src/pages/**/*.md");
         
         const documents = {};
         
