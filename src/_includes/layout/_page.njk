@@ -1,10 +1,23 @@
 {% extends "layout/_base.njk" %}
 
 {% block navigation %}
-    <div class="app-site-navigation">
-        {% include "../helpers/_subnavigation.njk" %}
-    </div>
+    {% if not hideSidebar %}
+        <div class="app-site-navigation">
+            {% include "../helpers/_subnavigation.njk" %}
+        </div>
+    {% endif %}
 {% endblock %}
 {% block content %}
+    {% if isGovUk or status %}
+        <div class="app-tags">
+            {% if isGovUk %}
+                <span class="app-tag app-tag--govuk">Based on GOV.UK</span>
+            {% endif %}
+            
+            {% if status %}
+                <span class="app-tag app-tag--{{ status | lower }}">{{ status }}</span>
+            {% endif %}
+        </div>
+    {% endif %}
     {{ content | safe }}
 {% endblock %}

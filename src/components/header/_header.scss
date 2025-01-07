@@ -96,6 +96,7 @@
 
 .great-ds-header__international-link-item {
     padding: $great-ds-spacing-2 $great-ds-spacing-4;
+    margin: 0;
     @include govuk-font-size($size: 16);
 
     &:first-child {

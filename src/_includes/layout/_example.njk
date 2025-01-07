@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iframe Content</title>
+    <title>Component Example</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
     <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
-    {% block content %}{% endblock %}
+    
+    <div class="app-example-wrapper {% if exampleFullWidth %}app-example-full-width{% endif %}">
+        {% block content %}{% endblock %}
+    </div>
     <script src="/js/main.js"></script>
 </body>
 </html>

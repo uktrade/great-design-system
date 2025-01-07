@@ -19,19 +19,21 @@ p, dl {
     margin: 0 0 $great-ds-spacing-6;
 }
 
-ul, ol {
-    @extend .govuk-list;
-    @include govuk-font-size($size: 18);
-}
+main {
+    ul, ol {
+        @extend .govuk-list;
+        @include govuk-font-size($size: 18);
+    }
 
-ul { 
-    @extend .govuk-list--bullet; 
-}
+    ul { 
+        @extend .govuk-list--bullet; 
+    }
 
-ol { 
-    @extend .govuk-list--number; 
-}
+    ol { 
+        @extend .govuk-list--number; 
+    }
 
-a {
-    color: $great-ds-semantic-text-default-link;
+    a {
+        color: $great-ds-semantic-text-default-link;
+    }
 }

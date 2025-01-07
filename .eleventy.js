@@ -3,6 +3,8 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const path = require('path');
 const fs = require('fs');
 const lunr = require('lunr');
+const markdownIt = require('markdown-it');
+const md = new markdownIt();
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy({ "src/static": "static" });
@@ -146,7 +148,7 @@ module.exports = function(eleventyConfig) {
     
     // Create search index and documents
     eleventyConfig.addCollection("searchIndex", function(collection) {
-        const pages = collection.getFilteredByGlob("src/pages/**/*.md");
+        const pages = collection.getFilteredByGlob("src/pages/**/*.njk");
         
         const documents = {};
         
@@ -182,6 +184,10 @@ module.exports = function(eleventyConfig) {
         fs.writeFileSync('./dist/search-documents.json', JSON.stringify(documents));
 
         return index;
+    });
+
+    eleventyConfig.addPairedShortcode("markdown", function(content) {
+        return md.render(content);
     });
 
     return {
