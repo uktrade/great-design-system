@@ -172,12 +172,14 @@ body {
 
 .app-tags {
     margin-bottom: $great-ds-spacing-6;
+    display: flex;
+    gap: $great-ds-spacing-2;
 }
 
 .app-tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: $great-ds-spacing-1;
-    margin-right: $great-ds-spacing-2;
     @include govuk-font-size($size: 16);
     line-height: 1;
 }
