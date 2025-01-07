@@ -1,0 +1,102 @@
+.great-ds-hero {
+    padding-left: $great-ds-spacing-6-large;
+    padding-right: $great-ds-spacing-6-large;
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+}
+
+.great-ds-hero--bg-dark-blue {
+    background-color: $great-ds-primitive-brand-dbt-light-blue; //TODO Alter figma config to include this in _surface.scss
+}
+
+.great-ds-hero__container {
+    width: 100%;
+    @include govuk-media-query($from: tablet) {
+        display:flex;
+        flex-direction: row-reverse;
+    }
+
+    .great-ds-hero--small-image & {
+
+    }
+}
+
+.great-ds-hero__image-container {
+    .great-ds-hero--large-image--scaling & {
+        @include govuk-media-query($from: tablet) {
+            display: flex;
+            width: 50%;
+            align-items: flex-start;
+            flex-direction: row-reverse;
+            overflow: hidden;
+        }
+        display: none;
+    }
+    .great-ds-hero--large-image--cropping & {
+        @include govuk-media-query($from: tablet) {
+            display: block;
+            height: 100%;
+            width: auto;
+            overflow: hidden;
+        }
+        display: none;
+        
+    }
+    .great-ds-hero--small-image & {
+
+        width: 100%;
+        margin: auto;
+        @include govuk-media-query($from: tablet) {
+            width: 25%;
+            margin: auto 0 auto auto;
+            overflow: hidden;
+        }
+    }
+}
+
+.great-ds-hero--image-only {
+    padding: 0;
+}
+.great-ds-hero__image-container {
+    .great-ds-hero--image-only & {
+        width: 100%;
+        > img {
+            width: 100%;
+        }
+    }
+    
+}
+
+.great-ds-hero__text-container {
+    .great-ds-hero--large-image & {
+        @include govuk-media-query($from: tablet) {
+            width: 50%;
+            display:flex;
+            flex-direction: column;
+            margin-right: auto;
+        }
+
+    }
+
+    .great-ds-hero--small-image & {
+        width: 75%;
+    }
+
+    max-width: 600px;
+    @include govuk-media-query($from: tablet) {
+        min-width: 600px;
+    }
+}
+
+.great-ds-hero--small-image {
+    justify-content: flex-end;
+}
+
+.great-ds-hero__heading {
+
+}
+
+.great-ds-hero__description {
+
+}

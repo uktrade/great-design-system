@@ -1,0 +1,16 @@
+{% extends "layout/_example.njk" %}
+
+{% from "../../../components/hero/_hero.njk" import greatHero %}
+{% from "../../../components/hero/_doc_hero_image.njk" import greatDocHeroImage %}
+{% from "../../../components/hero/_export_academy_logo.njk" import greatUKEALogo %}
+
+{% block content %}
+    {{ greatHero(
+        layoutClass = 'great-ds-hero--small-image',
+        heroHeading = 'This is a heading',
+        heroDescription = 'Description describing our hero component in heroicly described detail. Description describing our hero component in heroicly described detail detail details Description describing our hero component in heroicly described detail',
+        heroImage = greatUKEALogo(),
+        actionLinkUrl = '/',
+        actionLinkText = 'go here!'
+    ) }}
+{% endblock %}

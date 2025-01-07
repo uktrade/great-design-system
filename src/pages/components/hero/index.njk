@@ -1,0 +1,15 @@
+{% extends "layout/_base.njk" %}
+{% block title %}Great Design System - Hero{% endblock %}
+
+{% block content %}
+    <p class="govuk-body">Here is a Hero example.</p>
+    <p class="govuk-body">Uses custom styling.</p>
+    <p class="govuk-body">Large scaling image:</p>
+    {% exampleIframe "/components/hero/hero-example-large-image-scaling/", "100%", "200px" %}
+    <p class="govuk-body">Large cropping image:</p>
+    {% exampleIframe "/components/hero/hero-example-large-image-cropping/", "100%", "400px" %}
+    <p class="govuk-body">Small image:</p>
+    {% exampleIframe "/components/hero/hero-example-small-image/", "100%", "400px" %}
+    <p class="govuk-body">Image only:</p>
+    {% exampleIframe "/components/hero/hero-example-image-only/", "100%", "200px" %}
+{% endblock %}

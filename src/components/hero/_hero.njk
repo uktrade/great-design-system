@@ -1,0 +1,32 @@
+{% from "../action_link/_action_link.njk" import greatActionLink %}
+
+{% macro greatHero(actionLinkText, actionLinkUrl, backgroundClass, layoutClass, scalingClass, heroHeading, heroDescription, heroCaption, heroLink, heroImage ) %}
+    <div class='great-ds-hero 
+        {% if backgroundClass %} {{ backgroundClass }} {% endif %} 
+        {% if layoutClass %} {{ layoutClass }} {% else %} great-ds-hero--large-image--cropping {% endif %}' >
+        {% if layoutClass == 'great-ds-hero--image-only' %}
+            <div class='great-ds-hero__image-container'>
+                {{ heroImage }} 
+            </div>
+        {% else %}
+        <div class = 'govuk-grid-row great-ds-hero__container'>
+            <div class='great-ds-hero__image-container {% if heroHeading or heroDescription or heroCaption or heroLink %} {% else %}great-ds-hero__image-container--image-only{% endif %}'>
+                {{ heroImage }}    
+            </div>
+            {% if heroHeading or heroDescription or heroCaption or heroLink %}
+                <div class='great-ds-hero__text-container'>
+                    {% if heroCaption %} <h2 class='govuk-caption-xl'> {{ heroCaption }} </h2> {% endif %}
+                    {% if heroHeading %} <h1 class='great-ds-hero__heading'> {{ heroHeading }} </h1> {% endif %}
+                    {% if heroDescription %} <p class='great-ds-hero__description'> {{ heroDescription }} </p> {% endif %}
+                    {% if actionLinkText and actionLinkUrl %}
+                        <div class="great-ds-hero__action-link-container">
+                            {{ greatActionLink(linkText=actionLinkText, linkHref=actionLinkUrl, linkClass=actionLinkClass) }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+            
+        </div>
+        {% endif %}
+    </div>
+{% endmacro %}

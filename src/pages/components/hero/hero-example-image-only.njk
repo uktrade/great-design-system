@@ -1,0 +1,12 @@
+{% extends "layout/_example.njk" %}
+
+{% from "../../../components/hero/_hero.njk" import greatHero %}
+{% from "../../../components/hero/_doc_hero_image.njk" import greatDocHeroImage %}
+{% from "../../../components/hero/_tropical_hero_image.njk" import greatTropicalHeroImage %}
+
+{% block content %}
+    {{ greatHero(
+        heroImage = greatTropicalHeroImage(),
+        layoutClass='great-ds-hero--image-only'
+    ) }}
+{% endblock %}
