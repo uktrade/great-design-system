@@ -126,15 +126,15 @@ module.exports = function(eleventyConfig) {
                         <button class="app-code-viewer__tab" role="tab" aria-selected="false" data-tab="html">HTML</button>
                     </div>
                     <div class="app-code-viewer__content" data-tab-content="nunjucks">
-                        <button class="app-copy-button great-ds-button--secondary great-ds-button--inline" aria-label="Copy Nunjucks code">Copy code</button>
+                        <button class="app-copy-button great-ds-button--secondary great-ds-button--inline great-ds-button--auto-width" aria-label="Copy Nunjucks code">Copy code</button>
                         <pre tabindex="0"><code class="language-twig">${escaped.nunjucks}</code></pre>
                     </div>
                     <div class="app-code-viewer__content" data-tab-content="django" hidden>
-                        <button class="app-copy-button great-ds-button--secondary great-ds-button--inline" aria-label="Copy Django code">Copy code</button>
+                        <button class="app-copy-button great-ds-button--secondary great-ds-button--inline great-ds-button--auto-width" aria-label="Copy Django code">Copy code</button>
                         <pre tabindex="0"><code class="language-django">${escaped.django}</code></pre>
                     </div>
                     <div class="app-code-viewer__content" data-tab-content="html" hidden>
-                        <button class="app-copy-button great-ds-button--secondary great-ds-button--inline" aria-label="Copy HTML code">Copy code</button>
+                        <button class="app-copy-button great-ds-button--secondary great-ds-button--inline great-ds-button--auto-width" aria-label="Copy HTML code">Copy code</button>
                         <pre tabindex="0"><code class="language-html">${escaped.html}</code></pre>
                     </div>
                 </div>
