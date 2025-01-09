@@ -1,6 +1,7 @@
 .great-ds-hero {
     padding-left: $great-ds-spacing-6-large;
     padding-right: $great-ds-spacing-6-large;
+    padding-bottom: $great-ds-spacing-6-large;
     display: flex;
     width: 100%;
     flex-direction: row-reverse;
@@ -15,10 +16,6 @@
     @include govuk-media-query($from: tablet) {
         display:flex;
         flex-direction: row-reverse;
-    }
-
-    .great-ds-hero--small-image & {
-
     }
 }
 
@@ -44,9 +41,8 @@
         
     }
     .great-ds-hero--small-image & {
-
         width: 100%;
-        margin: auto;
+        margin: 0 0 $great-ds-spacing-5 0;
         @include govuk-media-query($from: tablet) {
             width: 25%;
             margin: auto 0 auto auto;
@@ -58,18 +54,24 @@
 .great-ds-hero--image-only {
     padding: 0;
 }
+
 .great-ds-hero__image-container {
     .great-ds-hero--image-only & {
         width: 100%;
         > img {
             width: 100%;
+            object-fit: none;
+            height: 200px;
+            @include govuk-media-query($from: tablet) {
+                height: 355px;
+            }
         }
     }
     
 }
 
 .great-ds-hero__text-container {
-    .great-ds-hero--large-image & {
+    .great-ds-hero--large-image--scaling, .great-ds-hero--large-image--cropping & {
         @include govuk-media-query($from: tablet) {
             width: 50%;
             display:flex;
@@ -94,9 +96,29 @@
 }
 
 .great-ds-hero__heading {
-
+    margin-top: 0px;
+    margin-bottom: $great-ds-spacing-3;
+    font-size: $great-ds-type-size-heading-xl-large;
+    letter-spacing: -1.44px;
+    font-weight: 600;
+    line-height: $great-ds-type-line-height-heading-xl-large;
 }
 
 .great-ds-hero__description {
+    margin-bottom: $great-ds-spacing-8;
+}
 
+.great-ds-hero--box-shadow {
+    box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.05)
+}
+
+.great-ds-hero__action-link-container {
+    padding-bottom: $great-ds-spacing-6;
+}
+
+.great-ds-hero__caption {
+    margin-bottom: $great-ds-spacing-1;
+    font-size: $great-ds-type-size-caption-xl-large;
+    line-height: $great-ds-type-line-height-caption-xl-large;
+    color: $great-ds-semantic-text-default-secondary-text;
 }

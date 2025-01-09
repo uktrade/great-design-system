@@ -5,11 +5,13 @@
 
 {% block content %}
     {{ greatHero(
-        layoutClass = 'great-ds-hero--large-image--cropping',
+        heroCaption = 'Captioning',
+        heroClass = 'great-ds-hero--large-image--cropping',
         heroHeading = 'This is a heading',
         heroDescription = 'Description describing our hero component in heroicly described detail. Description describing our hero component in heroicly described detail detail details Description describing our hero component in heroicly described detail',
         heroImage = greatDocHeroImage(),
         actionLinkUrl = '/',
-        actionLinkText = 'go here!'
+        actionLinkText = 'go here!', 
+        showBoxShadow = 'true'
     ) }}
 {% endblock %}
