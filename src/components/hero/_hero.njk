@@ -1,6 +1,6 @@
 {% from "../action_link/_action_link.njk" import greatActionLink %}
 
-{% macro greatHero(heroClasses, heroImage, heroCaption, heroHeading, heroDescription, captionClass, headingClass, descriptionClass, actionLinkText, actionLinkUrl, actionLinkClass, showBoxShadow ) %}
+{% macro greatHero(heroClasses, heroImage, heroCaption, heroHeading, heroDescription, captionClass, headingClass, descriptionClass, actionLinkText, actionLinkUrl, actionLinkClass ) %}
     <div class='great-ds-hero 
         {% if heroClasses %} {{ heroClasses }} {% else %} great-ds-hero--large-image--cropping {% endif %}' >
         {% if heroClasses == 'great-ds-hero--image-only' %}
