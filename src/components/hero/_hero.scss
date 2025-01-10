@@ -1,7 +1,5 @@
 .great-ds-hero {
-    padding-left: $great-ds-spacing-6-large;
-    padding-right: $great-ds-spacing-6-large;
-    padding-bottom: $great-ds-spacing-6-large;
+    padding: $great-ds-spacing-6-large;
     display: flex;
     width: 100%;
     flex-direction: row-reverse;
@@ -13,6 +11,8 @@
 
 .great-ds-hero__container {
     width: 100%;
+    justify-content: flex-end;
+    align-items: center;
     @include govuk-media-query($from: tablet) {
         display:flex;
         flex-direction: row-reverse;
@@ -60,10 +60,11 @@
         width: 100%;
         > img {
             width: 100%;
-            object-fit: none;
             height: 200px;
+            object-fit: none;
             @include govuk-media-query($from: tablet) {
                 height: 355px;
+                object-fit: cover;
             }
         }
     }
@@ -71,23 +72,26 @@
 }
 
 .great-ds-hero__text-container {
-    .great-ds-hero--large-image--scaling, .great-ds-hero--large-image--cropping & {
+    padding: $great-ds-spacing-2;
+    max-width: 600px;
+    @include govuk-media-query($from: tablet) {
+        min-width: 600px;
+    }
+
+    .great-ds-hero--large-image--scaling &, .great-ds-hero--large-image--cropping & {
+        min-height:355px;
         @include govuk-media-query($from: tablet) {
             width: 50%;
             display:flex;
             flex-direction: column;
-            margin-right: auto;
         }
-
     }
 
     .great-ds-hero--small-image & {
-        width: 75%;
-    }
-
-    max-width: 600px;
-    @include govuk-media-query($from: tablet) {
-        min-width: 600px;
+        min-height:355px;
+        @include govuk-media-query($from: tablet) { 
+            width: 75%;
+        }
     }
 }
 
