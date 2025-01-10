@@ -5,10 +5,6 @@
     flex-direction: row-reverse;
 }
 
-.great-ds-hero--bg-dark-blue {
-    background-color: $great-ds-primitive-brand-dbt-light-blue; //TODO Alter figma config to include this in _surface.scss
-}
-
 .great-ds-hero__container {
     width: 100%;
     justify-content: flex-end;
@@ -51,10 +47,6 @@
     }
 }
 
-.great-ds-hero--image-only {
-    padding: 0;
-}
-
 .great-ds-hero__image-container {
     .great-ds-hero--image-only & {
         width: 100%;
@@ -95,8 +87,27 @@
     }
 }
 
+.great-ds-hero--bg-dark-blue {
+    background-color: $great-ds-primitive-brand-dbt-light-blue; //TODO Alter figma config to include this in _surface.scss
+}
+
+.great-ds-hero--box-shadow {
+    box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.05)
+}
+
 .great-ds-hero--small-image {
     justify-content: flex-end;
+}
+
+.great-ds-hero--image-only {
+    padding: 0;
+}
+
+.great-ds-hero__caption {
+    margin-bottom: $great-ds-spacing-1;
+    font-size: $great-ds-type-size-caption-xl-large;
+    line-height: $great-ds-type-line-height-caption-xl-large;
+    color: $great-ds-semantic-text-default-secondary-text;
 }
 
 .great-ds-hero__heading {
@@ -112,17 +123,6 @@
     margin-bottom: $great-ds-spacing-8;
 }
 
-.great-ds-hero--box-shadow {
-    box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.05)
-}
-
 .great-ds-hero__action-link-container {
     padding-bottom: $great-ds-spacing-6;
-}
-
-.great-ds-hero__caption {
-    margin-bottom: $great-ds-spacing-1;
-    font-size: $great-ds-type-size-caption-xl-large;
-    line-height: $great-ds-type-line-height-caption-xl-large;
-    color: $great-ds-semantic-text-default-secondary-text;
 }
