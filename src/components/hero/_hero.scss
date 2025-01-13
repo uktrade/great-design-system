@@ -45,9 +45,7 @@
             overflow: hidden;
         }
     }
-}
 
-.great-ds-hero__image-container {
     .great-ds-hero--image-only & {
         width: 100%;
         > img {
@@ -60,7 +58,6 @@
             }
         }
     }
-    
 }
 
 .great-ds-hero__text-container {
