@@ -1,12 +1,12 @@
 {% extends "layout/_example.njk" %}
 
 {% from "../../../components/hero/_hero.njk" import greatHero %}
-{% from "../../../components/hero/_doc_hero_image.njk" import greatDocHeroImage %}
 {% from "../../../components/hero/_tropical_hero_image.njk" import greatTropicalHeroImage %}
 
 {% block content %}
     {{ greatHero(
-        heroImage = greatTropicalHeroImage(),
-        heroClasses='great-ds-hero--image-only'
+        heroClasses='great-ds-hero--image-only',
+        pngImagePath='../../static/images/tropical-hero-image.png',
+        pngImageAlt='A tropical beach scene'
     ) }}
 {% endblock %}

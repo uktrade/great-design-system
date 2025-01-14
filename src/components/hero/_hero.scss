@@ -16,7 +16,7 @@
 }
 
 .great-ds-hero__image-container {
-    .great-ds-hero--large-image--scaling & {
+    .great-ds-hero--large-image-scaling & {
         @include govuk-media-query($from: tablet) {
             display: flex;
             width: 50%;
@@ -26,7 +26,7 @@
         }
         display: none;
     }
-    .great-ds-hero--large-image--cropping & {
+    .great-ds-hero--large-image-cropping & {
         @include govuk-media-query($from: tablet) {
             display: block;
             height: 100%;
@@ -67,7 +67,7 @@
         min-width: 600px;
     }
 
-    .great-ds-hero--large-image--scaling &, .great-ds-hero--large-image--cropping & {
+    .great-ds-hero--large-image-scaling &, .great-ds-hero--large-image-cropping & {
         min-height:355px;
         @include govuk-media-query($from: tablet) {
             width: 50%;
@@ -84,20 +84,20 @@
     }
 }
 
-.great-ds-hero--bg-dark-blue {
-    background-color: $great-ds-primitive-brand-dbt-light-blue; //TODO Alter figma config to include this in _surface.scss
-}
-
-.great-ds-hero--box-shadow {
-    box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.05)
-}
-
 .great-ds-hero--small-image {
     justify-content: flex-end;
 }
 
 .great-ds-hero--image-only {
     padding: 0;
+}
+
+.great-ds-hero--bg-dark-blue {
+    background-color: $great-ds-primitive-brand-dbt-light-blue; //TODO Alter figma config to include this in _surface.scss
+}
+
+.great-ds-hero--box-shadow {
+    box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.05)
 }
 
 .great-ds-hero__caption {

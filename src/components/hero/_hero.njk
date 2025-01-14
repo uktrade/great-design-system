@@ -1,16 +1,23 @@
 {% from "../action_link/_action_link.njk" import greatActionLink %}
 
-{% macro greatHero(heroClasses, heroImage, heroCaption, heroHeading, heroDescription, captionClass, headingClass, descriptionClass, actionLinkText, actionLinkUrl, actionLinkClass ) %}
+{% macro greatHero(heroClasses, svgImagePath, pngImagePath, pngImageAlt, heroCaption, heroHeading, heroDescription, captionClass, headingClass, descriptionClass, actionLinkText, actionLinkUrl, actionLinkClass ) %}
     <div class='great-ds-hero 
-        {% if heroClasses %} {{ heroClasses }} {% else %} great-ds-hero--large-image--cropping {% endif %}' >
+        {% if heroClasses %} {{ heroClasses }} {% else %} great-ds-hero--large-image-cropping {% endif %}' >
         {% if 'great-ds-hero--image-only' in heroClasses %}
             <div class='great-ds-hero__image-container'>
-                {{ heroImage }} 
-            </div>
+                {% if svgImagePath %}
+                    {% include svgImagePath %}
+                {% elif pngImagePath %}
+                    <img src = {{ pngImagePath }} alt = '{{ pngImageAlt }}'>
+                {% endif %}
         {% else %}
         <div class = 'great-ds-hero__container great-ds-container'>
             <div class='great-ds-hero__image-container'>
-                {{ heroImage }}    
+                {% if svgImagePath %}
+                    {% include  svgImagePath  %}
+                {% elif pngImagePath %}
+                    <img src = {{ pngImagePath }} alt = {{ pngImageAlt }}>
+                {% endif %} 
             </div>
             <div class='great-ds-hero__text-container'>
                 {% if heroCaption %} <p class='great-ds-hero__caption {% if captionClass %} {{ captionClass }} {% endif %}'> {{ heroCaption }} </p> {% endif %}
