@@ -1,4 +1,6 @@
 ---
+layout: layout/_page.njk
+content: main
 eleventyNavigation:
   key: Details
   parent: Components
@@ -7,11 +9,15 @@ eleventyNavigation:
     - collapse
     - expand
     - show/hide
+isGovUk: true
+status: Live
 ---
-{% extends "layout/_page.njk" %}
+{% markdown %}
+# Details
 
-{% block content %}
-    <p class="govuk-body">Here is a details example.</p>
-    <p class="govuk-body">Uses govuk details component front end.</p>
-    {% exampleWithCode "/components/details/details-example/", "details-example", "100%", "100%" %}
-{% endblock %}
+Here is a details example.
+
+Uses govuk details component front end.
+{% endmarkdown %}
+
+{% exampleWithCode "/components/details/details-example/", "details-example", "100%", "100%" %}

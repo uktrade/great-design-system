@@ -1,16 +1,22 @@
 ---
+layout: layout/_page.njk
+content: main
 eleventyNavigation:
   key: Notification banner
   parent: Components
   title: Notification banner
   synonyms:
     - alert banner
+isGovUk: true
+status: Live
 ---
-{% extends "layout/_page.njk" %}
+{% markdown %}
+# Notification banner
 
-{% block content %}
-    <p class="govuk-body">Here is an notification banner example.</p>
-    <p class="govuk-body">Uses govuk notification banner component front end.</p>
-    {% exampleWithCode "/components/notification-banner/notification-banner-example/", "notification-banner-example", "100%", "200px" %}
-    {% exampleWithCode "/components/notification-banner/notification-banner-default-example/", "notification-banner-default-example", "100%", "200px" %}
-{% endblock %}
+Here is an notification banner example.
+
+Uses govuk notification banner component front end.
+{% endmarkdown %}
+
+{% exampleWithCode "/components/notification-banner/notification-banner-example/", "notification-banner-example", "100%", "200px" %}
+{% exampleWithCode "/components/notification-banner/notification-banner-default-example/", "notification-banner-default-example", "100%", "200px" %}

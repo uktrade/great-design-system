@@ -1,15 +1,23 @@
 ---
+layout: layout/_page.njk
+content: main
 eleventyNavigation:
   key: Footer
   parent: Components
   title: Footer
+status: Live
 ---
-{% extends "layout/_page.njk" %}
+{% markdown %}
+# Footer
 
-{% block content %}
-    <p class="govuk-body">Here is a domestic footer example.</p>
-    {% exampleWithCode "/components/footer/footer-example/", "footer-example", "100%", "300px" %}
-    <p class="govuk-body">Here is an international footer example.</p>
-    {% exampleWithCode "/components/footer/footer-international-example/", "footer-international-example", "100%", "300px" %}
-{% endblock %}
+Here is a domestic footer example.
+{% endmarkdown %}
+
+{% exampleWithCode "/components/footer/footer-example/", "footer-example", "100%", "300px" %}
+
+{% markdown %}
+Here is an international footer example.
+{% endmarkdown %}
+
+{% exampleWithCode "/components/footer/footer-international-example/", "footer-international-example", "100%", "300px" %}
 

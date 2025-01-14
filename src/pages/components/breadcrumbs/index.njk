@@ -1,14 +1,19 @@
 ---
+layout: layout/_page.njk
+content: main
 eleventyNavigation:
   key: Breadcrumbs
   parent: Components
   title: Breadcrumbs
+isGovUk: true
+status: Live
 ---
-{% extends "layout/_page.njk" %}
+{% markdown %}
+# Breadcrumbs
 
-{% block content %}
-    <h1 class="govuk-heading-l">Breadcrumbs</h1>
-    <p class="govuk-body">Here is a breadcrumbs example.</p>
-    <p class="govuk-body">Uses govuk breadcrumbs component front end.</p>
-    {% exampleWithCode "/components/breadcrumbs/breadcrumbs-example/", "breadcrumbs", "100%", "80px" %}
-{% endblock %}
+Here is a breadcrumbs example.
+
+Uses govuk breadcrumbs component front end.
+{% endmarkdown %}
+
+{% exampleWithCode "/components/breadcrumbs/breadcrumbs-example/", "breadcrumbs", "100%", "80px" %}

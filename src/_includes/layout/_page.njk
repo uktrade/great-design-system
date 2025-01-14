@@ -1,9 +1,23 @@
 {% extends "layout/_base.njk" %}
 
 {% block navigation %}
-    <div class="app-site-navigation">
-        {% include "../helpers/_subnavigation.njk" %}
-    </div>
+    {% if not hideSidebar %}
+        <div class="app-site-navigation">
+            {% include "../helpers/_subnavigation.njk" %}
+        </div>
+    {% endif %}
 {% endblock %}
 {% block content %}
+    {% if isGovUk or status %}
+        <div class="app-tags" role="group" aria-label="Component status information">
+            {% if isGovUk %}
+                <span class="app-tag app-tag--govuk" role="status" aria-label="Based on GOV.UK component">Based on GOV.UK</span>
+            {% endif %}
+            
+            {% if status %}
+                <span class="app-tag app-tag--{{ status | lower }}" role="status" aria-label="Component status: {{ status }}">{{ status }}</span>
+            {% endif %}
+        </div>
+    {% endif %}
+    {{ content | safe }}
 {% endblock %}
