@@ -1,5 +1,12 @@
 {% extends "layout/_base.njk" %}
 
+{% from "../helpers/_breadcrumbs.njk" import renderBreadcrumbs %}
+
+{% block breadcrumbs %}
+    <div class="great-ds-container">
+        {{ renderBreadcrumbs(eleventyNavigation, collections) }}
+    </div>
+{% endblock %}
 {% block navigation %}
     {% if not hideSidebar %}
         <div class="app-site-navigation">
