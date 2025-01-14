@@ -19,6 +19,18 @@ body {
     h4, h5 {
         @extend .govuk-heading-s;
     }
+
+    p {
+        @extend .govuk-body;
+        @include govuk-font-size($size: 18);
+    }
+
+    p code {
+        color: #d13118;
+        background-color: #f3f2f1;
+        font-size: 1rem;
+        padding: 0.2rem 0.4rem;
+    }
 }
 
 .app-site-wrapper {
@@ -26,7 +38,7 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    padding: 50px 20px;
+    padding: $great-ds-spacing-8 $great-ds-spacing-6;
 
     @include govuk-media-query($from: desktop) {
         flex-direction: row;
@@ -39,12 +51,12 @@ body {
     @include govuk-media-query($from: desktop) {
         flex: 0 0 auto;
         order: 0;
-        width: 200px;
-        padding: 50px 15px;
+        width: 285px;
+        padding: $great-ds-spacing-8 $great-ds-spacing-4;
     }
 
     @include govuk-media-query($from: 1025px) {
-        padding: 50px 30px;
+        padding: $great-ds-spacing-8 $great-ds-spacing-8;
     }
 }
 
@@ -67,24 +79,25 @@ body {
 .app-site-main {
     order: 0;
     @include govuk-media-query($from: desktop) {
-        flex: 1 1 100%;
+        max-width: 850px;
+        flex: 1 1 80%;
         order: 1;
-        padding: 50px 15px 50px 0;
+        padding: $great-ds-spacing-8 $great-ds-spacing-4 $great-ds-spacing-8 0;
     }
 
     @include govuk-media-query($from: 1025px) {
-        padding: 50px 30px 50px 0;
+        padding: $great-ds-spacing-8 $great-ds-spacing-8 $great-ds-spacing-8 0;
     }
 }
 
 .app-site-wrapper:not(:has(.app-site-navigation)) .app-site-main {
     
     @include govuk-media-query($from: desktop) {
-        padding-left: 15px;
+        padding-left: $great-ds-spacing-4;
     }
     
     @include govuk-media-query($from: 1025px) {
-        padding-left: 30px;
+        padding-left: $great-ds-spacing-8;
     }
 }
 
@@ -131,7 +144,7 @@ body {
         @include great-ds-link-decorator;
         @include govuk-font-size($size: 18);
         color: $great-ds-semantic-text-default-link;
-        padding: 15px 20px;
+        padding: $great-ds-spacing-4 $great-ds-spacing-6;
         border: none;
         background: none;
         cursor: pointer;
@@ -147,7 +160,7 @@ body {
     }
 
     &__content {
-        padding: 20px;
+        padding: $great-ds-spacing-6;
         background: #fff;
         border: 1px solid $great-ds-semantic-border-default-light-grey-border;
         border-top: none;
@@ -163,7 +176,7 @@ body {
 }
 
 .app-example-wrapper {
-    padding: 20px;
+    padding: $great-ds-spacing-6;
 }
 
 .app-example-full-width {
@@ -184,17 +197,8 @@ body {
     line-height: 1;
 }
 
-.app-tag--govuk {
+// To do: create component for tags
+.app-tag--status {
     background: $great-ds-semantic-interaction-default-tag-neutral;
     color: $great-ds-semantic-text-default-tag-neutral;
-}
-
-.app-tag--live {
-    background: $great-ds-semantic-interaction-default-tag-information;
-    color: $great-ds-semantic-text-default-tag-information;
-}
-
-.app-tag--experimental {
-    background: $great-ds-semantic-interaction-default-tag-success;
-    color: $great-ds-semantic-text-default-tag-success;
 }

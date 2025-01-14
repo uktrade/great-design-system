@@ -8,15 +8,92 @@ eleventyNavigation:
   synonyms:
     - alert banner
 isGovUk: true
-status: Live
+status: 
+  - Live
 ---
 {% markdown %}
 # Notification banner
 
-Here is an notification banner example.
+Use a notification banner to tell the user about something they need to know about, but that’s not directly related to the page content. 
 
-Uses govuk notification banner component front end.
 {% endmarkdown %}
-
-{% exampleWithCode "/components/notification-banner/notification-banner-example/", "notification-banner-example", "100%", "200px" %}
 {% exampleWithCode "/components/notification-banner/notification-banner-default-example/", "notification-banner-default-example", "100%", "200px" %}
+
+{% markdown %}
+## When to use this component 
+
+A notification banner lets you tell the user about something that’s not directly relevant to the thing they’re trying to do on that page of the service. For example: 
+
+* telling the user about a problem that’s affecting the service as a whole (for example, delays in processing applications because of an emergency) 
+* telling the user about something that affects them in particular (for example, an approaching deadline they need to meet) 
+* telling the user about the outcome of something they’ve just done on a previous page (for example, confirming that an email has been sent) 
+
+## When not to use this component 
+
+Use notification banners sparingly. There’s evidence that people often miss them and using them too often is likely to make this problem worse. 
+
+If the information is directly relevant to the thing the user is doing on that page, put the information in the main page content instead. Use inset text or warning text if it needs to stand out. 
+
+Do not: 
+
+* use a notification banner to tell the user about validation errors - use an error message and error summary instead 
+* show a notification banner and an error summary on the same page - just show the error summary 
+
+## How it works
+
+Place a notification banner directly before the page's main heading `h1`. Ensure the banner matches the width of other content elements on the page, such as headings, body text, and components.
+
+Use `role="region"` along with `aria-labelledby="great-ds-notification-banner-title"` (where the ID `great-ds-notification-banner-title` is assigned to `<govuk-notification-banner__title>`) to ensure screen reader users can easily navigate to the banner.
+
+Only display one notification banner per page. If multiple messages are needed, combine them into a single banner. If the messages are too distinct to combine, prioritize and display only the most important banner.
+
+### Notification Banner Headings
+Use `<h3>` headings within the `govuk-notification-banner__content` to provide structure to the content when necessary.
+
+For single-line notifications that do not require headings, avoid using them.
+
+## Telling the user about a problem that affects the whole service 
+
+Use a ‘neutral’ blue notification banner if the user needs to know about a problem with the service as a whole. 
+
+For example: 
+
+* in a service that lets the user register or apply for something, they might need to know that it’s taking longer than usual to process applications because of an emergency 
+* in an account-type service, the user might need to know that the service will be down for scheduled maintenance 
+{% endmarkdown %}
+{% exampleWithCode "/components/notification-banner/notification-banner-default-example/", "notification-banner-default-example", "100%", "200px" %}
+
+{% markdown %}
+If your service is on great.gov.uk and it’s affected by an emergency, ask the [platform support team](mailto:directory@uktrade.zendesk.com) to make a change to the service start page. 
+
+If your service is getting more demand than usual, check that you’ve set up There is a problem with the service pages and Service unavailable pages, and the wording is up to date. 
+
+### Telling the user about something that’s happening elsewhere 
+
+Use a ‘neutral’ notification banner if the user needs to know about something that’s happening elsewhere in the service. For example: 
+
+* in a case working system, the user might need to know that there are new cases waiting for their attention 
+* in an account-type service, you might need to tell the user that there’s a deadline approaching or that a payment is overdue 
+{% endmarkdown %}
+{% exampleWithCode "/components/notification-banner/notification-banner-default-example/", "notification-banner-default-example", "100%", "200px" %}
+
+{% markdown %}
+## Reacting to something the user has done 
+
+You can also use a notification banner to tell the user about the outcome of something they’ve just done - but they have not finished using the service, so it does not make sense to use a confirmation page. 
+
+Using a notification banner is unlikely to be the right approach in a linear service - for example, a service that lets the user register or apply for a thing. For a linear service, it will usually make sense to stick to the ‘one thing per page’ approach. Do not use a notification banner to tell users that they’ve finished using a linear service. Use a confirmation page instead. 
+
+Use the green version of the notification banner to confirm that something they’re expecting to happen has happened. 
+{% endmarkdown %}
+{% exampleWithCode "/components/notification-banner/notification-banner-example/", "notification-banner-example", "100%", "280px" %}
+{% markdown %}
+Since you’re using the notification banner to tell the user about the outcome of something they’ve just done, add `role="alert"` so focus shifts to the notification banner on page load. 
+
+Remove a green notification banner when the user moves to a new page. 
+
+To make the green version of the notification banner accessible: 
+
+* use headings like ‘Success’ - so that you’re not relying on colour alone to convey meaning
+* use the same heading for green notification banners within the same service - so that you’re identifying components that work in the same way consistently 
+{% endmarkdown %}

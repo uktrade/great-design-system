@@ -51,7 +51,7 @@
   },
   "keywords": [],
   "dependencies": {
-    "govuk-frontend": "^5.4.0"
+    "govuk-frontend": "^5.8.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",

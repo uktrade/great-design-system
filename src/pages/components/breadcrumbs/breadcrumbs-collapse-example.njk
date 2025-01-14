@@ -4,6 +4,7 @@
     {% from "../../../components/breadcrumbs/_breadcrumbs.njk" import greatBreadcrumbs %}
 
     {{ greatBreadcrumbs(
+        collapseOnMobile=true,
         homeURL='/',
         itemsList=[
             { url: '/page2', title: 'Page 2' },
