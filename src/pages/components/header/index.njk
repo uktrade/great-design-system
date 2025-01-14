@@ -9,31 +9,73 @@ eleventyNavigation:
     - masthead
     - navigation
     - nav bar
-status: Live
+status: 
+  - Live
 ---
 {% markdown %}
 # Header
 
-Here is a header example.
+The great.gov.uk header components tell users they’re using a service on great.gov.uk and lets them use great.gov.uk-wide tools. 
+
+The great.gov.uk site uses 3 types of header:  
+
+* Domestic  
+* International  
+* Campaign site  
+
+Slight differences occur in each layout but logo size and alignment are consistent so that users have a familiar experience between the sites. 
 {% endmarkdown %}
 
 {% exampleWithCode "/components/header/header-example/", "header-example", "100%", "300px" %}
 
 {% markdown %}
-Here is a header example for a logged in user.
-{% endmarkdown %}
+## When to use this component 
 
-{% exampleWithCode "/components/header/header-logged-in-example/", "header-logged-in-example", "100%", "300px" %}
+You must use one of the great.gov.uk header components at the top of every page except for: 
+
+* Login pages 
+* Sign up pages 
+
+## When not to use this component 
+
+If your service is not hosted on great.gov.uk, you must not use the great.gov.uk header component. 
+
+A stripped back version of the header is also available for use on occasions where great.gov.uk is unavailable, such as if the site was temporarily unavailable: 
+
+{% endmarkdown %}
+{% exampleWithCode "/components/header/header-simple-example/", "header-simple-example", "100%", "300px" %}
 
 {% markdown %}
-Here is a campaign header example.
+## How it works 
+
+Using a great.gov.uk header ensures that users get a consistent experience and trust they’re in the right place if they follow a link to your service from elsewhere on great.gov.uk. 
+
+### Domestic great.gov.uk header 
 {% endmarkdown %}
 
+{% exampleWithCode "/components/header/header-example/", "header-example", "100%", "300px" %} 
+
+{% markdown %}
+Use this header for all services intended for use by people within the UK. 
+
+### International great.gov.uk header 
+
+{% endmarkdown %}
+{% exampleWithCode "/components/header/header-international-example/", "header-international-example", "100%", "300px" %}
+
+{% markdown %}
+Use this header for all services intended for use by people outside of the UK. 
+
+### Campaign sites header 
+
+{% endmarkdown %}
 {% exampleWithCode "/components/header/header-campaign-example/", "header-campaign-example", "100%", "300px" %}
 
 {% markdown %}
-Here is an international header example.
+Use this header for all campaign sites, whether the people using these are from inside or outside of the UK. 
+
+Do not make header elements, like dropdown menus, ‘sticky’ to the top of the page by using `position: fixed` or any other method. In other words, avoid any implementations that cause menus to sit on top of page content. 
+
+This is to make sure elements do not hide or obscure any content which has a focus applied and complies with accessibility requirements.
+
 {% endmarkdown %}
-
-{% exampleWithCode "/components/header/header-international-example/", "header-international-example", "100%", "300px" %}
-
