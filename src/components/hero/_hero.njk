@@ -6,7 +6,7 @@
         {% if 'great-ds-hero--image-only' not in heroClasses %} <div class = 'great-ds-hero__container great-ds-container'> {% endif %}
             <div class='great-ds-hero__image-container'>
                 {% if svgImagePath %}
-                    {% include  svgImagePath  %}
+                    {% include svgImagePath %}
                 {% elif pngImagePath %}
                     <img src = {{ pngImagePath }} alt = {{ pngImageAlt }} class='great-ds-hero__image'>
                 {% endif %} 
@@ -23,6 +23,6 @@
                     {% endif %}
                 </div>  
             {% endif %} 
-        {% if 'great-ds-hero--image-only' not in heroClasses %}</div> {% endif %}
+        {% if 'great-ds-hero--image-only' not in heroClasses %} </div> {% endif %}
     </div>
 {% endmacro %}
