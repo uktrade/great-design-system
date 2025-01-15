@@ -1,9 +1,33 @@
 {% extends "layout/_base.njk" %}
 
-{% block navigation %}
-    <div class="app-site-navigation">
-        {% include "../helpers/_subnavigation.njk" %}
+{% from "../helpers/_breadcrumbs.njk" import renderBreadcrumbs %}
+
+{% block breadcrumbs %}
+    <div class="great-ds-container">
+        {{ renderBreadcrumbs(eleventyNavigation, collections) }}
     </div>
 {% endblock %}
+{% block navigation %}
+    {% if not hideSidebar %}
+        <div class="app-site-navigation">
+            {% include "../helpers/_subnavigation.njk" %}
+        </div>
+    {% endif %}
+{% endblock %}
 {% block content %}
+    {% if isGovUk or status %}
+        <div class="app-tags" role="group" aria-label="Component status information">            
+            {% if isGovUk %}
+                <span class="app-tag app-tag--status" role="status" aria-label="Component status: Based on GOV.UK">Based on GOV.UK</span>
+            {% endif %}
+            {% if status %}
+                {% for statusItem in status %}
+                    <span class="app-tag app-tag--status" role="status" aria-label="Component status: {{ statusItem }}">{{ statusItem }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endif %}
+    <div class="govuk-body">
+        {{ content | safe }}
+    </div>
 {% endblock %}

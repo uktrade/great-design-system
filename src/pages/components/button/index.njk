@@ -1,22 +1,106 @@
-{% extends "layout/_base.njk" %}
-{% block title %}Great Design System - Button{% endblock %}
+---
+layout: layout/_page.njk
+content: main
+eleventyNavigation:
+  key: Button
+  parent: Components
+  title: Button
+---
+{% markdown %}
+# Button
 
-{% block content %}
-    <p class="govuk-body">Primary button example</p>
-    {% exampleIframe "/components/button/button-example/" %}
-    <p class="govuk-body">Secondary button example</p>
-    {% exampleIframe "/components/button/button-secondary-example/" %}
-    <p class="govuk-body">Warning button example</p>
-    {% exampleIframe "/components/button/button-warning-example/" %}
-    <p class="govuk-body">Transactional button example</p>
-    {% exampleIframe "/components/button/button-transactional-example/" %}
-    <p class="govuk-body">CTA button example</p>
-    {% exampleIframe "/components/button/button-cta-example/" %}
-    <p class="govuk-body">Inline button example</p>
-    {% exampleIframe "/components/button/button-inline-example/" %}
-    <p class="govuk-body">Toggle button example</p>
-    {% exampleIframe "/components/button/button-toggle-example/" %}
-    <p class="govuk-body">Icon button example</p>
-    {% exampleIframe "/components/button/button-icon-example/" %}
+Use the button component to help users carry out an action like starting an application or saving their information. 
+{% endmarkdown %}
 
-{% endblock %}
+{% exampleWithCode "/components/button/button-example/", "button", "100%", "110px" %}
+
+{% markdown %}
+## When to use this component 
+
+Use the button component to help users carry out actions like progressing through a form journey. 
+
+## When not to use this component 
+
+Buttons should not be used for navigating: an [action link](/components/action-link) should be used instead. 
+
+## How it works 
+
+Write button text in sentence case, describing the action it performs. 
+
+The button label should be short, clear and between two and five words. For example: 
+
+* ‘Start now’ at the start of a service 
+* ‘Sign in’ to an account a user has already created   
+* ‘Sign out’ when a user is signed in to an account  
+* ‘Continue’ when the service does not save a user’s information  
+* ‘Save and continue’ when the service does save a user’s information   
+* ‘Save and come back later’ when a user can save their information and come back later  
+* ‘Add another’ to add another item to a list or group  
+* ‘Confirm and send’ on a check answers page that does not have any legal content a user must agree to  
+* ‘Accept and send’ on a check answers page that has legal content a user must agree to 
+
+Avoid using multiple default buttons on a single page. Having more than one main call to action reduces their impact and makes it harder for users to know what to do next. When using more than one button on a page, be careful not to duplicate the text inside the button as this will cause accessibility issues for non-visual users. 
+
+If you have to duplicate text for visual consistency, use buttonContext to set visually hidden context for screen readers. 
+
+Align the primary action button to the left side of a form. 
+
+### Default button 
+
+This is the default button for primary calls to action on a page.
+{% endmarkdown %}
+{% exampleWithCode "/components/button/button-example/", "button", "100%", "110px" %}
+
+{% markdown %}
+### Secondary button 
+
+Use secondary buttons for secondary calls to action on a page. The secondary button uses the inverse colours of the primary button so it can also be used to offer a higher contrast button, depending on the colour of your page background. 
+
+Pages with too many calls to action make it hard for users to know what to do next. Before adding lots of secondary buttons, try to simplify the page or break the content down across multiple pages. 
+{% endmarkdown %}
+
+{% exampleWithCode "/components/button/button-secondary-example/", "button", "100%", "110px" %}
+
+{% markdown %}
+### Transactional buttons 
+
+Use this button to indicate to the user the final stage in a journey.  For example, the last page of completing a form. 
+{% endmarkdown %}
+
+{% exampleWithCode "/components/button/button-transactional-example/", "button", "100%", "110px" %}
+
+{% markdown %}
+### Warning buttons
+
+Warning buttons are designed to make users think carefully before they use them. They only work if used very sparingly. Most services should not need one. 
+
+Only use warning buttons for actions with serious destructive consequences that cannot be easily undone by a user, for example, permanently deleting an account. It’s a good idea to include an additional step which asks the user to confirm their action. In this instance, use another style of button for the initial call to action, and a warning button for the final confirmation. 
+
+Do not only rely on the red colour of a warning button to communicate the serious nature of the action because not all users will be able to see the colour or will understand what it signifies. Make sure the context and button text make clear what will happen if the user selects it. 
+{% endmarkdown %}
+
+{% exampleWithCode "/components/button/button-warning-example/", "button", "100%", "110px" %}
+
+{% markdown %}
+### Grouping buttons
+
+Use a button group when two or more buttons are placed together. 
+{% endmarkdown %}
+
+{% exampleWithCode "/components/button/button-inline-example/", "button", "100%", "110px" %}
+
+{% markdown %}
+### Call to action buttons
+
+Use a call to action button for the main action on your service’s start page.
+These buttons do not usually submit form data, so use a link tag instead of a button tag.
+
+{% endmarkdown %}
+
+{% exampleWithCode "/components/button/button-cta-example/", "button", "100%", "110px" %}
+
+{% markdown %}
+### Icon buttons
+{% endmarkdown %}
+
+{% exampleWithCode "/components/button/button-icon-example/", "button", "100%", "110px" %}

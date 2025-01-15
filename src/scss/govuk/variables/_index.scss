@@ -107,7 +107,7 @@ $govuk-typography-scale: (
     null:
       (
         font-size: 19px,
-        line-height: 25px
+        line-height: $great-ds-type-line-height-body-large
       ),
     print: (
       font-size: 14pt,
@@ -150,4 +150,3 @@ $govuk-typography-scale: (
     )
   )
 );
-
