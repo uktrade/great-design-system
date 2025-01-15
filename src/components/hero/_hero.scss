@@ -1,0 +1,130 @@
+.great-ds-hero {
+    padding: $great-ds-spacing-6-large;
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+}
+
+.great-ds-hero--small-image {
+    justify-content: flex-end;
+}
+
+.great-ds-hero--image-only {
+    padding: 0;
+}
+
+.great-ds-hero--bg-dark-blue {
+    background-color: $great-ds-primitive-brand-dbt-light-blue; //TODO Alter figma config to include this in _surface.scss
+}
+
+.great-ds-hero--box-shadow {
+    box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.05)
+}
+
+.great-ds-hero__container {
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    @include govuk-media-query($from: tablet) {
+        display:flex;
+        flex-direction: row-reverse;
+    }
+}
+
+.great-ds-hero__image-container {
+    .great-ds-hero--large-image-scaling & {
+        @include govuk-media-query($from: tablet) {
+            display: flex;
+            width: 50%;
+            align-items: flex-start;
+            flex-direction: row-reverse;
+            overflow: hidden;
+        }
+        display: none;
+    }
+
+    .great-ds-hero--large-image-cropping & {
+        @include govuk-media-query($from: tablet) {
+            display: block;
+            height: 100%;
+            width: auto;
+            overflow: hidden;
+        }
+        display: none;
+        
+    }
+
+    .great-ds-hero--small-image & {
+        width: 100%;
+        margin: 0 0 $great-ds-spacing-5 0;
+        @include govuk-media-query($from: tablet) {
+            width: 25%;
+            margin: auto 0 auto auto;
+            overflow: hidden;
+        }
+    }
+
+    .great-ds-hero--image-only & {
+        width: 100%;
+    }
+}
+
+.great-ds-hero__image {
+    .great-ds-hero--image-only & {
+        width: 100%;
+        height: 200px;
+        object-fit: none;
+        @include govuk-media-query($from: tablet) {
+            height: 355px;
+            object-fit: cover;
+        }
+    }
+}
+
+.great-ds-hero__text-container {
+    padding: $great-ds-spacing-2;
+    max-width: 600px;
+    min-height: 200px;
+    @include govuk-media-query($from: tablet) {
+        min-width: 600px;
+        min-height: 355px;
+    }
+
+    .great-ds-hero--large-image-scaling &, .great-ds-hero--large-image-cropping & {
+        @include govuk-media-query($from: tablet) {
+            width: 50%;
+            display:flex;
+            flex-direction: column;
+        }
+    }
+
+    .great-ds-hero--small-image & {
+        @include govuk-media-query($from: tablet) { 
+            width: 75%;
+        }
+    }
+}
+
+.great-ds-hero__caption {
+    margin-bottom: $great-ds-spacing-1;
+    font-size: $great-ds-type-size-caption-xl-large;
+    line-height: $great-ds-type-line-height-caption-xl-large;
+    color: $great-ds-semantic-text-default-secondary-text;
+}
+
+.great-ds-hero__heading {
+    margin-top: 0px;
+    margin-bottom: $great-ds-spacing-3;
+    font-size: $great-ds-type-size-heading-xl-large;
+    letter-spacing: -1.44px;
+    font-weight: 600;
+    line-height: $great-ds-type-line-height-heading-xl-large;
+}
+
+.great-ds-hero__description {
+    margin-bottom: $great-ds-spacing-8;
+}
+
+.great-ds-hero__action-link-container {
+    padding-bottom: $great-ds-spacing-6;
+}
