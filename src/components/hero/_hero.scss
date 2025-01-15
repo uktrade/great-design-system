@@ -48,15 +48,16 @@
 
     .great-ds-hero--image-only & {
         width: 100%;
-        > img {
-            width: 100%;
-            height: 200px;
-            object-fit: none;
-            @include govuk-media-query($from: tablet) {
-                height: 355px;
-                object-fit: cover;
-            }
-        }
+    }
+}
+
+.great-ds-hero__image {
+    width: 100%;
+    height: 200px;
+    object-fit: none;
+    @include govuk-media-query($from: tablet) {
+        height: 355px;
+        object-fit: cover;
     }
 }
 
