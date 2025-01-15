@@ -1,15 +1,24 @@
-{% extends "layout/_base.njk" %}
-{% block title %}Great Design System - Hero{% endblock %}
+---
+layout: layout/_page.njk
+content: main
+eleventyNavigation:
+  key: Hero
+  parent: Components
+  title: Hero
+  synonyms:
+    - hero
+status: 
+  - Live
+---
+{% markdown %}
+# Hero
 
-{% block content %}
-    <p class="govuk-body">Here is a Hero example.</p>
-    <p class="govuk-body">Uses custom styling.</p>
-    <p class="govuk-body">Large scaling image:</p>
-    {% exampleIframe "/components/hero/hero-example-large-image-scaling/", "100%", "355px" %}
-    <p class="govuk-body">Large cropping image:</p>
-    {% exampleIframe "/components/hero/hero-example-large-image-cropping/", "100%", "355px" %}
-    <p class="govuk-body">Small image:</p>
-    {% exampleIframe "/components/hero/hero-example-small-image/", "100%", "355px" %}
-    <p class="govuk-body">Image only:</p>
-    {% exampleIframe "/components/hero/hero-example-image-only/", "100%", "355px" %}
-{% endblock %}
+Here is a Hero example.
+
+Uses our own design.
+{% endmarkdown %}
+
+{% exampleWithCode "/components/hero/hero-example-large-image-scaling/", "cta_banner-example-default", "100%", "600px" %}
+{% exampleWithCode "/components/hero/hero-example-large-image-cropping/", "cta_banner-example-green", "100%", "600px" %}
+{% exampleWithCode "/components/hero/hero-example-small-image/", "cta_banner-example-dark-blue", "100%", "600px" %}
+{% exampleWithCode "/components/hero/hero-example-image-only/", "cta_banner-example-no-links", "100%", "300px"  %}

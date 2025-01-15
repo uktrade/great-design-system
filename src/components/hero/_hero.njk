@@ -8,7 +8,7 @@
                 {% if svgImagePath %}
                     {% include svgImagePath %}
                 {% elif pngImagePath %}
-                    <img src = {{ pngImagePath }} alt = {{ pngImageAlt }} class='great-ds-hero__image'>
+                    <img src = '{{ pngImagePath }}' alt = '{{ pngImageAlt }}' class='great-ds-hero__image'>
                 {% endif %} 
             </div>
             {% if 'great-ds-hero--image-only' not in heroClasses %} 
