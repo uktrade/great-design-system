@@ -1,8 +1,55 @@
-{% extends "layout/_base.njk" %}
-{% block title %}Great Design System - Details{% endblock %}
+---
+layout: layout/_page.njk
+content: main
+eleventyNavigation:
+  key: Details
+  parent: Components
+  title: Details
+  synonyms:
+    - collapse
+    - expand
+    - show/hide
+isGovUk: true
+status: 
+  - Live
+---
+{% markdown %}
+# Details
+Make a page easier to scan by letting users reveal more detailed information only if they need it. 
+{% endmarkdown %}
 
-{% block content %}
-    <p class="govuk-body">Here is a details example.</p>
-    <p class="govuk-body">Uses govuk details component front end.</p>
-    {% exampleIframe "/components/details/details-example/" %}
-{% endblock %}
+{% exampleWithCode "/components/details/details-example/", "details-example", "100%", "100%" %}
+
+{% markdown %}
+## When to use this component 
+
+Use the details component to make a page easier to scan when it contains information that only some users will need. 
+
+## When not to use this component 
+
+Do not use the details component to hide information that the majority of your users will need. 
+
+Decide between using details, [accordions](/components/accordion/) and tabs 
+
+Details, accordions and tabs all hide sections of content which a user can choose to reveal. 
+
+Use the details component instead of tabs or an accordion if you only have one section of content. 
+
+The details component is less visually prominent than tabs and accordions, so tends to work better for content which is not as important to users. 
+
+## How it works 
+
+The details component is a short link that shows more detailed help text when a user clicks on it. 
+
+If you are using Django, you can use the Django macro. Similarly, if you are using Nunjucks, you can use the Nunjucks macro. You can also use the HTML directly but this is not recommended as updates to the component could make your code difficult to maintain.
+{% endmarkdown %}
+
+{% exampleWithCode "/components/details/details-example/", "details-example", "100%", "100%" %}
+
+{% markdown %}
+
+### Write clear link text
+
+Make the link text short and descriptive so users can quickly work out if they need to click on it. For the smallest viewports, the link should be on one line only. 
+
+{% endmarkdown %}

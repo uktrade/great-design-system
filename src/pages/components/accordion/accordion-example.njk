@@ -1,52 +1,32 @@
 {% extends "layout/_example.njk" %}
-{% from "../../../components/accordion/_accordion.njk" import greatAccordion %}
-
 {% block content %}
+    {% from "../../../components/accordion/_accordion.njk" import greatAccordion %}
+
     {{ greatAccordion(
         id="accordion-default",
         items=[
             {
                 heading: {
-                    text: "Writing well for the web"
-                },
-                summary: {
-                    text: "Introductions, methods, core features."
+                    text: "Label"
                 },
                 content: {
-                    html: '<p class="govuk-body">This is the content for Writing well for the web.</p>'
+                    html: '<p class="govuk-body">Content for the accordion item</p>'
                 }
             },
             {
                 heading: {
-                    text: "Writing well for specialists"
-                },
-                summary: {
-                    text: "Introductions, methods, core features."
+                    text: "Label"
                 },
                 content: {
-                    html: '<p class="govuk-body">This is the content for Writing well for specialists.</p>'
+                    html: '<p class="govuk-body">Content for the accordion item</p>'
                 }
             },
             {
                 heading: {
-                    text: "Know your audience"
-                },
-                summary: {
-                    text: "Introductions, methods, core features."
+                    text: "Label"
                 },
                 content: {
-                    html: '<p class="govuk-body">This is the content for Know your audience.</p>'
-                }
-            },
-            {
-                heading: {
-                    text: "How people read"
-                },
-                summary: {
-                    text: "Introductions, methods, core features."
-                },
-                content: {
-                    html: '<p class="govuk-body">This is the content for How people read.</p>'
+                    html: '<p class="govuk-body">Content for the accordion item</p>'
                 }
             }
         ]

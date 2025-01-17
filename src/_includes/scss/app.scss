@@ -3,12 +3,42 @@ body {
     margin: 0;
 }
 
+.app-site-main {
+    h1 {
+        @extend .govuk-heading-xl;
+    }
+
+    h2 {
+        @extend .govuk-heading-l;
+    }
+
+    h3 {
+        @extend .govuk-heading-m;
+    }
+
+    h4, h5 {
+        @extend .govuk-heading-s;
+    }
+
+    p {
+        @extend .govuk-body;
+        @include govuk-font-size($size: 18);
+    }
+
+    p code {
+        color: #d13118;
+        background-color: #f3f2f1;
+        font-size: 1rem;
+        padding: 0.2rem 0.4rem;
+    }
+}
+
 .app-site-wrapper {
     max-width: 1290px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    padding: 50px 20px;
+    padding: $great-ds-spacing-8 $great-ds-spacing-6;
 
     @include govuk-media-query($from: desktop) {
         flex-direction: row;
@@ -21,31 +51,154 @@ body {
     @include govuk-media-query($from: desktop) {
         flex: 0 0 auto;
         order: 0;
-        width: 200px;
-        padding: 50px 15px;
+        width: 285px;
+        padding: $great-ds-spacing-8 $great-ds-spacing-4;
     }
 
     @include govuk-media-query($from: 1025px) {
-        padding: 50px 30px;
+        padding: $great-ds-spacing-8 $great-ds-spacing-8;
+    }
+}
+
+.app-site-navigation__link--current {
+    border-left: 4px solid $great-ds-semantic-text-default-link;
+    padding-left: 15px;
+    margin-left: -20px;
+
+    @include govuk-media-query($from: tablet) {
+        padding-left: 11px;
+        margin-left: -15px;
     }
 
+    @include govuk-media-query($from: 1025px) {
+        padding-left: 15px;
+        margin-left: -19px;
+    }
 }
 
 .app-site-main {
     order: 0;
     @include govuk-media-query($from: desktop) {
-        flex: 1 1 100%;
+        max-width: 850px;
+        flex: 1 1 80%;
         order: 1;
-        padding: 50px 15px 50px 0;
+        padding: $great-ds-spacing-8 $great-ds-spacing-4 $great-ds-spacing-8 0;
     }
 
     @include govuk-media-query($from: 1025px) {
-        padding: 50px 30px 50px 0;
+        padding: $great-ds-spacing-8 $great-ds-spacing-8 $great-ds-spacing-8 0;
     }
 }
 
+.app-site-wrapper:not(:has(.app-site-navigation)) .app-site-main {
+    
+    @include govuk-media-query($from: desktop) {
+        padding-left: $great-ds-spacing-4;
+    }
+    
+    @include govuk-media-query($from: 1025px) {
+        padding-left: $great-ds-spacing-8;
+    }
+}
+
+.app-open-component {
+    border: 1px solid $great-ds-semantic-border-default-light-grey-border;
+    border-bottom: none;
+    padding: 10px 20px;
+}
+
+.app-open-component__link {
+    @include great-ds-link-decorator;
+    @include govuk-font-size($size: 16);
+}
+
 .app-iframe-wrapper {
-    border: 1px solid #ddd;
-    padding: 20px 20px 0;
+    border: 1px solid $great-ds-semantic-border-default-light-grey-border;
+}
+
+.app-code-viewer {
     margin: 0 0 40px;
+
+    code[class*=language-] {
+        white-space: pre-wrap !important;
+    }
+
+    pre {
+        padding-top: 60px !important;
+        border: 3px solid transparent;
+        outline: 3px solid transparent;
+
+        &:focus {
+            border: 3px solid #0b0c0c;
+            outline: 3px solid #fd0;
+        }
+    }
+
+    &__tabs {
+        border: 1px solid $great-ds-semantic-border-default-light-grey-border;
+        border-top: none;
+    }
+
+    &__tab {
+        font-family: $great-ds-type-family-great;
+        @include great-ds-link-decorator;
+        @include govuk-font-size($size: 18);
+        color: $great-ds-semantic-text-default-link;
+        padding: $great-ds-spacing-4 $great-ds-spacing-6;
+        border: none;
+        background: none;
+        cursor: pointer;
+
+        &:focus {
+            @include govuk-focused-text;
+        }
+
+        &[aria-selected="true"]:not(:focus),
+        &:hover:not(:focus) {
+            background: $great-ds-semantic-surface-background-light-blue;
+        }
+    }
+
+    &__content {
+        padding: $great-ds-spacing-6;
+        background: #fff;
+        border: 1px solid $great-ds-semantic-border-default-light-grey-border;
+        border-top: none;
+        position: relative;
+    }
+}
+
+.app-copy-button {
+    position: absolute;
+    right: 30px;
+    top: 40px;
+    @include govuk-font-size($size: 14);
+}
+
+.app-example-wrapper {
+    padding: $great-ds-spacing-6;
+}
+
+.app-example-full-width {
+    padding: 0;
+}
+
+.app-tags {
+    margin-bottom: $great-ds-spacing-6;
+    display: flex;
+    gap: $great-ds-spacing-2;
+}
+
+.app-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: $great-ds-spacing-1;
+    @include govuk-font-size($size: 16);
+    line-height: 1;
+}
+
+// To do: create component for tags
+.app-tag--status {
+    background: $great-ds-semantic-interaction-default-tag-neutral;
+    color: $great-ds-semantic-text-default-tag-neutral;
 }

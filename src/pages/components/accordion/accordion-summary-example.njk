@@ -1,0 +1,43 @@
+{% extends "layout/_example.njk" %}
+{% block content %}
+    {% from "../../../components/accordion/_accordion.njk" import greatAccordion %}
+
+    {{ greatAccordion(
+        id="accordion-default",
+        items=[
+            {
+                heading: {
+                    text: "Label"
+                },
+                summary: {
+                    text: "Summary line"
+                },
+                content: {
+                    html: '<p class="govuk-body">Content for the accordion item</p>'
+                }
+            },
+            {
+                heading: {
+                    text: "Label"
+                },
+                summary: {
+                    text: "Summary line"
+                },
+                content: {
+                    html: '<p class="govuk-body">Content for the accordion item</p>'
+                }
+            },
+            {
+                heading: {
+                    text: "Label"
+                },
+                summary: {
+                    text: "Summary line"
+                },
+                content: {
+                    html: '<p class="govuk-body">Content for the accordion item</p>'
+                }
+            }
+        ]
+    ) }}
+{% endblock %}

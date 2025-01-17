@@ -1,0 +1,14 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/breadcrumbs/_breadcrumbs.njk" import greatBreadcrumbs %}
+
+    {{ greatBreadcrumbs(
+        collapseOnMobile=true,
+        homeURL='/',
+        itemsList=[
+            { url: '/page2', title: 'Page 2' },
+            { url: '/page3', title: 'Page 3' }
+        ]
+    ) }}
+{% endblock %}

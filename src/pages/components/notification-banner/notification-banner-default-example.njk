@@ -1,9 +1,10 @@
 {% extends "layout/_example.njk" %}
 
-{% from "../../../components/notification-banner/_notification-banner.njk" import greatNotificationBanner %}
 
 {% block content %}
-    {{ greatNotificationBanner(
-        html="<p class=\"govuk-notification-banner__heading\">You have 7 days left to send your application. <a class=\"govuk-notification-banner__link\" href=\"#\">View application</a>.</p>"
-    ) }}
+    {% from "../../../components/notification-banner/_notification-banner.njk" import greatNotificationBanner %}
+
+{{ greatNotificationBanner(
+    html="<p class=\"govuk-notification-banner__heading\">You have 7 days left to send your application. <a class=\"govuk-notification-banner__link\" href=\"#\">View application</a>.</p>"
+) }}
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "layout/_example.njk" %}
-{% from "../../../components/button/_button.njk" import greatButton %}
-
 {% block content %}
-    {{ greatButton(text="Save and continue", classes="great-ds-button--inline") }}
-    {{ greatButton(text="Cancel", classes="great-ds-button--secondary great-ds-button--inline") }}
+    {% from "../../../components/button/_button.njk" import greatButton %}
+
+{{ greatButton(text="Save and continue", classes="great-ds-button--inline") }}
+{{ greatButton(text="Cancel", classes="great-ds-button--secondary great-ds-button--inline") }}
 {% endblock %}

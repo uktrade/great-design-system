@@ -1,0 +1,23 @@
+{% from "../../components/breadcrumbs/_breadcrumbs.njk" import greatBreadcrumbs %}
+
+{% macro renderBreadcrumbs(eleventyNavigation, collections) %}
+    {% set breadcrumbItems = [] %}
+
+    {% if eleventyNavigation.parent %}
+        {% for entry in collections.all | eleventyNavigation %}
+            {% if entry.key === eleventyNavigation.parent %}
+                {% set parentItem = {
+                    url: entry.url,
+                    title: entry.title
+                } %}
+                {% set breadcrumbItems = (breadcrumbItems.push(parentItem), breadcrumbItems) %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {{ greatBreadcrumbs(
+        classes="",
+        homeURL='/',
+        itemsList=breadcrumbItems
+    ) }}
+{% endmacro %}

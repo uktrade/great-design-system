@@ -1,0 +1,11 @@
+{% extends "layout/_example.njk" %}
+{% set exampleFullWidth = true %}
+
+{% block content %}
+    {% from "../../../components/header/_header.njk" import greatHeader %}
+
+{{ greatHeader(
+    use_domestic_logo=true,
+    hideSearch=true
+) }}
+{% endblock %}
