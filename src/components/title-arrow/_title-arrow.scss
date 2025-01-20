@@ -1,0 +1,82 @@
+.great-ds-title-arrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 0 $great-ds-spacing-3;
+    position: relative;
+}
+
+.great-ds-title-arrow__text {
+    font-family: $great-ds-type-family-great-ds-bold;
+    margin: 0 0 $great-ds-spacing-3;
+    color: $great-ds-semantic-text-default-link;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    align-items: center;
+    @include govuk-font-size($size: 18);
+    display: block;
+    position: relative;
+    margin-right: 40px;
+
+    a:hover & {
+        color: $great-ds-semantic-text-hover-link;
+        text-decoration-color: $great-ds-semantic-text-hover-link;
+        text-decoration-thickness: 2px;
+    }
+
+    a:focus & {
+        @include govuk-focused-text();
+    }
+
+    &::after {
+        content: '';
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background-color: currentColor;
+        $arrow-svg: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M7.15792 2.6001L7.85005 1.90746C8.14311 1.61418 8.617 1.61418 8.90694 1.90746L14.9677 7.9696C15.2608 8.26288 15.2608 8.73712 14.9677 9.02728L8.90694 15.0925C8.61388 15.3858 8.13999 15.3858 7.85005 15.0925L7.15792 14.3999C6.86175 14.1035 6.86798 13.6199 7.17039 13.3297L10.9272 9.748H1.96699C1.55234 9.748 1.21875 9.41416 1.21875 8.9992V8.0008C1.21875 7.58584 1.55234 7.252 1.96699 7.252H10.9272L7.17039 3.67025C6.86486 3.38009 6.85863 2.8965 7.15792 2.6001Z'/%3E%3C/svg%3E";   
+        -webkit-mask: url($arrow-svg) center / contain no-repeat;
+        mask: url($arrow-svg) center / contain no-repeat;
+        position: absolute;
+        right: -40px;
+        top: calc(0.2em + 2px);
+        line-height: 1;
+    }
+
+    &--m {
+        @include govuk-font-size($size: 24);
+
+        &::after {
+            width: 21px;
+            height: 21px;
+
+            @include govuk-media-query($from: desktop) {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+
+    &--l {
+        @include govuk-font-size($size: 36);
+
+        &::after {
+            width: 27px;
+            height: 27px;
+
+            @include govuk-media-query($from: desktop) {
+                width: 36px;
+                height: 36px;
+            }
+        }
+    }
+
+    &--no-arrow {
+        padding-right: 0;
+        
+        &::after {
+            display: none;
+        }
+    }
+}

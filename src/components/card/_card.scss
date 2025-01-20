@@ -1,0 +1,145 @@
+.great-ds-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 0 0 30px;
+    padding: 0;
+    list-style: none;
+    align-items: stretch;
+}
+
+.great-ds-card {
+    background: $great-ds-semantic-surface-background-white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+
+    @include govuk-media-query($from: tablet) {
+        width: calc(50% - 15px);
+
+        &--full {
+            width: 100% !important;
+        }
+    }
+
+    @include govuk-media-query($from: 1024px) {
+        width: calc(25% - 23px);
+
+        @for $i from 2 through 3 {
+            &--#{$i} {
+                width: calc(#{100/$i * 1%} - #{30px * ($i - 1) / $i});
+            }
+        }
+    }
+
+    @include govuk-media-query($from: 1325px) {
+
+        @for $i from 2 through 10 {
+            &--#{$i} {
+                width: calc(#{100/$i * 1%} - #{30px * ($i - 1) / $i});
+            }
+        }
+    }
+
+    &:has(.great-ds-card__icon):not(&--elevated) {
+        .great-ds-card__link {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+}
+
+.great-ds-card__inner {
+    border-bottom: 4px solid rgba(0, 0, 0, 0.20);
+    background: $great-ds-semantic-surface-background-white;
+    height: 100%;
+    
+    &:hover {
+        border-color: rgba(0, 0, 0, 0.30);
+
+        .great-ds-card__title {
+            color: $great-ds-semantic-text-hover-link;
+            text-decoration-color: $great-ds-semantic-text-hover-link;
+        }
+    }
+
+    .great-ds-card--mounted-blue & {
+        background: $great-ds-semantic-surface-background-light-blue;
+    }
+
+    .great-ds-card--unmounted & {
+        background: transparent;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+        
+        .great-ds-card__content {
+            margin: $great-ds-spacing-6 0;
+        }
+    }
+
+    .great-ds-card--elevated & {
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px 0px rgba(4, 4, 63, 0.20);
+        border: 2px solid $great-ds-primitive-brand-miuk-mid-grey;
+    }
+
+    .great-ds-card__link:focus & {
+        border-bottom-width: 2px;
+    }
+}
+
+.great-ds-card__link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.great-ds-card__image {
+    width: 100%;
+    height: auto;
+    display: none;
+
+    @include govuk-media-query($from: tablet) {
+        display: block;
+    }
+}
+
+.great-ds-card__icon {
+    margin: $great-ds-spacing-6 0 0 $great-ds-spacing-6;
+}
+
+.great-ds-card__content {
+    margin: $great-ds-spacing-6;
+}
+
+.great-ds-card__description {
+    @include govuk-font-size($size: 18);
+    font-family: $great-ds-type-family-great;
+    color: $great-ds-semantic-text-default-text;
+    margin: 0;
+}
+
+.great-ds-card__metadata {
+    display: flex;
+    align-items: center;
+    margin-top: $great-ds-spacing-3;
+}
+
+.great-ds-card__metadata-icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: $great-ds-spacing-2;
+}
+
+.great-ds-card__metadata-text {
+    color: $great-ds-semantic-text-default-secondary-text;
+    @include govuk-font-size($size: 16);
+    font-family: $great-ds-type-family-great;
+}

@@ -1,0 +1,5 @@
+{% macro greatTitleArrow(text, size, id, tag="h3", hideArrow=false) %}
+    <{{ tag }} class="great-ds-title-arrow__text{% if size %} great-ds-title-arrow__text--{{ size }}{% endif %}{% if not hideArrow == false%} great-ds-title-arrow__text--no-arrow{% endif %}" {% if id %}id="{{ id }}"{% endif %}>
+        {{ text }}
+    </{{ tag }}>
+{% endmacro %}
