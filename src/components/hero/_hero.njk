@@ -1,0 +1,28 @@
+{% from "../action_link/_action_link.njk" import greatActionLink %}
+
+{% macro greatHero(heroClasses, svgImagePath, pngImagePath, pngImageAlt, heroCaption, heroHeading, heroDescription, captionClass, headingClass, descriptionClass, actionLinkText, actionLinkUrl, actionLinkClass ) %}
+    <div class='great-ds-hero 
+        {% if heroClasses %} {{ heroClasses }} {% else %} great-ds-hero--large-image-cropping {% endif %}' >
+        {% if 'great-ds-hero--image-only' not in heroClasses %} <div class = 'great-ds-hero__container great-ds-container'> {% endif %}
+            <div class='great-ds-hero__image-container'>
+                {% if svgImagePath %}
+                    {% include svgImagePath %}
+                {% elif pngImagePath %}
+                    <img src = '{{ pngImagePath }}' alt = '{{ pngImageAlt }}' class='great-ds-hero__image'>
+                {% endif %} 
+            </div>
+            {% if 'great-ds-hero--image-only' not in heroClasses %} 
+                <div class='great-ds-hero__text-container'>
+                    {% if heroCaption %} <p class='great-ds-hero__caption {% if captionClass %} {{ captionClass }} {% endif %}'> {{ heroCaption }} </p> {% endif %}
+                    {% if heroHeading %} <h1 class='great-ds-hero__heading{% if headingClass %} {{ headingClass }} {% endif %}'> {{ heroHeading }} </h1> {% endif %}
+                    {% if heroDescription %} <p class='great-ds-hero__description{% if descriptionClass %} {{ descriptionClass }} {% endif %}'> {{ heroDescription }} </p> {% endif %}
+                    {% if actionLinkText and actionLinkUrl %}
+                        <div class="great-ds-hero__action-link-container">
+                            {{ greatActionLink(linkText=actionLinkText, linkHref=actionLinkUrl, linkClass=actionLinkClass) }}
+                        </div>
+                    {% endif %}
+                </div>  
+            {% endif %} 
+        {% if 'great-ds-hero--image-only' not in heroClasses %} </div> {% endif %}
+    </div>
+{% endmacro %}

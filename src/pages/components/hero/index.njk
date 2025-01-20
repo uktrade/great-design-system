@@ -1,0 +1,24 @@
+---
+layout: layout/_page.njk
+content: main
+eleventyNavigation:
+  key: Hero
+  parent: Components
+  title: Hero
+  synonyms:
+    - hero
+status: 
+  - Live
+---
+{% markdown %}
+# Hero
+
+Here is a Hero example.
+
+Uses our own design.
+{% endmarkdown %}
+
+{% exampleWithCode "/components/hero/hero-example-large-image-scaling/", "cta_banner-example-default", "100%", "600px" %}
+{% exampleWithCode "/components/hero/hero-example-large-image-cropping/", "cta_banner-example-green", "100%", "600px" %}
+{% exampleWithCode "/components/hero/hero-example-small-image/", "cta_banner-example-dark-blue", "100%", "600px" %}
+{% exampleWithCode "/components/hero/hero-example-image-only/", "cta_banner-example-no-links", "100%", "300px"  %}
