@@ -1,5 +1,5 @@
-{% macro greatCard(classes, href, imageUrl, imageAlt, iconSvg, title, titleSize, description, metadataText, metaDataIconPath, metadataIconType, id, hideArrow) %}
-    <div class="great-ds-card{% if classes %} {{ classes }}{% endif %}" {% if href %}role="article"{% endif %}>
+{% macro greatCard(classes, type, href, imageUrl, imageAlt, iconSvg, title, titleSize, description, metadataText, metaDataIconPath, metadataIconType, id, hideArrow) %}
+    <div class="great-ds-card{% if classes %} {{ classes }}{% endif %}{% if type %} great-ds-card--{{ type }}{% endif %}" {% if href %}role="article"{% endif %}>
         <div class="great-ds-card__inner">
             {% if href %}
                 <a href="{{ href }}" class="great-ds-card__link" {% if title %}aria-labelledby="card-title-{{ id }}"{% endif %}>
@@ -18,7 +18,11 @@
             <div class="great-ds-card__content">
                 {% if title %}
                     {% from "../title-arrow/_title-arrow.njk" import greatTitleArrow %}
-                    {{ greatTitleArrow(title, titleSize, "card-title-" + id, "h3", hideArrow) }}
+                    {% if type == "elevated" %}
+                        {{ greatTitleArrow(title, titleSize, "card-title-" + id, "h3", true) }}
+                    {% else %}
+                        {{ greatTitleArrow(title, titleSize, "card-title-" + id, "h3", hideArrow) }}
+                    {% endif %}
                 {% endif %}
 
                 {% if description %}
