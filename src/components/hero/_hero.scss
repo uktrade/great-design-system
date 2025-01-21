@@ -1,5 +1,4 @@
 .great-ds-hero {
-    padding: $great-ds-spacing-6-large;
     display: flex;
     width: 100%;
     flex-direction: row-reverse;
@@ -22,10 +21,12 @@
 }
 
 .great-ds-hero__container {
+    padding: $great-ds-spacing-3;
     width: 100%;
     justify-content: flex-end;
     align-items: center;
     @include govuk-media-query($from: tablet) {
+        padding: $great-ds-spacing-6-large;
         display:flex;
         flex-direction: row-reverse;
     }
@@ -119,10 +120,18 @@
     letter-spacing: -1.44px;
     font-weight: 600;
     line-height: $great-ds-type-line-height-heading-xl-large;
+
+    &--white {
+        color: $great-ds-semantic-text-default-white-text;
+    }
 }
 
 .great-ds-hero__description {
     margin-bottom: $great-ds-spacing-8;
+
+    &--white {
+        color: $great-ds-semantic-text-default-white-text;
+    }
 }
 
 .great-ds-hero__action-link-container {

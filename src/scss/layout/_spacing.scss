@@ -1,0 +1,26 @@
+
+.great-ds-from-tablet-margin-bottom-8 {
+    @include govuk-media-query($from: tablet) {
+        margin-bottom: $great-ds-spacing-8;
+    }
+}
+
+.great-ds-from-tablet-margin-top-8 {
+    @include govuk-media-query($from: tablet) {
+        margin-top: $great-ds-spacing-8;
+    }
+}
+
+.great-ds-mobile-only-margin-bottom-8 {
+    margin-bottom: $great-ds-spacing-8;
+    @include govuk-media-query($from: tablet) {
+        margin-bottom: 0px;
+    }
+}
+
+.great-ds-mobile-only-margin-top-8 {
+    margin-top: $great-ds-spacing-8;
+    @include govuk-media-query($from: tablet) {
+        margin-top: 0px;
+    }
+}
