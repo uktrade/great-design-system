@@ -112,6 +112,10 @@
 
 .great-ds-card__icon {
     margin: $great-ds-spacing-6 0 0 $great-ds-spacing-6;
+
+    .great-ds-card--unmounted & {
+        margin: 0 $great-ds-spacing-4 0 0;
+    }
 }
 
 .great-ds-card__content {
