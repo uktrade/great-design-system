@@ -1,0 +1,32 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+
+{% from "../../../components/card/_card.njk" import greatCard %}
+
+<div class="great-ds-card-container">
+
+    {{ greatCard(
+        href= "#",
+        type="unmounted",
+        title= "The title of the card",
+        description= "The card description.",
+        metadataIconType="guidance",
+        metadataText="Guidance",
+        metaDataIconPath="/static/icons",
+        id= "card-1"
+    ) }}
+
+    {{ greatCard(
+        href= "#",
+        type="unmounted",
+        title= "The title of the card",
+        description= "The card description.",
+        metadataIconType="hand",
+        metadataText="Service",
+        metaDataIconPath="/static/icons",
+        id= "card-2"
+    ) }}
+</div>
+
+{% endblock %}

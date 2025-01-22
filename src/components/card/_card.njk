@@ -1,0 +1,47 @@
+{% macro greatCard(attributes, classes, type, href, imageUrl, imageAlt, iconSvg, title, titleSize, description, metadataText, metaDataIconPath, metadataIconType, id, hideArrow) %}
+    <div class="great-ds-card{% if classes %} {{ classes }}{% endif %}{% if type %} great-ds-card--{{ type }}{% endif %}" {% if href %}role="article"{% endif %}>
+        <div class="great-ds-card__inner">
+            {% if href %}
+                <a href="{{ href }}" class="great-ds-card__link" {% if title %}aria-labelledby="card-title-{{ id }}"{% endif %} {% if attributes %}{% for key, value in attributes %}{{ key }}="{{ value }}" {% endfor %}{% endif %}>
+            {% endif %}
+
+            {% if imageUrl or iconSvg %}
+                <div class="great-ds-card__media" role="img">
+                    {% if imageUrl %}
+                        <img src="{{ imageUrl }}" alt="{{ imageAlt }}" class="great-ds-card__image">
+                    {% endif %}
+                    {% if iconSvg %}
+                        <img src="{{ iconSvg }}" alt="{{ imageAlt }}" class="great-ds-card__icon">
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="great-ds-card__content">
+                {% if title %}
+                    {% from "../title-arrow/_title-arrow.njk" import greatTitleArrow %}
+                    {% if type == "elevated" %}
+                        {{ greatTitleArrow(title, titleSize, "card-title-" + id, "h3", true) }}
+                    {% else %}
+                        {{ greatTitleArrow(title, titleSize, "card-title-" + id, "h3", hideArrow) }}
+                    {% endif %}
+                {% endif %}
+
+                {% if description %}
+                    <div class="great-ds-card__description">{{ description }}</div>
+                {% endif %}
+
+                {% if metadataText %}
+                    <div class="great-ds-card__metadata">
+                        {% if metadataIconType %}
+                            <img class="great-ds-card__metadata-icon" src="{{ metaDataIconPath}}/{{ metadataIconType }}.svg" alt="" aria-hidden="true">
+                        {% endif %}
+                        <span class="great-ds-card__metadata-text">{{ metadataText }}</span>
+                    </div>
+                {% endif %}
+            </div>
+
+            {% if href %}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}

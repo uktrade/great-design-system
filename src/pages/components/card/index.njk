@@ -1,0 +1,94 @@
+---
+layout: layout/_page.njk
+content: main
+eleventyNavigation:
+  key: Card
+  parent: Components
+  title: Card
+---
+{% markdown %}
+# Card
+
+The card component helps users navigate through your service. 
+
+{% endmarkdown %}
+
+{% exampleWithCode "/components/card/card-default-example/", "card-default-example-example", "100%", "400px" %}
+
+{% markdown %}
+## When to use this component 
+
+Use the card component to help users navigate through your service. Cards show users a summary of content or a task. Cards could be used on: 
+
+* Homepages 
+* Index pages
+* Hub pages 
+
+There are three types of cards: 
+
+* Mounted (on white) 
+* Mounted (on pale blue) 
+* Unmounted 
+* Elevated cards 
+
+### Mounted cards
+{% endmarkdown %}
+{% exampleWithCode "/components/card/card-blue-example/", "card-blue-example", "100%", "400px" %}
+{% markdown %}
+Mounted draw attention to content with a coloured background. You can use white mounted cards on pale blue backgrounds for contrast and vice versa.  They can also contain images. 
+
+### Unmounted cards
+{% endmarkdown %}
+{% exampleWithCode "/components/card/card-unmounted-example/", "card-unmounted-example", "100%", "200px" %}
+{% markdown %}
+Unmounted cards do not contain images and allow for longer lines of text in the link and description fields.  They are useful when you want to present a large number of links on a page. 
+
+### Elevated cards
+
+Elevated cards have a short or no description and can contain an icon. By using these cards to present categories or subcategories, they show the user high-level information within a range of topics. 
+
+{% endmarkdown %}
+
+{% exampleWithCode "/components/card/card-elevated-example/", "card-elevated-example", "100%", "250px" %}
+
+{% markdown %}
+## When not to use this component 
+
+Where content can go into the main body of text, use this option instead.  
+
+## How it works
+
+### Title link 
+
+The link should contain a short description of the service in one line of text in the largest viewports. Title length should be kept consistent across cards on any given page. The description should give the user enough information to help them understand what the service is and whether it will meet their needs. 
+
+The title has 3 size options; small, medium and large. Small is the default size. To set medium or large, add the appropriate class to the `classes` attribute.
+
+### Description 
+
+Keep descriptions to four lines of text in the smallest viewports so that cards do not stretch too long vertically. 
+
+### Image
+
+The image is hidden on small viewports. Use the same image dimensions for all cards in a set.
+
+### Icon
+
+The icon is shown on all viewports. When using mounted or unmounted cards, the icon is shown on the left of the title. When using elevated cards, the icon is shown above the title of the card.
+
+### Metadata 
+
+Use a metadata tag if there is a specific need to show the user what type of content the card is linking to, like an external website. 
+
+### Arrow 
+
+The arrow is displayed by default. You can hide the arrow by setting the `hideArrow` attribute to `true`. If a size class is applied to the title, the arrow will match the size of the title.
+
+### Card set 
+
+Placing a set of cards in a container with the class `great-ds-card-container` will automatically apply the correct spacing and display the cards in a row. 
+
+There is the option to display the cards in rows of 2, 3 or 4 (the default is 4). You can apply this to a set of cards by adding the appropriate sizing class to each card, for example `great-ds-card--2` or `great-ds-card--3`.
+
+You can also set a card to display full width by adding the class `great-ds-card--full-width` to each card.
+{% endmarkdown %}
