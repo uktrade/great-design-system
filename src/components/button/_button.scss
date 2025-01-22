@@ -511,4 +511,8 @@ $great-ds-button-outline: 2px solid transparent;
     @extend %great-ds-button-menu;
     @extend .great-ds-button--inverted;
     @extend %great-ds-button-header-search-menu;
+    &:active,
+    &:active:hover {
+        top: 0px;
+    }
 }
