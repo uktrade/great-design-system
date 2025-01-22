@@ -21,12 +21,14 @@
 }
 
 .great-ds-hero__container {
-    padding: $great-ds-spacing-3;
+    padding-top: $great-ds-spacing-3;
+    padding-bottom: $great-ds-spacing-3;
     width: 100%;
     justify-content: flex-end;
     align-items: center;
     @include govuk-media-query($from: tablet) {
-        padding: $great-ds-spacing-6-large;
+        padding-top: $great-ds-spacing-6-large;
+        padding-bottom: $great-ds-spacing-6-large;
         display:flex;
         flex-direction: row-reverse;
     }
@@ -34,12 +36,13 @@
 
 .great-ds-hero__image-container {
     .great-ds-hero--large-image-scaling & {
-        @include govuk-media-query($from: tablet) {
+        @include govuk-media-query(950px) {
             display: flex;
             width: 50%;
             align-items: flex-start;
             flex-direction: row-reverse;
             overflow: hidden;
+
         }
         display: none;
     }
@@ -83,7 +86,6 @@
 }
 
 .great-ds-hero__text-container {
-    padding: $great-ds-spacing-2;
     max-width: 600px;
     min-height: 200px;
     @include govuk-media-query($from: tablet) {
