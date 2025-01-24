@@ -11,10 +11,8 @@ export class CookieNotice {
     this.bannerTitle = document.getElementById("cookie-banner-title");
     this.statusElement = document.getElementById("cookie-preference-status");
 
-    // Store focused element to return to later
     this.previouslyFocusedElement = null;
 
-    // Trap focus in modal
     this.focusableElements =
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
@@ -36,7 +34,6 @@ export class CookieNotice {
   }
 
   bindEvents() {
-    // Modal buttons
     this.modal
       .querySelector('[data-action="accept-cookies"]')
       .addEventListener("click", () => this.acceptAllCookies());
@@ -45,12 +42,10 @@ export class CookieNotice {
       .querySelector('[data-action="reject-cookies"]')
       .addEventListener("click", () => this.rejectAllCookies());
 
-    // Banner close button
     this.banner
       .querySelector('[data-action="hide-banner"]')
       .addEventListener("click", () => this.hideBanner());
 
-    // Keyboard event listeners
     document.addEventListener("keydown", this.handleEscapeKey);
     this.modal.addEventListener("keydown", this.handleTabKey);
   }
@@ -107,7 +102,6 @@ export class CookieNotice {
 
   hideBanner() {
     this.banner.hidden = true;
-    // Return focus to the page heading if it exists
     const mainHeading = document.querySelector("h1");
     if (mainHeading) {
       mainHeading.focus();
