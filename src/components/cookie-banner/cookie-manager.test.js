@@ -3,10 +3,8 @@ describe("CookieManager", () => {
   let documentCookies = "";
 
   beforeEach(() => {
-    // Create mock document
     global.document = {};
 
-    // Define cookie property with getter/setter
     Object.defineProperty(global.document, "cookie", {
       get: function () {
         return documentCookies;
@@ -17,7 +15,6 @@ describe("CookieManager", () => {
       configurable: true,
     });
 
-    // Mock location
     global.location = { protocol: "https:" };
 
     const { CookieManager } = require("./cookie-manager");
