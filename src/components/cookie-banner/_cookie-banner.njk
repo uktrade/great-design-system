@@ -1,0 +1,41 @@
+{% macro greatCookieBanner(
+  preferencesUrl = "/cookie-preferences",
+  title = "Cookie preferences saved",
+  preText = "You've",
+  postText = "additional cookies. You can",
+  linkText = "change your cookie settings",
+  endText = "at any time.",
+  acceptedText = "accepted",
+  rejectedText = "rejected",
+  hideButtonText = "Hide this message"
+) %}
+<div 
+  id="cookie-banner" 
+  class="great-ds-cookie-banner great-ds-container" 
+  role="alert" 
+  aria-labelledby="cookie-banner-title"
+  hidden>
+  <div class="great-ds-cookie-banner__container">
+    <h2 id="cookie-banner-title" class="great-ds-cookie-banner__title" tabindex="-1">
+      {{ title }}
+    </h2>
+    <p class="great-ds-cookie-banner__description">
+      {{ preText }} <span id="cookie-preference-status" 
+        data-accepted-text="{{ acceptedText }}" 
+        data-rejected-text="{{ rejectedText }}">
+        {{ acceptedText }}
+      </span> {{ postText }} 
+      <a href="{{ preferencesUrl }}" class="govuk-link govuk-link--no-visited-state">
+        {{ linkText }}
+      </a> {{ endText }}
+    </p>
+    <button 
+      class="great-ds-button" 
+      data-action="hide-banner"
+      type="button"
+      aria-label="Hide cookie preference message">
+      {{ hideButtonText }}
+    </button>
+  </div>
+</div>
+{% endmacro %}

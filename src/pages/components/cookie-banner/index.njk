@@ -1,0 +1,71 @@
+---
+layout: layout/_page.njk
+content: main
+eleventyNavigation:
+  key: Cookie banner
+  parent: Components
+  title: Cookie banner
+---
+{% markdown %}
+# Cookie banner
+Allow users to accept or reject cookies which are not essential to making your service work. 
+{% endmarkdown %}
+
+{% exampleWithCode "/components/cookie-banner/cookie-modal-example/", "cookie-modal-example", "100%", "340px" %}
+{% markdown %}
+
+## When to use this component
+Use this component if your service sets any cookies on a user’s device. 
+
+Remember, you must: 
+
+* tell users about the cookies your service sets on their device 
+* let users accept or reject any cookies that are not essential to providing your service 
+
+The term ‘non-essential cookies’ includes: 
+
+* HTML5 local storage 
+* service workers 
+* any other technologies that store files on the user’s device 
+
+## How it works
+
+Show the cookie banner every time the user accesses your service until they either: 
+
+* accept or reject cookies using the buttons in the cookie banner 
+* save their cookie preferences on your service’s Cookies page 
+
+Once the user has accepted or rejected cookies, the cookie banner should: 
+
+* hide the cookie banner message 
+* show a confirmation message – and a ‘hide’ button to let the user close the banner 
+* set a cookie to save the user’s preferences for 1 year 
+
+Make sure the cookie banner does not: 
+
+* show when the user visits again, once their preferences have been saved 
+* set any non-essential cookies unless the user accepted them on a previous visit 
+
+There are two components to the cookie banner:
+
+1. The cookie modal, that appears when a user first visits the service.
+2. The cookie banner, which appears when a user accepts or rejects cookies via the cookie modal.
+
+Position the cookie banner and modal after the opening `<body>` tag and before the ’skip to main content‘ link. 
+
+## Cookie modal
+
+The cookie modal is a modal that appears when a user first visits the service and displays on top of the page.
+
+{% endmarkdown %}
+
+{% exampleWithCode "/components/cookie-banner/cookie-modal-example/", "cookie-modal-example", "100%", "340px" %}
+
+{% markdown %}
+## Cookie banner
+
+The cookie banner is a banner that appears when a user accepts or rejects cookies via the cookie modal and displays on top of the page.
+
+{% endmarkdown %}
+
+{% exampleWithCode "/components/cookie-banner/cookie-banner-example/", "cookie-banner-example", "100%", "230px" %}

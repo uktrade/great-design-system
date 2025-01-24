@@ -64,3 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+import { initAll } from "govuk-frontend";
+initAll();
+
+import "../../js/revealer/main.js";

@@ -9,6 +9,10 @@
 </head>
 <body>
     <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    {% from "../../components/cookie-banner/_cookie-banner.njk" import greatCookieBanner %}
+    {% from "../../components/cookie-banner/_cookie-modal.njk" import greatCookieModal %}
+    {{ greatCookieModal() }}
+    {{ greatCookieBanner() }}
     {% from "../../components/header/_header.njk" import greatHeader %}
     {% set navItemsList = [] %}
     {% for entry in collections.all | eleventyNavigation %}
