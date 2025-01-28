@@ -13,7 +13,6 @@ export default class Revealer {
 
     document.addEventListener("click", (e) => this.handleOutsideClick(e));
     document.addEventListener("keydown", (e) => this.handleEscapeKey(e));
-    document.addEventListener("focusout", (e) => this.handleFocusOut(e));
   }
 
   createOverlay() {
@@ -77,12 +76,6 @@ export default class Revealer {
   handleEscapeKey(event) {
     if (event.key === "Escape") {
       this.hideAll();
-    }
-  }
-
-  handleFocusOut(event) {
-    if (this.activeTarget && !this.activeTarget.contains(event.relatedTarget)) {
-      // this.hideAll();
     }
   }
 

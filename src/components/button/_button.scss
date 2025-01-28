@@ -277,7 +277,8 @@ $great-ds-button-outline: 2px solid transparent;
     }
 
     .great-ds-button__text {
-        display: none;
+        text-indent: -5000px;
+        overflow: hidden;
     }
 
     &:focus {

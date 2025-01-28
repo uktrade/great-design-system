@@ -73,15 +73,22 @@
 
 .great-ds-header__dbt-logo-image {
     box-sizing: content-box;
-    width: 298px;
     height: 30px;
     margin: 10px 0 5px;
     padding: 0 0 5px;
+    width: 80%;
+
+    @include govuk-media-query($from: 400px) {
+        width: 298px;
+    }
 
     &.great-ds-header__dbt-logo-image--ukgov  {
-        width: 184px;
         padding: 5px 0;
         margin: 5px 0;
+
+        @include govuk-media-query($from: 400px) {
+            width: 184px;
+        }
     }
 }
 
@@ -173,6 +180,11 @@
     z-index: 2;
     width: auto;
     padding-right: $great-ds-spacing-6;
+    width: 50%;
+
+    @include govuk-media-query($from: 400px) {
+        width: auto;
+    }
 
     @include govuk-media-query($from: desktop) {
         position: relative;
