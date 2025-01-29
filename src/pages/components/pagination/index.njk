@@ -1,0 +1,40 @@
+---
+layout: layout/_page.njk
+content: main
+eleventyNavigation:
+  key: Pagination
+  parent: Components
+  title: Pagination
+  synonyms:
+    - list
+    - numbered
+    - paged
+isGovUk: true
+status: 
+  - Live
+---
+{% markdown %}
+# Pagination
+
+Based on the govuk implementation. 
+{% endmarkdown %}
+Numbered example:
+
+Few numbers:
+
+{% exampleWithCode "/components/pagination/pagination-few-numbered-example/", "pagination-numbered-example", "100%", "200px" %}
+
+Many numbers:
+{% exampleWithCode "/components/pagination/pagination-many-numbered-example/", "pagination-numbered-example", "100%", "200px" %}
+
+Mobile: 
+
+{% exampleWithCode "/components/pagination/pagination-many-numbered-example/", "pagination-numbered-example", "50%", "200px" %}
+{% markdown %}
+Pages example:
+
+{% endmarkdown %}
+{% exampleWithCode "/components/pagination/pagination-paged-example/", "pagination-numbered-example", "100%", "200px" %}
+{% markdown %}
+
+{% endmarkdown %}
