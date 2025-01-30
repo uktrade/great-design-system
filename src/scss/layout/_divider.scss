@@ -4,11 +4,3 @@
     height: 1px;
     background: $great-ds-semantic-border-default-light-grey-border;
 }
-
-.great-ds-from-tablet-light-grey-divider {
-    @include govuk-media-query($from: tablet) {
-        width: 100%;
-        height: 1px;
-        background: $great-ds-semantic-border-default-light-grey-border;
-    }
-}
