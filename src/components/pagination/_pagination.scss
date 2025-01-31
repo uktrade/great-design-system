@@ -3,7 +3,7 @@
         align-items: flex-start;
         max-width: 360px;
 
-        .great-ds-pagination__page-summary-container, 
+        .great-ds-pagination__page-summary-container--numbered, 
         .govuk-pagination__prev,
         .govuk-pagination__next {
             width: 100%;
@@ -16,47 +16,38 @@
     max-width: 810px;
 }
 
-.great-ds-pagination__page-summary-container {
+.great-ds-pagination__hover--white:not(.govuk-pagination__item--current) {
+    &:hover {
+        background-color: $great-ds-semantic-surface-background-white;
+    }
+}
+
+.great-ds-pagination__hover--blue:not(.govuk-pagination__item--current) {
+    &:hover {
+        background-color: $great-ds-semantic-surface-background-light-blue;
+    }
+}
+
+.great-ds-pagination__page-summary-container--numbered {
     display: none;
     @include govuk-media-query($until: tablet) {
         display:flex;
     }
 }
 
-.great-ds-pagination__page-summary {
+.great-ds-pagination__page-summary--numbered {
     color: var(--Semantic-Text-Default-Secondary-text, #505A5F);
     padding-left: 30px;
 }
 
-.great-ds-pagination__list-container {
+.great-ds-pagination__list-container--numbered {
     display: flex;
     @include govuk-media-query($until: tablet) {
         display: none; 
     }
 }
 
-.great-ds-pagination-item:not(.govuk-pagination__item--current) {
-    &:hover {
-        background-color: $great-ds-semantic-surface-background-white;
-    }
-}
-
-.great-ds-pagination__prev {
-    &:hover {
-        background-color: $great-ds-semantic-surface-background-white;
-    }
-}
-
-.great-ds-pagination__prev-link {
-    @include govuk-media-query($until: tablet) {
-        width: fit-content;
-    }
-}
-
 .great-ds-pagination__next--numbered {
-    &:hover {
-        background-color: $great-ds-semantic-surface-background-white;
-    }
     @include govuk-media-query($until: tablet) {
         padding-left: 0;
         flex-direction: row;
@@ -64,13 +55,7 @@
     }
 }
 
-.great-ds-pagination__next--paged {
-    &:hover {
-        background-color: $great-ds-semantic-surface-background-white;
-    }
-}
-
-.great-ds-pagination__next-link {
+.great-ds-pagination__next-link--numbered {
     @include govuk-media-query($until: tablet) {
         flex-direction: row-reverse;
     }
