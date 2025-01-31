@@ -36,3 +36,11 @@ ol {
 a {
     color: $great-ds-semantic-text-default-link;
 }
+
+.great-ds-heading-l {
+    font-size: $great-ds-type-size-heading-l-large;
+    line-height: $great-ds-type-line-height-heading-l-large;
+    font-weight: $govuk-font-weight-bold;
+    font-family: $great-ds-type-family-great;
+    letter-spacing: -1.08px;
+}
