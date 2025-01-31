@@ -2,12 +2,13 @@
 
 {% block content %}
     {% from "../../../components/pagination/_paged_pagination.njk" import greatPagedPagination %}
-
-{{ greatPagedPagination(
-    previousPageTitle='Applying for a provisional lorry or bus licence',
-    previousPageLink='#',
-    nextPageTitle='Driver CPC part 1 test: theory',
-    nextPageLink='#',
-    hoverClass='great-ds-pagination__hover--blue'
-) }}
+    <div style='background-color: #eef2f6ff'>
+        {{ greatPagedPagination(
+            previousPageTitle='Applying for a provisional lorry or bus licence',
+            previousPageLink='#',
+            nextPageTitle='Driver CPC part 1 test: theory',
+            nextPageLink='#',
+            hoverClass='great-ds-pagination__hover--white'
+        ) }}
+</div>  
 {% endblock %}
