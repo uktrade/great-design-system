@@ -1,0 +1,10 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/inset_text/_inset_text.njk" import greatInsetText %}
+    {{ greatInsetText(
+        label = 'Label',
+        insetText = 'Description'
+    ) }}
+
+{% endblock %}
