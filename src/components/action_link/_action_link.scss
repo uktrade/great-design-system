@@ -60,7 +60,7 @@
     }
 }
 
-.great-ds-action-link--white-text-dark-blue-arrow:not(:focus) { // TODO - confirm naming plan and update documentation
+.great-ds-action-link--white-text-dark-blue-arrow:not(:focus) {
     text-decoration-color: $great-ds-semantic-text-default-white-text;
 
     .great-ds-action-link__text {
@@ -85,7 +85,7 @@
     }
 }
 
-.great-ds-action-link--black:not(:focus) {
+.great-ds-action-link--black-text:not(:focus) {
     text-decoration-color: $great-ds-semantic-text-default-text;
 
     .great-ds-action-link__text {
