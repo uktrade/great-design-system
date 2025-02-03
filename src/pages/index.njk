@@ -3,15 +3,70 @@ navTitle: "Home"
 permalink: "/"
 ---
 {% extends "layout/_base.njk" %}
+{% from "../components/hero/_hero.njk" import greatHero %}
 {% block title %}Great Design System - Home Page{% endblock %}
 
-{% block content %}
+{% block content_wrapper %}
     <section>
-        <h2 class="govuk-heading-l">Available components</h2>
-        <ul class="govuk-list">
-            {% for item in collections.componentIndexes %}
-                <li><a class="govuk-link" href="{{ item.url }}">{{ item.data.title or item.fileSlug }}</a></li>
-            {% endfor %}
-        </ul>
+        {{ greatHero( 
+            heroClasses = 'great-ds-hero--large-image-scaling great-ds-hero--bg-dark-blue',
+            heroHeading = 'Design your service using great.gov.uk styles, components and patterns',
+            heroDescription = 'Use this Design System to make great.gov.uk services consistent. Learn from the research and experience of other service teams and avoid repeating work that’s already been done. .',
+            svgImagePath = '../hero/_doc_hero_image.njk',
+            headingClass = 'great-ds-hero__heading--white',
+            descriptionClass = 'great-ds-hero__description--white',
+            actionLinkText = 'Get started',
+            actionLinkUrl = '#',
+            actionLinkClass = 'great-ds-action-link--white-text-dark-blue-arrow'
+        ) }}
+        <div class='great-ds-container'>
+            <div class="govuk-grid-row  govuk-!-margin-bottom-8">
+                <div class="govuk-grid-column-one-third">
+                    <h2 class='great-ds-heading-l govuk-!-margin-top-8'>Styles</h2>
+                    <p>Make government services consistent across great.gov.uk with guides for applying layout, typography, colour and images.</p>
+                    <a class='govuk-link' href=''>View styles</a>
+                </div>
+                <div class="govuk-grid-column-one-third">
+                    <h2 class='great-ds-heading-l govuk-!-margin-top-8'>Components</h2>
+                    <p>Save time with reusable, accessible components for forms, navigation, panels, tables and more.</p>
+                    <a class='govuk-link' href='/components/'>View components</a>
+                </div>
+                <div class="govuk-grid-column-one-third">
+                    <h2 class='great-ds-heading-l govuk-!-margin-top-8'>Patterns</h2>
+                    <p>Help users complete common tasks like entering names and addresses, filling in forms and creating accounts.</p>
+                    <a class='govuk-link' href=''>View patterns</a>
+                </div>
+            </div>
+
+            <hr class="govuk-section-break govuk-section-break--visible">
+
+            <div class="govuk-grid-row  govuk-!-margin-bottom-8">
+                <div class="govuk-grid-column-one-third govuk-!-margin-top-8">
+                    <h2 class='great-ds-heading-l'>Content</h2>
+                    <p>Make your content consistent across all Great services using our style guides.</p>
+                    <a class='govuk-link' href=''>View content guidance</a>
+                </div>
+                <div class="govuk-grid-column-one-third govuk-!-margin-top-8">
+                    <h2 class='great-ds-heading-l'>Contribute</h2>
+                    <p>Contribute to the design system by proposing new components or patterns and sharing your ideas in our community.</p>
+                    <a class='govuk-link' href=''>Join the community</a>
+                </div>
+                <div class="govuk-grid-column-one-third govuk-!-margin-top-8">
+                    <h2 class='great-ds-heading-l'>Accessibility</h2>
+                    <p>Our accessibility strategy outlines our principles and work to improve accessibility within the great.gov.uk Design System.</p>
+                    <a class='govuk-link' href=''>View accessibility guidance</a>
+                </div>
+            </div>
+
+            <hr class="govuk-section-break govuk-section-break--visible">
+
+            <div class="govuk-grid-row govuk-!-padding-bottom-8">
+                <div class="govuk-grid-column-one-third">
+                    <h2 class='great-ds-heading-l govuk-!-margin-top-8'>Updates</h2>
+                    <p>Find out about our latest releases as well as our planned work.</p>
+                    <a class='govuk-link' href=''>View updates</a>
+                </div>
+            </div>
+        </div>
     </section>
 {% endblock %}

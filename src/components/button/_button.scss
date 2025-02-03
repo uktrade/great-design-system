@@ -334,8 +334,22 @@ $great-ds-button-outline: 2px solid transparent;
     box-shadow: none !important;
     padding: 16px 20px;
 
-    &:focus {
+    &:hover {
+        color: $great-ds-semantic-text-default-white-text !important;
+        background-color: $great-ds-semantic-surface-background-great-ds-blue !important;
+    }
+
+    &:focus:not(.is-active, :focus-visible) {
+        background-color: $great-ds-semantic-surface-background-great-ds-blue !important ;
+        .great-ds-icon-svg path {
+            fill: $great-ds-semantic-text-default-white-text;
+        }
+    }
+    &.is-active {
         background-color: $great-ds-semantic-surface-background-light-blue !important;
+        .great-ds-icon-svg path {
+            fill: $great-ds-semantic-text-default-text;
+        }
     }
 
     &:focus-visible {
@@ -345,9 +359,10 @@ $great-ds-button-outline: 2px solid transparent;
     .great-ds-icon-svg {
         margin: 0;
     }
-
-    &.is-active .great-ds-icon-svg path {
-        fill: $great-ds-semantic-text-default-text;
+    
+    &:active,
+    &:active:hover {
+        top: 0px;
     }
 }
 

@@ -7,5 +7,10 @@ eleventyNavigation:
 
 {% block content %}
     <h1 class="govuk-heading-l">Components</h1>
+    <ul class="govuk-list">
+            {% for item in collections.componentIndexes %}
+                <li><a class="govuk-link" href="{{ item.url }}">{{ item.data.title or item.fileSlug }}</a></li>
+            {% endfor %}
+        </ul>
 {% endblock %}
 
