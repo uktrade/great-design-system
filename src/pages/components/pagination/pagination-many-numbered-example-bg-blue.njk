@@ -3,8 +3,9 @@
 {% block content %}
     {% from "../../../components/pagination/_numbered_pagination.njk" import greatNumberedPagination %}
 
-{{ greatNumberedPagination(
-    currentPage=7,
-    totalPages=10
-) }}
+    {{greatNumberedPagination(
+        currentPage=7,
+        totalPages=10,
+        hoverClass='great-ds-pagination__hover--white'
+    ) }}
 {% endblock %}

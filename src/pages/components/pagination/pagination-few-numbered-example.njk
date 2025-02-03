@@ -2,11 +2,8 @@
 
 {% block content %}
     {% from "../../../components/pagination/_numbered_pagination.njk" import greatNumberedPagination %}
-    <div style='background-color: #eef2f6ff'>
-        {{ greatNumberedPagination(
-            currentPage=3,
-            totalPages=4,
-            hoverClass='great-ds-pagination__hover--white'
-        ) }}
-    </div>
+    {{ greatNumberedPagination(
+        currentPage=1,
+        totalPages=4
+    ) }}
 {% endblock %}

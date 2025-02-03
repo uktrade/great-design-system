@@ -16,25 +16,143 @@ status:
 {% markdown %}
 # Pagination
 
-Based on the govuk implementation. 
+Help users navigate forwards and backwards through a series of pages. For example, search results or guidance that’s divided into multiple website pages. 
+
 {% endmarkdown %}
-Numbered example:
-
-Few numbers:
-
 {% exampleWithCode "/components/pagination/pagination-few-numbered-example/", "pagination-numbered-example", "100%", "200px" %}
+{% markdown %}
 
-Many numbers:
+## When to use this component
+
+Consider using pagination when:
+
+- Showing all the content on a single page makes the page take too long to load 
+
+- Most users will only need the content on the first page or first few pages 
+
+## When not to use this component
+
+Only break up content into separate pages if it improves the performance or usability of your service. 
+
+Avoid using the ‘infinite scroll’ technique to automatically load content when the user approaches the bottom of the page. This causes problems for keyboard users. 
+
+Do not use this Pagination component for linear journeys – for example, where you’re asking the user to complete a form. Instead, use the [Button component](/components/button) (usually a ‘Continue’ button) to let the user move to the next page – and a [Back link component](/components/back_link/) to let them move to the previous page. 
+
+
+## How it works
+
+Add the pagination component after the content on each page that you’re paginating. 
+
+[View an example of Pagination in a standard GOV.UK page template.](https://design-system.service.gov.uk/components/pagination/in-page/)
+
+Do not show pagination if there’s only one page of content. 
+
+Redirect users to the first page if they enter a URL of a page that no longer exists. 
+
+**For navigating between content pages**
+
+Use the ‘Pagination - paged’ style of pagination to let users navigate through related content that has been split across multiple pages. Stack the links vertically, so they’re more obvious to screen magnifier users when they’re zoomed in. 
+
+You can use link labels to give context on what the neighbouring pages are about.
+
+{% endmarkdown %}
+{% exampleWithCode "/components/pagination/pagination-paged-example/", "pagination-paged-example", "100%", "200px" %}
+{% markdown %}
+
+**For navigating between pages of items** 
+
+Use a list-type layout if users need to navigate through pages of similar items. For example, a list of search results or a list of cases in a case working system. 
+
+TODO - add results component?
+
+Show the page number in the page \<title\> so that screen reader users know they’ve navigated to a different page. For example, ‘Search results (page 1 of 4)’. 
+
+Show an appropriate number of pages to fit the horizontal space available. 
+
+For smaller screens, show page numbers for: 
+
+- the current page 
+- previous and next pages 
+- first and last pages 
+
+ 
+
+For larger screens, show page numbers for: 
+- the current page 
+- at least one page immediately before and after the current page 
+- first and last pages 
+
+ 
+
+Use ellipses (…) to replace any skipped pages. For example: 
+
+[1] 2 … 100 
+
+1 [2] 3 … 100 
+
+1 2 [3] 4 … 100 
+
+1 2 3 [4] 5 … 100 
+
+1 … 4 [5] 6 … 100 
+
+1 … 97 [98] 99 100 
+
+1 … 98 [99] 100 
+
+1 … 99 [100] 
+
+ 
+
+**First and last pages:** 
+
+Do not show the previous page link on the first page – and do not show the next page link on the last page. 
+
+Examples:
+
+{% endmarkdown %}
+{% exampleWithCode "/components/pagination/pagination-few-numbered-example/", "pagination-numbered-example", "100%", "200px" %}
+{% markdown %}
+
+{% endmarkdown %}
 {% exampleWithCode "/components/pagination/pagination-many-numbered-example/", "pagination-numbered-example", "100%", "200px" %}
+{% markdown %}
 
-Mobile: 
+{% endmarkdown %}
+{% exampleWithCode "/components/pagination/pagination-many-numbered-example-last/", "pagination-numbered-example-last", "100%", "200px" %}
+{% markdown %}
 
+**Filtering and sorting** 
+
+Consider adding filtering or sorting options if it helps users to find what they need in a long list of pages. For example, the business support finder on GOV.UK has filtering options. 
+
+If the user filters or sorts the list of pages, apply this to the whole list (not just the current page) and redirect them back to the first page of the new results. 
+
+Set defaults to minimise how many pages most users have to click through to find what they need. 
+
+## Small Screens 
+
+On small screens, the ‘Pagination - numbered’ variant will show a simplified mobile view with page position/previous/next elements as appropriate.
+{% endmarkdown %}
 {% exampleWithCode "/components/pagination/pagination-many-numbered-example/", "pagination-numbered-example", "50%", "200px" %}
 {% markdown %}
-Pages example:
 
+However, if there is a specific need to display the content page titles, utilise the ‘Pagination - paged’ component instead
 {% endmarkdown %}
-{% exampleWithCode "/components/pagination/pagination-paged-example/", "pagination-numbered-example", "100%", "200px" %}
+{% exampleWithCode "/components/pagination/pagination-paged-example/", "pagination-numbered-example", "50%", "200px" %}
+
 {% markdown %}
+## Hover states
 
+To display the pagination component on different pages which may use different background colours, use a white hover colour variant instead of the default blue to ensure accessible hover states on these pages.
+
+This is used by passing 'great-ds-pagination__hover--white' to the component using the 'hoverClass' parameter. 
+
+
+Numbered example
 {% endmarkdown %}
+{% exampleWithCode "/components/pagination/pagination-many-numbered-example-bg-blue/", "pagination-numbered-example-bg-blue", "100%", "200px", 'great-ds-pagination--bg-blue' %}
+{% markdown %}
+Paged example:
+{% endmarkdown %}
+{% exampleWithCode "/components/pagination/pagination-paged-example-bg-blue/", "pagination-paged-example-bg-blue", "100%", "200px", 'great-ds-pagination--bg-blue' %}

@@ -16,6 +16,10 @@
     max-width: 810px;
 }
 
+.great-ds-pagination--bg-blue {
+    background-color: $great-ds-semantic-surface-background-light-blue;
+}
+
 .great-ds-pagination__hover--white:not(.govuk-pagination__item--current) {
     &:hover {
         background-color: $great-ds-semantic-surface-background-white;
