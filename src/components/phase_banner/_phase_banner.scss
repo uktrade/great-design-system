@@ -1,0 +1,20 @@
+.great-ds-phase-banner {
+    background-color: $great-ds-semantic-surface-background-light-blue;
+    padding: $great-ds-spacing-2 $great-ds-spacing-3;
+
+    &:not(.great-ds-phase-banner--no-border) {
+        border-bottom: 1px solid $great-ds-semantic-border-default-light-grey-border;
+    }
+}
+
+.great-ds-phase-banner__content {
+    @include govuk-font($size: 16);
+    margin: 0;
+    display: table;
+}
+
+.great-ds-phase-banner__text {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: $great-ds-spacing-2;
+}

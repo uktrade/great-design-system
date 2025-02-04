@@ -4,7 +4,7 @@
         <h{% if labelLevel %}{{ labelLevel }}{% else %}3{% endif %} class="govuk-heading-{% if labelSmall %}s{% else %}m{% endif %} govuk-!-margin-bottom-2">{{ label }}</h2>
     {% endif %}
     {% if html %}
-        {{ html }}
+        {{ html | safe }}
     {% else %}
         <p>{{ insetText }}</p>
     {% endif %}
