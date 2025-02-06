@@ -202,3 +202,18 @@ body {
     background: $great-ds-semantic-interaction-default-tag-neutral;
     color: $great-ds-semantic-text-default-tag-neutral;
 }
+
+.app-example-wrapper {
+    .great-ds-cookie-modal,
+    .great-ds-cookie-banner {
+        display: block !important;
+        width: auto !important;
+        height: auto !important;
+    }
+}
+
+.app-example-wrapper .great-ds-cookie-modal__content {
+    width: auto !important;
+    height: auto !important;
+    max-height: 100% !important;
+}

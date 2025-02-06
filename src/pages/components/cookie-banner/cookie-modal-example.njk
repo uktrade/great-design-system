@@ -1,0 +1,11 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/cookie-banner/_cookie-modal.njk" import greatCookieModal %}
+
+{{ greatCookieModal() }}
+
+    <div class="great-ds-overlay" style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 2;"></div>
+
+{% endblock %}
+

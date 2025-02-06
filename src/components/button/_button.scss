@@ -9,7 +9,7 @@ $great-ds-button-box-sizing: border-box;
 $great-ds-button-display: inline-block;
 $great-ds-button-position: relative;
 $great-ds-button-width: 100%;
-$great-ds-button-margin: 0 0 20px;
+$great-ds-button-margin: 0 0 $great-ds-spacing-5;
 $great-ds-button-border-width: 2px;
 $great-ds-button-border-radius: 0;
 $great-ds-button-text-align: center;
@@ -526,4 +526,10 @@ $great-ds-button-outline: 2px solid transparent;
     @extend %great-ds-button-menu;
     @extend .great-ds-button--inverted;
     @extend %great-ds-button-header-search-menu;
+}
+
+.great-ds-button + .great-ds-button {
+    @include govuk-media-query($from: desktop) {
+        margin-left: $great-ds-spacing-5;
+    }
 }

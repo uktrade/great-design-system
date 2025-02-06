@@ -1,0 +1,49 @@
+{% macro greatCookieModal(
+  preferencesUrl,
+  title = "Cookies on great.gov.uk",
+  description = "We use some essential cookies to make this website work. We'd like to set additional cookies to understand how you use great.gov.uk and improve our export support services.",
+  acceptButtonText = "Accept additional cookies",
+  rejectButtonText = "Reject additional cookies",
+  preferencesLinkText = "View cookies"
+) %}
+<div 
+  class="great-ds-cookie-modal" 
+  id="cookie-modal" 
+  role="dialog" 
+  aria-modal="true"
+  aria-labelledby="cookie-modal-title"
+  aria-describedby="cookie-modal-description"
+  hidden>
+  <div class="great-ds-cookie-modal__content">
+    <h2 id="cookie-modal-title" class="great-ds-cookie-modal__title" tabindex="-1">
+      {{ title }}
+    </h2>
+    
+    <p id="cookie-modal-description" class="great-ds-cookie-modal__description">
+      {{ description }}
+    </p>
+
+    <div class="great-ds-cookie-modal__buttons">
+      <button 
+        class="great-ds-button" 
+        data-action="accept-cookies"
+        type="button">
+        {{ acceptButtonText }}
+      </button>
+      <button 
+        class="great-ds-button" 
+        data-action="reject-cookies"
+        type="button">
+        {{ rejectButtonText }}
+      </button>
+      <div class="great-ds-cookie-modal__link">
+        <a 
+          href="{{ preferencesUrl }}" 
+          class="govuk-link govuk-link--no-visited-state">
+          {{ preferencesLinkText }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}
