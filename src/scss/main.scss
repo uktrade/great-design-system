@@ -8,7 +8,6 @@
 @import './variables/icon';
 
 @import './govuk/variables/';
-@import './govuk/components/';
 
 @import "govuk-frontend/dist/govuk/base";
 @import "govuk-frontend/dist/govuk/core/";
@@ -16,6 +15,8 @@
 @import "govuk-frontend/dist/govuk/components/";
 @import "govuk-frontend/dist/govuk/utilities/";
 @import "govuk-frontend/dist/govuk/overrides/";
+
+@import './govuk/components/';
 
 @import "./base/fonts";
 @import "./base/typography";
