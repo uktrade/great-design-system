@@ -1,0 +1,26 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/checkboxes/_checkboxes.njk" import greatCheckboxes %}
+    {{ greatCheckboxes(
+        checkboxesName = 'countries',
+        leadingQuestion = 'Will you be travelling to any of these countries?',
+        hint = 'Select all countries that apply',
+        size = '',
+        checkboxes = [{
+            value: 'this is the label',
+            conditionalLabel: 'please give me some more info on this',
+            conditionalError: 'not enough extra info', 
+            conditionalHint: 'heres a hint'
+        },
+        {
+            value: 'this is the second item'
+        },
+        {
+            exclusive: 'true',
+            value: 'this is the third item'
+        }
+        ]
+    ) }}
+
+{% endblock %}
