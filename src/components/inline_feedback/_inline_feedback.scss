@@ -1,0 +1,20 @@
+
+.great-ds-inline-feedback__container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    &--bordered {
+        border-top: 1px solid $great-ds-semantic-border-default-light-grey-border;
+    }
+}
+
+.great-ds-inline-feedback__question-text {
+    font-size: $great-ds-type-size-heading-s;
+    font-weight: 600;
+    line-height: $great-ds-type-line-height-heading-s;
+}
+
+.great-ds-inline-feedback__stage-1__container{
+    display: inline-flex;
+    align-items: center;
+}

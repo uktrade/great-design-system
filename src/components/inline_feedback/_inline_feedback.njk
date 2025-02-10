@@ -1,0 +1,20 @@
+{% from "../button/_button.njk" import greatButton %}
+
+
+{% macro greatInlineFeedback(leadingQuestion,) %}
+    
+    <div class='great-ds-inline-feedback__container great-ds-container'>
+
+        <div class='great-ds-inline-feedback__stage-1__container'>
+            <span class='great-ds-inline-feedback__question-text govuk-!-margin-right-4'> {{ leadingQuestion }} </span>
+            {{ greatButton(text="Yes", classes="great-ds-button--secondary") }}
+            {{ greatButton(text="No", classes="great-ds-button--secondary") }}
+        </div>
+
+        <div class='great-ds-inline-feedback__stage-2__container'>
+
+        </div>
+
+        
+    </div>
+{% endmacro %}
