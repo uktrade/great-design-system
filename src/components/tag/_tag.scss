@@ -1,0 +1,30 @@
+.great-ds-tag {
+    @include govuk-font($size: 16);
+    display: inline-block;
+    padding: $great-ds-spacing-1 $great-ds-spacing-2;
+    text-decoration: none;
+    overflow-wrap: break-word;
+
+    color: $great-ds-semantic-text-default-tag-neutral;
+    background-color: $great-ds-semantic-interaction-default-tag-neutral;
+}
+
+.great-ds-tag--information {
+    color: $great-ds-semantic-text-default-tag-information;
+    background-color: $great-ds-semantic-interaction-default-tag-information;
+}
+
+.great-ds-tag--warning {
+    color: $great-ds-semantic-text-default-tag-warning;
+    background-color: $great-ds-semantic-interaction-default-tag-warning;
+}
+
+.great-ds-tag--error {
+    color: $great-ds-semantic-text-default-tag-error;
+    background-color: $great-ds-semantic-interaction-default-tag-error;
+}
+
+.great-ds-tag--success {
+    color: $great-ds-semantic-text-default-tag-success;
+    background-color: $great-ds-semantic-interaction-default-tag-success;
+}

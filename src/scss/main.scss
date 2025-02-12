@@ -8,7 +8,6 @@
 @import './variables/icon';
 
 @import './govuk/variables/';
-@import './govuk/components/';
 
 @import "govuk-frontend/dist/govuk/base";
 @import "govuk-frontend/dist/govuk/core/";
@@ -17,6 +16,8 @@
 @import "govuk-frontend/dist/govuk/utilities/";
 @import "govuk-frontend/dist/govuk/overrides/";
 
+@import './govuk/components/';
+
 @import "./base/fonts";
 @import "./base/typography";
 
@@ -24,12 +25,15 @@
 
 @import "../components/button/button";
 @import "../components/header/header";
-@import "../components/cta_banner/cta_banner";
-@import "../components/responsive_image/responsive_image";
-@import "../components/input/input";
+@import "../components/cta-banner/cta-banner";
+@import "../components/responsive-image/responsive-image";
 @import "../components/footer/footer";
-@import "../components/action_link/action_link";
+@import "../components/input/input";
+@import "../components/action-link/action-link";
 @import "../components/card/card";
 @import "../components/title-arrow/title-arrow";
 @import "../components/hero/hero";
+@import "../components/tag/tag";
+@import "../components/phase-banner/phase-banner";
+@import "../components/pagination/pagination";
 @import "../components/cookie-banner/cookie-banner";

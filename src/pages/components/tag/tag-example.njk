@@ -1,0 +1,30 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/tag/_tag.njk" import greatTag %}
+
+<div class="govuk-!-margin-bottom-4">
+{{ greatTag(
+    text="Tag label"
+) }}
+</div>
+<div class="govuk-!-margin-bottom-4">
+{{ greatTag(
+    text="Tag label",
+    type="information"
+) }}
+</div>
+<div class="govuk-!-margin-bottom-4">
+
+{{ greatTag(
+    text="Tag label",
+    type="success"
+) }}
+</div>
+<div class="govuk-!-margin-bottom-4">
+{{ greatTag(
+    text="Tag label",
+    type="error"
+) }}
+</div>
+{% endblock %}

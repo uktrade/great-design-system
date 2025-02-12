@@ -1,0 +1,10 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/pagination/_numbered_pagination.njk" import greatNumberedPagination %}
+
+{{ greatNumberedPagination(
+    currentPage=7,
+    totalPages=10
+) }}
+{% endblock %}

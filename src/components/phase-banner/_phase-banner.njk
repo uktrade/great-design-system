@@ -1,0 +1,18 @@
+{% from "../tag/_tag.njk" import greatTag %}
+
+{% macro greatPhaseBanner(text, classes, html, tagText, tagType, noBorder = false) %}
+    <div class="great-ds-phase-banner {{ classes }} {% if noBorder %}great-ds-phase-banner--no-border{% endif %}">
+        <div class="great-ds-container">
+            <p class="great-ds-phase-banner__content">
+                {{ greatTag(tagText, tagType) }}
+                <span class="great-ds-phase-banner__text">
+                    {% if html %}
+                        {{ html | safe }}
+                    {% else %}
+                        {{ text }}
+                    {% endif %}
+                </span>
+            </p>
+        </div>
+    </div>
+{% endmacro %}
