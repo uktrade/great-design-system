@@ -1,0 +1,11 @@
+{% macro greatErrorMessage(id, classes, visuallyHiddenText, html, text) %}
+<p {% if id %}id="{{ id }}"{% endif %} 
+   class="govuk-error-message{% if classes %} {{ classes }}{% endif %}">
+  {% if visuallyHiddenText %}
+    <span class="govuk-visually-hidden">{% if visuallyHiddenText %}{{ visuallyHiddenText }}{% else %}Error{% endif %}:</span>
+    {% if html %}{{ html|safe }}{% else %}{{ text }}{% endif %}
+  {% else %}
+    {% if html %}{{ html|safe }}{% else %}{{ text }}{% endif %}
+  {% endif %}
+</p>
+{% endmacro %}

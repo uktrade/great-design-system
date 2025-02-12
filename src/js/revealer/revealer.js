@@ -10,7 +10,10 @@ export default class Revealer {
 
   init() {
     this.buttons.forEach((button) => {
-      button.addEventListener("click", () => this.toggleReveal(button));
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.toggleReveal(button);
+      });
     });
 
     document.addEventListener("click", (e) => this.handleOutsideClick(e));
@@ -47,6 +50,10 @@ export default class Revealer {
   }
 
   handleOutsideClick(event) {
+    if (event.target.closest("[data-great-ds-reveal-button]")) {
+      return;
+    }
+
     const activeButtons = document.querySelectorAll(
       '[data-great-ds-reveal-button][aria-expanded="true"]',
     );

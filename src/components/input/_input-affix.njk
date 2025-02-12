@@ -1,0 +1,7 @@
+{% macro greatInputAffix(affix, type) %}
+  <div class="govuk-input__{{ type }}{% if affix.classes %} {{ affix.classes }}{% endif %}" 
+       aria-hidden="true"
+       {% if affix.attributes %}{{ affix.attributes|safe }}{% endif %}>
+    {% if affix.html %}{{ affix.html|safe }}{% else %}{{ affix.text }}{% endif %}
+  </div>
+{% endmacro %}
