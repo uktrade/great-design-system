@@ -1,0 +1,66 @@
+{% macro greatCheckboxes(checkboxesName,leadingQuestion,error,size,checkboxes) %}
+    <div class="govuk-form-group {% if error %} govuk-form-group--error {% endif %}">
+        <fieldset class="govuk-fieldset" aria-describedby="{{checkboxesName}}-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading"> 
+                    {{ leadingQuestion }}
+                </h1>
+            </legend>
+            {% if hint %}
+                <div id="{{checkboxesName}}-hint" class="govuk-hint">
+                    {{ hint }}
+                </div>
+            {% endif %}
+            {% if error %}
+                <p id="{{ checkboxedName }}-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> {{ error }}
+                </p>
+            {% endif %}
+            <div class="govuk-checkboxes {% if size == 'small'%} govuk-checkboxes--small {% endif %}" data-module="govuk-checkboxes">
+                {% for checkboxItem in checkboxes %}
+                    {% if checkboxItem.exclusive %}
+                        <div class="govuk-checkboxes__divider">or</div>
+                    {% endif %}
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" 
+                            id="{{checkboxesName}}-{{loop.index}}" 
+                            name="{{checkboxesName}}" 
+                            type="checkbox" 
+                            value="{{checkboxItem.value}}" 
+                            {% if checkboxItem.exclusive %} data-behaviour="exclusive" {% endif %} 
+                            {% if checkboxItem.conditionalLabel %} data-aria-controls="conditional-{{checkboxesName}}-{{loop.index}}" {% endif %}
+                        >
+                        <label class="govuk-label govuk-checkboxes__label" for="{{checkboxesName}}-{{loop.index}}">
+                            {{ checkboxItem.value }}
+                        </label>
+                    </div>
+                    {% if checkboxItem.conditionalLabel %}
+                        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-{{checkboxesName}}-{{loop.index}}">
+                            <div class="govuk-form-group {% if checkboxItem.conditionalError %} govuk-form-group--error {% endif %}">
+                            <label class="govuk-label" for="conditional-{{checkboxesName}}-{{loop.index}}-input">
+                                {{ checkboxItem.conditionalLabel }}
+                            </label>
+                            {% if checkboxItem.conditionalHint %}
+                                <div id="conditional-{{checkboxesName}}-{{loop.index}}-hint" class="govuk-hint">
+                                    {{ checkboxItem.conditionalHint }}
+                                </div>
+                            {% endif %}
+                            {% if checkboxItem.conditionalError %}
+                                <p id="conditional-{{checkboxesName}}-{{loop.index}}-error" class="govuk-error-message">
+                                    <span class="govuk-visually-hidden">Error:</span> {{ checkboxItem.conditionalError }}
+                                </p>
+                            {% endif %}
+                            <input class="govuk-input govuk-!-width-one-third" 
+                                id="conditional-{{checkboxesName}}-{{loop.index}}-input" 
+                                {% if checkboxItem.conditionalName %} name="{{ checkboxItem.conditionalName }}{% endif %}" 
+                                {% if checkboxItem.conditionalType %} name="{{ checkboxItem.conditionaType }}{% endif %}" 
+                                {% if checkboxItem.conditionalAutocomplete %} name="{{ checkboxItem.conditionalAutocomplete }}{% endif %}" 
+                            >
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+  </fieldset>
+</div>
+{% endmacro %}

@@ -1,0 +1,21 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/checkboxes/_checkboxes.njk" import greatCheckboxes %}
+    {{ greatCheckboxes(
+        checkboxesName = 'countries',
+        leadingQuestion = 'Will you be travelling to any of these countries?',
+        hint = 'Select all countries that apply',
+        checkboxes = [{
+            value: 'France'
+        },
+        {
+            value: 'Italy'
+        },
+        {
+            value: 'Belgium'
+        }
+        ]
+    ) }}
+
+{% endblock %}
