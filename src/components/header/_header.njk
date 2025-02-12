@@ -1,8 +1,7 @@
 {% from "../button/_button.njk" import greatButton %}
-{% from "../text-input/_text-input.njk" import textInput %}
 {% from "./_header-masthead-logo.njk" import greatMastheadLogo %}
 {% from "./_header-great-logo.njk" import greatLogo %}
-{% from "./_header-search.njk" import headerSearch %}
+{% from "./_header-search.njk" import greatHeaderSearch %}
 
 {% macro greatHeader(hideMasthead, isInternational, isCampaign, rtl, include_link_to_great, greatLogoHref, use_domestic_logo, header_classes, global_header_classes, strapline, available_languages, current_language, sso_is_logged_in, domesticLink, internationalLink, siteTitle, largeTitle, actionLinkList, isAuthenticated, navItemsList, hideSearch, hideMainNav, searchFormAction, minimalSearchAndMenu, autocompleteSearch, hideMenuOnDesktop, menuItemsList, subnavItemsList, accordionMobileMenu, mobileSiteLink) %}
 {% set searchIcon = '<svg xmlns="http://www.w3.org/2000/svg" class="great-ds-icon-svg" width="20" height="20" viewBox="0 0 18 18" fill="currentColor">
@@ -69,7 +68,7 @@
                     {% endif %}
                     {% if not hideSearch %}
                         <div class="great-ds-header__search"{% if autocompleteSearch %} id="header-search"{% endif %}>
-                            {{ headerSearch(autocompleteSearch=autocompleteSearch, searchFormAction=searchFormAction, searchIcon=searchIcon) }}
+                            {{ greatHeaderSearch(autocompleteSearch=autocompleteSearch, searchFormAction=searchFormAction, searchIcon=searchIcon) }}
                         </div>
                     {% endif %}
                     {% if available_languages|length > 1 %}

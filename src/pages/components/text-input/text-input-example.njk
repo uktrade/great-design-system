@@ -1,0 +1,18 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/input/_input.njk" import greatInput %}
+
+    {{ greatInput(
+        type = 'text',
+        name = 'text-input-example',
+        id = 'text-input-example',
+        label = {
+            text: 'Text input example'
+        },
+        hint = {
+            text: 'This is a hint'
+        }
+    ) }}
+
+{% endblock %}

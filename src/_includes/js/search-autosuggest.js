@@ -207,7 +207,7 @@ class Search {
     const searchContainer = document.querySelector(
       ".great-ds-header__search-autocomplete",
     );
-    if (!searchContainer.contains(event.target)) {
+    if (searchContainer && !searchContainer.contains(event.target)) {
       this.clearResults();
     }
   }

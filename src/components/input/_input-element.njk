@@ -1,0 +1,16 @@
+{% macro greatInputElement(id, name, type, classes, errorMessage, spellcheck, value, disabled, describedBy, autocomplete, autocapitalize, pattern, inputmode, attributes, placeholder) %}
+  <input class="govuk-input{% if classes %} {{ classes }}{% endif %}{% if errorMessage %} govuk-input--error{% endif %}"
+    {% if id %}id="{{ id }}"{% endif %}
+    {% if name %}name="{{ name }}"{% endif %}
+    {% if type %}type="{{ type }}"{% else %}type="text"{% endif %}
+    {% if spellcheck %}spellcheck="{{ spellcheck }}"{% endif %}
+    {% if value %}value="{{ value }}"{% endif %}
+    {% if disabled %}disabled{% endif %}
+    {% if describedBy %}aria-describedby="{{ describedBy }}"{% endif %}
+    {% if autocomplete %}autocomplete="{{ autocomplete }}"{% endif %}
+    {% if autocapitalize %}autocapitalize="{{ autocapitalize }}"{% endif %}
+    {% if pattern %}pattern="{{ pattern }}"{% endif %}
+    {% if inputmode %}inputmode="{{ inputmode }}"{% endif %}
+    {% if attributes %}{{ attributes|safe }}{% endif %}
+    {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}>
+{% endmacro %}

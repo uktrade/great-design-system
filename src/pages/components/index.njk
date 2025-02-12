@@ -1,16 +1,16 @@
 ---
+layout: layout/_page.njk
+content: main
 eleventyNavigation:
   key: Components
+  title: Components
 ---
 
-{% extends "layout/_page.njk" %}
+{% markdown %}
+# Components
+Components are reusable parts of a user interface. Using pre-built, core elements allow teams to build consistent services across great.gov.uk.  
 
-{% block content %}
-    <h1 class="govuk-heading-l">Components</h1>
-    <ul class="govuk-list">
-            {% for item in collections.componentIndexes %}
-                <li><a class="govuk-link" href="{{ item.url }}">{{ item.data.title or item.fileSlug }}</a></li>
-            {% endfor %}
-        </ul>
-{% endblock %}
+You can also use the individual components in different patterns and contexts. For example, you can use the text input component to ask for an email address or someone’s name. 
 
+Each component in the great.gov.uk Design System has guidance on its use and coded examples in both HTML Nunjucks and Django.
+{% endmarkdown %}
