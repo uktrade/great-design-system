@@ -1,9 +1,0 @@
-{% from "./_action_link_icon.njk" import greatActionLinkIcon %}
-
-{% macro greatActionLink(linkText, linkHref, linkClass) %}
-    <a href="{{ linkHref }}" class="great-ds-action-link__link {% if linkClass %}{{ linkClass }}{% endif %}"> 
-        {{ greatActionLinkIcon() }}
-        <span class="great-ds-action-link__text" >{{ linkText }} </span>
-    </a>
-{% endmacro %}
-

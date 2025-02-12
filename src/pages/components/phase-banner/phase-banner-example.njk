@@ -1,0 +1,11 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/phase-banner/_phase-banner.njk" import greatPhaseBanner %}
+
+{{ greatPhaseBanner(
+    html="This is a new service. Help us improve it and <a href='#'>give your feedback by email</a>.",
+    tagText="Alpha",
+    tagType="information"
+) }}
+{% endblock %}

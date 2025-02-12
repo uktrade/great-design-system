@@ -1,0 +1,46 @@
+---
+layout: layout/_page.njk
+content: main
+eleventyNavigation:
+  key: Phase banner
+  parent: Components
+  title: Phase banner
+---
+{% markdown %}
+# Phase banner
+
+Use the phase banner component to show users your service is still being worked on. 
+{% endmarkdown %}
+
+{% exampleWithCode "/components/phase-banner/phase-banner-example/", "phase-banner-example", "100%", "100%" %}
+{% markdown %}
+## When to use this component
+
+Services hosted on a service.gov.uk domain must use the phase banner until they pass a live assessment.
+
+## How it works 
+
+Make sure all page content can be seen when the Phase banner component is shown. 
+
+If you are using Django, you can use the Django macro. Similarly, if you are using Nunjucks, you can use the Nunjucks macro. You can also use the HTML directly but this is not recommended as updates to the component could make your code difficult to maintain.
+
+Use an alpha banner when your service is in alpha, and a beta banner if your service is in private or public beta. 
+
+Show the Phase banner directly under the header component. 
+
+Phase banners are shown across all pages of a service, so users should understand it as a service-level message. 
+
+You can choose to place the Phase banner in a more appropriate place for your service, however you’ll need to customise the component and provide your own CSS code to make it show correctly. 
+
+Do not make the Phase banner component ‘sticky’ to the top of the page by using `position: fixed` or any other method. This is to make sure it does not cover or obscure any content which has a focus applied.  
+
+### Add a feedback link 
+
+Use a ‘feedback’ link to collect on-page feedback about your service. This can open an email or take the user to a dedicated page or form. 
+
+{% endmarkdown %}
+{% exampleWithCode "/components/phase-banner/phase-banner-beta-example/", "phase-banner-beta-example", "100%", "100%" %}
+{% exampleWithCode "/components/phase-banner/phase-banner-prototype-example/", "phase-banner-prototype-example", "100%", "100%" %}
+{% markdown %}
+Whatever option you use, make sure that users do not lose their place in the service and can return to the page they were on. 
+{% endmarkdown %}

@@ -1,0 +1,18 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/tabs/_tabs.njk" import greatTabs %}
+
+    {{ greatTabs(
+        id = 'tabs-example',
+        idPrefix = 'tabs-example',
+        title = 'Tabs',
+        items = [
+            { label: 'Tab 1', id: 'tab-1', panel: { html: '<h2 class="govuk-heading-m">Tab 1</h2><p>Tab 1 content</p>' } },
+            { label: 'Tab 2', id: 'tab-2', panel: { html: '<h2 class="govuk-heading-m">Tab 2</h2><p>Tab 2 content</p>' } },
+            { label: 'Tab 3', id: 'tab-3', panel: { html: '<h2 class="govuk-heading-m">Tab 3</h2><p>Tab 3 content</p>' } },
+            { label: 'Tab 4', id: 'tab-4', panel: { html: '<h2 class="govuk-heading-m">Tab 4</h2><p>Tab 4 content</p>' } },
+            { label: 'Tab 5', id: 'tab-5', panel: { html: '<h2 class="govuk-heading-m">Tab 5</h2><p>Tab 5 content</p>' } }
+        ]
+    ) }}
+{% endblock %}

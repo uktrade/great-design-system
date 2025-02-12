@@ -1,0 +1,50 @@
+---
+layout: layout/_page.njk
+content: main
+eleventyNavigation:
+  key: Tag
+  parent: Components
+  title: Tag
+---
+{% markdown %}
+# Tag
+
+Use the tag component to show users the status of something. 
+{% endmarkdown %}
+
+{% exampleWithCode "/components/tag/tag-example/", "tag-example", "100%", "220px" %}
+{% markdown %}
+## When to use this component 
+
+Use the tag component when it’s possible for something to have more than one status and it’s useful for the user to know about that status. For example, you can use a tag to show the completion status of a task such as ‘learn to export’. 
+
+## How it works 
+
+If you are using Django, you can use the Django macro. Similarly, if you are using Nunjucks, you can use the Nunjucks macro. You can also use the HTML directly but this is not recommended as updates to the component could make your code difficult to maintain.
+
+Tags are only used to indicate a status. Do not make a tag interactive by making it into a link or button. Use adjectives (descriptive words) and not verbs (action words) for the names of your tags. Using a verb might make a user think that clicking on them will do something. 
+
+Do not use tags to create links, buttons or other interactive elements, as users: 
+
+* are unlikely to identify the tags as something they’re meant to interact with 
+* would see no visual difference between interactive and non-interactive tags 
+
+### Showing one or two statuses 
+
+Sometimes a single status is enough. For example, if you need to tell users which parts of an application they’ve finished and which they have not, you may only need a ‘Completed’ tag. In this case, the user understands that if something does not have a tag, that means it’s incomplete. 
+
+Sometimes, it can make sense to have two statuses. For example, there may be a need to have one tag for ‘Active’ users and one for ‘Inactive’ users. 
+
+### Showing multiple statuses 
+
+Tags should be helpful to users. The more you add, the harder it is for users to remember them. You should start with the smallest number of statuses you think might work, then add more if your user research shows there’s a need for them. 
+
+Any implementation of the Tag component that allows the user to change the order of tags must offer a way to do so without relying on ‘click and drag’ movements. This is to ensure your content is accessible. 
+
+### Using colour with tags 
+
+You can use colour to help distinguish between different tags – or to help draw the user’s attention to a tag if it’s especially important. For example, it probably makes sense to use a red for a tag that reads ‘Urgent’. 
+
+Do not use colour alone to convey information, because it’s not accessible. If you use the same tag in more than one place, make sure you keep the colour consistent. This is to ensure that content is accessible.
+
+{% endmarkdown %}
