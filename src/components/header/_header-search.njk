@@ -1,30 +1,34 @@
-{% from "../text-input/_text-input.njk" import textInput %}
+{% from "../input/_input.njk" import greatInput %}
 {% from "../button/_button.njk" import greatButton %}
 
-{% macro headerSearch(autocompleteSearch, searchFormAction, searchIcon) %}
+{% macro greatHeaderSearch(autocompleteSearch, searchFormAction, searchIcon) %}
     {% if autocompleteSearch %}
         <div class="great-ds-header__search-autocomplete">
-            {{ textInput(
+            {{ greatInput(   
                 classes="great-ds-text-input--autocomplete",
                 id="great-ds-header-autocomplete-input",
                 label="Search",
                 type="text",
                 placeholder="Search design system",
                 labelClasses="govuk-visually-hidden",
-                attributes="data-great-ds-search-input"
+                attributes="data-great-ds-search-input",
+                autocomplete="off",
+                name="nope",
+                formGroupClasses= "great-ds-header__search-form-group"
             ) }}
             <div class="great-ds-header__search-autocomplete-results" hidden data-great-ds-search-results></div>
         </div>
     {% else %}
         <form id="great-ds-header-search-form" class="great-ds-header__search-form" action="{{ searchFormAction }}" method="get">
-            {{ textInput(
+            {{ greatInput(
                 classes="great-ds-text-input--search",
                 id="great-ds-header-search-input",
                 label="Search",
                 name="q",
                 type="text",
                 placeholder="Search",
-                labelClasses="govuk-visually-hidden"
+                labelClasses="govuk-visually-hidden",
+                formGroupClasses= "great-ds-header__search-form-group"
             ) }}
             
             {{ greatButton(

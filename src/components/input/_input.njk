@@ -1,0 +1,98 @@
+{% from "../error-message/_error-message.njk" import greatErrorMessage %}
+{% from "../hint/_hint.njk" import greatHint %}
+{% from "../label/_label.njk" import greatLabel %}
+{% from "./_input-element.njk" import greatInputElement %}
+{% from "./_input-affix.njk" import greatInputAffix %}
+
+{% macro greatInput(id, name, type, classes, label, hint, errorMessage, spellcheck, value, disabled, autocomplete, pattern, inputmode, prefix, suffix, formGroupClasses, beforeInput, afterInput, attributes, placeholder) %}
+<div class="govuk-form-group{% if errorMessage %} govuk-form-group--error{% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
+  {% if label %}
+    {{ greatLabel(
+      text=label.text,
+      html=label.html,
+      classes=label.classes,
+      for=id,
+      isPageHeading=label.isPageHeading
+    ) }}
+  {% endif %}
+
+  {% if hint %}
+    {% set hintId = id + '-hint' %}
+    {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
+    {{ greatHint(
+      id=hintId,
+      classes=hint.classes,
+      html=hint.html,
+      text=hint.text
+    ) }}
+  {% endif %}
+
+  {% if errorMessage %}
+    {% set errorId = id + '-error' %}
+    {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+    {{ greatErrorMessage(
+      id=errorId,
+      classes=errorMessage.classes,
+      visuallyHiddenText=errorMessage.visuallyHiddenText,
+      html=errorMessage.html,
+      text=errorMessage.text
+    ) }}
+  {% endif %}
+
+  {% if prefix or suffix or beforeInput or afterInput %}
+    <div class="govuk-input__wrapper">
+      {% if beforeInput %}
+        {% if beforeInput.html %}{{ beforeInput.html|safe }}{% else %}{{ beforeInput.text }}{% endif %}
+      {% endif %}
+      
+      {% if prefix %}
+        {{ greatInputAffix(prefix, "prefix") }}
+      {% endif %}
+
+      {{ greatInputElement(
+        id=id,
+        name=name,
+        type=type,
+        classes=classes,
+        errorMessage=errorMessage,
+        spellcheck=spellcheck,
+        value=value,
+        disabled=disabled,
+        describedBy=describedBy,
+        autocomplete=autocomplete,
+        autocapitalize=autocapitalize,
+        pattern=pattern,
+        inputmode=inputmode,
+        attributes=attributes,
+        placeholder=placeholder
+      ) }}
+
+      {% if suffix %}
+        {{ greatInputAffix(suffix, "suffix") }}
+      {% endif %}
+
+      {% if afterInput %}
+        {% if afterInput.html %}{{ afterInput.html|safe }}{% else %}{{ afterInput.text }}{% endif %}
+      {% endif %}
+    </div>
+  {% else %}
+    {{ greatInputElement(
+      id=id,
+      name=name,
+      type=type,
+      classes=classes,
+      errorMessage=errorMessage,
+      spellcheck=spellcheck,
+      value=value,
+      disabled=disabled,
+      describedBy=describedBy,
+      autocomplete=autocomplete,
+      autocapitalize=autocapitalize,
+      pattern=pattern,
+      inputmode=inputmode,
+      attributes=attributes,
+      placeholder=placeholder
+    ) }}
+  {% endif %}
+</div>
+{% endmacro %}

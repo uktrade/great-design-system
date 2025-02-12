@@ -1,0 +1,6 @@
+{% macro greatHint(id, classes, html, text) %}
+<div {% if id %}id="{{ id }}"{% endif %} 
+     class="govuk-hint{% if classes %} {{ classes }}{% endif %}">
+  {% if html %}{{ html|safe }}{% else %}{{ text }}{% endif %}
+</div>
+{% endmacro %}

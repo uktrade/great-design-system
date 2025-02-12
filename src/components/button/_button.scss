@@ -289,6 +289,7 @@ $great-ds-button-outline: 2px solid transparent;
     );
     margin-bottom: 0;
     font-family: $great-ds-type-family-great;
+    line-height: 30px;
 
     &:focus:not(:active),
     &:focus:hover:not(:active) {
@@ -310,7 +311,7 @@ $great-ds-button-outline: 2px solid transparent;
     border: none !important;
     box-shadow: none !important;
     padding: 16px 20px;
-
+    
     &:hover {
         color: $great-ds-semantic-text-default-white-text !important;
         background-color: $great-ds-semantic-surface-background-great-ds-blue !important;

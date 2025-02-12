@@ -423,6 +423,11 @@
     @include great-ds-link-decorator;
 }
 
+.great-ds-header__search-form-group {
+    margin: 0;
+    width: 100%;
+}
+
 .great-ds-header__search {
     order: 3;
     width: 100%;
@@ -449,6 +454,10 @@
             justify-content: flex-end;
             margin-bottom: 0;
         }
+    }
+
+    &.is-active {
+        display: block !important;
     }
 }
 
@@ -790,6 +799,10 @@ ul.great-ds-header__menu-link-children {
 
     &--hidden {
         display: none;
+
+        &.is-active {
+            display: block !important;
+        }
     }
 }
 
