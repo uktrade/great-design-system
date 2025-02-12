@@ -1,0 +1,7 @@
+{% macro greatSkipLink(href, classes, text, html) %}
+<a href="{% if href %}{{ href }}{% else %}#content{% endif %}" 
+   class="govuk-skip-link{% if classes %} {{ classes }}{% endif %}" 
+   data-module="govuk-skip-link">
+  {% if html %}{{ html|safe }}{% else %}{{ text }}{% endif %}
+</a>
+{% endmacro %}

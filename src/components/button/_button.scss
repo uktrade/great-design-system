@@ -1,10 +1,10 @@
 // Variables
 $great-ds-button-shadow-size: 3px;
-$great-ds-button-padding: 13px 20px 12px;
-$great-ds-button-inline-padding: 8px 15px 7px;
+$great-ds-button-padding: 9px 20px 11px;
+$great-ds-button-inline-padding: 5px 15px 5px;
 $great-ds-button-icon-padding: 8px 10px 7px;
-$great-ds-button-font-size: 20px;
-$great-ds-button-line-height: 1.3;
+$great-ds-button-font-size: $great-ds-type-size-body;
+$great-ds-button-line-height: $great-ds-type-line-height-body;
 $great-ds-button-box-sizing: border-box;
 $great-ds-button-display: inline-block;
 $great-ds-button-position: relative;
@@ -239,29 +239,6 @@ $great-ds-button-outline: 2px solid transparent;
     );
 }
 
-// Placeholder for CTA button styles
-%great-ds-button-cta {
-    @include great-ds-button-states(
-        $great-ds-semantic-interaction-default-cta-button,
-        $great-ds-semantic-interaction-hover-cta-button,
-        $great-ds-semantic-text-default-cta-button-label,
-        $great-ds-semantic-border-default-cta-button-border,
-        $great-ds-semantic-border-hover-cta-button-border,
-        true
-    );
-
-    display: inline-flex;
-    min-height: auto;
-    justify-content: center;
-
-    .great-ds-icon-svg {
-        margin-left: 10px;
-        vertical-align: middle;
-        flex-shrink: 0;
-        align-self: center;
-    }
-}
-
 // Placeholder for icon button styles
 %great-ds-button-icon {
     display: inline-flex;
@@ -433,12 +410,6 @@ $great-ds-button-outline: 2px solid transparent;
 .great-ds-button--transactional {
     @extend %great-ds-button-base;
     @extend %great-ds-button-transactional;
-}
-
-// CTA button styles
-.great-ds-button--cta {
-    @extend %great-ds-button-base;
-    @extend %great-ds-button-cta;
 }
 
 // Inline button styles
