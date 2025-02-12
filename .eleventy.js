@@ -64,7 +64,7 @@ module.exports = function(eleventyConfig) {
         .join('\n');
     }
 
-    eleventyConfig.addShortcode("exampleWithCode", async function(src, componentName, width="100%", height="100%") {
+    eleventyConfig.addShortcode("exampleWithCode", async function(src, componentName, width="100%", height="100%", backgroundClass) {
         try {
             // Clean up the src path and remove trailing slash
             const cleanSrc = src.replace(/\/$/, '');
@@ -116,7 +116,7 @@ module.exports = function(eleventyConfig) {
                 <div class="app-open-component">
                     <a href="${src}" class="app-open-component__link govuk-link govuk-link--no-visited-state" target="_blank">Open in new tab</a>
                 </div>
-                <div class="app-iframe-wrapper" style="resize: both; overflow: auto;">
+                <div class="app-iframe-wrapper  ${backgroundClass}" style="resize: both; overflow: auto;">
                     <iframe src="${src}" frameborder="0" style="width: ${width}; height: ${height};"></iframe>
                 </div>
                 <div class="app-code-viewer">
