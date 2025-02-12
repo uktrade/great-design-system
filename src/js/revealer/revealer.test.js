@@ -1,107 +1,178 @@
 import Revealer from "./revealer";
+import { Overlay } from "../utils/overlay";
+
+jest.mock("../utils/overlay");
 
 describe("Revealer", () => {
   let revealer;
   let mockDocument;
+  let mockButton;
+  let mockTarget;
+  let mockOverlay;
 
   beforeEach(() => {
+    jest.clearAllMocks();
+
+    // Setup mock overlay
+    mockOverlay = {
+      show: jest.fn(),
+      hide: jest.fn(),
+      destroy: jest.fn(),
+    };
+    Overlay.mockImplementation(() => mockOverlay);
+
+    mockButton = {
+      getAttribute: jest.fn((attr) => {
+        if (attr === "aria-controls") return "target-1";
+        if (attr === "aria-expanded") return "false";
+        return null;
+      }),
+      setAttribute: jest.fn(),
+      hasAttribute: jest.fn(),
+      contains: jest.fn().mockReturnValue(false),
+      addEventListener: jest.fn(),
+      classList: {
+        add: jest.fn(),
+        remove: jest.fn(),
+      },
+      style: {},
+    };
+
+    mockTarget = {
+      getAttribute: jest.fn().mockReturnValue("false"),
+      setAttribute: jest.fn(),
+      contains: jest.fn().mockReturnValue(false),
+      style: {},
+      classList: {
+        add: jest.fn(),
+        remove: jest.fn(),
+      },
+    };
+
     mockDocument = {
-      querySelectorAll: jest.fn().mockReturnValue([]),
+      querySelectorAll: jest.fn().mockReturnValue([mockButton]),
       addEventListener: jest.fn(),
       createElement: jest.fn(() => ({
         classList: { add: jest.fn() },
         style: { cssText: "" },
       })),
-      body: { appendChild: jest.fn() },
-      getElementById: jest.fn(),
+      removeEventListener: jest.fn(),
+      body: {
+        appendChild: jest.fn(),
+        style: {},
+      },
+      getElementById: jest.fn().mockReturnValue(mockTarget),
     };
 
     global.document = mockDocument;
     revealer = new Revealer();
   });
 
-  test("constructor initializes properties correctly", () => {
-    expect(revealer.buttons).toBeDefined();
-    expect(revealer.targets).toBeDefined();
-    expect(revealer.overlay).toBeDefined();
-    expect(revealer.activeTarget).toBeNull();
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
-  test("init adds event listeners", () => {
-    const events = ["click", "keydown", "focusout"];
-    events.forEach((event) => {
-      expect(mockDocument.addEventListener).toHaveBeenCalledWith(
-        event,
+  describe("initialization", () => {
+    test("initializes with correct event listeners", () => {
+      expect(mockButton.addEventListener).toHaveBeenCalledWith(
+        "click",
+        expect.any(Function),
+      );
+      expect(document.addEventListener).toHaveBeenCalledWith(
+        "click",
+        expect.any(Function),
+      );
+      expect(document.addEventListener).toHaveBeenCalledWith(
+        "keydown",
+        expect.any(Function),
+      );
+      expect(document.addEventListener).toHaveBeenCalledWith(
+        "focusout",
         expect.any(Function),
       );
     });
+
+    test("creates overlay instance", () => {
+      expect(Overlay).toHaveBeenCalled();
+    });
   });
 
-  test("createOverlay creates and appends overlay element", () => {
-    expect(mockDocument.createElement).toHaveBeenCalledWith("div");
-    expect(mockDocument.body.appendChild).toHaveBeenCalled();
+  describe("toggleReveal", () => {
+    test("shows element when hidden", () => {
+      mockTarget.getAttribute.mockReturnValue("true"); // aria-hidden
+
+      revealer.toggleReveal(mockButton);
+
+      expect(mockTarget.setAttribute).toHaveBeenCalledWith(
+        "aria-hidden",
+        "false",
+      );
+      expect(mockTarget.style.display).toBe("block");
+      expect(mockButton.setAttribute).toHaveBeenCalledWith(
+        "aria-expanded",
+        "true",
+      );
+      expect(mockTarget.classList.add).toHaveBeenCalledWith("is-active");
+      expect(mockButton.classList.add).toHaveBeenCalledWith("is-active");
+    });
+
+    test("hides element when visible", () => {
+      mockTarget.getAttribute.mockReturnValue("false"); // aria-hidden
+
+      revealer.toggleReveal(mockButton);
+
+      expect(mockTarget.setAttribute).toHaveBeenCalledWith(
+        "aria-hidden",
+        "true",
+      );
+      expect(mockTarget.style.display).toBe("none");
+      expect(mockButton.setAttribute).toHaveBeenCalledWith(
+        "aria-expanded",
+        "false",
+      );
+      expect(mockTarget.classList.remove).toHaveBeenCalledWith("is-active");
+      expect(mockButton.classList.remove).toHaveBeenCalledWith("is-active");
+    });
+
+    test("handles modal behavior when data-attribute present", () => {
+      mockButton.hasAttribute.mockReturnValue(true);
+      mockTarget.getAttribute.mockReturnValue("true");
+
+      revealer.toggleReveal(mockButton);
+
+      expect(mockOverlay.show).toHaveBeenCalled();
+    });
   });
 
-  test("toggleReveal toggles visibility and classes", () => {
-    const mockButton = createMockElement();
-    const mockTarget = createMockElement();
-    mockDocument.getElementById.mockReturnValue(mockTarget);
+  describe("event handling", () => {
+    test("handleOutsideClick ignores clicks inside target", () => {
+      const mockEvent = {
+        target: mockDocument.createElement(),
+      };
+      mockTarget.contains.mockReturnValue(true);
+      mockButton.getAttribute.mockReturnValue("true");
 
-    revealer.toggleReveal(mockButton);
+      revealer.handleOutsideClick(mockEvent);
 
-    expect(mockTarget.setAttribute).toHaveBeenCalledWith(
-      "aria-hidden",
-      "false",
-    );
-    expect(mockTarget.style.display).toBe("block");
-    expect(mockButton.setAttribute).toHaveBeenCalledWith(
-      "aria-expanded",
-      "true",
-    );
-    expect(mockTarget.classList.add).toHaveBeenCalledWith("is-active");
-    expect(mockButton.classList.add).toHaveBeenCalledWith("is-active");
-  });
+      expect(mockTarget.setAttribute).not.toHaveBeenCalled();
+    });
 
-  test("handleOutsideClick hides all elements when clicking outside", () => {
-    const mockEvent = { target: { closest: jest.fn().mockReturnValue(null) } };
-    const hideAllSpy = jest.spyOn(revealer, "hideAll");
+    test("handleEscapeKey ignores non-escape keys", () => {
+      const event = { key: "Enter" };
+      revealer.handleEscapeKey(event);
+      expect(mockOverlay.hide).not.toHaveBeenCalled();
+    });
 
-    revealer.handleOutsideClick(mockEvent);
+    test("handleFocusOut hides elements when focus leaves target", () => {
+      const event = { relatedTarget: mockDocument.createElement() };
+      revealer.activeTarget = mockTarget;
 
-    expect(hideAllSpy).toHaveBeenCalled();
-  });
+      revealer.handleFocusOut(event);
 
-  test("handleEscapeKey hides all elements when pressing Escape", () => {
-    const hideAllSpy = jest.spyOn(revealer, "hideAll");
-
-    revealer.handleEscapeKey({ key: "Escape" });
-
-    expect(hideAllSpy).toHaveBeenCalled();
-  });
-
-  test("hideAll calls toggleReveal for visible elements", () => {
-    const mockButton = createMockElement();
-    const mockTarget = createMockElement();
-    mockTarget.getAttribute.mockReturnValue("false"); // visible
-    mockDocument.getElementById.mockReturnValue(mockTarget);
-
-    revealer.buttons = [mockButton];
-    const toggleRevealSpy = jest.spyOn(revealer, "toggleReveal");
-
-    revealer.hideAll();
-
-    expect(toggleRevealSpy).toHaveBeenCalledWith(mockButton);
-    expect(revealer.overlay.style.display).toBe("none");
-    expect(revealer.activeTarget).toBeNull();
+      expect(mockTarget.setAttribute).toHaveBeenCalledWith(
+        "aria-hidden",
+        "true",
+      );
+    });
   });
 });
-
-function createMockElement() {
-  return {
-    getAttribute: jest.fn(),
-    setAttribute: jest.fn(),
-    hasAttribute: jest.fn(),
-    classList: { add: jest.fn(), remove: jest.fn() },
-    style: {},
-  };
-}

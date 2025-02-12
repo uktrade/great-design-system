@@ -43,7 +43,7 @@
     fill: $great-ds-semantic-interaction-default-icon-link;
 }
 
-.great-ds-action-link--white:not(:focus) {
+.great-ds-action-link--white-text-blue-arrow:not(:focus) {
     text-decoration-color: $great-ds-semantic-text-default-white-text;
 
     .great-ds-action-link__text {
@@ -60,7 +60,32 @@
     }
 }
 
-.great-ds-action-link--black:not(:focus) {
+.great-ds-action-link--white-text-dark-blue-arrow:not(:focus) {
+    text-decoration-color: $great-ds-semantic-text-default-white-text;
+
+    .great-ds-action-link__text {
+        color: $great-ds-semantic-text-default-white-text;
+    }
+
+    > * .great-ds-action-link__image-icon-arrow {
+        fill: $great-ds-semantic-text-default-white-text;
+    }
+
+    > * .great-ds-action-link__image-icon-background {
+        fill: $great-ds-semantic-text-hover-link;
+    }
+
+    &:hover {
+        > * .great-ds-action-link__image-icon-background {
+            fill: $great-ds-semantic-interaction-default-icon-white;
+        }
+        > * .great-ds-action-link__image-icon-arrow {
+            fill: $great-ds-semantic-interaction-default-icon-link;
+        }
+    }
+}
+
+.great-ds-action-link--black-text:not(:focus) {
     text-decoration-color: $great-ds-semantic-text-default-text;
 
     .great-ds-action-link__text {

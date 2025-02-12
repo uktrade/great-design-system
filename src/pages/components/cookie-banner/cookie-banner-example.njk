@@ -1,0 +1,8 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/cookie-banner/_cookie-banner.njk" import greatCookieBanner %}
+
+{{ greatCookieBanner() }}
+{% endblock %}
+

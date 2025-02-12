@@ -53,12 +53,14 @@
     
     {% block breadcrumbs %}{% endblock %}
 
+    {% block content_wrapper %}
     <div class="app-site-wrapper">
         {% block navigation %}{% endblock %}
         <main class="app-site-main">
             {% block content %}{% endblock %}
         </main>
     </div>
+    {% endblock %}
 
     {% from "../../components/footer/_footer.njk" import greatFooter %}
     {{ greatFooter(

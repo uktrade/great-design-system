@@ -456,9 +456,14 @@
     display: block;
     z-index: 3;
     padding: 0 0 15px 0;
+    border-bottom: 3px solid transparent;
 
     @include govuk-media-query($from: desktop) {
         display: none;
+    }
+
+    &:has(.great-ds-button--header-search-menu:hover){
+        border-bottom: 3px solid $great-ds-semantic-surface-background-light-blue;
     }
 
     &:has(.is-active),
@@ -557,10 +562,15 @@
     color: $great-ds-semantic-text-default-white-text;
     z-index: 3;
     position: relative;
+    border-bottom: 3px solid transparent;
 
     .great-ds-header__main-inner:not(:has(.great-ds-header__nav-action)):not(:has(.great-ds-header__menu-wrapper--minimal-search)) & {
         margin-top: 20px;
         margin-bottom: 30px;
+    }
+
+    &:has(.great-ds-button--header-search-menu:hover){
+        border-bottom: 3px solid $great-ds-semantic-surface-background-light-blue;
     }
 
     .great-ds-header__main-inner:has(.great-ds-header__menu-wrapper--minimal-search) & {
@@ -575,7 +585,7 @@
             top: 0;
             left: 0;
             height: 49px;
-            border-left: 1px solid $great-ds-semantic-border-hover-white-border;
+            border-left: 1px solid $great-ds-semantic-surface-background-light-blue;
         }
 
         &:has(.is-active),
