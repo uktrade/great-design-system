@@ -1,0 +1,9 @@
+{% macro greatTag(text, type, classes, html) %}
+    <strong class="great-ds-tag {{ classes }}{% if type %} great-ds-tag--{{ type }}{% endif %}">
+        {% if html %}
+            {{ html }}
+        {% else %}
+            {{ text }}
+        {% endif %}
+    </strong>
+{% endmacro %}

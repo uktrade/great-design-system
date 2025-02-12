@@ -1,0 +1,34 @@
+{% macro greatTabs(id, idPrefix, title, items, classes) %}
+    <div {% if id %} id="{{ id }}"{% endif %} 
+        class="govuk-tabs {% if classes %} {{ classes }}{% endif %}" 
+        data-module="govuk-tabs">
+        <h2 class="govuk-tabs__title">
+            {% if title %}{{ title }}{% else %}Contents{% endif %}
+        </h2>
+        {% if items|length %}
+            <ul class="govuk-tabs__list">
+                {% for item in items %}
+                    {% if item %}
+                        <li class="govuk-tabs__list-item {% if loop.index == 1 %} govuk-tabs__list-item--selected{% endif %}">
+                            <a class="govuk-tabs__tab" href="#{% if item.id %}{{ item.id }}{% else %}{{ idPrefix }}-{{ loop.index }}{% endif %}">
+                                {{ item.label }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% for item in items %}
+                {% if item %}
+                    <div class="govuk-tabs__panel {% if loop.index > 1 %} govuk-tabs__panel--hidden{% endif %}" 
+                        id="{% if item.id %}{{ item.id }}{% else %}{{ idPrefix }}-{{ loop.index }}{% endif %}">
+                        {% if item.panel.html %}
+                            {{ item.panel.html|safe }}
+                        {% elif item.panel.text %}
+                            <p class="govuk-body">{{ item.panel.text }}</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endmacro %}

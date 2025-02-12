@@ -1,0 +1,56 @@
+---
+layout: layout/_page.njk
+content: main
+eleventyNavigation:
+  key: Back link
+  parent: Components
+  title: Back link
+status: 
+  - Live
+---
+{% markdown %}
+# Back Link
+
+The back link component help users go back to the previous page in a multi-page transaction. 
+{% endmarkdown %}
+
+{% exampleWithCode "/components/back-link/back-link-example/", "back-link", "100%", "90px" %}
+
+
+{% markdown %}
+## When to use 
+
+Always include the Back link component on question pages in your service. 
+
+You can include a back link on other pages within a multi-page transaction, if it makes sense to do so. 
+
+ 
+## When not to use 
+
+Never use the back link component together with the Breadcrumbs component. If necessary, you should do research with your users to learn which they find more helpful in your service. 
+
+ 
+## How it works 
+
+Always place back links at the top of a page, before the <main> element. Placing them here means that the ‘Skip to main content’ link allows the user to skip all navigation links, including the back link. 
+
+Make sure the link takes users to the previous page they were on, in the state they last saw it. 
+
+If a user decides to go back to a previous page, make sure information they have already entered is pre-populated. 
+
+Do not pre-populate if the information is no longer valid, or when pre-populating would be a major safety or security concern. 
+
+Make sure no other interactive elements are too close to the Back link component. This is to make sure users can easily interact with it. 
+
+Where possible, ensure the back link works even when JavaScript is not available. If this is not possible, you should hide the back link when JavaScript is not available. 
+
+
+Using the default link text (‘Back’) is ideal for services with a simple journey. For example, applying for a National Insurance number. Users will only ever go back to the previous page in the service. 
+
+For more complex user journeys, consider using different link text, like ‘Go back to [page]’. For example, in an admin system with many different areas. In this case, if you used ‘Back’, it might not be clear to users what they are going back to. 
+
+{% endmarkdown %}
+
+{% exampleWithCode "/components/back-link/back-link-example/", "back-link", "100%", "90px" %}
+
+
