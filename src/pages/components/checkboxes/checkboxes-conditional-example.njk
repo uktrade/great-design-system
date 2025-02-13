@@ -3,23 +3,48 @@
 {% block content %}
     {% from "../../../components/checkboxes/_checkboxes.njk" import greatCheckboxes %}
     {{ greatCheckboxes(
+        errorMessage = {
+            text: 'there is an error'
+        },
         checkboxesName = 'countries',
         leadingQuestion = 'Will you be travelling to any of these countries?',
-        hint = 'Select all countries that apply',
+        hint = {
+            text: 'Select all countries that apply'
+        },
         size = '',
         checkboxes = [{
             value: 'France',
-            conditionalLabel: 'Where in France?',
-            conditionalError: 'You must want to travel here', 
-            conditionalHint: 'May be a town, province or road'
-        },
-        {
-            value: 'Italy'
-        },
-        {
-            value: 'Belgium'
-        }
-        ]
-    ) }}
+            id: 'francia',
+            label: {
+                    text: 'Italy'
+            },
+            conditionalInput: {
+                containerId: 'france_conditional_input',
+                label: 'Where in France?',
+                errorMessage: {
+                    text: 'You must want to travel here'
+                }, 
+                hint: 'May be a town, province or road',
+                type: 'text',
+                name: 'name',
+                id: 'conditionalId',
+                classes: 'govuk-input govuk-!-width-one-third'
+            }
+            },
+            {
+                id: 'italia',
+                value: 'Italy',
+                label: {
+                    text: 'Italy'
+                }
+            },
+            {
+                value: 'Belgium',
+                label: {
+                    text: 'Belgium'
+                }
+            }
+            ]
+        ) }}
 
 {% endblock %}
