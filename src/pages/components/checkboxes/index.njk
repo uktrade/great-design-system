@@ -13,12 +13,17 @@ isGovUk: true
 
 
 Default:
+Requires `checkboxesId`
 {% endmarkdown %}
 {% exampleWithCode "/components/checkboxes/checkboxes-example/", "checkboxes", "100%", "200px" %}
 {% markdown %}
 
 
 Conditional:
+
+Requires `checkboxesId`, `checkboxes.conditionalInput.containerId` and `checkboxes.conditionalInput.inputId`
+
+Recommended `checkboxes.conditionalInput.classes: 'govuk-!-width-one-third'`
 {% endmarkdown %}
 {% exampleWithCode "/components/checkboxes/checkboxes-conditional-example/", "checkboxes", "100%", "200px" %}
 {% markdown %}

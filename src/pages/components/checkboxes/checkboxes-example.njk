@@ -3,19 +3,34 @@
 {% block content %}
     {% from "../../../components/checkboxes/_checkboxes.njk" import greatCheckboxes %}
     {{ greatCheckboxes(
-        checkboxesName = 'countries',
-        leadingQuestion = 'Will you be travelling to any of these countries?',
-        hint = 'Select all countries that apply',
+        isPageHeading='true',
+        checkboxesId = 'countries',
+        checkboxQuestion = 'Will you be travelling to any of these countries?',
+        hint = {
+            text: 'Select all countries that apply'
+        },
         checkboxes = [{
-            value: 'France'
-        },
-        {
-            value: 'Italy'
-        },
-        {
-            value: 'Belgium'
-        }
-        ]
-    ) }}
+            value: 'France',
+            id: 'francia',
+            label: {
+                    text: 'France',
+                    classes: 'test_labelclass'
+                }
+            },
+            {
+                id: 'italia',
+                value: 'Italy',
+                label: {
+                    text: 'Italy'
+                }
+            },
+            {
+                value: 'Belgium',
+                label: {
+                    text: 'Belgium'
+                }
+            }
+            ]
+        ) }}
 
 {% endblock %}

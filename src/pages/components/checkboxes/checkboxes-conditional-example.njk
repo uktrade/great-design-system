@@ -6,29 +6,36 @@
         errorMessage = {
             text: 'there is an error'
         },
-        checkboxesName = 'countries',
-        leadingQuestion = 'Will you be travelling to any of these countries?',
+        checkboxesId = 'countries',
+        checkboxQuestion = 'Will you be travelling to any of these countries?',
         hint = {
             text: 'Select all countries that apply'
         },
         size = '',
         checkboxes = [{
             value: 'France',
-            id: 'francia',
             label: {
-                    text: 'Italy'
-            },
+                    text: 'Where in France?',
+                    classes: 'test_labelclass'
+                },
             conditionalInput: {
-                containerId: 'france_conditional_input',
-                label: 'Where in France?',
+                containerId: 'france_conditional_container',
+                inputId: 'france_conditional_input',
+                containerClasses: 'containerClass',
+                label: {
+                    text: 'France',
+                    classes: 'test_labelclass'
+                },
+                
                 errorMessage: {
                     text: 'You must want to travel here'
                 }, 
-                hint: 'May be a town, province or road',
+                hint: {
+                    text: 'May be a town, province or road'
+                },
                 type: 'text',
                 name: 'name',
-                id: 'conditionalId',
-                classes: 'govuk-input govuk-!-width-one-third'
+                classes: 'govuk-!-width-one-third'
             }
             },
             {

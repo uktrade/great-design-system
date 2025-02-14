@@ -2,37 +2,37 @@
 {% from "../error-message/_error-message.njk" import greatErrorMessage %}
 {% from "../hint/_hint.njk" import greatHint %}
 {% from "../label/_label.njk" import greatLabel %}
-{% macro greatCheckboxes(describedBy, checkboxesName,formGroupClasses, leadingQuestion,errorMessage,size,checkboxes) %}
+{% from "./_checkbox_label.njk" import greatCheckboxLabel %}
+{% macro greatCheckboxes(isPageHeading, describedBy, hint, checkboxesId, formGroupClasses, checkboxQuestion, errorMessage, useSmall, checkboxes) %}
     <div class="govuk-form-group {% if formGroupClasses %}{{formGroupClasses}}{% endif %}{% if errorMessage %} govuk-form-group--error {% endif %}">
-        <fieldset class="govuk-fieldset" aria-describedby="{{describedBy}} ">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <fieldset class="govuk-fieldset" 
+            aria-describedby="{% if describedBy %}{{describedBy}} {% endif %}{% if errorMessage %}{{checkboxesId}}-error {%endif%}{% if hint %}{{checkboxesId}}-hint{% endif %}">
+            <legend class="govuk-fieldset__legend {% if isPageHeading %} govuk-fieldset__legend--l" {% endif %}>
                 <h1 class="govuk-fieldset__heading"> 
-                    {{ leadingQuestion }} {# TODO Change name #}
+                    {{ checkboxQuestion }}
                 </h1>
             </legend>
             {% if hint %}
-                {% set hintId = id + '-hint' %}
-                {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
                 {{ greatHint(
-                    id=hintId,
+                    id=hint.id,
                     classes=hint.classes,
                     html=hint.html,
-                    text=hint.text
+                    text=hint.text,
+                    for = checkboxesId
                 ) }}
             {% endif %}
             {% if errorMessage %}
-                {% set errorId = id + '-error' %}
-                {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
                 {{ greatErrorMessage(
-                    id=errorId,
+                    id=errorMessage.id,
+                    for=checkboxesId,
                     classes=errorMessage.classes,
                     visuallyHiddenText=errorMessage.visuallyHiddenText,
                     html=errorMessage.html,
                     text=errorMessage.text
                 ) }}
             {% endif %}
-            <div {% if id %} id="{{ id }}"{% endif %} 
-                class="govuk-checkboxes {% if size == 'small'%} govuk-checkboxes--small {% endif %}" 
+            <div {% if checkboxesId %} id="{{ checkboxesId }}"{% endif %} 
+                class="govuk-checkboxes {% if useSmall %} govuk-checkboxes--small {% endif %}" 
                 data-module="govuk-checkboxes"
             >
                 {% for checkboxItem in checkboxes %}
@@ -41,37 +41,50 @@
                     {% endif %}
                     <div class="govuk-checkboxes__item">
                         <input class="govuk-checkboxes__input" 
-                            id="{% if checkboxItem.id %}{{ checkboxItem.id }}{% else %}{{ checkboxesName }}-{{loop.index}}{% endif %}"
-                            name="{{checkboxesName}}" 
+                            id="{{checkboxItem.id if checkboxItem.id else checkboxesId +"-"+loop.index }}",
+                            name="{{checkboxesId}}" 
                             type="checkbox" 
                             value="{{checkboxItem.value}}" 
                             {% if checkboxItem.exclusive %} data-behaviour="exclusive" {% endif %} 
-                            {% if checkboxItem.conditionalInput %} data-aria-controls="{{ checkboxItem.conditionalInput.containerId }}" {% endif %}
+                            {% if checkboxItem.conditionalInput %} 
+                                data-aria-controls="{{ checkboxItem.conditionalInput.containerId }}" 
+                            {% endif %}
                         >
-                        {% if checkboxItem.id %}
-                            {% set labelFor = checkboxItem.id %}
-                        {% else %}
-                            {% set labelFor = checkboxesName + "-" + loop.index %}
-                        {% endif %}
-                        {{ greatLabel(
+                        {{ greatCheckboxLabel(
                             text = checkboxItem.label.text,
                             html = checkboxItem.label.html,
-                            classes = 'govuk-checkboxes__label '+ checkboxItem.label.classes, {# TODO Prevent undefined? #}
-                            for = labelFor
+                            classes = checkboxItem.label.classes,
+                            defaultFor = checkboxesId +"-"+loop.index,
+                            for = checkboxItem.id
                         ) }}
                     </div>
                     {% if checkboxItem.conditionalInput %}
-                        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" {% if checkboxItem.conditionalInput.containerId %}id="{{ checkboxItem.conditionalInput.containerId }}"{% else %}id="{{checkboxesName}}-{{loop.index}}-conditional"{% endif %}>
+                        <div id="{{checkboxItem.conditionalInput.containerId}}"
+                            class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden {% if conditionalItem.conditionalInput.containerClasses %} {{ conditionalItem.conditionalInput.containerClasses }} {% endif %}"   
+                        >
                             {{ greatInput(
                                 type = checkboxItem.conditionalInput.type,
                                 name = checkboxItem.conditionalInput.name,
-                                id = checkboxItem.conditionalInput.id,
-                                errorMessage = checkboxItem.conditionalInput.errorMessage,
+                                id = checkboxItem.conditionalInput.inputId,
+                                errorMessage = {
+                                    id: checkboxItem.conditionalInput.errorMessage.id,
+                                    text: checkboxItem.conditionalInput.errorMessage.text,
+                                    html: checkboxItem.conditionalInput.errorMessage.html,
+                                    classes: checkboxItem.conditionalInput.errorMessage.classes,
+                                    for: checkboxItem.conditionalInput.inputId
+                                },
                                 label = {
-                                    text: checkboxItem.conditionalInput.label
+                                    text: checkboxItem.conditionalInput.label.text,
+                                    html:checkboxItem.conditionalInput.label.html,
+                                    classes: checkboxItem.conditionalInput.label.html,
+                                    for: checkboxItem.conditionalInput.inputId
                                 },
                                 hint = {
-                                    text: checkboxItem.conditionalInput.hint
+                                    id: checkboxItem.conditionalInput.hint.id,
+                                    text: checkboxItem.conditionalInput.hint.text,
+                                    html: checkboxItem.conditionalInput.hint.html,
+                                    classes: checkboxItem.conditionalInput.hint.classes,
+                                    for: checkboxItem.conditionalInput.inputId
                                 },
                                 classes = checkboxItem.conditionalInput.classes,
                                 spellcheck = checkboxItem.conditionalInput.spellcheck,
