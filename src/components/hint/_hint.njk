@@ -1,4 +1,4 @@
-{% macro greatHint(id, classes, html, text) %}
+{% macro greatHint(id, classes, html, text, for) %}
 <div {% if id %}id="{{ id }}"
     {% elif for %}
       id="{{ for }}-hint"
