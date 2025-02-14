@@ -2,7 +2,7 @@
 {% from "../hint/_hint.njk" import greatHint %}
 {% from "./_input-element.njk" import greatInputElement %}
 
-{% macro greatDate(id, name, classes, heading, label, hint, errorMessage) %}
+{% macro greatDateInput(id, name, classes, heading, label, hint, errorMessage) %}
 <div class="govuk-form-group{% if errorMessage %} govuk-form-group--error{% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
     {% if label %}
     {{ greatLabel(
