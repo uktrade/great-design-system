@@ -1,0 +1,55 @@
+{% from "../error-message/_error-message.njk" import greatErrorMessage %}
+{% from "../hint/_hint.njk" import greatHint %}
+{% from "../label/_label.njk" import greatLabel %}
+{% from "./_radio-item.njk" import radioItem %}
+
+{% macro greatRadios(id,name,classes,label,hint,errorMessage,items,value,formGroupClasses,beforeInput, afterInput) %}
+  <div class="govuk-form-group {% if errorMessage %} govuk-form-group--error {% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
+    {% if label %}
+    {{ greatLabel(
+      text=label.text,
+      html=label.html,
+      classes=label.classes,
+      for=id,
+      isPageHeading=label.isPageHeading
+    ) }}
+    {% endif %} 
+    {% if hint %}
+      {{ greatHint(
+        id=id + '-hint',
+        classes=hint.classes,
+        html=hint.html,
+        text=hint.text
+      ) }}
+    {% endif %}
+    {% if errorMessage %}
+      {{ greatErrorMessage(
+        id=id + '-error',
+        classes=errorMessage.classes,
+        visuallyHiddenText=errorMessage.visuallyHiddenText,
+        html=errorMessage.html,
+        text=errorMessage.text
+      ) }}
+    {% endif %}
+  <fieldset class="govuk-fieldset" aria-describedby="{{name}}-hint">
+
+  <div class="govuk-radios {%- if classes %} {{ classes }}{% endif %}"  id="{{ id }}" data-module="govuk-radios">
+    {% if beforeInput and beforeInput.html %}
+      {{ beforeInput.html|safe }}
+    {% elif beforeInput %}
+      {{ beforeInput.text }}
+    {% endif %}
+    {% for item in items %}
+      {% if item %}
+        {{ radioItem(name, item, loop.index) }}
+      {% endif %}
+    {% endfor %}
+    {% if afterInput and afterInput.html %}
+      {{ afterInput.html|safe }}
+    {% elif afterInput %}
+      {{ afterInput.text }}
+    {% endif %}
+  </div>
+</fieldset>
+</div>
+{% endmacro %}

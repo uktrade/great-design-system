@@ -1,0 +1,43 @@
+{% from "../input/_input.njk" import greatInput %}
+{% macro radioItem(name, item, index) %}
+{% set itemId = item.id if item.id else idPrefix + ("-" + index if index > 1 else "") %}
+  {% if item.divider %}
+    <div class="govuk-radios__divider">{{ item.divider }}</div>
+  {% else %}
+    {% set isSelected = item.selected | default((item.value == value and item.selected != false) if value else false, true) %}
+    <div class="govuk-radios__item">
+      <input type="radio" name="{{ name }}" value="{{ item.value }}" class="govuk-radios__input" id="{{name}}--{{loop.index}}" 
+        {{" checked" if isSelected }}
+        {{" disabled" if item.disabled }}
+        {% if item.conditionalReveal %} data-aria-controls="conditional-{{name}}-{{loop.index}}"{% endif %}>
+        {% if item.label %}
+          {{ greatLabel(
+            text=item.text,
+            html=item.html,
+            classes='govuk-radios__label',
+            for=itemId
+          ) }}
+        {% endif %}  
+        {% if item.hint %}
+          {% set hintId = item.id + '-hint' %} 
+          {{ greatHint(
+            id=hintId,
+            classes='govuk-radios__hint',
+            html=item.hint.html,
+            text=item.hint.text
+          ) }}
+      {% endif %}
+    </div>
+    {% if item.conditionalReveal %}
+    <div class="govuk-radios__conditional {%- if not isSelected %} govuk-radios__conditional--hidden{% endif %}" id="conditional"-{{itemId}}>
+      {% set inputName = item.name~'_'~item.value%}
+      {% set inputId = "id_" + inputName %}
+      {{greatInput (
+        type ='text',
+        name=inputName,
+        id=inputId,
+        label=item.conditionalReveal.label)}}
+    </div>
+    {% endif %}
+  {% endif %}
+{% endmacro %}
