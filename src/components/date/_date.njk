@@ -1,0 +1,40 @@
+{% from "../label/_label.njk" import greatLabel %}
+{% from "../hint/_hint.njk" import greatHint %}
+{% from "./_input-element.njk" import greatInputElement %}
+
+{% macro greatDate(id, name, classes, heading, label, hint, errorMessage) %}
+<div class="govuk-form-group{% if errorMessage %} govuk-form-group--error{% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
+    {% if label %}
+    {{ greatLabel(
+      text=label.text, 
+      html=label.html, 
+      classes=label.classes,
+      for=id,
+      isPageHeading=label.isPageHeading
+    ) }}
+  {% endif %}
+
+  {% if hint %}
+    {% set hintId = id + '-hint' %}
+    {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
+    {{ greatHint(
+      id=hintId,
+      classes=hint.classes,
+      html=hint.html,
+      text=hint.text
+    ) }}
+  {% endif %}
+
+  {% if errorMessage %}
+    {% set errorId = id + '-error' %}
+    {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+    {{ greatErrorMessage(
+      id=errorId,
+      classes=errorMessage.classes,
+      visuallyHiddenText=errorMessage.visuallyHiddenText,
+      html=errorMessage.html,
+      text=errorMessage.text
+    ) }}
+  {% endif %}
+</div>
+{% endmacro %}
