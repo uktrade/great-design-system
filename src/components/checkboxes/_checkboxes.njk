@@ -5,7 +5,7 @@
 {% macro greatCheckboxes(isPageHeading, describedBy, hint, checkboxesId, formGroupClasses, checkboxQuestion, errorMessage, useSmall, checkboxes) %}
     <div class="govuk-form-group {% if formGroupClasses %}{{formGroupClasses}}{% endif %}{% if errorMessage %} govuk-form-group--error {% endif %}">
         <fieldset class="govuk-fieldset" 
-            aria-describedby="{% if describedBy %}{{describedBy}} {% endif %}{% if errorMessage %}{{checkboxesId}}-error {%endif%}{% if hint %}{{checkboxesId}}-hint{% endif %}">
+            aria-describedby="{% if describedBy %}{{describedBy}} {% endif %}{% if errorMessage %}{{checkboxesId}}-error {% endif %}{% if hint %}{{checkboxesId}}-hint{% endif %}">
             <legend class="govuk-fieldset__legend {% if isPageHeading %} govuk-fieldset__legend--l" {% endif %}>
                 <h1 class="govuk-fieldset__heading"> 
                     {{ checkboxQuestion }}
@@ -30,7 +30,7 @@
                     text=errorMessage.text
                 ) }}
             {% endif %}
-            <div {% if checkboxesId %} id="{{ checkboxesId }}"{% endif %} 
+            <div id="{{ checkboxesId }}"
                 class="govuk-checkboxes {% if useSmall %} govuk-checkboxes--small {% endif %}" 
                 data-module="govuk-checkboxes"
             >

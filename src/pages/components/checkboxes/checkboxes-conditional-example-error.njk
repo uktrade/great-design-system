@@ -8,35 +8,29 @@
         hint = {
             text: 'Select all countries that apply'
         },
-        useSmall = '',
         checkboxes = [{
             value: 'France',
             label: {
-                text: 'Where in France?',
-                classes: 'test_labelclass'
+                text: 'France'
             },
             checked: 'true',
             conditionalInput: {
                 containerId: 'france_conditional_container',
                 inputId: 'france_conditional_input',
-                containerClasses: 'containerClass',
                 label: {
-                    text: 'France',
-                    classes: 'test_labelclass'
+                    text: 'France'
                 },
                 errorMessage: {
-                    text: 'You must want to travel here'
+                    text: 'This is not a place in France'
                 }, 
                 hint: {
                     text: 'May be a town, province or road'
                 },
-                type: 'text',
-                name: 'name',
                 classes: 'govuk-!-width-one-third'
             }
             },
             {
-                id: 'italia',
+                id: 'italy',
                 value: 'Italy',
                 label: {
                     text: 'Italy'
