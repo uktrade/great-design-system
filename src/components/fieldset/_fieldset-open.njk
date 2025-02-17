@@ -1,4 +1,4 @@
-{% macro greatFieldset(id, name, legend, classes) %} 
+{% macro greatFieldsetOpen(id, name, legend, classes) %} 
 <fieldset class="govuk-fieldset {% if classes %}{{ classes }}{% endif %}" id="{{ id }}" aria-describedby="{{ name }}-hint"> 
 {% if legend %} 
     <legend class="govuk-fieldset__legend {% if legend.classes %} {{ legend.classes }}{% endif %}">
@@ -11,5 +11,5 @@
     {% endif %} 
     </legend>   
 {% endif %} 
-</fieldset>
+
 {% endmacro %}
