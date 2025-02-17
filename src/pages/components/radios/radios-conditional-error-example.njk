@@ -17,9 +17,17 @@
             }
         },
         items=[
-            {text: "Option 1",value: "option-1", label: "Option 1 Lable"
+            {text: "Option 1",value: "option-1", label: "Option 1 Lable",conditionalReveal:{
+                label: "Please provide more details",
+                errorMessage:{
+                    id:"radioError",
+                    text: "Please input details"
+                }
+            }
             },
             {text: "Option 2",value: "option-2",label: "Option 2 Lable"
+            },
+            {text: "Option 3",value: "option-3",label: "Option 3 Lable",disabled:true
             }
         ]
         ) }}

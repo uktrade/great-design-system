@@ -1,45 +1,33 @@
 {% from "../error-message/_error-message.njk" import greatErrorMessage %}
-{% from "../hint/_hint.njk" import greatHint %}
-{% from "../label/_label.njk" import greatLabel %}
 {% from "./_radio-item.njk" import radioItem %}
+{% from "../fieldset/_fieldset.njk" import greatFieldset%}
 
-{% macro greatRadios(id,name,classes,label,hint,errorMessage,items,value,formGroupClasses,beforeInput, afterInput) %}
+{% macro greatRadios(id,name,classes,fieldset,label,hint,errorMessage,items,value,formGroupClasses,beforeInput, afterInput) %}
   <div class="govuk-form-group {% if errorMessage %} govuk-form-group--error {% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
-    {% if label %}
-    {{ greatLabel(
-      text=label.text,
-      html=label.html,
-      classes=label.classes,
-      for=id,
-      isPageHeading=label.isPageHeading
-    ) }}
-    {% endif %} 
-    {% if hint %}
-      {{ greatHint(
-        id=id + '-hint',
-        classes=hint.classes,
-        html=hint.html,
-        text=hint.text
-      ) }}
-    {% endif %}
-    {% if errorMessage %}
-      {{ greatErrorMessage(
-        id=id + '-error',
-        classes=errorMessage.classes,
-        visuallyHiddenText=errorMessage.visuallyHiddenText,
-        html=errorMessage.html,
-        text=errorMessage.text
-      ) }}
-    {% endif %}
-  <fieldset class="govuk-fieldset" aria-describedby="{{name}}-hint">
-
+    {{
+      greatFieldset(
+        id=fieldset.id,
+        name=fieldset.name,
+        legend={'text' :fieldset.legend.text, 'isPageHeading':fieldset.legend.isPageHeading, 'classes':fieldset.legend.classes },
+        classes=fieldset.classes
+        )
+    }}
   <div class="govuk-radios {%- if classes %} {{ classes }}{% endif %}"  id="{{ id }}" data-module="govuk-radios">
+    {% if errorMessage %}
+    {{ greatErrorMessage(
+      id=errorMessage.id,
+      classes=errorMessage.classes,
+      visuallyHiddenText=errorMessage.visuallyHiddenText,
+      html=errorMessage.html,
+      text=errorMessage.text
+    ) }}
+    {% endif %}
     {% if beforeInput and beforeInput.html %}
       {{ beforeInput.html|safe }}
     {% elif beforeInput %}
       {{ beforeInput.text }}
     {% endif %}
-    {% for item in items %}
+    {% for item in items %}  
       {% if item %}
         {{ radioItem(name, item, loop.index) }}
       {% endif %}
