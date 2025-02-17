@@ -3,22 +3,40 @@
 {% block content %}
     {% from "../../../components/checkboxes/_checkboxes.njk" import greatCheckboxes %}
     {{ greatCheckboxes(
-        isPageHeading='true',
         checkboxesId = 'countries',
         checkboxQuestion = 'Will you be travelling to any of these countries?',
         hint = {
             text: 'Select all countries that apply'
         },
+        useSmall = '',
         checkboxes = [{
             value: 'France',
-            id: 'france',
             label: {
+                text: 'Where in France?',
+                classes: 'test_labelclass'
+            },
+            checked: 'true',
+            conditionalInput: {
+                containerId: 'france_conditional_container',
+                inputId: 'france_conditional_input',
+                containerClasses: 'containerClass',
+                label: {
                     text: 'France',
                     classes: 'test_labelclass'
-                }
+                },
+                errorMessage: {
+                    text: 'You must want to travel here'
+                }, 
+                hint: {
+                    text: 'May be a town, province or road'
+                },
+                type: 'text',
+                name: 'name',
+                classes: 'govuk-!-width-one-third'
+            }
             },
             {
-                id: 'italy',
+                id: 'italia',
                 value: 'Italy',
                 label: {
                     text: 'Italy'

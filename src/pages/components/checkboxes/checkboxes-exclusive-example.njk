@@ -3,12 +3,12 @@
 {% block content %}
     {% from "../../../components/checkboxes/_checkboxes.njk" import greatCheckboxes %}
     {{ greatCheckboxes(
-        checkboxesName = 'countries',
+        checkboxesId = 'countries',
         checkboxQuestion = 'Will you be travelling to any of these countries?',
         hint = {
             text: 'Select all countries that apply'
         },
-        size = '',
+        useSmall = '',
         checkboxes = [{
             value: 'France',
             id: 'francia',
@@ -25,10 +25,16 @@
                 }
             },
             {   
-                exclusive: 'true',
                 value: 'Belgium',
                 label: {
                     text: 'Belgium'
+                }
+            },
+            {   
+                exclusive: 'true',
+                value: 'None of the above',
+                label: {
+                    text: 'None of the above'
                 }
             }
             ]

@@ -1,7 +1,6 @@
 {% from "../../components/input/_input.njk" import greatInput %}
 {% from "../error-message/_error-message.njk" import greatErrorMessage %}
 {% from "../hint/_hint.njk" import greatHint %}
-{% from "../label/_label.njk" import greatLabel %}
 {% from "./_checkbox_label.njk" import greatCheckboxLabel %}
 {% macro greatCheckboxes(isPageHeading, describedBy, hint, checkboxesId, formGroupClasses, checkboxQuestion, errorMessage, useSmall, checkboxes) %}
     <div class="govuk-form-group {% if formGroupClasses %}{{formGroupClasses}}{% endif %}{% if errorMessage %} govuk-form-group--error {% endif %}">
@@ -45,6 +44,7 @@
                             name="{{checkboxesId}}" 
                             type="checkbox" 
                             value="{{checkboxItem.value}}" 
+                            {% if checkboxItem.checked %} checked {% endif %}
                             {% if checkboxItem.exclusive %} data-behaviour="exclusive" {% endif %} 
                             {% if checkboxItem.conditionalInput %} 
                                 data-aria-controls="{{ checkboxItem.conditionalInput.containerId }}" 
@@ -60,7 +60,7 @@
                     </div>
                     {% if checkboxItem.conditionalInput %}
                         <div id="{{checkboxItem.conditionalInput.containerId}}"
-                            class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden {% if conditionalItem.conditionalInput.containerClasses %} {{ conditionalItem.conditionalInput.containerClasses }} {% endif %}"   
+                            class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden {% if checkboxItem.conditionalInput.containerClasses %} {{ conditionalItem.conditionalInput.containerClasses }} {% endif %}"   
                         >
                             {{ greatInput(
                                 type = checkboxItem.conditionalInput.type,
@@ -76,7 +76,7 @@
                                 label = {
                                     text: checkboxItem.conditionalInput.label.text,
                                     html:checkboxItem.conditionalInput.label.html,
-                                    classes: checkboxItem.conditionalInput.label.html,
+                                    classes: checkboxItem.conditionalInput.label.classes,
                                     for: checkboxItem.conditionalInput.inputId
                                 },
                                 hint = {

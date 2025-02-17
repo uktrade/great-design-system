@@ -3,19 +3,16 @@
 {% block content %}
     {% from "../../../components/checkboxes/_checkboxes.njk" import greatCheckboxes %}
     {{ greatCheckboxes(
-        errorMessage = {
-            text: 'there is an error'
-        },
         checkboxesId = 'countries',
         checkboxQuestion = 'Will you be travelling to any of these countries?',
         hint = {
             text: 'Select all countries that apply'
         },
-        size = '',
+        useSmall = '',
         checkboxes = [{
             value: 'France',
             label: {
-                    text: 'Where in France?',
+                    text: 'France',
                     classes: 'test_labelclass'
                 },
             conditionalInput: {
@@ -26,10 +23,6 @@
                     text: 'France',
                     classes: 'test_labelclass'
                 },
-                
-                errorMessage: {
-                    text: 'You must want to travel here'
-                }, 
                 hint: {
                     text: 'May be a town, province or road'
                 },
@@ -39,7 +32,7 @@
             }
             },
             {
-                id: 'italia',
+                id: 'italy',
                 value: 'Italy',
                 label: {
                     text: 'Italy'
