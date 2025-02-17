@@ -1,53 +1,79 @@
 {% from "../label/_label.njk" import greatLabel %}
 {% from "../hint/_hint.njk" import greatHint %}
-{% from "./_input-element.njk" import greatInputElement %}
+{% from "../input/_input-element.njk" import greatInputElement %}
 
-{% macro greatDateInput(id, name, classes, label, hint, errorMessage) %}
-<div class="govuk-form-group{% if errorMessage %} govuk-form-group--error{% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
+{% macro greatDateInput(id, name, classes, label, hint, errorMessage, dayWidth, monthWidth, yearWidth) %}
+  <div class="govuk-form-group{% if errorMessage %} govuk-form-group--error{% endif %} govuk-grid-column-two-thirds{% if classes %} {{ classes }}{% endif %}" 
+    {% if id %}id="{{ id }}"{% endif %}
+    {% if name %}name="{{ name }}"{% endif %}
+  >
     {% if label %}
-    {{ greatLabel(
-      text=label.text, 
-      html=label.html, 
-      classes=label.classes,
-      for=id,
-      isPageHeading=label.isPageHeading
-    ) }}
-  {% endif %}
-
-  {% if hint %}
-    {% set hintId = id + '-hint' %}
-    {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
-    {{ greatHint(
-      id=hintId,
-      classes=hint.classes,
-      html=hint.html,
-      text=hint.text
-    ) }}
-  {% endif %}
-
-  {% if errorMessage %}
-    {% set errorId = id + '-error' %}
-    {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
-    {{ greatErrorMessage(
-      id=errorId,
-      classes=errorMessage.classes,
-      visuallyHiddenText=errorMessage.visuallyHiddenText,
-      html=errorMessage.html,
-      text=errorMessage.text
-    ) }}
-  {% endif %}
-
-  <div class="great-date-input">
-    <div class="great-date-input__item">
       {{ greatLabel(
-        text="day", 
-        for="{{ id ~ '-day' }}",
+        text=label.text, 
+        html=label.html, 
+        classes=label.classes,
+        for=id,
+        isPageHeading=label.isPageHeading
       ) }}
-      {{ greatInputElement(
-          id="{{ id ~ '-day' }}"
-          class="great-date-input__input",
+    {% endif %}
+
+    {% if hint %}
+      {% set hintId = id + '-hint' %}
+      {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
+      {{ greatHint(
+        id=hintId,
+        classes=hint.classes,
+        html=hint.html,
+        text=hint.text
       ) }}
+    {% endif %}
+
+    {% if errorMessage %}
+      {% set errorId = id + '-error' %}
+      {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+      {{ greatErrorMessage(
+        id=errorId,
+        classes=errorMessage.classes,
+        visuallyHiddenText=errorMessage.visuallyHiddenText,
+        html=errorMessage.html,
+        text=errorMessage.text
+      ) }}
+    {% endif %}
+
+    <div class="great-ds-date-input">
+      <div class="great-ds-input--item">
+        <div class="govuk-form-group">
+          {{ greatLabel(
+            text="Day"
+          ) }}
+          {{ greatInputElement(
+              id="great-ds-input--input",
+              classes="govuk-input--width-" + dayWidth
+          ) }}
+        </div>
+      </div>
+      <div class="great-ds-input--item">
+        <div class="govuk-form-group">
+          {{ greatLabel(
+            text="Month"
+          ) }}
+          {{ greatInputElement(
+              id="great-ds-input--input",
+              classes="govuk-input--width-" + monthWidth
+          ) }}
+        </div>
+      </div>
+      <div class="great-ds-input--item">
+        <div class="govuk-form-group">
+          {{ greatLabel(
+            text="Year"
+          ) }}
+          {{ greatInputElement(
+              id="great-ds-input--input",
+              classes="govuk-input--width-" + yearWidth
+          ) }}
+        </div>
+      </div>
     </div>
   </div>
-</div>
 {% endmacro %}
