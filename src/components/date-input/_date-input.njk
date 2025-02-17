@@ -40,11 +40,12 @@
       ) }}
     {% endif %}
 
-    <div class="great-ds-date-input">
-      <div class="great-ds-input--item">
+    <div class="govuk-date-input">
+      <div class="govuk-date-input__item">
         <div class="govuk-form-group">
           {{ greatLabel(
-            text="Day"
+            text="Day",
+            classes="govuk-date-input__label"
           ) }}
           {{ greatInputElement(
               id="great-ds-input--input",
@@ -52,10 +53,11 @@
           ) }}
         </div>
       </div>
-      <div class="great-ds-input--item">
+      <div class="govuk-date-input__item">
         <div class="govuk-form-group">
           {{ greatLabel(
-            text="Month"
+            text="Month",
+            classes="govuk-date-input__label"
           ) }}
           {{ greatInputElement(
               id="great-ds-input--input",
@@ -63,10 +65,11 @@
           ) }}
         </div>
       </div>
-      <div class="great-ds-input--item">
+      <div class="govuk-date-input__item">
         <div class="govuk-form-group">
           {{ greatLabel(
-            text="Year"
+            text="Year",
+            classes="govuk-date-input__label"
           ) }}
           {{ greatInputElement(
               id="great-ds-input--input",
