@@ -1,21 +1,12 @@
 {% macro greatCheckboxLabel(inputId, text, html, classes, defaultFor, for) %}
 {% if text or html %}
-  {% if isPageHeading %}
-    <h1 class="govuk-label-wrapper">
-      <label class="govuk-label govuk-checkboxes__label {% if classes %} {{ classes }}{% endif %}"
+    {% if isPageHeading %}<h1 class="govuk-label-wrapper">{% endif %}
+        <label class="govuk-label govuk-checkboxes__label {% if classes %} {{ classes }}{% endif %}"
         {% if for %}for="{{ for }}"
         {% else %}for="{{ defaultFor }}"
         {% endif %}>
         {% if html %}{{ html|safe }}{% else %}{{ text }}{% endif %}
-      </label>
-    </h1>
-  {% else %}
-    <label class="govuk-label govuk-checkboxes__label {% if classes %} {{ classes }}{% endif %}"
-      {% if for %}for="{{ for }}"
-      {% else %}for="{{ defaultFor }}"
-      {% endif %}>
-      {% if html %}{{ html|safe }}{% else %}{{ text }}{% endif %}
-    </label>
-  {% endif %}
+        </label>
+    {% if isPageHeading %}</h1>{% endif %}
 {% endif %}
 {% endmacro %}
