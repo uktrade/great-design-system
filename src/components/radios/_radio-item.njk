@@ -6,7 +6,9 @@
     <div class="govuk-radios__divider">{{ item.divider }}</div> 
   {% else %}
     <div class="govuk-radios__item">
-      <input type="radio" name="{{ name }}" value="{{ item.value }}" class="govuk-radios__input" id="{% if item.id %}{{ item.id }}{% else %}{{ name}}-{{index}}{% endif %}"
+      <input type="radio" name="{{ name }}" value="{{ item.value }}"
+      {%if item.checked %} checked {% endif %}
+      class="govuk-radios__input" id="{% if item.id %}{{ item.id }}{% else %}{{ name}}-{{index}}{% endif %}"
         {% if item.conditionalReveal %} data-aria-controls="conditional-{{name}}-{{index}}"{% endif %}
       >
         {% if item.label %}
@@ -30,7 +32,7 @@
     <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-{% if item.id %}{{ item.id }}{% else %}{{ name}}-{{index}}{% endif %}">
       {{greatInput (
         type =item.conditionalReveal.type,
-        name=item.name+'_'+item.value,
+        name=name,
         id="id_" +item.name+'_'+item.value,
         label={'text' : item.conditionalReveal.label},
         classes = item.conditionalReveal.classes,
