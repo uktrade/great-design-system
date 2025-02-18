@@ -3,7 +3,7 @@
 {% from "../input/_input-element.njk" import greatInputElement %}
 
 {% macro greatDateInput(id, name, classes, label, hint, errorMessage, dayWidth, monthWidth, yearWidth) %}
-  <div class="govuk-form-group{% if errorMessage %} govuk-form-group--error{% endif %} govuk-grid-column-two-thirds{% if classes %} {{ classes }}{% endif %}" 
+  <div class="govuk-form-group govuk-grid-column-two-thirds{% if errorMessage %} govuk-form-group--error{% endif %}{% if classes %} {{ classes }}{% endif %}" 
     {% if id %}id="{{ id }}"{% endif %}
     {% if name %}name="{{ name }}"{% endif %}
   >
