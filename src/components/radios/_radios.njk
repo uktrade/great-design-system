@@ -3,12 +3,15 @@
 {% from "../fieldset/_fieldset-open.njk" import greatFieldsetOpen%}
 {% from "../fieldset/_fieldset-close.njk" import greatFieldsetClose%}
 
-{% macro greatRadios(id,name,classes,fieldset,label,hint,errorMessage,items,value,formGroupClasses,beforeInput, afterInput) %}
+{% macro greatRadios(id,name,classes,fieldset,label,hint,describedBy,errorMessage,items,value,formGroupClasses,beforeInput, afterInput) %}
 <div class="govuk-form-group {% if errorMessage %} govuk-form-group--error {% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
     {{
       greatFieldsetOpen(
         id=fieldset.id,
         name=fieldset.name,
+        errorMessage=errorMessage,
+        hint=hint,
+        describedBy=describedBy,
         legend={'text' :fieldset.legend.text, 'isPageHeading':fieldset.legend.isPageHeading, 'classes':fieldset.legend.classes },
         classes=fieldset.classes
         )
