@@ -1,0 +1,21 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+  {% from "../../../components/date-input/_date-input.njk" import greatDateInput %}
+
+  {{ greatDateInput(
+    name = "date-input-example",
+    id = "date-input-example",
+    label = {
+      text: "Date input example",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint = {
+      text: "This is a hint"
+    },
+    dayWidth = "2",
+    monthWidth = "2",
+    yearWidth = "4"
+  ) }}
+
+{% endblock %}
