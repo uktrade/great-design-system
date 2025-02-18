@@ -41,6 +41,9 @@
     {% endif %}
 
     <div class="govuk-date-input">
+      {% set dayInputBoxId = id + '-day' %}
+      {% set monthInputBoxId = id + '-month' %}
+      {% set yearInputBoxId = id + '-year' %}
       <div class="govuk-date-input__item">
         <div class="govuk-form-group">
           {{ greatLabel(
@@ -50,7 +53,7 @@
           {{ greatInputElement(
               id="great-ds-input--input",
               classes="govuk-input--width-" + dayWidth,
-              id=id + "-day",
+              id=dayInputBoxId,
               name=name + "-day"
           ) }}
         </div>
@@ -64,7 +67,7 @@
           {{ greatInputElement(
               id="great-ds-input--input",
               classes="govuk-input--width-" + monthWidth,
-              id=id + "-month",
+              id=monthInputBoxId,
               name=name + "-month"
           ) }}
         </div>
@@ -78,7 +81,7 @@
           {{ greatInputElement(
               id="great-ds-input--input",
               classes="govuk-input--width-" + yearWidth,
-              id=id + "-year",
+              id=yearInputBoxId,
               name=name + "-year"
           ) }}
         </div>
