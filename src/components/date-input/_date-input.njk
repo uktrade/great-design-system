@@ -18,10 +18,9 @@
     {% endif %}
 
     {% if hint %}
-      {% set hintId = id + '-hint' %}
       {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
       {{ greatHint(
-        id=hintId,
+        id=id + '-hint',
         classes=hint.classes,
         html=hint.html,
         text=hint.text
@@ -29,10 +28,9 @@
     {% endif %}
 
     {% if errorMessage %}
-      {% set errorId = id + '-error' %}
       {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
       {{ greatErrorMessage(
-        id=errorId,
+        id=id + "-error",
         classes=errorMessage.classes,
         visuallyHiddenText=errorMessage.visuallyHiddenText,
         html=errorMessage.html,
@@ -41,20 +39,17 @@
     {% endif %}
 
     <div class="govuk-date-input">
-      {% set dayInputBoxId = id + '-day' %}
-      {% set monthInputBoxId = id + '-month' %}
-      {% set yearInputBoxId = id + '-year' %}
       <div class="govuk-date-input__item">
         <div class="govuk-form-group">
           {{ greatLabel(
             text="Day",
             classes="govuk-date-input__label",
-            for=dayInputBoxId
+            for=id + "-day"
           ) }}
           {{ greatInputElement(
               id="great-ds-input--input",
               classes="govuk-input--width-" + dayWidth,
-              id=dayInputBoxId,
+              id=id + "-day",
               name=name + "-day",
               type="text",
               inputmode="numeric"
@@ -66,12 +61,12 @@
           {{ greatLabel(
             text="Month",
             classes="govuk-date-input__label",
-            for=monthInputBoxId
+            for=id + '-month'
           ) }}
           {{ greatInputElement(
               id="great-ds-input--input",
               classes="govuk-input--width-" + monthWidth,
-              id=monthInputBoxId,
+              id=id + "-month",
               name=name + "-month",
               type="text",
               inputmode="numeric"
@@ -83,12 +78,12 @@
           {{ greatLabel(
             text="Year",
             classes="govuk-date-input__label",
-            for=yearInputBoxId
+            for=id + "-year"
           ) }}
           {{ greatInputElement(
               id="great-ds-input--input",
               classes="govuk-input--width-" + yearWidth,
-              id=yearInputBoxId,
+              id=id + "-year",
               name=name + "-year",
               type="text",
               inputmode="numeric"
