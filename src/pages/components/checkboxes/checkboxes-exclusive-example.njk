@@ -3,39 +3,33 @@
 {% block content %}
     {% from "../../../components/checkboxes/_checkboxes.njk" import greatCheckboxes %}
     {{ greatCheckboxes(
-        checkboxesId = 'countries',
-        checkboxQuestion = 'Will you be travelling to any of these countries?',
+
+        isPageHeading='true',
+        id = 'countries',
+        name='countriesName',
+        fieldset={
+            id:"fieldset-id",
+            name:"fieldset-name",
+            classes:"",
+            legend:{
+                text:"Choose a Country",
+                isPageHeading: true,
+                classes:""
+            }
+        },
         hint = {
             text: 'Select all countries that apply'
         },
-        checkboxes = [{
-            value: 'France',
-            id: 'francia',
-            label: {
-                    text: 'France'
-                }
+        checkboxes=[
+            {text: "France",value: "France", label: "Option 1 Label"
             },
-            {
-                id: 'italia',
-                value: 'Italy',
-                label: {
-                    text: 'Italy'
-                }
+            {text: "Italy",value: "option-2",label: "Option 2 Label"
             },
-            {   
-                value: 'Belgium',
-                label: {
-                    text: 'Belgium'
-                }
+            {text: "Belgium",value: "option-3",label: "Option 3 Label"
             },
-            {   
-                exclusive: 'true',
-                value: 'None of the above',
-                label: {
-                    text: 'None of the above'
-                }
+            {text: "None of the above",value: "option-3",label: "Option 3 Label", divider: 'true'
             }
-            ]
+        ]
         ) }}
 
 {% endblock %}

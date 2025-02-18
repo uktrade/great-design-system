@@ -3,45 +3,36 @@
 {% block content %}
     {% from "../../../components/checkboxes/_checkboxes.njk" import greatCheckboxes %}
     {{ greatCheckboxes(
-        checkboxesId = 'countries',
-        checkboxQuestion = 'Will you be travelling to any of these countries?',
+
+        isPageHeading='true',
+        id = 'countries',
+        name='countriesName',
+        errorMessage = {
+            text: 'You can not select both a country and \'no countries\''
+        }, 
+        fieldset={
+            id:"fieldset-id",
+            name:"fieldset-name",
+            classes:"",
+            legend:{
+                text:"Choose a Country",
+                isPageHeading: true,
+                classes:""
+            }
+        },
         hint = {
             text: 'Select all countries that apply'
         },
-        errorMessage = {
-                    text: 'You must select a country, or \'None of the above\''
-        }, 
-        checkboxes = [
-            {
-                value: 'France',
-                id: 'france',
-                checked: 'true',
-                label: {
-                    text: 'France'
-                    }
-                },
-            {
-                id: 'italy',
-                value: 'Italy',
-                label: {
-                    text: 'Italy'
-                }
+        checkboxes=[
+            {text: "France",value: "France", label: "Option 1 Label", checked:'true'
             },
-            {   
-                value: 'Belgium',
-                label: {
-                    text: 'Belgium'
-                }
+            {text: "Italy",value: "option-2",label: "Option 2 Label"
             },
-            {   
-                exclusive: 'true',
-                value: 'None of the above',
-                checked: 'true',
-                label: {
-                    text: 'None of the above'
-                }
+            {text: "Belgium",value: "option-3",label: "Option 3 Label"
+            },
+            {text: "None of the above",value: "option-3",label: "Option 3 Label", divider: 'true', checked:'true'
             }
-            ]
+        ]
         ) }}
 
 {% endblock %}

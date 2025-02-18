@@ -3,46 +3,37 @@
 {% block content %}
     {% from "../../../components/checkboxes/_checkboxes.njk" import greatCheckboxes %}
     {{ greatCheckboxes(
-        checkboxesId = 'countries',
-        checkboxQuestion = 'Will you be travelling to any of these countries?',
+
+        isPageHeading='true',
+        id = 'countries',
+        name='countriesName',
+        fieldset={
+            id:"fieldset-id",
+            name:"fieldset-name",
+            classes:"",
+            legend:{
+                text:"Choose a Country",
+                isPageHeading: true,
+                classes:""
+            }
+        },
         hint = {
             text: 'Select all countries that apply'
         },
-        checkboxes = [{
-            value: 'France',
-            label: {
-                text: 'France'
-            },
-            checked: 'true',
-            conditionalInput: {
-                containerId: 'france_conditional_container',
-                inputId: 'france_conditional_input',
-                label: {
-                    text: 'France'
-                },
-                errorMessage: {
-                    text: 'This is not a place in France'
-                }, 
-                hint: {
-                    text: 'May be a town, province or road'
-                },
-                classes: 'govuk-!-width-one-third'
+        checkboxes=[
+            {text: "France",value: "France", label: "Option 1 Label",checked: 'true', 
+                conditionalReveal:{
+                    label: "Please provide more details", 
+                    errorMessage: {
+                        text: 'This is not a place in France'
+                    }
             }
             },
-            {
-                id: 'italy',
-                value: 'Italy',
-                label: {
-                    text: 'Italy'
-                }
+            {text: "Italy",value: "option-2",label: "Option 2 Label"
             },
-            {
-                value: 'Belgium',
-                label: {
-                    text: 'Belgium'
-                }
+            {text: "Belgium",value: "option-3",label: "Option 3 Label",disabled:true
             }
-            ]
+        ]
         ) }}
 
 {% endblock %}
