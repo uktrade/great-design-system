@@ -1,0 +1,71 @@
+{% from "../error-message/_error-message.njk" import greatErrorMessage %}
+{% from "../hint/_hint.njk" import greatHint %}
+{% from "../label/_label.njk" import greatLabel %}
+
+{% macro greatSelect(id, name, classes, label, hint, errorMessage, items, value, disabled, formGroupClasses, beforeInput, afterInput, attributes) %}
+<div class="govuk-form-group{% if errorMessage %} govuk-form-group--error{% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
+  {% if label %}
+    {{ greatLabel(
+      text=label.text,
+      html=label.html,
+      classes=label.classes,
+      for=id,
+      isPageHeading=label.isPageHeading
+    ) }}
+  {% endif %}
+
+  {% if hint %}
+    {{ greatHint(
+      id=id + '-hint',
+      classes=hint.classes,
+      html=hint.html,
+      text=hint.text
+    ) }}
+  {% endif %}
+
+  {% if errorMessage %}
+    {{ greatErrorMessage(
+      id=id + '-error',
+      classes=errorMessage.classes,
+      visuallyHiddenText=errorMessage.visuallyHiddenText,
+      html=errorMessage.html,
+      text=errorMessage.text
+    ) }}
+  {% endif %}
+
+  {% if beforeInput and beforeInput.html %}
+    {{ beforeInput.html|safe }}
+  {% elif beforeInput %}
+    {{ beforeInput.text }}
+  {% endif %}
+
+  <select 
+    class="govuk-select{% if classes %} {{ classes }}{% endif %}{% if errorMessage %} govuk-select--error{% endif %}"
+    id="{{ id }}"
+    name="{{ name }}"
+    {% if disabled %}disabled{% endif %}
+    {% if hint or errorMessage %}aria-describedby="{% if hint %}{{ id }}-hint{% endif %}{% if errorMessage %} {{ id }}-error{% endif %}"{% endif %}
+    {% if attributes %}{{ attributes|safe }}{% endif %}
+  >
+    {% for item in items %}
+      {% if item %}
+        <option 
+          {% if item.value %}value="{{ item.value }}"{% endif %}
+          {% if item.selected %}selected{% endif %}
+          {% if not item.selected and value and item.value == value %}selected{% endif %}
+          {% if not item.selected and value and not item.value and item.text == value %}selected{% endif %}
+          {% if item.disabled %}disabled{% endif %}
+        >
+          {{ item.text }}
+        </option>
+      {% endif %}
+    {% endfor %}
+  </select>
+
+  {% if afterInput and afterInput.html %}
+    {{ afterInput.html|safe }}
+  {% elif afterInput %}
+    {{ afterInput.text }}
+  {% endif %}
+</div>
+{% endmacro %}

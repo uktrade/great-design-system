@@ -1,0 +1,24 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/select/_select.njk" import greatSelect %}
+
+{{ greatSelect(
+    id='selectElement',
+    name='selectElement',
+    classes="",
+    label={
+        text: "This is a label"
+    },
+    items=[
+        {
+            text: "Option 1",
+            value: "option-1"
+        },
+        {
+            text: "Option 2",
+            value: "option-2"
+        }
+    ]
+) }}
+{% endblock %}
