@@ -20,10 +20,8 @@
   {% endif %}
 
   {% if hint %}
-    {% set hintId = id + '-hint' %}
-    {% set describedBy = hintId %}
     {{ greatHint(
-      id=hintId,
+      id=id + '-hint',
       classes=hint.classes,
       html=hint.html,
       text=hint.text
@@ -31,14 +29,8 @@
   {% endif %}
 
   {% if errorMessage %}
-    {% set errorId = id + '-error' %}
-    {% if describedBy %}
-      {% set describedBy = describedBy + ' ' + errorId %}
-    {% else %}
-      {% set describedBy = errorId %}
-    {% endif %}
     {{ greatErrorMessage(
-      id=errorId,
+      id=id + '-error',
       classes=errorMessage.classes,
       visuallyHiddenText=errorMessage.visuallyHiddenText,
       html=errorMessage.html,
@@ -48,11 +40,7 @@
 
   <div class="govuk-textarea__wrapper">
     {% if beforeInput %}
-      {% if beforeInput.html %}
-        {{ beforeInput.html|safe }}
-      {% else %}
-        {{ beforeInput.text }}
-      {% endif %}
+      {% if beforeInput.html %}{{ beforeInput.html|safe }}{% else %}{{ beforeInput.text }}{% endif %}
     {% endif %}
 
     <textarea 
@@ -62,7 +50,7 @@
       rows="{% if rows %}{{ rows }}{% else %}5{% endif %}"
       {% if spellcheck %}spellcheck="{{ spellcheck }}"{% endif %}
       {% if disabled %}disabled{% endif %}
-      {% if describedBy %}aria-describedby="{{ describedBy }}"{% endif %}
+      {% if hint or errorMessage %}aria-describedby="{% if hint %}{{ id }}-hint{% endif %}{% if errorMessage %} {{ id }}-error{% endif %}"{% endif %}
       {% if attributes %}{{ attributes|safe }}{% endif %}
     >{{ value }}</textarea>
 
@@ -83,11 +71,7 @@
     {% endif %}
 
     {% if afterInput %}
-      {% if afterInput.html %}
-        {{ afterInput.html|safe }}
-      {% else %}
-        {{ afterInput.text }}
-      {% endif %}
+      {% if afterInput.html %}{{ afterInput.html|safe }}{% else %}{{ afterInput.text }}{% endif %}
     {% endif %}
   </div>
 </div>
