@@ -1,0 +1,22 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/error-summary/_error-summary.njk" import greatErrorSummary %}
+
+{{ greatErrorSummary(
+  titleText= "There is a problem",
+  descriptionText= "There is a problem with your passport",
+  errorList= [
+    {
+      text: "Enter your full name",
+      href: "#"
+    },
+    {
+      text: "The date your passport was issued must be in the past",
+      href: "#"
+    }
+  ]
+) }}
+
+{% endblock %}
+
