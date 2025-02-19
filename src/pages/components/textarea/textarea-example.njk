@@ -1,0 +1,14 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/textarea/_textarea.njk" import greatTextarea %}
+
+{{ greatTextarea(
+    id='textarea-example',
+    name='textarea-example',
+    rows=5,
+    label={
+        text: "Textarea label"
+    }
+) }}
+{% endblock %}
