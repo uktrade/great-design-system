@@ -147,7 +147,9 @@ describe("Revealer", () => {
   describe("event handling", () => {
     test("handleOutsideClick ignores clicks inside target", () => {
       const mockEvent = {
-        target: mockDocument.createElement(),
+        target: {
+          closest: jest.fn().mockReturnValue(false),
+        },
       };
       mockTarget.contains.mockReturnValue(true);
       mockButton.getAttribute.mockReturnValue("true");
