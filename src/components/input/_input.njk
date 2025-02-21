@@ -46,7 +46,7 @@
       {% endif %}
       
       {% if prefix %}
-        {{ greatInputAffix(prefix, "prefix") }}
+        {{ greatInputAffix(prefix="prefix", type="prefix") }}
       {% endif %}
 
       {{ greatInputElement(
@@ -68,7 +68,7 @@
       ) }}
 
       {% if suffix %}
-        {{ greatInputAffix(suffix, "suffix") }}
+        {{ greatInputAffix(suffic="suffix", type="suffix") }}
       {% endif %}
 
       {% if afterInput %}
