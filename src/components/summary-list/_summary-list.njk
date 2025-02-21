@@ -1,0 +1,28 @@
+{% from "./_summary-list-content.njk" import greatSummaryListContent %}
+{% from "./_summary-list-card-actions.njk" import greatSummaryListCardActions %}
+
+{% macro greatSummaryList(rows, classes, attributes, card) %}
+  {% if card %}
+    <div class="govuk-summary-card {% if card.classes %}{{ card.classes }}{% endif %}">
+      <div class="govuk-summary-card__title-wrapper">
+        {% if card.title %}
+          <h{% if card.title.headingLevel %}{{ card.title.headingLevel }}{% else %}2{% endif %} class="govuk-summary-card__title {% if card.title.classes %}{{ card.title.classes }}{% endif %}">
+            {% if card.title.html %}
+              {{ card.title.html | safe | trim | indent(6) }}
+            {% else %}
+              {{ card.title.text }}
+            {% endif %}
+          </h{% if card.title.headingLevel %}{{ card.title.headingLevel }}{% else %}2{% endif %}>
+        {% endif %}
+
+        {{ greatSummaryListCardActions(card) }}
+      </div>
+
+      <div class="govuk-summary-card__content">
+        {{ greatSummaryListContent(rows, classes, attributes, card) }}
+      </div>
+    </div>
+  {% else %}
+    {{ greatSummaryListContent(rows, classes, attributes, card) }}
+  {% endif %}
+{% endmacro %}
