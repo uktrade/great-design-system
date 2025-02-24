@@ -1,0 +1,16 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/character-count/_character-count.njk" import greatCharacterCount %}
+
+    {{ greatCharacterCount(
+        id='textarea-example',
+        name='textarea-example',
+        rows=5,
+        label={
+            text: "Textarea label"
+        },
+        maxlength=100
+    ) }}
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% from "../error-message/_error-message.njk" import greatErrorMessage %}
+{% from "../hint/_hint.njk" import greatHint %}
+{% from "../label/_label.njk" import greatLabel %}
+
+{% macro greatTextarea(id, name, rows, classes, label, hint, errorMessage, spellcheck, value, disabled, autocomplete, formGroupClasses, beforeInput, afterInput, attributes) %}
+<div class="govuk-form-group{% if errorMessage %} govuk-form-group--error{% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
+  {% if label %}
+    {{ greatLabel(
+      text=label.text,
+      html=label.html,
+      classes=label.classes,
+      for=id,
+      isPageHeading=label.isPageHeading
+    ) }}
+  {% endif %}
+
+  {% if hint %}
+    {{ greatHint(
+      id=id + '-hint',
+      classes=hint.classes,
+      html=hint.html,
+      text=hint.text
+    ) }}
+  {% endif %}
+
+  {% if errorMessage %}
+    {{ greatErrorMessage(
+      id=id + '-error',
+      classes=errorMessage.classes,
+      visuallyHiddenText=errorMessage.visuallyHiddenText,
+      html=errorMessage.html,
+      text=errorMessage.text
+    ) }}
+  {% endif %}
+
+  {% if beforeInput %}
+    {% if beforeInput.html %}{{ beforeInput.html|safe }}{% else %}{{ beforeInput.text }}{% endif %}
+  {% endif %}
+
+  <textarea 
+    class="govuk-textarea{% if classes %} {{ classes }}{% endif %}{% if errorMessage %} govuk-textarea--error{% endif %}"
+    id="{{ id }}"
+    name="{{ name }}"
+    rows="{% if rows %}{{ rows }}{% else %}5{% endif %}"
+    {% if spellcheck %}spellcheck="{{ spellcheck }}"{% endif %}
+    {% if disabled %}disabled{% endif %}
+    {% if hint or errorMessage %}aria-describedby="{% if hint %}{{ id }}-hint{% endif %}{% if errorMessage %} {{ id }}-error{% endif %}"{% endif %}
+    {% if autocomplete %}autocomplete="{{ autocomplete }}"{% endif %}
+    {% if attributes %}{{ attributes|safe }}{% endif %}
+  >{{ value }}</textarea>
+
+  {% if afterInput %}
+    {% if afterInput.html %}{{ afterInput.html|safe }}{% else %}{{ afterInput.text }}{% endif %}
+  {% endif %}
+</div>
+{% endmacro %}
