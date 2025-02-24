@@ -5,7 +5,12 @@
     {{ greatRadios(
         id="radiosElement",
         name="radiosElement",
-        classes="",
+        classes="govuk-radios--small",
+        hint = {
+            text: 'This is a hint'
+        },
+        describedBy="descriptionby",
+        
         fieldset={
             id:"fieldset-id",
             name:"fieldset-name",
@@ -18,17 +23,12 @@
         },
         items=[
             {text: "Option 1",value: "option-1", label: "Option 1 Lable",
-            checked:true,conditionalReveal:{
-                label: "Please provide more details",
-                errorMessage:{
-                    id:"radioError",
-                    text: "Please input details"
-                }
+            
+            hint :{
+                text: 'This is a hint'
             }
             },
             {text: "Option 2",value: "option-2",label: "Option 2 Lable"
-            },
-            {text: "Option 3",value: "option-3",label: "Option 3 Lable",disabled:true
             }
         ]
         ) }}
