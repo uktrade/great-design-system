@@ -1,0 +1,58 @@
+{% from "../input/_input.njk" import greatInput %}
+{% from "../label/_label.njk" import greatLabel %}
+{% from "../hint/_hint.njk" import greatHint %}
+{% macro radioItem(name, item, index) %}
+  {% if item.divider %}
+    <div class="govuk-radios__divider">{{ item.divider }}</div> 
+  {% else %}
+    <div class="govuk-radios__item">
+      <input type="radio" name="{{ name }}" value="{{ item.value }}"
+      {%if item.checked %} checked {% endif %}
+      class="govuk-radios__input" id="{% if item.id %}{{ item.id }}{% else %}{{ name}}-{{index}}{% endif %}"
+        {% if item.conditionalReveal %} data-aria-controls="conditional-{{name}}-{{index}}"{% endif %}
+      >
+        {% if item.label %}
+          {{ greatLabel(
+            text=item.text,
+            html=item.html,
+            classes='govuk-radios__label',
+            for=name~'-'~index
+          ) }}
+        {% endif %}  
+        {% if item.hint %}
+          {{ greatHint(
+            id=item.id + '-hint',
+            classes='govuk-radios__hint',
+            html=item.hint.html,
+            text=item.hint.text
+          ) }}
+      {% endif %}
+    </div>
+    {% if item.conditionalReveal %}
+    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-{% if item.id %}{{ item.id }}{% else %}{{ name}}-{{index}}{% endif %}">
+      {{greatInput (
+        type =item.conditionalReveal.type,
+        name=name,
+        id="conditional_input-" +name+'_'+item.value,
+        label={'text' : item.conditionalReveal.label},
+        classes = item.conditionalReveal.classes,
+        spellcheck= item.conditionalReveal.spellcheck,
+        value = item.conditionalReveal.value,
+        disabled = item.conditionalReveal.disabled,
+        autocomplete = item.conditionalReveal.autocomplete,
+        pattern = item.conditionalReveal.pattern,
+        inputmode = item.conditionalReveal.inputmode,
+        prefix = item.conditionalReveal.prefix,
+        suffix = item.conditionalReveal.suffix,
+        formGroupClasses = item.conditionalReveal.formGroupClasses,
+        beforeInput = item.conditionalReveal.beforeInput,
+        afterInput = item.conditionalReveal.afterInput,
+        attributes = item.conditionalReveal.attributes,
+        placeholder = item.conditionalReveal.placeholder,
+        errorMessage = item.conditionalReveal.errorMessage
+      ) }}
+        
+    </div>
+    {% endif %}
+  {% endif %}
+{% endmacro %}

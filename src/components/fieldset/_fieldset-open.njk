@@ -1,0 +1,15 @@
+{% macro greatFieldsetOpen(id, name, describedBy, errorMessage, hint, legend, classes) %} 
+<fieldset class="govuk-fieldset {% if classes %}{{ classes }}{% endif %}" id="{{ id }}" aria-describedby="{%if describedBy %}{{describedBy}}{% endif %}{% if errorMessage.html or errorMessage.text %} {{name}}-error {% endif %}{%if hint %}{{name}}-hint{% endif %}"> 
+{% if legend %} 
+    <legend class="govuk-fieldset__legend {% if legend.classes %} {{ legend.classes }}{% endif %}">
+    {% if legend.isPageHeading %}
+        <h1 class="govuk-fieldset__heading">
+            {{ legend.text }}
+        </h1>
+    {% else %}  
+        {{ legend.text }}
+    {% endif %} 
+    </legend>   
+{% endif %} 
+
+{% endmacro %}
