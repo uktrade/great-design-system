@@ -1,0 +1,65 @@
+{% from "../error-message/_error-message.njk" import greatErrorMessage %}
+{% from "../hint/_hint.njk" import greatHint %}
+{% from "../label/_label.njk" import greatLabel %}
+
+{% macro greatFileUpload(id, name, classes, formGroup, label, hint, errorMessage, value, disabled, attributes) %}
+  <div class="govuk-form-group{% if errorMessage %} govuk-form-group--error{% endif %}{% if formGroup.classes %} {{ formGroup.classes }}{% endif %}">
+    {{ greatLabel(
+      html=label.html,
+      text=label.text,
+      classes=label.classes,
+      isPageHeading=label.isPageHeading,
+      attributes=label.attributes,
+      for=id
+    ) }}
+
+    {% if hint %}
+      {{ greatHint(
+        id=id + '-hint',
+        classes=hint.classes,
+        attributes=hint.attributes,
+        html=hint.html,
+        text=hint.text
+      ) }}
+    {% endif %}
+
+    {% if errorMessage %}
+      {{ greatErrorMessage(
+        id=id + '-error',
+        classes=errorMessage.classes,
+        attributes=errorMessage.attributes,
+        html=errorMessage.html,
+        text=errorMessage.text,
+        visuallyHiddenText=errorMessage.visuallyHiddenText
+      ) }}
+    {% endif %}
+
+    {% if formGroup.beforeInput %}
+      {% if formGroup.beforeInput.html %}
+        {{ formGroup.beforeInput.html | safe }}
+      {% else %}
+        {{ formGroup.beforeInput.text }}
+      {% endif %}
+    {% endif %}
+
+    <input class="govuk-file-upload{% if classes %} {{ classes }}{% endif %}{% if errorMessage %} govuk-file-upload--error{% endif %}" 
+      id="{{ id }}" 
+      name="{{ name }}" 
+      type="file"
+      {% if value %}value="{{ value }}"{% endif %}
+      {% if disabled %}disabled{% endif %}
+      {% if hint %}aria-describedby="{{ id }}-hint"{% endif %}
+      {% if errorMessage %}aria-describedby="{{ id }}-error"{% endif %}
+      {% if hint and errorMessage %}aria-describedby="{{ id }}-hint {{ id }}-error"{% endif %}
+      {% if attributes %}{{ attributes | safe }}{% endif %}
+    >
+
+    {% if formGroup.afterInput %}
+      {% if formGroup.afterInput.html %}
+        {{ formGroup.afterInput.html | safe }}
+      {% else %}
+        {{ formGroup.afterInput.text }}
+      {% endif %}
+    {% endif %}
+  </div>
+{% endmacro %}
