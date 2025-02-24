@@ -4,17 +4,20 @@
   {% from "../../../components/date-input/_date-input.njk" import greatDateInput %}
 
   {{ greatDateInput(
-    name = "date-input-example",
-    id = "date-input-example",
-    label = {
-      text: "Date input example"
-    },
-    hint = {
+    name= "date-input-example",
+    id= "date-input-example",
+    hint= {
       text: "This is a hint"
     },
-    dayWidth = "2",
-    monthWidth = "2",
-    yearWidth = "4"
+    fieldset= {
+      legend: {
+        text: "Date input example",
+        id: "date-input-example-legend"
+      }
+    },
+    dayWidth= "2",
+    monthWidth= "2",
+    yearWidth= "4"
   ) }}
 
 {% endblock %}

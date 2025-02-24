@@ -1,24 +1,38 @@
 {% from "../label/_label.njk" import greatLabel %}
 {% from "../hint/_hint.njk" import greatHint %}
 {% from "../input/_input-element.njk" import greatInputElement %}
+{% from "../fieldset/_fieldset-open.njk" import greatFieldsetOpen %}
+{% from "../fieldset/_fieldset-close.njk" import greatFieldsetClose %}
 
-{% macro greatDateInput(id, name, classes, label, hint, errorMessage, dayWidth, monthWidth, yearWidth) %}
+{% macro greatDateInput(id, name, classes, fieldset, label, hint, errorMessage, dayWidth, monthWidth, yearWidth, describedBy) %}
   <div class="govuk-form-group govuk-grid-column-two-thirds{% if errorMessage %} govuk-form-group--error{% endif %}{% if classes %} {{ classes }}{% endif %}" 
     {% if id %}id="{{ id }}"{% endif %}
     {% if name %}name="{{ name }}"{% endif %}
   >
+    {% if fieldset %}
+        {{
+        greatFieldsetOpen(
+          id=fieldset.id,
+          name=fieldset.name,
+          errorMessage=errorMessage,
+          hint=hint,
+          describedBy=describedBy,
+          legend={'text' :fieldset.legend.text, 'isPageHeading':fieldset.legend.isPageHeading, 'classes':fieldset.legend.classes },
+          classes=fieldset.classes
+          )
+      }}
+    {% endif %}
     {% if label %}
       {{ greatLabel(
         text=label.text, 
         html=label.html, 
-        classes="govuk-!-font-weight-bold " + label.classes,
+        classes=label.classes,
         for=id,
         isPageHeading=label.isPageHeading
       ) }}
     {% endif %}
 
     {% if hint %}
-      {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
       {{ greatHint(
         id=id + '-hint',
         classes=hint.classes,
@@ -28,7 +42,6 @@
     {% endif %}
 
     {% if errorMessage %}
-      {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
       {{ greatErrorMessage(
         id=id + "-error",
         classes=errorMessage.classes,
@@ -91,5 +104,8 @@
         </div>
       </div>
     </div>
+    {% if fieldset %}
+      {{ greatFieldsetClose() }}
+    {% endif %}
   </div>
 {% endmacro %}
