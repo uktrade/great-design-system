@@ -48,9 +48,13 @@
       type="file"
       {% if value %}value="{{ value }}"{% endif %}
       {% if disabled %}disabled{% endif %}
-      {% if hint %}aria-describedby="{{ id }}-hint"{% endif %}
-      {% if errorMessage %}aria-describedby="{{ id }}-error"{% endif %}
-      {% if hint and errorMessage %}aria-describedby="{{ id }}-hint {{ id }}-error"{% endif %}
+      {% if hint and errorMessage %}
+        aria-describedby="{{ id }}-hint {{ id }}-error"
+      {% elif hint %}
+        aria-describedby="{{ id }}-hint"
+      {% elif errorMessage %}
+        aria-describedby="{{ id }}-error"
+      {% endif %}
       {% if attributes %}{{ attributes | safe }}{% endif %}
     >
 
