@@ -1,0 +1,35 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/radios/_radios.njk" import greatRadios %}
+    {{ greatRadios(
+        id="radiosElement",
+        name="radiosElement",
+        classes="govuk-radios--small",
+        hint = {
+            text: 'This is a hint'
+        },
+        describedBy="descriptionby",
+        
+        fieldset={
+            id:"fieldset-id",
+            name:"fieldset-name",
+            classes:"",
+            legend:{
+                text:"Choose a Value",
+                isPageHeading: true,
+                classes:""
+            }
+        },
+        items=[
+            {text: "Option 1",value: "option-1", label: "Option 1 Lable",
+            
+            hint :{
+                text: 'This is a hint'
+            }
+            },
+            {text: "Option 2",value: "option-2",label: "Option 2 Lable"
+            }
+        ]
+        ) }}
+{% endblock %}
