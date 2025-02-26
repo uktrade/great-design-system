@@ -1,0 +1,17 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/file-upload/_file-upload.njk" import greatFileUpload %}
+
+{{ greatFileUpload(
+  id= "file-upload-1",
+  name= "fileUpload1",
+  label= {
+    text: "Upload a file"
+  },
+  hint= {
+    text: "The file must be a PDF, JPG, PNG or DOCX"
+  }
+) }}
+{% endblock %}
+
