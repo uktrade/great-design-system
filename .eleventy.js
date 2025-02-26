@@ -64,6 +64,13 @@ module.exports = function(eleventyConfig) {
         .join('\n');
     }
 
+    eleventyConfig.addFilter(
+		"add",
+		function (filteredObject, filterParam) {
+			return filteredObject + filterParam;
+		}
+	);
+
     eleventyConfig.addShortcode("exampleWithCode", async function(src, componentName, width="100%", height="100%", backgroundClass) {
         try {
             // Clean up the src path and remove trailing slash
@@ -93,6 +100,8 @@ module.exports = function(eleventyConfig) {
             ].map(dir => path.join(__dirname, dir)), {
                 autoescape: true
             });
+
+            env.addFilter('add',eleventyConfig.getFilter('add')) // TODO check if we can iterate through all existing filters here
 
             // Generate HTML
             const fullHtml = env.render(examplePath, { collections: this.ctx.collections });

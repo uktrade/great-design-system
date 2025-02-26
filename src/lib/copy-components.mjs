@@ -38,6 +38,9 @@ function convertNunjucksToHtml(
   // Remove {% set ... %} blocks
   htmlContent = htmlContent.replace(/{% set [\s\S]*?%}/g, "");
 
+  //Replace custom njk '|add(x)' filter with the django default '|add:x' filter
+  htmlContent = htmlContent.replace(/add\((-?\d+)\)/g, "add:'$1'");
+
   // Replace macro calls with include statements
   htmlContent = htmlContent.replace(
     /{{ (\w+)\(([\s\S]*?)\) }}/g,
