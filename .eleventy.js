@@ -101,12 +101,7 @@ module.exports = function(eleventyConfig) {
                 autoescape: true
             });
 
-            env.addFilter( // TODO Check if cleaner way than re-declaring here
-                "add",
-                function (filteredObject, filterParam) {
-                    return filteredObject + filterParam;
-                }
-            );
+            env.addFilter('add',eleventyConfig.getFilter('add')) // TODO check if we can iterate through all existing filters here
 
             // Generate HTML
             const fullHtml = env.render(examplePath, { collections: this.ctx.collections });
