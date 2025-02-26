@@ -1,0 +1,23 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+  {% from "../../../components/date-input/_date-input.njk" import greatDateInput %}
+
+  {{ greatDateInput(
+    name= "date-input-example",
+    id= "date-input-example",
+    hint= {
+      text: "This is a hint"
+    },
+    fieldset= {
+      legend: {
+        text: "Date input example",
+        id: "date-input-example-legend"
+      }
+    },
+    dayWidth= "2",
+    monthWidth= "2",
+    yearWidth= "4"
+  ) }}
+
+{% endblock %}
