@@ -14,7 +14,8 @@
             <div class='great-ds-hero__text-container'>
                 {% if caption %} <p class='great-ds-hero__caption {% if captionClass %} {{ captionClass }} {% endif %}'> {{ caption }} </p> {% endif %}
                 {% if heading %} <h{% if headingLevel %}{{ headingLevel }}{% else %}1{% endif %} class='great-ds-hero__heading{% if headingClass %} {{ headingClass }} {% endif %}'> {{ heading }} </h1> {% endif %}
-                {% if description %} <p class='great-ds-hero__description{% if descriptionClass %} {{ descriptionClass }} {% endif %}'> {{ description }} </p> {% endif %}
+                {% if descriptionText %} <p class='great-ds-hero__description{% if descriptionClass %} {{ descriptionClass }} {% endif %}'> {{ descriptionText }} </p> {% endif %}
+                {% if descriptionHtml %} <div class='great-ds-hero__description{% if descriptionClass %} {{ descriptionClass }} {% endif %}'> {{ descriptionHtml|safe }} </div> {% endif %}
                 {% if actionLinkText and actionLinkUrl %}
                     <div class="great-ds-hero__action-link-container">
                         {{ greatActionLink(linkText=actionLinkText, linkHref=actionLinkUrl, linkClass=actionLinkClass) }}

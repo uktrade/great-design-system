@@ -12,8 +12,12 @@
     padding: 0;
 }
 
-.great-ds-hero--bg-dark-blue {
+.great-ds-hero--bg-light-blue {
     background-color: $great-ds-primitive-brand-dbt-light-blue; //TODO Alter figma config to include this in _surface.scss
+}
+
+.great-ds-hero--bg-white {
+    background-color: $great-ds-semantic-surface-background-white;
 }
 
 .great-ds-hero--box-shadow {
@@ -79,6 +83,8 @@
 }
 
 .great-ds-hero__image {
+    max-height: 355px;
+
     .great-ds-hero--large-image-scaling & {
         width: 100%;
     }
