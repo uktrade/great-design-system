@@ -4,8 +4,11 @@
 {% from "./_input-element.njk" import greatInputElement %}
 {% from "./_input-affix.njk" import greatInputAffix %}
 
-{% macro greatInput(id, name, type, classes, label, hint, errorMessage, spellcheck, value, disabled, autocomplete, pattern, inputmode, prefix, suffix, formGroupClasses, beforeInput, afterInput, attributes, placeholder) %}
-<div class="govuk-form-group{% if errorMessage %} govuk-form-group--error{% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
+{% macro greatInput(id, name, type, classes, label, hint, errorMessage, spellcheck, value, disabled, autocomplete, pattern, inputmode, prefix, suffix, formGroupClasses, beforeInput, afterInput, attributes, placeholder, noFormGroup) %}
+  {% if not noFormGroup %}
+  <div class="great-form-group{% if errorMessage %} great-form-group--error{% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
+  {% endif %}
+  
   {% if label %}
     {{ greatLabel(
       text=label.text,
@@ -17,10 +20,8 @@
   {% endif %}
 
   {% if hint %}
-    {% set hintId = id + '-hint' %}
-    {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
     {{ greatHint(
-      id=hintId,
+      id=id + '-hint',
       classes=hint.classes,
       html=hint.html,
       text=hint.text
@@ -28,10 +29,8 @@
   {% endif %}
 
   {% if errorMessage %}
-    {% set errorId = id + '-error' %}
-    {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
     {{ greatErrorMessage(
-      id=errorId,
+      id=id + '-error',
       classes=errorMessage.classes,
       visuallyHiddenText=errorMessage.visuallyHiddenText,
       html=errorMessage.html,
@@ -39,8 +38,8 @@
     ) }}
   {% endif %}
 
-  {% if prefix or suffix or beforeInput or afterInput %}
-    <div class="govuk-input__wrapper">
+  {% if beforeInput or prefix or suffix or afterInput %}
+    <div class="great-input__wrapper">
       {% if beforeInput %}
         {% if beforeInput.html %}{{ beforeInput.html|safe }}{% else %}{{ beforeInput.text }}{% endif %}
       {% endif %}
@@ -48,51 +47,37 @@
       {% if prefix %}
         {{ greatInputAffix(prefix="prefix", type="prefix") }}
       {% endif %}
+  {% endif %}
 
-      {{ greatInputElement(
-        id=id,
-        name=name,
-        type=type,
-        classes=classes,
-        errorMessage=errorMessage,
-        spellcheck=spellcheck,
-        value=value,
-        disabled=disabled,
-        describedBy=describedBy,
-        autocomplete=autocomplete,
-        autocapitalize=autocapitalize,
-        pattern=pattern,
-        inputmode=inputmode,
-        attributes=attributes,
-        placeholder=placeholder
-      ) }}
+  {{ greatInputElement(
+    id=id,
+    name=name,
+    type=type,
+    classes=classes,
+    errorMessage=errorMessage,
+    spellcheck=spellcheck,
+    value=value,
+    disabled=disabled,
+    describedBy=describedBy,
+    autocomplete=autocomplete,
+    pattern=pattern,
+    inputmode=inputmode,
+    attributes=attributes,
+    placeholder=placeholder
+  ) }}
 
+  {% if beforeInput or prefix or suffix or afterInput %}
       {% if suffix %}
-        {{ greatInputAffix(suffic="suffix", type="suffix") }}
+        {{ greatInputAffix(suffix="suffix", type="suffix") }}
       {% endif %}
 
       {% if afterInput %}
         {% if afterInput.html %}{{ afterInput.html|safe }}{% else %}{{ afterInput.text }}{% endif %}
       {% endif %}
     </div>
-  {% else %}
-    {{ greatInputElement(
-      id=id,
-      name=name,
-      type=type,
-      classes=classes,
-      errorMessage=errorMessage,
-      spellcheck=spellcheck,
-      value=value,
-      disabled=disabled,
-      describedBy=describedBy,
-      autocomplete=autocomplete,
-      autocapitalize=autocapitalize,
-      pattern=pattern,
-      inputmode=inputmode,
-      attributes=attributes,
-      placeholder=placeholder
-    ) }}
   {% endif %}
-</div>
+
+  {% if not noFormGroup %}
+  </div>
+  {% endif %}
 {% endmacro %}

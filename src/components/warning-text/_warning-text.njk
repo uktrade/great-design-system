@@ -1,0 +1,16 @@
+{% macro greatWarningText(classes, iconFallbackText, html, text, attributes, fullWidth) %}
+<div class="govuk-warning-text{% if classes %} {{ classes }}{% endif %}"
+  {% if attributes %}{{ attributes|safe }}{% endif %}>
+  {% if fullWidth %}
+  <div class="great-ds-warning-text__full-width">
+    {% endif %}
+    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+    <strong class="govuk-warning-text__text">
+        <span class="govuk-visually-hidden">{% if iconFallbackText %}{{ iconFallbackText }}{% else %}Warning{% endif %}</span>
+        {% if html %}{{ html|safe }}{% else %}{{ text }}{% endif %}
+    </strong>
+    {% if fullWidth %}
+  </div>
+  {% endif %}
+</div>
+{% endmacro %}
