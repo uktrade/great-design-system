@@ -1,6 +1,6 @@
 {% from "../action-link/_action-link.njk" import greatActionLink %}
 
-{% macro greatHero(classes, svgImagePath, pngImagePath, pngImageAlt, caption, heading, headingLevel, description, captionClass, headingClass, descriptionClass, actionLinkText, actionLinkUrl, actionLinkClass ) %}
+{% macro greatHero(classes, svgImagePath, pngImagePath, pngImageAlt, caption, heading, headingLevel, captionClass, headingClass, aboveCtaText, aboveCtaHtml, aboveCtaClasses, belowCtaText, belowCtaHtml, belowCtaClasses, actionLinkText, actionLinkUrl, actionLinkClass ) %}
     <div class="great-ds-hero 
         {% if classes %} {{ classes }} {% else %} great-ds-hero--large-image-cropping {% endif %}" >
         <div class = 'great-ds-hero__container great-ds-container'>
@@ -14,14 +14,15 @@
             <div class='great-ds-hero__text-container'>
                 {% if caption %} <p class='great-ds-hero__caption {% if captionClass %} {{ captionClass }} {% endif %}'> {{ caption }} </p> {% endif %}
                 {% if heading %} <h{% if headingLevel %}{{ headingLevel }}{% else %}1{% endif %} class='great-ds-hero__heading{% if headingClass %} {{ headingClass }} {% endif %}'> {{ heading }} </h1> {% endif %}
-                {% if descriptionText %} <p class='great-ds-hero__description{% if descriptionClass %} {{ descriptionClass }} {% endif %}'> {{ descriptionText }} </p> {% endif %}
-                {% if descriptionHtml %} <div class='great-ds-hero__description{% if descriptionClass %} {{ descriptionClass }} {% endif %}'> {{ descriptionHtml|safe }} </div> {% endif %}
+                {% if aboveCtaText %} <p class='great-ds-hero__description{% if aboveCtaClasses %} {{ aboveCtaClasses }} {% endif %}'> {{ aboveCtaText }} </p> {% endif %}
+                {% if aboveCtaHtml %} <div class='great-ds-hero__description{% if aboveCtaClasses %} {{ aboveCtaClasses }} {% endif %}'> {{ aboveCtaHtml|safe }} </div> {% endif %}
                 {% if actionLinkText and actionLinkUrl %}
                     <div class="great-ds-hero__action-link-container">
                         {{ greatActionLink(linkText=actionLinkText, linkHref=actionLinkUrl, linkClass=actionLinkClass) }}
                     </div>
                 {% endif %}
-            </div>  
+                {% if belowCtaText %} <p class='great-ds-hero__description{% if belowCtaClasses %} {{ belowCtaClasses }} {% endif %}'> {{ belowCtaText }} </p> {% endif %}
+                {% if belowCtaHtml %} <div class='great-ds-hero__description{% if belowCtaClasses %} {{ belowCtaClasses }} {% endif %}'> {{ belowCtaHtml|safe }} </div> {% endif %}</div>  
         </div>
     </div>
 {% endmacro %}

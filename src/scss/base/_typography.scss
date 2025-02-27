@@ -44,3 +44,20 @@ a {
     font-family: $great-ds-type-family-great;
     letter-spacing: -1.08px;
 }
+
+
+@mixin great-ds-link-decorator() {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: .3em;
+}
+
+@mixin great-ds-link() { // TODO move into own component when prioritised
+    @include great-ds-link-decorator;
+    &:hover {
+        color: $great-ds-semantic-text-hover-link;
+    }
+    &:focus {
+        @include govuk-focused-text;
+    }
+}

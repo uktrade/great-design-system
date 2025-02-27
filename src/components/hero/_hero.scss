@@ -157,6 +157,10 @@
     &--white {
         color: $great-ds-semantic-text-default-white-text;
     }
+
+    > * a {
+        @include great-ds-link;
+    }
 }
 
 .great-ds-hero__action-link-container {
