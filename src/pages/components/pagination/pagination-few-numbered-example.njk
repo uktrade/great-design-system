@@ -4,6 +4,6 @@
     {% from "../../../components/pagination/_numbered_pagination.njk" import greatNumberedPagination %}
     {{ greatNumberedPagination(
         currentPage=1,
-        totalPages=4
+        totalPagesRange=range(1,4)
     ) }}
 {% endblock %}

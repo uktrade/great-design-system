@@ -501,7 +501,15 @@ $great-ds-button-outline: 2px solid transparent;
 }
 
 .great-ds-button + .great-ds-button {
-    @include govuk-media-query($from: desktop) {
+    @include govuk-media-query($from: tablet) {
         margin-left: $great-ds-spacing-5;
+    }
+}
+
+.great-ds-button--input-group {
+    margin-top: $great-ds-spacing-2;
+    @include govuk-media-query($from: 320px) {
+        margin-top: 0;
+        margin-left: $great-ds-spacing-2;
     }
 }
