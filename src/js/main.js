@@ -16,4 +16,6 @@ export const initCookieNotice = (options = {}) => {
   return new CookieNotice(options);
 };
 
+export const copyUrlToClipboard = (element) => {};
+
 initCookieNotice();
