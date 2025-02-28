@@ -3,9 +3,8 @@
     margin-right: 10px;
   }
 
-  // TO DO: replace with a great-icon-blue colour variable
   path {
-    fill: #04043F;
+    fill: $great-ds-semantic-interaction-default-icon-great-ds-blue;
   }
 
   a {
@@ -50,5 +49,4 @@
       }
     }
   }
-
 }
