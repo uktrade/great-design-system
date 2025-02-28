@@ -21,7 +21,7 @@
 
   {% if hint %}
     {{ greatHint(
-      id=id + '-hint',
+      id=id|add('-hint'),
       classes=hint.classes,
       html=hint.html,
       text=hint.text
@@ -30,7 +30,7 @@
 
   {% if errorMessage %}
     {{ greatErrorMessage(
-      id=id + '-error',
+      id=id|add('-error'),
       classes=errorMessage.classes,
       visuallyHiddenText=errorMessage.visuallyHiddenText,
       html=errorMessage.html,
