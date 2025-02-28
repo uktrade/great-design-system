@@ -49,4 +49,22 @@
       }
     }
   }
+
+  button {
+    path {
+      fill: $great-ds-semantic-interaction-default-icon-link;
+    }
+
+    &:hover {
+      path {
+        fill: $govuk-link-hover-colour;
+      }
+    }
+
+    &:focus {
+      path {
+        fill: $govuk-focus-text-colour;
+      }
+    }
+  }
 }
