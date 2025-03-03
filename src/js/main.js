@@ -16,4 +16,15 @@ export const initCookieNotice = (options = {}) => {
   return new CookieNotice(options);
 };
 
+import { copyUrlToClipboard } from "./copy-url/copy-url.js";
+
+export const addCopyURLEventListeners = () => {
+  const button = document.getElementById("copy-url-button");
+
+  if (button) {
+    button.addEventListener("click", copyUrlToClipboard);
+  }
+};
+
 initCookieNotice();
+addCopyURLEventListeners();
