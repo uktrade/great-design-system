@@ -1,0 +1,70 @@
+.great-share {
+  svg {
+    margin-right: 10px;
+  }
+
+  path {
+    fill: $great-ds-semantic-interaction-default-icon-great-ds-blue;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+
+    &:hover {
+      path {
+        fill: $govuk-link-hover-colour;
+      }
+    }
+
+    &:focus {
+      margin-left: 50px;
+
+      svg {
+        left: -50px;
+        position: relative;
+      }
+
+      path {
+        fill: $govuk-focus-text-colour;
+      }
+
+      span {
+        margin-left: -50px;
+      }
+    }
+  }
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+
+    @include govuk-media-query($from: tablet, $until: desktop) {
+      display: flex;
+    }
+
+    li {
+      @include govuk-media-query($from: tablet, $until: desktop) {
+        margin-right: 30px;
+      }
+    }
+  }
+
+  button {
+    path {
+      fill: $great-ds-semantic-interaction-default-icon-link;
+    }
+
+    &:hover {
+      path {
+        fill: $govuk-link-hover-colour;
+      }
+    }
+
+    &:focus {
+      path {
+        fill: $govuk-focus-text-colour;
+      }
+    }
+  }
+}
