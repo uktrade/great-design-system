@@ -15,7 +15,7 @@
 
     {% if hint %}
       {{ greatHint(
-        id=id + '-hint',
+        id=id|add('-hint'),
         classes=hint.classes,
         attributes=hint.attributes,
         html=hint.html,
@@ -25,7 +25,7 @@
 
     {% if errorMessage %}
       {{ greatErrorMessage(
-        id=id + '-error',
+        id=id|add('-error'),
         classes=errorMessage.classes,
         attributes=errorMessage.attributes,
         html=errorMessage.html,
