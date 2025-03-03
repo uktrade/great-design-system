@@ -1,4 +1,4 @@
-export const copyUrlToClipboard = async () => {
+export const copyURLToClipboard = async () => {
   try {
     const url = window.location.href;
     await navigator.clipboard.writeText(url);
