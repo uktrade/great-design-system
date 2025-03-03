@@ -3,7 +3,13 @@
 {% block content %}
     {% from "../../../components/pagination/_numbered_pagination.njk" import greatNumberedPagination %}
     {{ greatNumberedPagination(
-        currentPage=1,
-        totalPagesRange=range(1,4)
+        currentPageNumber=3,
+        elidedPageRange=[1,2,3,4,5],
+        elidedPageStr='...',
+        pageParamName='page',
+        previousPageNumber=2,
+        nextPageNumber=4,
+        lastPageNumber=5,
+        currentPageURL='http://localhost:8080/components/pagination/?'
     ) }}
 {% endblock %}
