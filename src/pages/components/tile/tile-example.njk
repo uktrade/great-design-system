@@ -1,0 +1,27 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/tile/_tile.njk" import greatTile %}
+    {% from "../../../components/card/_card.njk" import greatCard %}
+
+    {% set cardContent %}
+        <div class="great-ds-card-container">
+            {{ greatCard(classes="great-ds-card--2", title="Card 1", description="Description for card 1", id="card-1", type= "elevated") }}
+            {{ greatCard(classes="great-ds-card--2", title="Card 2", description="Description for card 2", id="card-2", type= "elevated") }}
+            {{ greatCard(classes="great-ds-card--2", title="Card 3", description="Description for card 3", id="card-3", type= "elevated") }}
+            {{ greatCard(classes="great-ds-card--2", title="Card 4", description="Description for card 4", id="card-4", type= "elevated") }}
+        </div>
+    {% endset %}
+
+{{ greatTile(
+    caption="Caption",
+    title="Super long title that should wrap and be even longer",
+    icon="/static/icons/chat.svg",
+    description="Description",
+    content=cardContent,
+    actionLink={
+        href: "#",
+        text: "Link text"
+    }
+) }}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% from "../action-link/_action-link.njk" import greatActionLink %}
+
+{% macro greatTile(headingTag, size, caption, title, description, icon, content, actionLink, classes, isSimple, attributes) %}
+  <div class="great-ds-tile{% if isSimple %} great-ds-tile--simple{% endif %}{% if classes %} {{ classes }}{% endif %}"
+    {% if attributes %}{{ attributes | safe }}{% endif %}>
+    {% if caption or title or description %}
+        <div class="great-ds-tile__header">
+            {% if icon %}
+                <div class="great-ds-tile__icon-wrapper">
+                    {% if icon %}
+                        <img src="{{ icon }}" alt="" aria-hidden="true" class="great-ds-tile__icon{% if size %} great-ds-tile__icon--{{ size }}{% endif %}">
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="great-ds-tile__header-content">
+                {% if caption %}
+                    <span class="great-ds-tile__caption {% if size %}govuk-caption-{{ size }}{% else %}govuk-caption-l{% endif %}">{{ caption }}</span>
+                {% endif %}
+                {% if title %}
+                    <{% if headingTag %}{{ headingTag }}{% else %}h2{% endif %} class="great-ds-tile__title {% if size %}govuk-heading-{{ size }}{% else %}govuk-heading-l{% endif %}">{{ title }}</{% if headingTag %}{{ headingTag }}{% else %}h2{% endif %}>
+                {% endif %}
+                {% if description %}
+                    <p class="great-ds-tile__description">{{ description }}</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    <div class="great-ds-tile__content">
+      {{ content | safe }}
+    </div>
+    
+    {% if actionLink %}
+      <div class="great-ds-tile__footer">
+        {{ greatActionLink(
+          linkText=actionLink.text,
+          linkHref=actionLink.href
+        ) }}
+      </div>
+    {% endif %}
+  </div>
+{% endmacro %}

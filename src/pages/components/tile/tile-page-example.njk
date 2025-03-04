@@ -1,0 +1,81 @@
+{% extends "layout/_page.njk" %}
+{% from "../../../components/tile/_tile.njk" import greatTile %}
+{% from "../../../components/card/_card.njk" import greatCard %}
+{% from "../../../components/hero/_hero.njk" import greatHero %}
+
+{% set hideSidebar = true %}
+{% block content_wrapper %}
+
+<div style="background-color: #eef2f6ff; padding-top: 30px;">
+    <div class="great-ds-container">
+        {% set heroContent %}
+            {{ greatHero(
+                classes = 'great-ds-hero--large-image-scaling',
+                caption = 'Company name',
+                heading = 'Expand your business and set up in the UK',
+                description = 'Description of the hero component, which can be used to provide a bit more information to the user.',
+                pngImagePath = '../../../static/images/UK.png',
+                actionLinkUrl = '/',
+                actionLinkText = 'go here!'
+            ) }}
+        {% endset %}
+
+        {{ greatTile(
+            content=heroContent
+        ) }}
+    </div>
+    <div class="great-ds-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    {% set cardContent %}
+                        <div class="great-ds-card-container">
+                            {{ greatCard(classes="great-ds-card--2", title="Card 1", href="#", description="Description for card 1", id="card-1", type= "elevated") }}
+                            {{ greatCard(classes="great-ds-card--2", title="Card 2", href="#", description="Description for card 2", id="card-2", type= "elevated") }}
+                            {{ greatCard(classes="great-ds-card--2", title="Card 3", href="#", description="Description for card 3", id="card-3", type= "elevated") }}
+                            {{ greatCard(classes="great-ds-card--2", title="Card 4", href="#", description="Description for card 4", id="card-4", type= "elevated") }}
+                        </div>
+                    {% endset %}
+
+                    {{ greatTile(
+                        caption="Caption",
+                        title="Super long title that should wrap and be even longer",
+                        icon="/static/icons/chat.svg",
+                        description="Description",
+                        content=cardContent,
+                        actionLink={
+                            href: "#",
+                            text: "Link text"
+                        }
+                    ) }}
+                </div>
+                <div class="govuk-grid-column-one-third">
+                    {{ greatTile(
+                        isSimple=true,
+                        headingTag="h3",
+                        size="m",
+                        title="Find a consultant",
+                        icon="/static/icons/chat.svg",
+                        content="Hire UK experts in finance, law, tax and other specialist areas.",
+                        actionLink={
+                            href: "#",
+                            text: "Link text"
+                        }
+                    ) }}
+
+                    {{ greatTile(
+                        caption="Caption",
+                        headingTag="h3",
+                        size="m",
+                        title="Title",
+                        icon="/static/icons/chat.svg",
+                        content="What to consider if you want to use the UK as a base to export to other overseas markets. Includes regulations and trade agreements.",
+                        actionLink={
+                            href: "#",
+                            text: "Link text"
+                        }
+                    ) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

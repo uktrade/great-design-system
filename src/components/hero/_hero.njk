@@ -3,7 +3,7 @@
 {% macro greatHero(classes, svgImagePath, pngImagePath, pngImageAlt, caption, heading, headingLevel, description, captionClass, headingClass, descriptionClass, actionLinkText, actionLinkUrl, actionLinkClass ) %}
     <div class="great-ds-hero 
         {% if classes %} {{ classes }} {% else %} great-ds-hero--large-image-cropping {% endif %}" >
-        <div class = 'great-ds-hero__container great-ds-container'>
+        <div class = 'great-ds-hero__container'>
             <div class='great-ds-hero__image-container'>
                 {% if svgImagePath %}
                     {% include svgImagePath %}
