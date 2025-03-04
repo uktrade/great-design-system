@@ -9,7 +9,7 @@
 .great-ds-title-arrow__text {
     font-family: $great-ds-type-family-great-ds-bold;
     margin: 0 0 $great-ds-spacing-3;
-    color: $great-ds-semantic-text-default-link;
+    color: $great-ds-semantic-text-default-link !important;
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.3em;
