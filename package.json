@@ -1,7 +1,7 @@
 {
   "name": "@uktrade/great-design-system",
   "author": "Matt Simon",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "",
   "engines": {
     "node": "^20.9.0",
