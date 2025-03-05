@@ -20,7 +20,7 @@
     margin-right: 40px;
 
     a:hover & {
-        color: $great-ds-semantic-text-hover-link;
+        color: $great-ds-semantic-text-hover-link !important;
         text-decoration-color: $great-ds-semantic-text-hover-link;
         text-decoration-thickness: 2px;
     }
