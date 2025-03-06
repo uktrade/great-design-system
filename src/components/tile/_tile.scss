@@ -9,26 +9,44 @@
 }
 
 .great-ds-tile__header {
-    padding: $great-ds-spacing-6 $great-ds-spacing-6 0;
+    padding: $great-ds-spacing-6;
 
     @include govuk-media-query($from: desktop) {
-        padding: $great-ds-spacing-6-large $great-ds-spacing-6-large 0;
+        padding: $great-ds-spacing-6-large;
     }
 
     &:not(.great-ds-tile--simple &) {
         border-bottom: 1px solid $great-ds-semantic-border-default-light-grey-border;
-        padding-bottom: $great-ds-spacing-4;
+    }
+
+    .great-ds-tile--simple & {
+        padding-bottom: 0;
+        
+        &:has(.great-ds-tile__icon-wrapper) {
+            padding-top: $great-ds-spacing-5;
+        }
     }
 
     &:has(.great-ds-tile__icon-wrapper) {
         @include govuk-media-query($from: desktop) {
             display: flex;
-            align-items: flex-start;
             flex-direction: row-reverse;
             justify-content: space-between;
             gap: $great-ds-spacing-6;
         }
-    }
+    } 
+}
+
+.great-ds-tile__header-content {
+    align-self: center;
+}
+
+.great-ds-tile__title {
+    margin-bottom: 0;
+}
+
+.great-ds-tile__description {
+    margin: $great-ds-spacing-3 0 0;
 }
 
 .great-ds-tile__icon {
@@ -36,14 +54,13 @@
         width: 60px;
         height: 60px;
     }
-
 }
 
 .great-ds-tile__content {
-    padding: 0 $great-ds-spacing-6;
+    padding: $great-ds-spacing-2 $great-ds-spacing-6 0;
 
     @include govuk-media-query($from: desktop) {
-        padding: 0 $great-ds-spacing-6-large;
+        padding: $great-ds-spacing-2 $great-ds-spacing-6-large 0;
     }
 
     &:not(.great-ds-tile--simple &) {
