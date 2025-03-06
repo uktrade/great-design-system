@@ -78,6 +78,7 @@
     .great-ds-hero--image-only & {
         display: block;
         width: 100%;
+        max-width: 100%;
         margin: 0;
     }
 
@@ -124,11 +125,10 @@
   
 // Text container
 .great-ds-hero__text-container {
-    min-width: 600px;
-
     @include govuk-media-query($from: desktop) {
         flex: 1 0 50%;
         max-width: 50%;
+        min-width: 600px;
 
         .great-ds-hero--two-thirds & {
             flex: 1 0 66%;
