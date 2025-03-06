@@ -1,93 +1,105 @@
 .great-ds-hero {
-    width: 100%;
     
-    &--bg-light-blue {
-      background-color: $great-ds-primitive-brand-dbt-light-blue;
+    &-light-blue {
+        background-color: $great-ds-primitive-brand-dbt-light-blue;
     }
     
     &--bg-white {
-      background-color: $great-ds-semantic-surface-background-white;
+        background-color: $great-ds-semantic-surface-background-white;
     }
     
     &--bg-dark-blue {
-      background-color: $great-ds-primitive-brand-dbt-blue;
+        background-color: $great-ds-primitive-brand-dbt-blue;
     }
     
     &--box-shadow {
-      box-shadow: 0 10px 12px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 12px rgba(0, 0, 0, 0.05);
     }
-  }
-  
-  .great-ds-hero__container {
-    @extend .great-ds-container;
 
-    padding-top: $great-ds-spacing-3;
-    padding-bottom: $great-ds-spacing-3;
+    &--tile {
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+        margin: 0 -15px;
+
+        @include govuk-media-query($from: tablet) {
+            margin: 0;
+        }
+    }
+}
+  
+.great-ds-hero__container {
+    max-width: 1290px;
+    margin: auto;
+    padding: $great-ds-spacing-6;
+    box-sizing: border-box;
     width: 100%;
     
-    @include govuk-media-query($from: tablet) {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: $great-ds-spacing-6-large;
-      padding-bottom: $great-ds-spacing-6-large;
+    @include govuk-media-query($from: desktop) {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        padding: $great-ds-spacing-6-large;
     }
     
     .great-ds-hero--image-only & {
-      padding: 0;
-      margin: 0;
+        padding: 0;
+        margin: 0;
     }
-  }
+}
   
-  .great-ds-hero__image-container {
+.great-ds-hero__image-container {
     display: none;
     
-    @include govuk-media-query($from: tablet) {
-      display: block;
-      flex: 1 0 50%;
-      max-width: 50%;
-      overflow: hidden;
-      text-align: right;
+    @include govuk-media-query($from: desktop) {
+        display: block;
+        flex: 1 0 50%;
+        max-width: 50%;
+        overflow: hidden;
+        text-align: right;
+
+        .great-ds-hero--two-thirds & {
+            flex: 1 0 33%;
+            max-width: 33%;
+        }
     }
     
     .great-ds-hero--small-image & {
-      display: block;
-      width: 100%;
-      margin-bottom: $great-ds-spacing-5;
-      
-      @include govuk-media-query($from: tablet) {
-        width: 25%;
-        margin-bottom: 0;
-      }
+        display: block;
+        width: 100%;
+        margin-bottom: $great-ds-spacing-5;
+        
+        @include govuk-media-query($from: desktop) {
+            width: 25%;
+            margin-bottom: 0;
+        }
     }
     
     .great-ds-hero--image-only & {
-      display: block;
-      width: 100%;
-      margin: 0;
+        display: block;
+        width: 100%;
+        margin: 0;
     }
 
     .great-ds-hero--large-image-cropping & {
-        @include govuk-media-query($from: tablet) {
-          display: block;
-          height: 100%;
-          overflow: hidden;
+        @include govuk-media-query($from: desktop) {
+            display: block;
+            height: 100%;
+            overflow: hidden;
         }
-      }
+    }
       
     .great-ds-hero--large-image-scaling & {
-        @include govuk-media-query($from: tablet) {
+        @include govuk-media-query($from: desktop) {
             max-height: 355px;
             object-fit: contain;
         }
     }
-  }
+}
   
-  .great-ds-hero__image {
+.great-ds-hero__image {
     
-    @include govuk-media-query($from: tablet) {
-      max-height: 355px;
+    @include govuk-media-query($from: desktop) {
+        max-height: 355px;
     }
     
     .great-ds-hero--large-image-scaling & {
@@ -95,53 +107,57 @@
     }
     
     .great-ds-hero--small-image & {
-      max-width: 250px;
+        max-width: 250px;
     }
     
     .great-ds-hero--image-only & {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      
-      @include govuk-media-query($from: tablet) {
-        height: 355px;
-      }
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        
+        @include govuk-media-query($from: desktop) {
+            height: 355px;
+        }
     }
-  }
+}
   
-  // Text container
-  .great-ds-hero__text-container {
+// Text container
+.great-ds-hero__text-container {
     width: 100%;
     
-    @include govuk-media-query($from: tablet) {
-      flex: 1 0 50%;
-      flex-shrink: 1;
-      max-width: 50%;
-      padding-right: $great-ds-spacing-6;
+    @include govuk-media-query($from: desktop) {
+        flex: 1 0 50%;
+        flex-shrink: 1;
+        max-width: 50%;
+
+        .great-ds-hero--two-thirds & {
+            flex: 1 0 66%;
+            max-width: 66%;
+        }
     }
-    
+        
     // Image-only variant
     .great-ds-hero--image-only & {
-      display: none;
+        display: none;
     }
     
     // Small image variant
     .great-ds-hero--small-image & {
-      @include govuk-media-query($from: tablet) {
-        width: 75%;
-      }
+        @include govuk-media-query($from: desktop) {
+            width: 75%;
+        }
     }
-  }
+}
   
-  // Typography elements
-  .great-ds-hero__caption {
+// Typography elements
+.great-ds-hero__caption {
     margin-bottom: $great-ds-spacing-1;
     font-size: $great-ds-type-size-caption-xl-large;
     line-height: $great-ds-type-line-height-caption-xl-large;
     color: $great-ds-semantic-text-default-secondary-text;
-  }
+}
   
-  .great-ds-hero__heading {
+.great-ds-hero__heading {
     margin-top: 0;
     margin-bottom: $great-ds-spacing-3;
     font-size: $great-ds-type-size-heading-xl-large;
@@ -150,21 +166,21 @@
     line-height: $great-ds-type-line-height-heading-xl-large;
     
     &--white {
-      color: $great-ds-semantic-text-default-white-text;
+        color: $great-ds-semantic-text-default-white-text;
     }
-  }
+}
   
-  .great-ds-hero__description {
+.great-ds-hero__description {
     margin-bottom: $great-ds-spacing-8;
     
     &--white {
-      color: $great-ds-semantic-text-default-white-text;
+        color: $great-ds-semantic-text-default-white-text;
     }
     
     > * a {
-      @include great-ds-link;
+        @include great-ds-link;
     }
-  }
+}
   
 .great-ds-hero__action-link-container {
     margin-bottom: $great-ds-spacing-6;

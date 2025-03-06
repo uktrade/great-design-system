@@ -19,7 +19,7 @@
                 {% if title %}
                     {% from "../title-arrow/_title-arrow.njk" import greatTitleArrow %}
                     {% if type == "elevated" %}
-                        {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow=true) }}
+                        {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow="true") }}
                     {% else %}
                         {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow=hideArrow) }}
                     {% endif %}
