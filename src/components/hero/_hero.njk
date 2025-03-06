@@ -1,26 +1,38 @@
 {% from "../action-link/_action-link.njk" import greatActionLink %}
 
-{% macro greatHero(classes, svgImagePath, pngImagePath, pngImageAlt, caption, heading, headingLevel, description, captionClass, headingClass, descriptionClass, actionLinkText, actionLinkUrl, actionLinkClass ) %}
-    <div class="great-ds-hero 
-        {% if classes %} {{ classes }} {% else %} great-ds-hero--large-image-cropping {% endif %}" >
-        <div class = 'great-ds-hero__container'>
-            <div class='great-ds-hero__image-container'>
+{% macro greatHero(classes, svgImagePath, pngImagePath, pngImageAlt, caption, heading, headingLevel, description, captionClass, headingClass, descriptionClass, actionLinkText, actionLinkUrl, actionLinkClass) %}
+    <div class="great-ds-hero{% if classes %} {{ classes }}{% endif %}">
+        <div class="great-ds-hero__container">
+            <div class="great-ds-hero__image-container">
                 {% if svgImagePath %}
                     {% include svgImagePath %}
                 {% elif pngImagePath %}
-                    <img src = '{{ pngImagePath }}' alt = '{{ pngImageAlt }}' class='great-ds-hero__image'>
-                {% endif %} 
+                    <img src="{{ pngImagePath }}" alt="{{ pngImageAlt|default('') }}" class="great-ds-hero__image">
+                {% endif %}
             </div>
-            <div class='great-ds-hero__text-container'>
-                {% if caption %} <p class='great-ds-hero__caption {% if captionClass %} {{ captionClass }} {% endif %}'> {{ caption }} </p> {% endif %}
-                {% if heading %} <h{% if headingLevel %}{{ headingLevel }}{% else %}1{% endif %} class='great-ds-hero__heading{% if headingClass %} {{ headingClass }} {% endif %}'> {{ heading }} </h1> {% endif %}
-                {% if description %} <p class='great-ds-hero__description{% if descriptionClass %} {{ descriptionClass }} {% endif %}'> {{ description }} </p> {% endif %}
+            <div class="great-ds-hero__text-container">
+                {% if caption %}
+                    <p class="great-ds-hero__caption{% if captionClass %} {{ captionClass }}{% endif %}">{{ caption }}</p>
+                {% endif %}
+                
+                {% if heading %}
+                    <h{{ headingLevel|default(1) }} class="great-ds-hero__heading{% if headingClass %} {{ headingClass }}{% endif %}">{{ heading }}</h{{ headingLevel|default(1) }}>
+                {% endif %}
+                
+                {% if description %}
+                    <p class="great-ds-hero__description{% if descriptionClass %} {{ descriptionClass }}{% endif %}">{{ description }}</p>
+                {% endif %}
+                
                 {% if actionLinkText and actionLinkUrl %}
                     <div class="great-ds-hero__action-link-container">
-                        {{ greatActionLink(linkText=actionLinkText, linkHref=actionLinkUrl, linkClass=actionLinkClass) }}
+                        {{ greatActionLink(
+                            linkText=actionLinkText,
+                            linkHref=actionLinkUrl,
+                            linkClass=actionLinkClass
+                        ) }}
                     </div>
                 {% endif %}
-            </div>  
+            </div>
         </div>
     </div>
 {% endmacro %}
