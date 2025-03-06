@@ -1,0 +1,41 @@
+{% from "./_summary-list-link.njk" import greatSummaryListLink %}
+
+{% macro greatSummaryListContent(rows, classes, attributes, card) %}
+  <dl class="govuk-summary-list {% if classes %}{{ classes }}{% endif %}">
+    {% for row in rows %}
+      {% if row %}
+        <div class="govuk-summary-list__row {% if row.classes %}{{ row.classes }}{% endif %}">
+          <dt class="govuk-summary-list__key {% if row.key.classes %}{{ row.key.classes }}{% endif %}">
+            {% if row.key.html %}
+              {{ row.key.html | safe }}
+            {% else %}
+              {{ row.key.text }}
+            {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value {% if row.value.classes %}{{ row.value.classes }}{% endif %}">
+            {% if row.value.html %}
+              {{ row.value.html | safe }}
+            {% else %}
+              {{ row.value.text }}
+            {% endif %}
+          </dd>
+          {% if row.actions.items.length %}
+            <dd class="govuk-summary-list__actions {% if row.actions.classes %}{{ row.actions.classes }}{% endif %}">
+              {% if row.actions.items.length == 1 %}
+                {{ greatSummaryListLink(row.actions.items[0], card.title) }}
+              {% else %}
+                <ul class="govuk-summary-list__actions-list">
+                  {% for action in row.actions.items %}
+                    <li class="govuk-summary-list__actions-list-item">
+                      {{ greatSummaryListLink(action, card.title) }}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </dd>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </dl>
+{% endmacro %}

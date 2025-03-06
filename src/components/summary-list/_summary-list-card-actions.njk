@@ -1,0 +1,19 @@
+{% from "./_summary-list-link.njk" import greatSummaryListLink %}
+
+{% macro greatSummaryListCardActions(card) %}
+  {% if card.actions.items.length %}
+    {% if card.actions.items.length == 1 %}
+      <div class="govuk-summary-card__actions {% if card.actions.classes %}{{ card.actions.classes }}{% endif %}">
+        {{ greatSummaryListLink(card.actions.items[0], card.title) | trim | indent(4) }}
+      </div>
+    {% else %}
+      <ul class="govuk-summary-card__actions {% if card.actions.classes %}{{ card.actions.classes }}{% endif %}">
+        {% for action in card.actions.items %}
+          <li class="govuk-summary-card__action">
+            {{ greatSummaryListLink(action, card.title) | trim | indent(8) }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endif %}
+{% endmacro %}
