@@ -1,11 +1,11 @@
 .great-ds-hero {
     
-    &-light-blue {
-        background-color: $great-ds-primitive-brand-dbt-light-blue;
-    }
-    
     &--bg-white {
         background-color: $great-ds-semantic-surface-background-white;
+    }
+
+    &--bg-light-blue {
+        background-color: $great-ds-primitive-brand-dbt-light-blue;
     }
     
     &--bg-dark-blue {
