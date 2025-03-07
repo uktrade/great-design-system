@@ -16,8 +16,8 @@
             </div>
         {% endif %}
         <div class='great-ds-pagination__list-container--numbered'>
-            {% for pageNumber in elidedPageRange %}
-                <ul class="govuk-pagination__list">  
+            <ul class="govuk-pagination__list">  
+                {% for pageNumber in elidedPageRange %}
                     {% if pageNumber == elidedPageStr %}
                         <li class="govuk-pagination__item govuk-pagination__item--ellipses">
                             &ctdot;
@@ -29,8 +29,8 @@
                             </a>
                         </li>
                     {% endif %}
-                </ul>
-            {% endfor %}
+                {% endfor %}
+            </ul>
         </div>
         {% if nextPageNumber %}
             <div class="govuk-pagination__next great-ds-pagination__next--numbered {% if hoverClass %} {{ hoverClass }} {% else %} great-ds-pagination__hover--blue {% endif %}">

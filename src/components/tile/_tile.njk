@@ -17,7 +17,7 @@
                     <span class="great-ds-tile__caption {% if size %}govuk-caption-{{ size }}{% else %}govuk-caption-l{% endif %}">{{ caption }}</span>
                 {% endif %}
                 {% if title %}
-                    <{% if headingTag %}{{ headingTag }}{% else %}h2{% endif %} class="great-ds-tile__title {% if size %}govuk-heading-{{ size }}{% else %}govuk-heading-l{% endif %}">{{ title }}</{% if headingTag %}{{ headingTag }}{% else %}h2{% endif %}>
+                    <h{% if headingTag %}{{ headingTag }}{% else %}2{% endif %} class="great-ds-tile__title {% if size %}govuk-heading-{{ size }}{% else %}govuk-heading-l{% endif %}">{{ title }}</h{% if headingTag %}{{ headingTag }}{% else %}2{% endif %}>
                 {% endif %}
                 {% if description %}
                     <p class="great-ds-tile__description">{{ description }}</p>
@@ -25,12 +25,13 @@
             </div>
         </div>
     {% endif %}
-    <div class="great-ds-tile__content">
-      {{ content | safe }}
-    </div>
-    
+    {% if content %}
+        <div class="great-ds-tile__content">
+            {{ content | safe }}
+        </div>
+    {% endif %}
     {% if actionLink %}
-      <div class="great-ds-tile__footer">
+        <div class="great-ds-tile__footer">
         {{ greatActionLink(
           linkText=actionLink.text,
           linkHref=actionLink.href
