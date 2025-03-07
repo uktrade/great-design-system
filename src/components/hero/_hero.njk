@@ -7,7 +7,7 @@
                 {% if svgImagePath %}
                     {% include svgImagePath %}
                 {% elif pngImagePath %}
-                    <img src="{{ pngImagePath }}" alt="{{ pngImageAlt|default('') }}" class="great-ds-hero__image">
+                    <img src="{{ pngImagePath }}" alt="{% if pngImageAlt %}{{ pngImageAlt }}{% else %}{% endif %}" class="great-ds-hero__image">
                 {% endif %}
             </div>
             <div class="great-ds-hero__text-container">
