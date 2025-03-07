@@ -1,158 +1,193 @@
 .great-ds-hero {
-    display: flex;
-    width: 100%;
-    flex-direction: row-reverse;
-}
-
-.great-ds-hero--small-image {
-    justify-content: flex-end;
-}
-
-.great-ds-hero--image-only {
-    padding: 0;
-}
-
-.great-ds-hero--bg-dark-blue {
-    background-color: $great-ds-primitive-brand-dbt-light-blue; //TODO Alter figma config to include this in _surface.scss
-}
-
-.great-ds-hero--box-shadow {
-    box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.05)
-}
-
-.great-ds-hero__container {
-    padding-top: $great-ds-spacing-3;
-    padding-bottom: $great-ds-spacing-3;
-    width: 100%;
-    justify-content: flex-end;
-    align-items: center;
-    @include govuk-media-query($from: tablet) {
-        padding-top: $great-ds-spacing-6-large;
-        padding-bottom: $great-ds-spacing-6-large;
-        display:flex;
-        flex-direction: row-reverse;
+    
+    &--bg-white {
+        background-color: $great-ds-semantic-surface-background-white;
     }
 
+    &--bg-light-blue {
+        background-color: $great-ds-primitive-brand-dbt-light-blue;
+    }
+    
+    &--bg-dark-blue {
+        background-color: $great-ds-primitive-brand-dbt-blue;
+    }
+    
+    &--box-shadow {
+        box-shadow: 0 10px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    &--tile {
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+        margin: 0 -15px;
+
+        @include govuk-media-query($from: tablet) {
+            margin: 0;
+        }
+    }
+}
+  
+.great-ds-hero__container {
+    max-width: 1290px;
+    margin: auto;
+    padding: $great-ds-spacing-6;
+    box-sizing: border-box;
+    width: 100%;
+    
+    @include govuk-media-query($from: desktop) {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        padding: $great-ds-spacing-6-large;
+    }
+    
     .great-ds-hero--image-only & {
         padding: 0;
         margin: 0;
     }
 }
-
+  
 .great-ds-hero__image-container {
-    .great-ds-hero--large-image-scaling & {
-        @include govuk-media-query(950px) {
-            display: flex;
-            width: 50%;
-            align-items: flex-start;
-            flex-direction: row-reverse;
-            overflow: hidden;
+    display: none;
+    
+    @include govuk-media-query($from: desktop) {
+        display: block;
+        flex: 1 0 50%;
+        max-width: 50%;
+        flex-shrink: 1;
+        overflow: hidden;
+        text-align: right;
 
+        .great-ds-hero--two-thirds & {
+            flex: 1 0 33%;
+            max-width: 33%;
         }
-        display: none;
+    }
+    
+    .great-ds-hero--small-image & {
+        display: block;
+        width: 100%;
+        margin-bottom: $great-ds-spacing-5;
+        
+        @include govuk-media-query($from: desktop) {
+            width: 25%;
+            margin-bottom: 0;
+        }
+    }
+    
+    .great-ds-hero--image-only & {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
     }
 
     .great-ds-hero--large-image-cropping & {
-        @include govuk-media-query($from: tablet) {
+        @include govuk-media-query($from: desktop) {
             display: block;
             height: 100%;
-            width: auto;
-            overflow: hidden;
-        }
-        display: none;
-        
-    }
-
-    .great-ds-hero--small-image & {
-        width: 100%;
-        margin: 0 0 $great-ds-spacing-5 0;
-        @include govuk-media-query($from: tablet) {
-            width: 25%;
-            margin: auto 0 auto auto;
             overflow: hidden;
         }
     }
-
-    .great-ds-hero--image-only & {
-        width: 100%;
+      
+    .great-ds-hero--large-image-scaling & {
+        @include govuk-media-query($from: desktop) {
+            max-height: 355px;
+            object-fit: contain;
+        }
     }
 }
-
+  
 .great-ds-hero__image {
-    .great-ds-hero--large-image-scaling & {
-        width: 100%;
+    @include govuk-media-query($from: desktop) {
+        max-height: 355px;
+        margin-left: $great-ds-spacing-6-large;
     }
-
+    
+    .great-ds-hero--large-image-scaling & {
+        max-width: 100%;
+    }
+    
     .great-ds-hero--small-image & {
         max-width: 250px;
     }
-
+    
     .great-ds-hero--image-only & {
         width: 100%;
         height: 200px;
-        object-fit: none;
-        @include govuk-media-query($from: tablet) {
+        object-fit: cover;
+        
+        @include govuk-media-query($from: desktop) {
             height: 355px;
-            object-fit: cover;
         }
     }
 }
-
+  
+// Text container
 .great-ds-hero__text-container {
-    max-width: 600px;
-    min-height: 200px;
-    @include govuk-media-query($from: tablet) {
+    @include govuk-media-query($from: desktop) {
+        flex: 1 0 50%;
+        max-width: 50%;
         min-width: 600px;
-        min-height: 355px;
-    }
 
+        .great-ds-hero--two-thirds & {
+            flex: 1 0 66%;
+            max-width: 66%;
+        }
+    }
+        
+    // Image-only variant
     .great-ds-hero--image-only & {
         display: none;
     }
-
-    .great-ds-hero--large-image-scaling &, .great-ds-hero--large-image-cropping & {
-        @include govuk-media-query($from: tablet) {
-            width: 50%;
-            display:flex;
-            flex-direction: column;
-        }
-    }
-
+    
+    // Small image variant
     .great-ds-hero--small-image & {
-        @include govuk-media-query($from: tablet) { 
+        min-width: auto;
+        @include govuk-media-query($from: desktop) {
             width: 75%;
         }
     }
-}
 
+    .great-ds-hero--large-image-scaling & {
+        min-width: auto;
+
+    }
+}
+  
+// Typography elements
 .great-ds-hero__caption {
     margin-bottom: $great-ds-spacing-1;
     font-size: $great-ds-type-size-caption-xl-large;
     line-height: $great-ds-type-line-height-caption-xl-large;
     color: $great-ds-semantic-text-default-secondary-text;
 }
-
+  
 .great-ds-hero__heading {
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: $great-ds-spacing-3;
     font-size: $great-ds-type-size-heading-xl-large;
     letter-spacing: -1.44px;
     font-weight: 600;
     line-height: $great-ds-type-line-height-heading-xl-large;
-
+    
     &--white {
         color: $great-ds-semantic-text-default-white-text;
     }
 }
-
+  
 .great-ds-hero__description {
     margin-bottom: $great-ds-spacing-8;
-
+    
     &--white {
         color: $great-ds-semantic-text-default-white-text;
     }
+    
+    > * a {
+        @include great-ds-link;
+    }
 }
-
+  
 .great-ds-hero__action-link-container {
-    padding-bottom: $great-ds-spacing-6;
+    margin-bottom: $great-ds-spacing-6;
 }
