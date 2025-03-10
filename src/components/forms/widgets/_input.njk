@@ -1,0 +1,37 @@
+{% from "../_label.njk" import greatLabel %}
+{% from "./_attrs.njk" import greatAttrs %}
+
+{% macro greatInput(widget) %}
+
+  {% set field = widget.field %}
+  {% set error = field.error %}
+  {% set field_group_class = field.field_group_class %}
+  {% set label = field.label %}
+  {% set attrs = widget.attrs %}
+  {% set name = widget.name %}
+  {% set value = widget.value %}
+  {% set type = widget.type %}
+  {% set class = attrs.class %}
+
+ <div class="govuk-form-group{% if error %} great-form-group--error{% endif %}{% if field_group_class %} {{ field_group_class }}{% endif %}">
+  
+  {% if label %}
+    {{ greatLabel(
+      text=label.text,
+      html=label.html,
+      class=label.class,
+      for=label.id,
+      isPageHeading=label.isPageHeading
+    ) }}
+  {% endif %}
+
+  <input class="govuk-input{% if attrs.class %} {{ attrs.class }}{% endif %}{% if error %} govuk-input--error{% endif %}" type="{{ type }}" name="{{ name }}"{% if value != None %} value="{{ value | string }}"{% endif %}
+  
+  {{ greatAttrs(
+    attrs=attrs
+  ) }}
+
+  >
+
+  </div>
+{% endmacro %}

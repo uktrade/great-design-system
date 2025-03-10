@@ -1,0 +1,17 @@
+{% macro greatLabel(text, html, class, for, isPageHeading) %}
+{% if text or html %}
+  {% if isPageHeading %}
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label{% if class %} {{ class }}{% endif %}"
+        {% if for %}for="{{ for }}"{% endif %}>
+        {% if html %}{{ html|safe }}{% else %}{{ text }}{% endif %}
+      </label>
+    </h1>
+  {% else %}
+    <label class="govuk-label{% if class %} {{ class }}{% endif %}"
+      {% if for %}for="{{ for }}"{% endif %}>
+      {% if html %}{{ html|safe }}{% else %}{{ text }}{% endif %}
+    </label>
+  {% endif %}
+{% endif %}
+{% endmacro %}

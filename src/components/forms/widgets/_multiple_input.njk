@@ -1,0 +1,59 @@
+{% from "../_label.njk" import greatLabel %}
+{% from "./_radio_option.njk" import greatRadioOption %}
+
+{% macro greatInput(widget) %}
+
+  {% set field = widget.field %}
+  {% set error = field.error %}
+  {% set field_group_class = field.field_group_class %}
+  {% set label = field.label %}
+  {% set attrs = widget.attrs %}
+  {% set name = widget.name %}
+  {% set value = widget.value %}
+  {% set type = widget.type %}
+  {% set class = attrs.class %}
+  {% set id = attrs.id %}
+
+<div class="govuk-form-group{% if error %} great-form-group--error{% endif %}{% if field_group_class %} {{ field_group_class }}{% endif %}">
+
+  {% if label %}
+    {{ greatLabel(
+      text=label.text,
+      html=label.html,
+      class=label.class,
+      for=label.id,
+      isPageHeading=label.isPageHeading
+    ) }}
+  {% endif %}
+
+  <ul{% if id %} id="{{ id }}"{% endif %} class="g-select-multiple {% if class %}{{ class }}{% endif %}">
+    {% for group, options, index in widget.optgroups %}
+      {% if group %}
+        <li class="form-group">
+          <ul class="m-0"{% if id %} id="{{ id }}_{{ index }}"{% endif %}>
+            <label{% if id %} id="{{ id }}-
+            {% filter forceescape %}
+            {{ group | lower }}
+            {% endfilter %}
+            -label"{% endif %} class="form-label">{{ group }}</label>
+      {% endif %}
+      {% for option in options %}
+            
+        <li class="multiple-choice">
+
+          {% if option.template_name == 'radio' %}
+          {{ greatRadioOption(
+            widget=option
+          ) }}
+          {% endif %}
+        
+        </li>
+      {% endfor %}
+      {% if group %}
+        </ul></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  </div>
+{% endmacro %}

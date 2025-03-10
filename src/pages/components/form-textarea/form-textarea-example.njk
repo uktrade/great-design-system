@@ -1,0 +1,24 @@
+{% extends 'layout/_example.njk' %}
+
+{% block content %}
+    {% from '../../../components/forms/widgets/_textarea.njk' import greatTextarea %}
+
+    {{ greatTextarea(
+        widget = {
+            name: 'example',
+            value: 'Example value',
+            id_for_label: 'id-example',
+            field: {
+                label: {
+                    class: '',
+                    text: 'Text area example',
+                    id: '1234-5678-9101-1121'
+                }
+            },
+            attrs: {
+                rows: 5
+            }
+        }
+    )}}
+
+{% endblock %}

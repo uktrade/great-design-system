@@ -1,0 +1,17 @@
+{% from "./__input.njk" import greatBasicInput %}
+
+{% macro greatRadioOption(widget) %}
+
+  {% set attrs = widget.attrs %}
+  {% set name = widget.name %}
+  {% set id = attrs.id %}
+
+{{ greatBasicInput(
+    widget=widget,
+	field=field
+) }}
+
+<label{% if id %} id="{{ id }}-label" for="{{ id }}"{% endif %} class="form-label">
+	{{ widget.label }}
+</label>
+{% endmacro %}
