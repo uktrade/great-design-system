@@ -1,4 +1,5 @@
 {% from "../_label.njk" import greatLabel %}
+{% from "../_hint.njk" import greatHint %}
 {% from "./_attrs.njk" import greatAttrs %}
 
 {% macro greatInput(widget) %}
@@ -7,6 +8,7 @@
   {% set error = field.error %}
   {% set field_group_class = field.field_group_class %}
   {% set label = field.label %}
+  {% set hint = field.hint %}
   {% set attrs = widget.attrs %}
   {% set name = widget.name %}
   {% set value = widget.value %}
@@ -25,7 +27,16 @@
     ) }}
   {% endif %}
 
-  <input class="govuk-input{% if attrs.class %} {{ attrs.class }}{% endif %}{% if error %} govuk-input--error{% endif %}" type="{{ type }}" name="{{ name }}"{% if value != None %} value="{{ value | string }}"{% endif %}
+  {% if hint %}
+    {{ greatHint(
+      id=hint.id|add('-hint'),
+      classes=hint.class,
+      html=hint.html,
+      text=hint.text
+    ) }}
+  {% endif %}
+
+  <input class="govuk-input{% if class %} {{ class }}{% endif %}{% if error %} govuk-input--error{% endif %}" type="{{ type }}" name="{{ name }}"{% if value != None %} value="{{ value | string }}"{% endif %}
   
   {{ greatAttrs(
     attrs=attrs

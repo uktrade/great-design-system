@@ -1,4 +1,5 @@
 {% from "../_label.njk" import greatLabel %}
+{% from "../_hint.njk" import greatHint %}
 {% from "./_attrs.njk" import greatAttrs %}
 
 {% macro greatTextarea(widget) %}
@@ -7,6 +8,7 @@
   {% set error = field.error %}
   {% set field_group_class = field.field_group_class %}
   {% set label = field.label %}
+  {% set hint = field.hint %}
   {% set attrs = widget.attrs %}
   {% set name = widget.name %}
   {% set value = widget.value %}
@@ -23,6 +25,15 @@
       class=label.class,
       for=label.id,
       isPageHeading=label.isPageHeading
+    ) }}
+  {% endif %}
+
+  {% if hint %}
+    {{ greatHint(
+      id=hint.id|add('-hint'),
+      classes=hint.class,
+      html=hint.html,
+      text=hint.text
     ) }}
   {% endif %}
 

@@ -1,12 +1,14 @@
 {% from "../_label.njk" import greatLabel %}
+{% from "../_hint.njk" import greatHint %}
 {% from "./_radio_option.njk" import greatRadioOption %}
 
-{% macro greatInput(widget) %}
+{% macro greatMultipleInput(widget) %}
 
   {% set field = widget.field %}
   {% set error = field.error %}
   {% set field_group_class = field.field_group_class %}
   {% set label = field.label %}
+  {% set hint = field.hint %}
   {% set attrs = widget.attrs %}
   {% set name = widget.name %}
   {% set value = widget.value %}
@@ -14,7 +16,7 @@
   {% set class = attrs.class %}
   {% set id = attrs.id %}
 
-<div class="govuk-form-group{% if error %} great-form-group--error{% endif %}{% if field_group_class %} {{ field_group_class }}{% endif %}">
+<div class="govuk-form-groups{% if error %} great-form-group--error{% endif %}{% if field_group_class %} {{ field_group_class }}{% endif %}">
 
   {% if label %}
     {{ greatLabel(
@@ -23,6 +25,15 @@
       class=label.class,
       for=label.id,
       isPageHeading=label.isPageHeading
+    ) }}
+  {% endif %}
+
+  {% if hint %}
+    {{ greatHint(
+      id=hint.id|add('-hint'),
+      classes=hint.class,
+      html=hint.html,
+      text=hint.text
     ) }}
   {% endif %}
 
@@ -46,7 +57,7 @@
             widget=option
           ) }}
           {% endif %}
-        
+
         </li>
       {% endfor %}
       {% if group %}
