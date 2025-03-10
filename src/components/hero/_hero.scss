@@ -27,11 +27,14 @@
 }
   
 .great-ds-hero__container {
-    max-width: 1290px;
     margin: auto;
     padding: $great-ds-spacing-6;
     box-sizing: border-box;
     width: 100%;
+
+    &:not(.great-ds-hero--image-only *) {
+        max-width: 1290px;
+    }
     
     @include govuk-media-query($from: desktop) {
         display: flex;
@@ -101,7 +104,6 @@
 .great-ds-hero__image {
     @include govuk-media-query($from: desktop) {
         max-height: 355px;
-        margin-left: $great-ds-spacing-6-large;
     }
     
     .great-ds-hero--large-image-scaling & {
@@ -129,6 +131,7 @@
         flex: 1 0 50%;
         max-width: 50%;
         min-width: 600px;
+        margin-right: $great-ds-spacing-6-large;
 
         .great-ds-hero--two-thirds & {
             flex: 1 0 66%;
@@ -189,5 +192,5 @@
 }
   
 .great-ds-hero__action-link-container {
-    margin-bottom: $great-ds-spacing-6;
+    margin-bottom: $great-ds-spacing-8;
 }
