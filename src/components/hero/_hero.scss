@@ -14,6 +14,8 @@
     
     &--box-shadow {
         box-shadow: 0 10px 12px rgba(0, 0, 0, 0.05);
+        position: relative;
+        z-index: 100;
     }
 
     &--tile {
@@ -26,14 +28,10 @@
     }
 }
   
-.great-ds-hero__container {
-    margin: auto;
-    padding: $great-ds-spacing-6;
-    box-sizing: border-box;
+.great-ds-hero__container { 
     width: 100%;
-
     &:not(.great-ds-hero--image-only *) {
-        max-width: 1290px;
+        @extend .great-ds-container;
     }
     
     @include govuk-media-query($from: desktop) {
@@ -52,8 +50,10 @@
   
 .great-ds-hero__image-container {
     display: none;
+    height: 200px;
     
     @include govuk-media-query($from: desktop) {
+        height: 355px;
         display: block;
         flex: 1 0 50%;
         max-width: 50%;
@@ -88,14 +88,12 @@
     .great-ds-hero--large-image-cropping & {
         @include govuk-media-query($from: desktop) {
             display: block;
-            height: 100%;
             overflow: hidden;
         }
     }
       
     .great-ds-hero--large-image-scaling & {
         @include govuk-media-query($from: desktop) {
-            max-height: 355px;
             object-fit: contain;
         }
     }
