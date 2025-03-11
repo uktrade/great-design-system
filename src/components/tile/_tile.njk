@@ -1,6 +1,6 @@
 {% from "../action-link/_action-link.njk" import greatActionLink %}
 
-{% macro greatTile(headingTag, size, caption, title, description, icon, content, actionLink, classes, isSimple, attributes) %}
+{% macro greatTile(headingTag, size, caption, title, description, icon, content, actionLinkHref, actionLinkText, classes, isSimple, attributes, removeContentPadding) %}
   <div class="great-ds-tile{% if isSimple %} great-ds-tile--simple{% endif %}{% if classes %} {{ classes }}{% endif %}"
     {% if attributes %}{{ attributes | safe }}{% endif %}>
     {% if caption or title or description %}
@@ -26,15 +26,15 @@
         </div>
     {% endif %}
     {% if content %}
-        <div class="great-ds-tile__content">
+        <div class="great-ds-tile__content {% if removeContentPadding %}great-ds-tile__content--no-padding{% endif %}">
             {{ content | safe }}
         </div>
     {% endif %}
-    {% if actionLink %}
+    {% if actionLinkHref %}
         <div class="great-ds-tile__footer">
         {{ greatActionLink(
-          linkText=actionLink.text,
-          linkHref=actionLink.href
+          linkText=actionLinkText,
+          linkHref=actionLinkHref
         ) }}
       </div>
     {% endif %}
