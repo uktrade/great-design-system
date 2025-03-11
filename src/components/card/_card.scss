@@ -156,10 +156,12 @@
     font-family: $great-ds-type-family-great;
 }
 
-.great-progess-container {
+.great-progress-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    width: fit-content;
+    min-width: 200px;
     .great-progress-bar-container{
         margin-top: $great-ds-spacing-2;
         position: relative;
