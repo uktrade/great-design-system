@@ -19,15 +19,11 @@
                 {% if title %}
                     {% from "../title-arrow/_title-arrow.njk" import greatTitleArrow %}
                     {% if type == "elevated" %}
-                        {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow="true") }}
+                        {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow="true", completed=completed) }}
                     {% else %}
-                        {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow=hideArrow) }}
+                        {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow=hideArrow, completed=completed) }}
                     {% endif %}
                 {% endif %}
-                {%if completed%}
-                    <span class="great-badge">Completed</span>
-                {% endif %}
-
                 {% if description %}
                     <div class="great-ds-card__description">{{ description }}</div>
                 {% endif %}
