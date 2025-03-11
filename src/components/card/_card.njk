@@ -1,4 +1,4 @@
-{% macro greatCard(attributes, classes, type, href, imageUrl, imageAlt, iconSvg, title, titleSize, description, metadataText, metaDataIconPath, metadataIconType, id, hideArrow) %}
+{% macro greatCard(attributes, classes, type, href, imageUrl, imageAlt, iconSvg, title, titleSize, description, metadataText, metaDataIconPath, metadataIconType, id, hideArrow, progressData, completed) %}
     <div class="great-ds-card{% if classes %} {{ classes }}{% endif %}{% if type %} great-ds-card--{{ type }}{% endif %}" {% if href %}role="article"{% endif %}>
         <div class="great-ds-card__inner">
             {% if href %}
@@ -24,6 +24,9 @@
                         {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow=hideArrow) }}
                     {% endif %}
                 {% endif %}
+                {%if completed%}
+                    <span class="great-badge">Completed</span>
+                {% endif %}
 
                 {% if description %}
                     <div class="great-ds-card__description">{{ description }}</div>
@@ -37,6 +40,23 @@
                         <span class="great-ds-card__metadata-text">{{ metadataText }}</span>
                     </div>
                 {% endif %}
+
+                {%if progressData %}
+                    <div class="great-progess-container">
+                        <div class ="great-progress-bar-container">
+                            <div class="great-progress-bar">
+                            <span style="width: {{progressData.completion_percentage}}%"></span>
+                            </div>
+                            <span class="govuk-label-m">
+                            {{progressData.completion_count}}
+                            /
+                            {{progressData.total_pages}}
+                            marked as complete
+                            </span>
+                        </div>
+                    </div>
+                {% endif %}
+                
             </div>
 
             {% if href %}
