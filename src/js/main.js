@@ -19,10 +19,10 @@ export const initCookieNotice = (options = {}) => {
 import { copyURLToClipboard } from "./copy-url/copy-url.js";
 
 export const addCopyURLEventListeners = () => {
-  const button = document.getElementById("copy-url-button");
+  const copyURLButton = document.getElementById("copy-url-button");
 
-  if (button) {
-    button.addEventListener("click", copyURLToClipboard);
+  if (copyURLButton) {
+    copyURLButton.addEventListener("click", copyURLToClipboard);
   }
 };
 
