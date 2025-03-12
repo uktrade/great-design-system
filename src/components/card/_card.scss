@@ -129,6 +129,19 @@
     margin: $great-ds-spacing-6;
 }
 
+.great-ds-card__title-wrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    gap: $great-ds-spacing-2;
+
+    @include govuk-media-query($from: desktop) {
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 0;
+    }
+}
+
 .great-ds-card__description {
     @include govuk-font-size($size: 18);
     font-family: $great-ds-type-family-great;
@@ -155,35 +168,3 @@
     @include govuk-font-size($size: 16);
     font-family: $great-ds-type-family-great;
 }
-
-.great-progress-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    width: fit-content;
-    min-width: 200px;
-    .great-progress-bar-container{
-        margin-top: $great-ds-spacing-2;
-        position: relative;
-        font-family: $great-ds-type-family-great-ds-bold;
-        top: 0; 
-    }
-  }
-
-
-.great-progress-bar {
-    display: flex;
-    background:#cce2d8;
-    border-radius: 0!important;
-    height: 5px;
-    min-width: 50px;
-    margin: 0;
-    
-}  
-
-.great-progress-bar span{
-    border-radius: 0!important;
-    background:#00703c;
-    
-} 
-  

@@ -1,14 +1,5 @@
-{% from "../tag/_tag.njk" import greatTag %}
 {% macro greatTitleArrow(text, size, id, tag, hideArrow,completed) %}
     <{% if tag %}{{ tag }}{% else %}h3{% endif %} class="great-ds-title-arrow__text{% if size %} great-ds-title-arrow__text--{{ size }}{% endif %}{% if hideArrow == "true"%} great-ds-title-arrow__text--no-arrow{% endif %}{% if completed== "true"%} great-ds-title-arrow__text--no-arrow{% endif %}" {% if id %}id="{{ id }}"{% endif %}>
         {{ text }}
     </{% if tag %}{{ tag }}{% else %}h3{% endif %}>
-    {%if completed== "true" %}
-       
-        {{ greatTag(
-            text="Completed",
-            type="success"
-        ) }}
-        
-    {% endif %}
 {% endmacro %}
