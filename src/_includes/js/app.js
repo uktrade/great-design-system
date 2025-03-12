@@ -65,6 +65,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// add share url copy functionality
+import { copyURLToClipboard } from "../../js/copy-url/copy-url.js";
+
+export const addCopyURLEventListeners = () => {
+  const copyURLButton = document.getElementById("copy-url-button");
+
+  if (copyURLButton) {
+    copyURLButton.addEventListener("click", copyURLToClipboard);
+  }
+};
+
+addCopyURLEventListeners();
+
 import { initAll } from "govuk-frontend";
 initAll();
 
