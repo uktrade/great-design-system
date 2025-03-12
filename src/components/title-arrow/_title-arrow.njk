@@ -1,5 +1,5 @@
 {% macro greatTitleArrow(text, size, id, tag, hideArrow) %}
-    <{% if tag %}{{ tag }}{% else %}h3{% endif %} class="great-ds-title-arrow__text{% if size %} great-ds-title-arrow__text--{{ size }}{% endif %}{% if hideArrow == "true"%} great-ds-title-arrow__text--no-arrow{% endif %}{% if completed== "true"%} great-ds-title-arrow__text--no-arrow{% endif %}" {% if id %}id="{{ id }}"{% endif %}>
+    <{% if tag %}{{ tag }}{% else %}h3{% endif %} class="great-ds-title-arrow__text{% if size %} great-ds-title-arrow__text--{{ size }}{% endif %}{% if hideArrow == "true"%} great-ds-title-arrow__text--no-arrow{% endif %}" {% if id %}id="{{ id }}"{% endif %}>
         {{ text }}
     </{% if tag %}{{ tag }}{% else %}h3{% endif %}>
 {% endmacro %}
