@@ -18,6 +18,7 @@
     display: block;
     position: relative;
     margin-right: 40px;
+    width: 100%;
 
     a:hover & {
         color: $great-ds-semantic-text-hover-link !important;
@@ -39,9 +40,13 @@
         -webkit-mask: url($arrow-svg) center / contain no-repeat;
         mask: url($arrow-svg) center / contain no-repeat;
         position: absolute;
-        right: -40px;
+        right: 0;
         top: calc(0.2em + 2px);
         line-height: 1;
+
+        @include govuk-media-query($from: desktop) {
+            right: -40px;
+        }
     }
 
     &--m {
@@ -80,3 +85,5 @@
         }
     }
 }
+
+
