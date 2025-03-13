@@ -1,0 +1,13 @@
+{% macro greatProgressBar(completionPercentage, completionCount, totalPages, fullWidth) %}
+    <div class="great-ds-progress-bar {% if fullWidth %}great-ds-progress-bar--full{% endif %}">
+        <div class="great-ds-progress-bar__container">
+            <span class="great-ds-progress-bar__progress" style="width: {{ completionPercentage }}%"></span>
+        </div>
+        <div class="great-ds-progress-bar__label">
+            {{ completionCount }}
+            /
+            {{ totalPages }}
+        marked as complete
+        </div>
+    </div>
+{% endmacro %}

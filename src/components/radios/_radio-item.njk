@@ -21,7 +21,7 @@
         {% endif %}  
         {% if item.hint %}
           {{ greatHint(
-            id=item.id + '-hint',
+            id=item.id|add('-hint'),
             classes='govuk-radios__hint',
             html=item.hint.html,
             text=item.hint.text
@@ -33,7 +33,7 @@
       {{greatInput (
         type =item.conditionalReveal.type,
         name=name,
-        id="conditional_input-" +name+'_'+item.value,
+        id="conditional_input-"|add(name)|add('_')|add(item.value),
         label={'text' : item.conditionalReveal.label},
         classes = item.conditionalReveal.classes,
         spellcheck= item.conditionalReveal.spellcheck,

@@ -1,0 +1,35 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/checkboxes/_checkboxes.njk" import greatCheckboxes %}
+    {{ greatCheckboxes(
+
+        isPageHeading='true',
+        id = 'countries',
+        name='countriesName',
+        fieldset={
+            id:"fieldset-id",
+            name:"fieldset-name",
+            classes:"",
+            legend:{
+                text:"Choose a Country",
+                isPageHeading: true,
+                classes:""
+            }
+        },
+        hint = {
+            text: 'Select all countries that apply'
+        },
+        checkboxes=[
+            {text: "France",value: "France", label: "Option 1 Label"
+            },
+            {text: "Italy",value: "option-2",label: "Option 2 Label"
+            },
+            {text: "Belgium",value: "option-3",label: "Option 3 Label"
+            },
+            {text: "None of the above",value: "option-3",label: "Option 3 Label", divider: 'true'
+            }
+        ]
+        ) }}
+
+{% endblock %}

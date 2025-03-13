@@ -9,7 +9,7 @@
 .great-ds-title-arrow__text {
     font-family: $great-ds-type-family-great-ds-bold;
     margin: 0 0 $great-ds-spacing-3;
-    color: $great-ds-semantic-text-default-link;
+    color: $great-ds-semantic-text-default-link !important;
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.3em;
@@ -18,9 +18,10 @@
     display: block;
     position: relative;
     margin-right: 40px;
+    width: 100%;
 
     a:hover & {
-        color: $great-ds-semantic-text-hover-link;
+        color: $great-ds-semantic-text-hover-link !important;
         text-decoration-color: $great-ds-semantic-text-hover-link;
         text-decoration-thickness: 2px;
     }
@@ -39,9 +40,13 @@
         -webkit-mask: url($arrow-svg) center / contain no-repeat;
         mask: url($arrow-svg) center / contain no-repeat;
         position: absolute;
-        right: -40px;
+        right: 0;
         top: calc(0.2em + 2px);
         line-height: 1;
+
+        @include govuk-media-query($from: desktop) {
+            right: -40px;
+        }
     }
 
     &--m {
@@ -80,3 +85,5 @@
         }
     }
 }
+
+

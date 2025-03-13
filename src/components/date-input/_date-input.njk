@@ -34,7 +34,7 @@
 
     {% if hint %}
       {{ greatHint(
-        id=id + '-hint',
+        id=id|add('-hint'),
         classes=hint.classes,
         html=hint.html,
         text=hint.text
@@ -43,7 +43,7 @@
 
     {% if errorMessage %}
       {{ greatErrorMessage(
-        id=id + "-error",
+        id=id|add('-error'),
         classes=errorMessage.classes,
         visuallyHiddenText=errorMessage.visuallyHiddenText,
         html=errorMessage.html,
@@ -57,13 +57,13 @@
           {{ greatLabel(
             text="Day",
             classes="govuk-date-input__label",
-            for=id + "-day"
+            for=id|add("-day")
           ) }}
           {{ greatInputElement(
               id="great-ds-input--input",
-              classes="govuk-input--width-" + dayWidth,
-              id=id + "-day",
-              name=name + "-day",
+              classes="govuk-input--width-"|add(dayWidth),
+              id=id|add("-day"),
+              name=name|add("-day"),
               type="text",
               inputmode="numeric"
           ) }}
@@ -74,13 +74,13 @@
           {{ greatLabel(
             text="Month",
             classes="govuk-date-input__label",
-            for=id + '-month'
+            for=id|add('-month')
           ) }}
           {{ greatInputElement(
               id="great-ds-input--input",
-              classes="govuk-input--width-" + monthWidth,
-              id=id + "-month",
-              name=name + "-month",
+              classes="govuk-input--width-"|add(monthWidth),
+              id=id|add("-month"),
+              name=name|add("-month"),
               type="text",
               inputmode="numeric"
           ) }}
@@ -91,13 +91,13 @@
           {{ greatLabel(
             text="Year",
             classes="govuk-date-input__label",
-            for=id + "-year"
+            for=id|add("-year")
           ) }}
           {{ greatInputElement(
               id="great-ds-input--input",
-              classes="govuk-input--width-" + yearWidth,
-              id=id + "-year",
-              name=name + "-year",
+              classes="govuk-input--width-"|add(yearWidth),
+              id=id|add("-year"),
+              name=name|add("-year"),
               type="text",
               inputmode="numeric"
           ) }}

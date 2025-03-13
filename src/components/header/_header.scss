@@ -526,6 +526,7 @@
 
 .great-ds-header__search-autocomplete-results-item {
     list-style: none;
+    margin-bottom: 0;
 
     &:not(:last-child) {
         border-bottom: 1px solid $great-ds-semantic-border-default-light-grey-border;

@@ -21,7 +21,7 @@
 
   {% if hint %}
     {{ greatHint(
-      id=id + '-hint',
+      id=id|add('-hint'),
       classes=hint.classes,
       html=hint.html,
       text=hint.text
@@ -30,7 +30,7 @@
 
   {% if errorMessage %}
     {{ greatErrorMessage(
-      id=id + '-error',
+      id=id|add('-error'),
       classes=errorMessage.classes,
       visuallyHiddenText=errorMessage.visuallyHiddenText,
       html=errorMessage.html,
@@ -56,17 +56,17 @@
 
     {% if maxwords %}
       {{ greatHint(
-        id=id + '-info',
+        id=id|add('-info'),
         classes='govuk-character-count__message',
-        text='You can enter up to ' + maxwords + ' words'
+        text='You can enter up to '|add(maxwords)|add(' words')
       ) }}
     {% endif %}
 
     {% if maxlength %}
       {{ greatHint(
-        id=id + '-info',
+        id=id|add('-info'),
         classes='govuk-character-count__message',
-        text='You can enter up to ' + maxlength + ' characters'
+        text='You can enter up to '|add(maxlength)|add(' characters')
       ) }}
     {% endif %}
 

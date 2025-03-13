@@ -2,10 +2,15 @@
 
 {% block content %}
     {% from "../../../components/pagination/_numbered_pagination.njk" import greatNumberedPagination %}
-
-    {{greatNumberedPagination(
-        currentPage=7,
-        totalPagesRange=range(1,10+1),
+    {{ greatNumberedPagination(
+        currentPageNumber=7,
+        elidedPageRange=[1, '…', 6, 7, 8, '…', 11],
+        elidedPageStr='...',
+        pageParamName='page',
+        previousPageNumber=6,
+        nextPageNumber=8,
+        lastPageNumber=11,
+        currentPageURL='http://localhost:8080/components/pagination/?',
         hoverClass='great-ds-pagination__hover--white'
     ) }}
 {% endblock %}

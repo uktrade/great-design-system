@@ -1,0 +1,59 @@
+---
+layout: layout/_page.njk
+content: main
+eleventyNavigation:
+  key: Checkboxes
+  parent: Components
+  title: Checkboxes
+isGovUk: true
+---
+{% markdown %}
+# Checkboxes
+
+
+
+Default:
+Requires `id`, `name` 
+{% endmarkdown %}
+{% exampleWithCode "/components/checkboxes/checkboxes-example/", "checkboxes", "100%", "200px" %}
+{% markdown %}
+
+
+Conditional:
+
+Requires `id`, `name` 
+
+Recommended `checkboxes.conditionalReveal.classes: 'govuk-!-width-one-third'`
+{% endmarkdown %}
+{% exampleWithCode "/components/checkboxes/checkboxes-conditional-example/", "checkboxes", "100%", "200px" %}
+{% markdown %}
+
+
+Exclusive:
+{% endmarkdown %}
+{% exampleWithCode "/components/checkboxes/checkboxes-exclusive-example/", "checkboxes", "100%", "200px" %}
+
+{% markdown %}
+
+Small:
+{% endmarkdown %}
+{% exampleWithCode "/components/checkboxes/checkboxes-small-example/", "checkboxes", "100%", "200px" %}
+
+{% markdown %}
+## Error Scenarios 
+
+Exclusive error (non-js users only)
+{% endmarkdown %}
+{% exampleWithCode "/components/checkboxes/checkboxes-exclusive-example-error/", "checkboxes", "100%", "200px" %}
+{% markdown %}
+Conditional Error in textInput:
+{% endmarkdown %}
+{% exampleWithCode "/components/checkboxes/checkboxes-conditional-example-error/", "checkboxes", "100%", "200px" %}
+
+{% markdown %}
+## When not to use 
+
+
+## How it works 
+
+{% endmarkdown %}

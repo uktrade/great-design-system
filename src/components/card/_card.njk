@@ -1,4 +1,4 @@
-{% macro greatCard(attributes, classes, type, href, imageUrl, imageAlt, iconSvg, title, titleSize, description, metadataText, metaDataIconPath, metadataIconType, id, hideArrow) %}
+{% macro greatCard(attributes, classes, type, href, imageUrl, imageAlt, iconSvg, title, titleSize, description, metadataText, metaDataIconPath, metadataIconType, id, hideArrow, progressCompletionPercentage, progressCompletionCount, progressTotalPages, progressFullWidth, completedTag) %}
     <div class="great-ds-card{% if classes %} {{ classes }}{% endif %}{% if type %} great-ds-card--{{ type }}{% endif %}" {% if href %}role="article"{% endif %}>
         <div class="great-ds-card__inner">
             {% if href %}
@@ -17,14 +17,22 @@
             {% endif %}
             <div class="great-ds-card__content">
                 {% if title %}
-                    {% from "../title-arrow/_title-arrow.njk" import greatTitleArrow %}
-                    {% if type == "elevated" %}
-                        {{ greatTitleArrow(title, titleSize, "card-title-" + id, "h3", true) }}
-                    {% else %}
-                        {{ greatTitleArrow(title, titleSize, "card-title-" + id, "h3", hideArrow) }}
-                    {% endif %}
+                    <div class="great-ds-card__title-wrapper">
+                        {% from "../title-arrow/_title-arrow.njk" import greatTitleArrow %}
+                        {% if type == "elevated" or completedTag == "true" %}
+                            {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow="true") }}
+                        {% else %}
+                            {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow=hideArrow) }}
+                        {% endif %}
+                        {% if completedTag == "true" %}
+                            {% from "../tag/_tag.njk" import greatTag %}
+                            {{ greatTag(
+                                text="Completed",
+                                type="success"
+                            ) }}
+                        {% endif %}
+                    </div>
                 {% endif %}
-
                 {% if description %}
                     <div class="great-ds-card__description">{{ description }}</div>
                 {% endif %}
@@ -37,6 +45,12 @@
                         <span class="great-ds-card__metadata-text">{{ metadataText }}</span>
                     </div>
                 {% endif %}
+
+                {% if progressCompletionPercentage %}
+                    {% from "../progress-bar/_progress-bar.njk" import greatProgressBar %}
+                    {{ greatProgressBar(completionPercentage=progressCompletionPercentage, completionCount=progressCompletionCount, totalPages=progressTotalPages, fullWidth=progressFullWidth) }}
+                {% endif %}
+                
             </div>
 
             {% if href %}

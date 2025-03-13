@@ -1,5 +1,5 @@
 {% macro greatInputElement(id, name, type, classes, errorMessage, spellcheck, value, disabled, describedBy, autocomplete, autocapitalize, pattern, inputmode, attributes, placeholder) %}
-  <input class="govuk-input{% if classes %} {{ classes }}{% endif %}{% if errorMessage %} govuk-input--error{% endif %}"
+  <input class="govuk-input{% if classes %} {{ classes }}{% endif %}{% if errorMessage.text or errorMessage.html %} govuk-input--error{% endif %}"
     {% if id %}id="{{ id }}"{% endif %}
     {% if name %}name="{{ name }}"{% endif %}
     {% if type %}type="{{ type }}"{% else %}type="text"{% endif %}
