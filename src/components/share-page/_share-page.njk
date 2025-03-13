@@ -17,7 +17,7 @@
     {% endif %}
 
     <ul class="govuk-!-margin-top-4{% if listClasses %} {{ listClasses }}{% endif %}">
-      <li class="govuk-!-margin-bottom-2{% if emailItem.classes %} {{ emailItem.classes }}{% endif %}" rel="noopener noreferrer external">
+      <li class="govuk-!-margin-bottom-2{% if emailItem.classes %} {{ emailItem.classes }}{% endif %}" rel="noopener noreferrer external"  aria-label="email link">
         <a href={{ emailItem.href }} target="_blank" class="govuk-link govuk-heading-xs">
           <svg 
             width="40"
@@ -31,7 +31,7 @@
         </a>
       </li>
       <li class="govuk-!-margin-bottom-2{% if facebookItem.classes %} {{ facebookItem.classes }}{% endif %}">
-        <a href={{ facebookItem.href }} target="_blank" class="govuk-link govuk-heading-xs" rel="noopener noreferrer external">
+        <a href={{ facebookItem.href }} target="_blank" class="govuk-link govuk-heading-xs" rel="noopener noreferrer external" aria-label="share page on Facebook">
           <svg 
             width="40"
             height="40"
@@ -44,7 +44,7 @@
         </a>
       </li>
       <li class="govuk-!-margin-bottom-2{% if xItem.classes %} {{ xItem.classes }}{% endif %}">
-        <a href={{ xItem.href }} target="_blank" class="govuk-link govuk-heading-xs" rel="noopener noreferrer external">
+        <a href={{ xItem.href }} target="_blank" class="govuk-link govuk-heading-xs" rel="noopener noreferrer external" aria-label="share page on X">
           <svg 
             width="40"
             height="40"
