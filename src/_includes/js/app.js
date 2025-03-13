@@ -65,10 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// add share url copy functionality
+// add event listeners to design system components
 import { copyURLToClipboard } from "../../js/copy-url/copy-url.js";
 
-export const addCopyURLEventListeners = () => {
+export const addEventListenersToDSComponents = () => {
   const copyURLButton = document.getElementById("copy-url-button");
 
   if (copyURLButton) {
@@ -76,7 +76,7 @@ export const addCopyURLEventListeners = () => {
   }
 };
 
-addCopyURLEventListeners();
+addEventListenersToDSComponents();
 
 import { initAll } from "govuk-frontend";
 initAll();

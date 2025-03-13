@@ -18,7 +18,7 @@ export const initCookieNotice = (options = {}) => {
 
 import { copyURLToClipboard } from "./copy-url/copy-url.js";
 
-export const addCopyURLEventListeners = () => {
+export const addEventListenersToDSComponents = () => {
   const copyURLButton = document.getElementById("copy-url-button");
 
   if (copyURLButton) {
@@ -27,4 +27,4 @@ export const addCopyURLEventListeners = () => {
 };
 
 initCookieNotice();
-addCopyURLEventListeners();
+addEventListenersToDSComponents();
