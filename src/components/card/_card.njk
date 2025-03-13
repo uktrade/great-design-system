@@ -19,12 +19,12 @@
                 {% if title %}
                     <div class="great-ds-card__title-wrapper">
                         {% from "../title-arrow/_title-arrow.njk" import greatTitleArrow %}
-                        {% if type == "elevated" or completedTag %}
+                        {% if type == "elevated" or completedTag == "true" %}
                             {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow="true") }}
                         {% else %}
                             {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow=hideArrow) }}
                         {% endif %}
-                        {% if completedTag %}
+                        {% if completedTag == "true" %}
                             {% from "../tag/_tag.njk" import greatTag %}
                             {{ greatTag(
                                 text="Completed",
