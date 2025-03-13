@@ -17,12 +17,14 @@ export const initCookieNotice = (options = {}) => {
 };
 
 import { copyURLToClipboard } from "./copy-url/copy-url.js";
+import { updateCopyURLButton } from "../components/share-page/update-copy-button.js";
 
 export const addEventListenersToDSComponents = () => {
   const copyURLButton = document.getElementById("copy-url-button");
 
   if (copyURLButton) {
     copyURLButton.addEventListener("click", copyURLToClipboard);
+    copyURLButton.addEventListener("click", updateCopyURLButton);
   }
 };
 
