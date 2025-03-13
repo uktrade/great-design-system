@@ -1,7 +1,7 @@
 {% from "../input/_input.njk" import greatInput %}
 {% from "../button/_button.njk" import greatButton %}
 
-{% macro greatHeaderSearch(autocompleteSearch, searchFormAction, searchIcon) %}
+{% macro greatHeaderSearch(autocompleteSearch, searchFormAction, search_icon) %}
     {% if autocompleteSearch %}
         <div class="great-ds-header__search-autocomplete">
             {{ greatInput(   
@@ -34,7 +34,7 @@
             {{ greatButton(
                 classes="great-ds-button--icon great-ds-button--search",
                 text="Search",
-                html=searchIcon
+                html=search_icon
             ) }}
         </form>                            
     {% endif %}

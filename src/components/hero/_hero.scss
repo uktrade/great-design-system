@@ -28,10 +28,12 @@
     }
 }
   
-.great-ds-hero__container { 
+.great-ds-hero__container {
     width: 100%;
     &:not(.great-ds-hero--image-only *) {
         @extend .great-ds-container;
+        padding-top: $great-ds-spacing-8;
+        padding-bottom: $great-ds-spacing-8;
     }
     
     @include govuk-media-query($from: desktop) {
@@ -51,6 +53,8 @@
 .great-ds-hero__image-container {
     display: none;
     height: 200px;
+    overflow: visible;
+    min-width: 0;
     
     @include govuk-media-query($from: desktop) {
         height: 355px;
@@ -58,7 +62,6 @@
         flex: 1 0 50%;
         max-width: 50%;
         flex-shrink: 1;
-        overflow: hidden;
         text-align: right;
 
         .great-ds-hero--two-thirds & {
@@ -71,10 +74,15 @@
         display: block;
         width: 100%;
         margin-bottom: $great-ds-spacing-5;
+        height: fit-content;
+        max-height: 200px;
         
         @include govuk-media-query($from: desktop) {
             width: 25%;
             margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: end;
         }
     }
     
@@ -88,12 +96,13 @@
     .great-ds-hero--large-image-cropping & {
         @include govuk-media-query($from: desktop) {
             display: block;
-            overflow: hidden;
+            height: 100%;
         }
     }
       
     .great-ds-hero--large-image-scaling & {
         @include govuk-media-query($from: desktop) {
+            max-height: 355px;
             object-fit: contain;
         }
     }
@@ -109,7 +118,7 @@
     }
     
     .great-ds-hero--small-image & {
-        max-width: 250px;
+        max-width: 200px;
     }
     
     .great-ds-hero--image-only & {
@@ -129,7 +138,7 @@
         flex: 1 0 50%;
         max-width: 50%;
         min-width: 600px;
-        margin-right: $great-ds-spacing-6-large;
+        padding-right: $great-ds-spacing-6-large;
 
         .great-ds-hero--two-thirds & {
             flex: 1 0 66%;
@@ -190,5 +199,5 @@
 }
   
 .great-ds-hero__action-link-container {
-    margin-bottom: $great-ds-spacing-8;
+    margin-bottom: $great-ds-spacing-6;
 }
