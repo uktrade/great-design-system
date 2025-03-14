@@ -3,7 +3,6 @@
 {% macro greatTile(id, headingTag, size, caption, title, description, icon, content, actionLinkHref, actionLinkText, classes, isSimple, attributes, removeContentPadding) %}
   <div class="great-ds-tile{% if isSimple %} great-ds-tile--simple{% endif %}{% if classes %} {{ classes }}{% endif %}"
     {% if attributes %}{{ attributes|safe }}{% endif %}
-    role="region"
     {% if id %}id="{{ id }}"{% endif %}
     {% if title and id %}aria-labelledby="tile-heading-{{ id }}"{% endif %}>
     {% if caption or title or description %}
