@@ -7,7 +7,7 @@
 {% macro greatMultipleInput(field, widget) %}
 <div class="{%if field.hide_on_page_load %}hide-on-page-load {% endif %}govuk-form-groups{% if field.error %} great-form-group--error{% endif %}{% if field.field_group_class %} {{ field.field_group_class }}{% endif %}">
 
-  {% if field.gds_mapping.fieldset %}
+  {% if widget.use_fieldset %}
     {{ greatFieldsetOpen(
       fieldset=field.gds_mapping.fieldset,
       error=field.gds_mapping.error,
@@ -31,7 +31,7 @@
     </div>
 
 
-  {% if field.gds_mapping.fieldset %}
+  {% if widget.use_fieldset %}
     {{ greatFieldsetClose() }}
   {% endif %}
 </div>
