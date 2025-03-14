@@ -100,13 +100,6 @@
         margin: 0;
     }
 
-    .great-ds-hero--large-image-cropping & {
-        @include govuk-media-query($from: desktop) {
-            display: block;
-            height: 100%;
-        }
-    }
-      
     .great-ds-hero--large-image-scaling & {
         @include govuk-media-query($from: desktop) {
             max-height: 355px;
