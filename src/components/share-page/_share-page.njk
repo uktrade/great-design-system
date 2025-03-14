@@ -1,7 +1,7 @@
 {% from "../label/_label.njk" import greatLabel %}
 {% from "../button/_button.njk" import greatButton %}
 
-{% macro sharePage(id, name, label, classes, listClasses, emailItem, facebookItem, xItem, button) %}
+{% macro sharePage(id, name, label, classes, listClasses, emailItem, facebookItem, xItem, copyURLButton) %}
   <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-padding-top-3 great-share{% if classes %} {{ classes }}{% endif %}"
     {% if id %}id="{{ id }}"{% endif %}
     {% if name %}name="{{ name }}"{% endif %}
@@ -60,10 +60,10 @@
         </a>
       </li>
     </ul>
-    {% if button %}
+    {% if copyURLButton %}
       {{ greatButton(
-        value=button.value,
-        text=button.text,
+        value=copyURLButton.value,
+        text=copyURLButton.text,
         classes="great-ds-button--secondary",
         id="copy-url-button",
         iconPrefix='
