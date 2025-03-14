@@ -1,7 +1,6 @@
 .great-ds-pagination--numbered {
     @include govuk-media-query($until: tablet) {
         align-items: flex-start;
-        max-width: 360px;
 
         .great-ds-pagination__page-summary-container--numbered, 
         .govuk-pagination__prev,
