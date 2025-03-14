@@ -129,6 +129,19 @@
     margin: $great-ds-spacing-6;
 }
 
+.great-ds-card__title-wrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    gap: $great-ds-spacing-2;
+
+    @include govuk-media-query($from: desktop) {
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 0;
+    }
+}
+
 .great-ds-card__description {
     @include govuk-font-size($size: 18);
     font-family: $great-ds-type-family-great;
