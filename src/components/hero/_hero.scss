@@ -32,8 +32,6 @@
     width: 100%;
     &:not(.great-ds-hero--image-only *) {
         @extend .great-ds-container;
-        padding-top: $great-ds-spacing-8;
-        padding-bottom: $great-ds-spacing-8;
     }
     
     @include govuk-media-query($from: desktop) {
@@ -47,6 +45,10 @@
     .great-ds-hero--image-only & {
         padding: 0;
         margin: 0;
+    }
+    .great-ds-hero--small-image & {
+        padding-top: $great-ds-spacing-8;
+        padding-bottom: $great-ds-spacing-3;
     }
 }
   
@@ -134,10 +136,11 @@
   
 // Text container
 .great-ds-hero__text-container {
+    padding-top: $great-ds-spacing-8;
+    padding-bottom: $great-ds-spacing-3;
     @include govuk-media-query($from: desktop) {
         flex: 1 0 50%;
         max-width: 50%;
-        min-width: 600px;
         padding-right: $great-ds-spacing-6-large;
 
         .great-ds-hero--two-thirds & {
@@ -153,6 +156,8 @@
     
     // Small image variant
     .great-ds-hero--small-image & {
+        padding-top: $great-ds-spacing-3;
+        padding-bottom: $great-ds-spacing-3;
         min-width: auto;
         @include govuk-media-query($from: desktop) {
             width: 75%;
