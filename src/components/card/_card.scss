@@ -47,6 +47,7 @@
             display: flex;
             flex-direction: row;
             align-items: center;
+            padding: $great-ds-spacing-3;
             .great-ds-card__media {
                 align-self: flex-start;
             }    
