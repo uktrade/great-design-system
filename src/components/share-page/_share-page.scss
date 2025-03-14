@@ -29,7 +29,7 @@
         fill: $govuk-focus-text-colour;
       }
 
-      span {
+      .great-ds-share__span {
         margin-left: -$great-ds-spacing-8;
       }
     }
@@ -43,7 +43,7 @@
       display: flex;
     }
 
-    li {
+    .great-ds-share__list-item {
       @include govuk-media-query($from: tablet, $until: desktop) {
         margin-right: $great-ds-spacing-6;
       }
@@ -51,18 +51,18 @@
   }
 
   .great-ds-share__copy-url-button {
-    path {
+    .great-ds-share__copy-url-button--icon-path {
       fill: $great-ds-semantic-interaction-default-icon-link;
     }
 
     &:hover {
-      path {
+      .great-ds-share__copy-url-button--icon-path {
         fill: $govuk-link-hover-colour;
       }
     }
 
     &:focus {
-      path {
+      .great-ds-share__copy-url-button--icon-path {
         fill: $govuk-focus-text-colour;
       }
     }
