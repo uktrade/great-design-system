@@ -2,7 +2,7 @@
 {% from "../button/_button.njk" import greatButton %}
 
 {% macro sharePage(id, name, label, classes, listClasses, emailItem, facebookItem, xItem, copyURLButton) %}
-  <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-padding-top-3 great-share{% if classes %} {{ classes }}{% endif %}"
+  <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-padding-top-3 great-ds-share{% if classes %} {{ classes }}{% endif %}"
     {% if id %}id="{{ id }}"{% endif %}
     {% if name %}name="{{ name }}"{% endif %}
   >
@@ -16,46 +16,49 @@
       ) }}
     {% endif %}
 
-    <ul class="govuk-!-margin-top-4{% if listClasses %} {{ listClasses }}{% endif %}">
-      <li class="govuk-!-margin-bottom-2{% if emailItem.classes %} {{ emailItem.classes }}{% endif %}" rel="noopener noreferrer external"  aria-label="email link">
-        <a href={{ emailItem.href }} target="_blank" class="govuk-link govuk-heading-xs">
+    <ul class="govuk-!-margin-top-4 great-ds-share__unordered-list {% if listClasses %} {{ listClasses }}{% endif %}">
+      <li class="govuk-!-margin-bottom-2{% if emailItem.classes %} {{ emailItem.classes }}{% endif %}" rel="noopener noreferrer external">
+        <a href={{ emailItem.href }} target="_blank" class="govuk-link govuk-heading-xs great-ds-share__link" aria-label="email link">
           <svg 
             width="40"
             height="40"
             viewBox="0 0 40 40"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M20 0C8.95 0 0 8.95 0 20C0 31.05 8.95 40 20 40C31.05 40 40 31.05 40 20C40 14.7 37.8875 9.6125 34.1375 5.8625C30.3875 2.1125 25.3 0 20 0ZM18.7082 19.891C19.042 20.1896 19.4741 20.3546 19.9219 20.3546C20.3698 20.3546 20.8019 20.1896 21.1357 19.891L30.3034 11.7065C30.2159 11.6853 30.1263 11.6744 30.0363 11.6741H9.80755C9.71758 11.6744 9.62796 11.6853 9.54053 11.7065L18.7082 19.891ZM19.9219 21.57C20.6682 21.57 21.3884 21.2949 21.9448 20.7973L31.1934 12.5399C31.2291 12.6525 31.2482 12.7697 31.25 12.8878V26.6434C31.25 26.9653 31.1221 27.274 30.8945 27.5017C30.6669 27.7293 30.3582 27.8571 30.0363 27.8571H9.80748C9.48558 27.8571 9.17686 27.7293 8.94924 27.5017C8.72162 27.274 8.59375 26.9653 8.59375 26.6434V12.8878C8.5956 12.7697 8.61468 12.6525 8.65039 12.5399L17.899 20.7973C18.4553 21.2949 19.1755 21.57 19.9219 21.57Z" />
+            aria-hidden="true"
+            class="great-ds-share__icon">
+            <path class="great-ds-share__icon-path" fill-rule="evenodd" clip-rule="evenodd" d="M20 0C8.95 0 0 8.95 0 20C0 31.05 8.95 40 20 40C31.05 40 40 31.05 40 20C40 14.7 37.8875 9.6125 34.1375 5.8625C30.3875 2.1125 25.3 0 20 0ZM18.7082 19.891C19.042 20.1896 19.4741 20.3546 19.9219 20.3546C20.3698 20.3546 20.8019 20.1896 21.1357 19.891L30.3034 11.7065C30.2159 11.6853 30.1263 11.6744 30.0363 11.6741H9.80755C9.71758 11.6744 9.62796 11.6853 9.54053 11.7065L18.7082 19.891ZM19.9219 21.57C20.6682 21.57 21.3884 21.2949 21.9448 20.7973L31.1934 12.5399C31.2291 12.6525 31.2482 12.7697 31.25 12.8878V26.6434C31.25 26.9653 31.1221 27.274 30.8945 27.5017C30.6669 27.7293 30.3582 27.8571 30.0363 27.8571H9.80748C9.48558 27.8571 9.17686 27.7293 8.94924 27.5017C8.72162 27.274 8.59375 26.9653 8.59375 26.6434V12.8878C8.5956 12.7697 8.61468 12.6525 8.65039 12.5399L17.899 20.7973C18.4553 21.2949 19.1755 21.57 19.9219 21.57Z" />
           </svg>
           <span>Email</span>
         </a>
       </li>
       <li class="govuk-!-margin-bottom-2{% if facebookItem.classes %} {{ facebookItem.classes }}{% endif %}">
-        <a href={{ facebookItem.href }} target="_blank" class="govuk-link govuk-heading-xs" rel="noopener noreferrer external" aria-label="share page on Facebook">
+        <a href={{ facebookItem.href }} target="_blank" class="govuk-link govuk-heading-xs great-ds-share__link" rel="noopener noreferrer external" aria-label="share page on Facebook">
           <svg 
             width="40"
             height="40"
             viewBox="0 0 40 40"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true">
-          <path d="M40.0004 20.1234C40.0016 9.41802 31.6722 0.585727 21.0469 0.0255604C10.4217 -0.534607 1.22051 7.37347 0.109711 18.0204C-1.00109 28.6673 6.36735 38.3255 16.8766 39.9976V25.94H11.8004V20.1234H16.8766V15.6867C16.8766 10.6463 19.8576 7.85782 24.429 7.85782C25.9286 7.87862 27.4247 8.00993 28.9052 8.2507V13.2049H26.3814C23.8957 13.2049 23.1242 14.7572 23.1242 16.3479V20.1234H28.6766L27.7814 25.94H23.1242V39.9976C32.8424 38.4513 39.9994 30.023 40.0004 20.1234Z" />
+            aria-hidden="true"
+            class="great-ds-share__icon">
+            <path class="great-ds-share__icon-path" d="M40.0004 20.1234C40.0016 9.41802 31.6722 0.585727 21.0469 0.0255604C10.4217 -0.534607 1.22051 7.37347 0.109711 18.0204C-1.00109 28.6673 6.36735 38.3255 16.8766 39.9976V25.94H11.8004V20.1234H16.8766V15.6867C16.8766 10.6463 19.8576 7.85782 24.429 7.85782C25.9286 7.87862 27.4247 8.00993 28.9052 8.2507V13.2049H26.3814C23.8957 13.2049 23.1242 14.7572 23.1242 16.3479V20.1234H28.6766L27.7814 25.94H23.1242V39.9976C32.8424 38.4513 39.9994 30.023 40.0004 20.1234Z" />
           </svg>
           <span>Facebook</span>
         </a>
       </li>
       <li class="govuk-!-margin-bottom-2{% if xItem.classes %} {{ xItem.classes }}{% endif %}">
-        <a href={{ xItem.href }} target="_blank" class="govuk-link govuk-heading-xs" rel="noopener noreferrer external" aria-label="share page on X">
+        <a href={{ xItem.href }} target="_blank" class="govuk-link govuk-heading-xs great-ds-share__link" rel="noopener noreferrer external" aria-label="share page on X">
           <svg 
             width="40"
             height="40"
             viewBox="0 0 40 40"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M0 20C0 8.95 8.95 0 20 0C25.3 0 30.3875 2.1125 34.1375 5.8625C37.8875 9.6125 40 14.7 40 20C40 31.05 31.05 40 20 40C8.95 40 0 31.05 0 20ZM28.955 10.8594H25.8538L20.7434 16.7009L16.325 10.8594H9.92562L17.5719 20.8578L10.325 29.1406H13.4281L19.0213 22.7497L23.9094 29.1406H30.1503L22.1797 18.6031L28.955 10.8594ZM26.4838 27.2844H24.7653L13.5472 12.6181H15.3913L26.4838 27.2844Z" />
-            </svg>
+            aria-hidden="true"
+            class="great-ds-share__icon">
+            <path class="great-ds-share__icon-path" fill-rule="evenodd" clip-rule="evenodd" d="M0 20C0 8.95 8.95 0 20 0C25.3 0 30.3875 2.1125 34.1375 5.8625C37.8875 9.6125 40 14.7 40 20C40 31.05 31.05 40 20 40C8.95 40 0 31.05 0 20ZM28.955 10.8594H25.8538L20.7434 16.7009L16.325 10.8594H9.92562L17.5719 20.8578L10.325 29.1406H13.4281L19.0213 22.7497L23.9094 29.1406H30.1503L22.1797 18.6031L28.955 10.8594ZM26.4838 27.2844H24.7653L13.5472 12.6181H15.3913L26.4838 27.2844Z" />
+          </svg>
           <span>X</span>
         </a>
       </li>
@@ -64,10 +67,10 @@
       {{ greatButton(
         value=copyURLButton.value,
         text=copyURLButton.text,
-        classes="great-ds-button--secondary",
+        classes="great-ds-button--secondary great-ds-share__copy-url-button",
         id="copy-url-button",
         iconPrefix='
-          <svg width="16" height="16" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="great-ds-share__icon" width="16" height="16" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_130_8)">
               <path d="M326.6 185.4C386.3 245.2 385.5 341.1 327 400C326.9 400.1 326.8 400.3 326.6 400.4L259.4 467.6C200.1 526.9 103.7 526.9 44.3998 467.6C-14.9002 408.3 -14.9002 311.9 44.3998 252.6L81.4998 215.5C91.2998 205.7 108.3 212.2 108.8 226.1C109.4 243.8 112.6 261.6 118.5 278.8C120.5 284.6 119.1 291.1 114.7 295.4L101.6 308.5C73.5998 336.5 72.6998 382.2 100.4 410.5C128.4 439.1 174.5 439.2 202.7 411L269.9 343.8C298.1 315.6 298 270 269.9 242C266.2 238.3 262.5 235.4 259.6 233.4C257.547 231.983 255.854 230.106 254.656 227.918C253.458 225.73 252.788 223.293 252.7 220.8C252.3 210.2 256 199.3 264.4 191L285.5 169.9C291 164.4 299.7 163.7 306.1 168.2C313.424 173.322 320.284 179.077 326.6 185.4ZM467.5 44.4C408.2 -14.9 311.8 -14.9 252.5 44.4L185.3 111.6C185.2 111.7 185 111.9 184.9 112C126.3 170.9 125.5 266.8 185.3 326.6C191.616 332.923 198.476 338.678 205.8 343.8C212.2 348.3 220.9 347.6 226.4 342.1L247.5 321C255.9 312.6 259.6 301.8 259.2 291.2C259.111 288.707 258.441 286.27 257.243 284.082C256.045 281.894 254.352 280.017 252.3 278.6C249.4 276.6 245.7 273.7 242 270C213.9 241.9 213.8 196.4 242 168.2L309.2 101C337.4 72.8 383.5 72.9 411.5 101.5C439.3 129.8 438.4 175.4 410.3 203.5L397.2 216.6C392.8 221 391.4 227.4 393.4 233.2C399.3 250.4 402.4 268.2 403.1 285.9C403.6 299.8 420.6 306.3 430.4 296.5L467.5 259.4C526.8 200.1 526.8 103.7 467.5 44.4Z" fill="#222222"/>
             </g>
