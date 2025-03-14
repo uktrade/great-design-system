@@ -46,6 +46,11 @@
         padding: 0;
         margin: 0;
     }
+
+    .great-ds-hero--tile & {
+        padding: $great-ds-spacing-6-large;
+    }
+    
     .great-ds-hero--small-image & {
         padding-top: $great-ds-spacing-8;
         padding-bottom: $great-ds-spacing-3;
