@@ -1,0 +1,32 @@
+{% extends 'layout/_example.njk' %}
+
+{% block content %}
+    {% from '../../../components/widgets/_input.njk' import greatInput %}
+
+    {{ greatInput(
+        widget = {
+            name: 'example',
+            value: 'Example value',
+            input_type: 'text',
+            id: 'id-example',
+            attrs: {
+            }
+        },
+        field = {
+            gds_mapping: {
+                label: {
+                    class: '',
+                    text: 'Textarea example',
+                    id: 'id-example'
+                },
+                hint: {
+                    class: '',
+                    text: 'This is a hint',
+                    id: 'id-example'
+                },
+                error: {}
+            }
+        }
+    )}}
+
+{% endblock %}

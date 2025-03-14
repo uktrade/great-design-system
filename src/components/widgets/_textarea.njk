@@ -1,0 +1,34 @@
+{% from "./_label.njk" import greatLabel %}
+{% from "./_hint.njk" import greatHint %}
+{% from "./_attrs.njk" import greatAttrs %}
+
+{% macro greatTextarea(field, widget) %}
+
+
+<div class="{%if field.hide_on_page_load %}hide-on-page-load {% endif %}govuk-form-group{% if field.error %} great-form-group--error{% endif %}{% if field.field_group_class %} {{ field.field_group_class }}{% endif %}">
+  
+  {% if field.gds_mapping.label %}
+    {{ greatLabel(
+      label=field.gds_mapping.label
+    ) }}
+  {% endif %}
+
+  {% if field.gds_mapping.hint %}
+    {{ greatHint(
+      hint=field.gds_mapping.hint
+    ) }}
+  {% endif %}
+
+
+  <textarea 
+  class="govuk-textarea{% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}{% if field.error %} govuk-textarea--error{% endif %}"
+  name="{{ widget.name }}"
+
+  {{ greatAttrs(
+    attrs=widget.attrs
+  ) }}
+
+  >{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
+
+</div>
+{% endmacro %}

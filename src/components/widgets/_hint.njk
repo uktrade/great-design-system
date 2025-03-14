@@ -1,0 +1,9 @@
+{% macro greatHint(hint) %}
+<div {% if hint.id %}id="{{ hint.id|add('-hint') }}"
+    {% elif hint.for %}
+      id="{{ hint.for }}-hint"
+    {% endif %} 
+     class="govuk-hint{% if hint.class %} {{ hint.class }}{% endif %}">
+  {% if hint.html %}{{ hint.html|safe }}{% else %}{{ hint.text }}{% endif %}
+</div>
+{% endmacro %}

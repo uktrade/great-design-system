@@ -1,0 +1,10 @@
+{% macro greatRadioOption(widget) %}
+
+<input class="govuk-radios__input{% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}
+{% if field.error %} govuk-input--error{% endif %}" type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value | string }}"{% endif %}
+{% include "_attrs.html" with attrs=widget.attrs  %}>
+
+<label{% if widget.attrs.id %} id="{{ widget.attrs.id }}-label" for="{{ widget.attrs.id }}"{% endif %} class="govuk-label govuk-radios__label">
+	{{ widget.label }}
+</label>
+{% endmacro %}

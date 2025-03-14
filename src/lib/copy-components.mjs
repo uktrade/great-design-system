@@ -41,6 +41,9 @@ function convertNunjucksToHtml(
   //Replace custom njk '|add(x)' filter with the django default '|add:x' filter
   htmlContent = htmlContent.replace(/add\((['"]?[-\w]+['"]?)\)/g, "add:$1");
 
+  //Replace custom njk '|string' filter with the django default "|stringformat:'s'" filter
+  htmlContent = htmlContent.replace(/string/g, "stringformat:'s'");
+
   // Replace macro calls with include statements
   htmlContent = htmlContent.replace(
     /{{ (\w+)\(([\s\S]*?)\) }}/g,

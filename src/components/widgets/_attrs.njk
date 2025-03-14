@@ -1,0 +1,5 @@
+{% macro greatAttrs(attrs) %}
+{% for name, value in attrs.items %}
+    {% if value != false %}{{ name }}{% if value != true %}="{{ value | string }}"{% endif %}{% endif %}
+{% endfor %}
+{% endmacro %}

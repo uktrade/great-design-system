@@ -1,0 +1,11 @@
+{% from "./_attrs.njk" import greatAttrs %}
+
+{% macro greatBasicInput(widget) %}
+<input class="govuk-input{% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}
+{% if field.error %} govuk-input--error{% endif %}" type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value | string }}"{% endif %}
+
+{{ greatAttrs(
+    attrs=widget.attrs
+) }}
+>
+{% endmacro %}

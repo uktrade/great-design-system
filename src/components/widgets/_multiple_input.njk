@@ -1,0 +1,38 @@
+{% from "./_fieldset_open.njk" import greatFieldsetOpen %}
+{% from "./_fieldset_close.njk" import greatFieldsetClose %}
+{% from "./_label.njk" import greatLabel %}
+{% from "./_hint.njk" import greatHint %}
+{% from "./_radio_option.njk" import greatRadioOption %}
+
+{% macro greatMultipleInput(field, widget) %}
+<div class="{%if field.hide_on_page_load %}hide-on-page-load {% endif %}govuk-form-groups{% if field.error %} great-form-group--error{% endif %}{% if field.field_group_class %} {{ field.field_group_class }}{% endif %}">
+
+  {% if field.gds_mapping.fieldset %}
+    {{ greatFieldsetOpen(
+      fieldset=field.gds_mapping.fieldset,
+      error=field.gds_mapping.error,
+      hint=field.gds_mapping.hint
+    ) }}
+  {% endif %}
+
+
+    <div class="govuk-radios" id="radiosElement" data-module="govuk-radios" data-govuk-radios-init="">
+      {% for group, options, index in widget.optgroups %}
+      {% for option in options %}
+      <div class="govuk-radios__item">
+        
+        {{ greatRadioOption(
+          widget=option
+        ) }}
+        
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+
+
+  {% if field.gds_mapping.fieldset %}
+    {{ greatFieldsetClose() }}
+  {% endif %}
+</div>
+{% endmacro %}

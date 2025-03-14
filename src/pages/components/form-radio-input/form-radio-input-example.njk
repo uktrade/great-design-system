@@ -1,0 +1,30 @@
+{% extends 'layout/_example.njk' %}
+
+{% block content %}
+    {% from '../../../components/widgets/_input.njk' import greatInput %}
+
+    {{ greatInput(
+        widget = {
+            name: 'example',
+            value: 'Example value',
+            input_type: 'text',
+            id_for_label: 'id-example',
+            attrs: {
+            }
+        },
+        field = {
+            fieldset: {
+                class: '',
+                text: 'Text input example',
+                id: 'id-example'
+            },
+            hint: {
+                class: '',
+                text: 'This is a hint',
+                id: 'id-example'
+            },
+            error: {}
+        }
+    )}}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% from "./_attrs.njk" import greatAttrs %}
+
+{% macro greatHiddenInput(widget) %}
+
+ <div class="{%if field.hide_on_page_load %}hide-on-page-load {% endif %}govuk-form-group{% if field.error %} great-form-group--error{% endif %}{% if field.field_group_class %} {{ field.field_group_class }}{% endif %}">
+
+  <input class="govuk-input{% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}{% if field.error %} govuk-input--error{% endif %}" type="hidden" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value | string }}"{% endif %}
+  
+  {{ greatAttrs(
+    attrs=widget.attrs
+  ) }}
+
+  >
+
+  </div>
+{% endmacro %}
