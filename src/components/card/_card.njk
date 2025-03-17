@@ -2,7 +2,7 @@
     <div class="great-ds-card{% if classes %} {{ classes }}{% endif %}{% if type %} great-ds-card--{{ type }}{% endif %}" {% if href %}role="article"{% endif %}>
         <div class="great-ds-card__inner">
             {% if href %}
-                <a href="{{ href }}" class="great-ds-card__link" {% if title %}aria-labelledby="card-title-{{ id }}"{% endif %} {% if attributes %}{% for key, value in attributes %}{{ key }}="{{ value }}" {% endfor %}{% endif %}>
+                <a href="{{ href }}" class="great-ds-card__link" {% if title %}aria-labelledby="card-title-{{ id }}"{% endif %} {% if attributes %}{% for key, value in attributes.items %}{{ key }}="{{ value }}" {% endfor %}{% endif %}>
             {% endif %}
 
             {% if imageUrl or iconSvg %}
