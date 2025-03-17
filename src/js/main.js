@@ -16,4 +16,17 @@ export const initCookieNotice = (options = {}) => {
   return new CookieNotice(options);
 };
 
+import { copyURLToClipboard } from "./copy-url/copy-url.js";
+import { updateCopyLinkButton } from "../components/share-page/update-copy-link-button.js";
+
+export const addEventListenersToDSComponents = () => {
+  const copyURLButton = document.getElementById("copy-url-button");
+
+  if (copyURLButton) {
+    copyURLButton.addEventListener("click", copyURLToClipboard);
+    copyURLButton.addEventListener("click", updateCopyLinkButton);
+  }
+};
+
 initCookieNotice();
+addEventListenersToDSComponents();

@@ -65,6 +65,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// add event listeners to design system components
+import { copyURLToClipboard } from "../../js/copy-url/copy-url.js";
+import { updateCopyLinkButton } from "../../components/share-page/update-copy-link-button.js";
+
+export const addEventListenersToDSComponents = () => {
+  const copyURLButton = document.getElementById("copy-url-button");
+
+  if (copyURLButton) {
+    copyURLButton.addEventListener("click", copyURLToClipboard);
+    copyURLButton.addEventListener("click", updateCopyLinkButton);
+  }
+};
+
+addEventListenersToDSComponents();
+
 import { initAll } from "govuk-frontend";
 initAll();
 

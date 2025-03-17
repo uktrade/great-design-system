@@ -1,0 +1,17 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+  {% from "../../../components/share-page/_share-page.njk" import sharePage %}
+
+  {{ sharePage(
+    id="share-page-example",
+    name="share-page-example",
+    classes="",
+    label={
+      text: "Share this page"
+    },
+    copyURLButton={
+      text: "Copy link"
+    }
+  ) }}
+{% endblock %}
