@@ -106,15 +106,25 @@
             object-fit: contain;
         }
     }
+
+    .great-ds-hero--large-image-cropping & {
+        @include govuk-media-query($from: desktop) {
+            align-self: flex-end;
+        }
+    }
 }
   
 .great-ds-hero__image {
     @include govuk-media-query($from: desktop) {
-        max-height: 355px;
+        height: 100%;
     }
     
     .great-ds-hero--large-image-scaling & {
         max-width: 100%;
+    }
+
+    .great-ds-hero--large-image-cropping & {
+        align-self: flex-end;
     }
     
     .great-ds-hero--small-image & {
