@@ -1,8 +1,10 @@
 {% from "../action-link/_action-link.njk" import greatActionLink %}
 
-{% macro greatTile(headingTag, size, caption, title, description, icon, content, actionLinkHref, actionLinkText, classes, isSimple, attributes, removeContentPadding) %}
+{% macro greatTile(id, headingTag, size, caption, title, description, icon, content, actionLinkHref, actionLinkText, classes, isSimple, attributes, removeContentPadding) %}
   <div class="great-ds-tile{% if isSimple %} great-ds-tile--simple{% endif %}{% if classes %} {{ classes }}{% endif %}"
-    {% if attributes %}{{ attributes | safe }}{% endif %}>
+    {% if attributes %}{{ attributes|safe }}{% endif %}
+    {% if id %}id="{{ id }}"{% endif %}
+    {% if title and id %}aria-labelledby="tile-heading-{{ id }}"{% endif %}>
     {% if caption or title or description %}
         <div class="great-ds-tile__header">
             {% if icon %}
@@ -16,17 +18,21 @@
                 {% if caption %}
                     <span class="great-ds-tile__caption {% if size %}govuk-caption-{{ size }}{% else %}govuk-caption-l{% endif %}">{{ caption }}</span>
                 {% endif %}
+
                 {% if title %}
-                    <h{% if headingTag %}{{ headingTag }}{% else %}2{% endif %} class="great-ds-tile__title {% if size %}govuk-heading-{{ size }}{% else %}govuk-heading-l{% endif %}">{{ title }}</h{% if headingTag %}{{ headingTag }}{% else %}2{% endif %}>
+                    <h{% if heading_tag %}{{ heading_tag }}{% else %}2{% endif %} class="great-ds-tile__title {% if size %}govuk-heading-{{ size }}{% else %}govuk-heading-l{% endif %}"{% if id %} id="tile-heading-{{ id }}"{% endif %}>{{ title }}</h{% if heading_tag %}{{ heading_tag }}{% else %}2{% endif %}>
                 {% endif %}
+                
                 {% if description %}
-                    <p class="great-ds-tile__description">{{ description }}</p>
+                    <p class="great-ds-tile__description"{% if id %} id="tile-desc-{{ id }}"{% endif %}>{{ description }}</p>
                 {% endif %}
             </div>
         </div>
     {% endif %}
     {% if content %}
-        <div class="great-ds-tile__content {% if removeContentPadding %}great-ds-tile__content--no-padding{% endif %}">
+        <div class="great-ds-tile__content {% if removeContentPadding %}great-ds-tile__content--no-padding{% endif %}" 
+             {% if title and id %}aria-labelledby="tile-heading-{{ id }}"{% endif %}
+             {% if description and id %}aria-describedby="tile-desc-{{ id }}"{% endif %}>
             {{ content | safe }}
         </div>
     {% endif %}
