@@ -61,3 +61,6 @@ export class CookieManager {
     return this.get("cookie_preferences_set");
   }
 }
+
+window.GreatDS = window.GreatDS || {};
+window.GreatDS.cookieManager = new CookieManager();
