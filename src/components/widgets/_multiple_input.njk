@@ -7,7 +7,7 @@
   {% for group, options, index in widget.optgroups %}
   {% for option in options %}
   <div class="govuk-radios__item">
-    {% if option.reveal %}
+    {% if option.reveals %}
      {{ greatRadioOptionConditionalRevealDjango(
       widget=option
     ) }}
