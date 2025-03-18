@@ -1,0 +1,15 @@
+{% from "./_attrs.njk" import greatAttrsDjango %}
+
+{% macro greatTextareaDjango(field, widget) %}
+
+<textarea 
+class="govuk-textarea{% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}"
+name="{{ widget.name }}"
+
+{{ greatAttrsDjango(
+attrs=widget.attrs
+) }}
+
+>{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
+
+{% endmacro %}
