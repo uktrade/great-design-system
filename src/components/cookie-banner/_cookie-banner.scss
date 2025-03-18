@@ -4,11 +4,15 @@ $great-modal-background: $great-ds-semantic-surface-background-white;
 $great-modal-z-index: 1001;
 
 .great-ds-cookie-banner {
+    padding-top: $great-ds-spacing-6;
     padding-bottom: $great-ds-spacing-6;
 }
 
 .great-ds-cookie-banner__title {
     outline: none;
+    margin-bottom: $great-ds-spacing-2;
+    margin-top: 0;
+    font-size: $great-ds-type-size-heading-l;
 }
 
 .great-ds-cookie-modal {
