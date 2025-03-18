@@ -1,15 +1,22 @@
 export class CookieManager {
-  constructor(domain = window.location.hostname) {
+  constructor(
+    domain = typeof window !== "undefined"
+      ? window.location.hostname
+      : "localhost",
+  ) {
     this.domain = domain;
   }
 
   set(name, value, days = 365) {
+    // Skip actual cookie setting in test environment
+    if (typeof document === "undefined") return;
+
     const date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
 
     let cookieString = `${name}=${value}; domain=${this.domain}; path=/; expires=${date.toGMTString()}`;
 
-    if (location.protocol === "https:") {
+    if (typeof location !== "undefined" && location.protocol === "https:") {
       cookieString += "; Secure";
     }
 
@@ -17,6 +24,9 @@ export class CookieManager {
   }
 
   get(name) {
+    // Return null in test environment
+    if (typeof document === "undefined") return null;
+
     const nameEQ = name + "=";
     const cookies = document.cookie.split(";");
 
@@ -62,5 +72,7 @@ export class CookieManager {
   }
 }
 
-window.GreatDS = window.GreatDS || {};
-window.GreatDS.cookieManager = new CookieManager();
+if (typeof window !== "undefined") {
+  window.GreatDS = window.GreatDS || {};
+  window.GreatDS.cookieManager = new CookieManager();
+}
