@@ -53,8 +53,15 @@
 .great-ds-pagination__next--numbered {
     @include govuk-media-query($until: tablet) {
         padding-left: 0;
+        padding-right: 0px;
         flex-direction: row;
         display: flex;
+    }
+}
+
+.great-ds-pagination__prev {
+    @include govuk-media-query($until: tablet) {
+        padding-right: 0px;
     }
 }
 

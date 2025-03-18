@@ -4,7 +4,7 @@
             <p class='great-ds-pagination__page-summary--numbered'> Page {{ currentPageNumber }} of {{ lastPageNumber }} </p>
         </div>  
         {% if previousPageNumber %}
-            <div class="govuk-pagination__prev {% if hoverClass %} {{ hoverClass }} {% else %} great-ds-pagination__hover--blue {% endif %}">
+            <div class="govuk-pagination__prev great-ds-pagination__prev {% if hoverClass %} {{ hoverClass }} {% else %} great-ds-pagination__hover--blue {% endif %}">
                 <a class="govuk-link govuk-pagination__link" href="{{currentPageURL}}{{pageParamName}}={{previousPageNumber}}" rel="prev">
                     <svg class="govuk-pagination__icon govuk-pagination__icon--prev great-ds-pagination__icon--prev" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                     <path d="M9.24833 2.1001L8.5562 1.40746C8.26314 1.11418 7.78925 1.11418 7.49931 1.40746L1.43855 7.4696C1.14548 7.76288 1.14548 8.23712 1.43855 8.52728L7.49931 14.5925C7.79237 14.8858 8.26626 14.8858 8.5562 14.5925L9.24833 13.8999C9.54451 13.6035 9.53827 13.1199 9.23586 12.8297L5.47906 9.248H14.4393C14.8539 9.248 15.1875 8.91416 15.1875 8.4992V7.5008C15.1875 7.08584 14.8539 6.752 14.4393 6.752H5.47906L9.23586 3.17025C9.54139 2.88009 9.54762 2.3965 9.24833 2.1001Z" fill="#505A5F"/>
