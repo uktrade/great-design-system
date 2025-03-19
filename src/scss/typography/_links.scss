@@ -1,0 +1,20 @@
+// Link styles
+a {
+    color: $great-ds-semantic-text-default-link;
+}
+
+@mixin great-ds-link-decorator() {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: .3em;
+}
+
+@mixin great-ds-link() { // TODO move into own component when prioritised
+    @include great-ds-link-decorator;
+    &:hover {
+        color: $great-ds-semantic-text-hover-link;
+    }
+    &:focus {
+        @include govuk-focused-text;
+    }
+}

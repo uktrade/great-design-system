@@ -1,0 +1,8 @@
+// Heading styles
+h1, h2, h3, h4, h5, h6 {
+    font-family: $great-ds-type-family-great-ds-bold;
+}
+
+.great-ds-heading-xxl { // GOVUK does not have a class for this but is available in their map
+    @include govuk-font-size($size: 80);
+}

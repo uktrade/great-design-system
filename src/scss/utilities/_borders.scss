@@ -1,0 +1,28 @@
+// Border color utilities
+@each $name, $value in (
+  "input": $great-ds-semantic-border-default-input-border,
+  "grey": $great-ds-semantic-border-default-grey-border,
+  "white": $great-ds-semantic-border-hover-white-border,
+  "light-grey": $great-ds-semantic-border-default-light-grey-border,
+  "error": $great-ds-semantic-border-default-error-border
+) {
+  // Border color only
+  .great-ds-border-#{$name} {
+    border-color: $value !important;
+  }
+  
+  // Generate border utilities with different widths and positions
+  @each $width in (1, 2, 3) {
+    // Full border
+    .great-ds-border-#{$name}-#{$width} {
+      border: #{$width}px solid $value !important;
+    }
+    
+    // Position-specific borders
+    @each $position in (top, bottom) {
+      .great-ds-border-#{$position}-#{$name}-#{$width} {
+        border-#{$position}: #{$width}px solid $value !important;
+      }
+    }
+  }
+}

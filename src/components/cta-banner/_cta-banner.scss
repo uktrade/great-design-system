@@ -15,6 +15,23 @@
   background-color: $great-ds-semantic-surface-background-white;
 }
 
+.great-ds-cta-banner--image-on-top {
+  display: flex;
+  flex-direction: column-reverse;
+  @include govuk-media-query($from: tablet) {
+    flex-direction: row;
+  }
+}
+
+.great-ds-cta-banner__content {
+  .great-ds-cta-banner--image-on-top & {
+    margin-top: $great-ds-spacing-fixed-spacing-4;
+    @include govuk-media-query($from: tablet) {
+      margin-top: 0;
+    }
+  }
+}
+
 .great-ds-cta-banner-heading {
   font-weight: 600;
   line-height: $great-ds-type-line-height-heading-l-large;
