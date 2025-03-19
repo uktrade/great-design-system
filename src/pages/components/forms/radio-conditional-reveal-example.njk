@@ -1,0 +1,95 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/forms/__form.njk" import greatForm %}
+
+    {{ greatForm(
+        fields=[[
+                {
+                    use_fieldset: false,
+                    css_classes: 'govuk-form-group',
+                    label: true,
+                    label_tag: '<label class="govuk-label" for="example">Radio with conditional reveal example</label>',
+                    help_text: 'This is a hint',
+                    help_text_css_classes: 'govuk-hint',
+                    field: {
+                        widget: {
+                            name: 'radio_with_conditional_reveal',
+                            type: 'radio',
+                            value: 'Example',
+                            template_name: '_multiple_input.njk',
+                            attrs: {
+                                class: ''
+                            },
+                            optgroups: [
+                                [
+                                    none, 
+                                    [
+                                        {
+                                            name: 'radio_with_conditional_reveal',
+                                            value: 'no',
+                                            label: 'No',
+                                            selected: false,
+                                            index: '0',
+                                            attrs: {
+                                                id: 'id_radio_with_conditional_reveal_0'
+                                            },
+                                            type: none,
+                                            template_name: '_radio_option_conditional_reveal.html',
+                                            wrap_label: true
+                                        }
+                                    ],
+                                    0
+                                ],
+                                [
+                                    none,
+                                    [
+                                        {
+                                            name: 'radio_with_conditional_reveal',
+                                            value: 'yes',
+                                            label: 'Yes',
+                                            selected: false,
+                                            index: '1',
+                                            attrs: {
+                                                id: 'id_radio_with_conditional_reveal_1'
+                                            },
+                                            type: none,
+                                            template_name: '_radio_option_conditional_reveal.html',
+                                            wrap_label: true,
+                                            reveals: [
+                                                [
+                                                    {
+                                                        use_fieldset: false,
+                                                        css_classes: 'govuk-form-group',
+                                                        label: true,
+                                                        label_tag: '<label class="govuk-label" for="example">Reveal text input</label>',
+                                                        field: {
+                                                            widget: {
+                                                                name: 'example',
+                                                                type: 'text',
+                                                                value: 'Example',
+                                                                template_name: '_input.njk',
+                                                                attrs: {
+                                                                    class: ''
+                                                                }
+                                                            },
+                                                            linked_conditional_reveal: true
+                                                        }
+                                                    },
+                                                    []
+                                                ]
+                                            ]
+                                        }
+                                    ],
+                                    1
+                                ]
+                            ]
+                        },
+                        linked_conditional_reveal: false
+                    }
+                },
+                []
+        ]]
+    ) }}
+
+{% endblock %}

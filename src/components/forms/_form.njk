@@ -1,4 +1,4 @@
-{% macro greatFormDjango(form) %}
+{% macro greatFormDjango(fields, hidden_fields, errors) %}
 {% if errors and not fields %}
   <div>{% for field in hidden_fields %}{{ field }}{% endfor %}</div>
 {% endif %}

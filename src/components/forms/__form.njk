@@ -1,0 +1,44 @@
+{% from "../widgets/_input.njk" import greatInputDjango %}
+{% from "../widgets/_textarea.njk" import greatTextareaDjango %}
+{% from "../widgets/__multiple_input.njk" import greatMultipleInput %}
+{% from "../widgets/_error.njk" import greatErrorDjango %}
+
+{% macro greatForm(fields) %}
+{% for field, errors in fields %}
+  {% if not field.field.linked_conditional_reveal %}
+  <div{% if field.css_classes %} class="{{ field.css_classes }}"{% endif %}>
+    {% if field.use_fieldset %}
+      <fieldset class="govuk-fieldset">
+      {% if field.label %}{{ field.legend_tag }}{% endif %}
+    {% else %}
+      {% if field.label %}{{ field.label_tag|safe }}{% endif %}
+    {% endif %}
+    {% if field.help_text %}<div class="{{field.help_text_css_classes}}">{{ field.help_text|safe }}</div>{% endif %}
+
+    {% if errors != [] %}
+      {{ greatErrorDjango(
+        errors=errors
+      ) }}
+    {% endif %}
+
+    {% if field.field.widget.template_name == '_input.njk' %}
+      {{ greatInputDjango(
+        widget=field.field.widget
+      ) }}
+    
+    {% elif field.field.widget.template_name == '_textarea.njk' %}
+    {{ greatTextareaDjango(
+      widget=field.field.widget
+    ) }}
+
+    {% elif field.field.widget.template_name == '_multiple_input.njk' %}
+    {{ greatMultipleInput(
+      widget=field.field.widget
+    ) }}
+    {% endif %}
+
+    {% if field.use_fieldset %}</fieldset>{% endif %}
+  </div>
+  {% endif %}
+{% endfor %}
+{% endmacro %}
