@@ -68,6 +68,8 @@
 .great-ds-pagination__next-link--numbered {
     @include govuk-media-query($until: tablet) {
         flex-direction: row-reverse;
+        width: 100%;
+        justify-content: flex-end;
     }
 }
 
