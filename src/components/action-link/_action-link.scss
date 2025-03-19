@@ -1,6 +1,6 @@
-.great-ds-action-link__link {
+.great-ds-action-link{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     width: fit-content;
     outline: none;
     font-family: $great-ds-type-family-great-ds-bold;
@@ -32,6 +32,7 @@
 
 .great-ds-action-link__image {
     margin-right: $great-ds-spacing-2;
+    flex-shrink: 0;
 }
 
 .great-ds-action-link__text {

@@ -1,0 +1,12 @@
+// Background color utilities
+@each $name, $value in (
+  "white": $great-ds-semantic-surface-background-white,
+  "light-blue": $great-ds-semantic-surface-background-light-blue,
+  "blue": $great-ds-semantic-surface-background-great-ds-blue,
+  "red": $great-ds-semantic-surface-background-great-ds-red,
+  "light-green": $great-ds-semantic-surface-background-light-green
+) {
+  .great-ds-bg-#{$name} {
+    background-color: $value !important;
+  }
+}

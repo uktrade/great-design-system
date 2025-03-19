@@ -18,10 +18,9 @@
 
 @import './govuk/components/';
 
-@import "./base/fonts";
-@import "./base/typography";
-
+@import "./typography";
 @import "./layout/container";
+@import "./utilities";
 
 @import "../components/button/button";
 @import "../components/header/header";
