@@ -1,17 +1,32 @@
+{% from "../hint/_hint.njk" import greatHint %}
+{% from "../label/_label.njk" import greatLabel %}
+
 {% macro greatFormDjango(fields, hidden_fields, errors) %}
 {% if errors and not fields %}
   <div>{% for field in hidden_fields %}{{ field }}{% endfor %}</div>
 {% endif %}
 {% for field, errors in fields %}
   {% if not field.field.linked_conditional_reveal %}
-  <div{% with classes=field.css_classes %}{% if classes %} class="{{ classes }}"{% endif %}{% endwith %}>
+  <div{% if field.css_classes %} class="{{ field.css_classes }}"{% endif %}>
     {% if field.use_fieldset %}
       <fieldset class="govuk-fieldset">
       {% if field.label %}{{ field.legend_tag }}{% endif %}
     {% else %}
-      {% if field.label %}{{ field.label_tag }}{% endif %}
+      {% if field.label %}
+      {{ greatLabel(
+        text=field.label,
+        for=field.field.widget.id_for_label
+      ) }}
+      {% endif %}
     {% endif %}
-    {% if field.help_text %}<div class="{{field.help_text_css_classes}}">{{ field.help_text|safe }}</div>{% endif %}
+
+    {% if field.help_text %}
+      {{ greatHint(
+        html=field.help_text,
+        classes=field.help_text_css_classes
+      ) }}
+    {% endif %}
+      
     {{ errors }}
     {{ field }}
     {% if field.use_fieldset %}</fieldset>{% endif %}
