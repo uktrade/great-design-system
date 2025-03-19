@@ -41,6 +41,9 @@ function convertNunjucksToHtml(
   //Replace custom njk '|string' filter with the django default "|stringformat:'s'" filter
   htmlContent = htmlContent.replace(/string/g, "stringformat:'s'");
 
+  //Append '.items' on dict loop
+  htmlContent = htmlContent.replace(/{% for name, value in attrs %}/g, "{% for name, value in attrs.items %}");
+
   //Replace custom njk '|add(x)' filter with the django default '|add:x' filter
   htmlContent = htmlContent.replace(/add\((['"]?[-\w]+['"]?)\)/g, "add:$1");
 
