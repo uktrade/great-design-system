@@ -20,7 +20,7 @@
   {% if option.reveals %}
   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-radiosElement-1">
   {% for reveal_field , errors in option.reveals %}
-    <div{% if reveal_field.css_classes %} class="{{ reveal_field.css_classes }}"{% endif %}>
+     <div{% if reveal_field.css_classes %} class="{{ reveal_field.css_classes }}"{% endif %}>
       {% if reveal_field.use_fieldset %}
         <fieldset class="govuk-fieldset">
         {% if reveal_field.label %}{{ reveal_field.legend_tag }}{% endif %}
