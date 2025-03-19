@@ -1,0 +1,5 @@
+// List styles
+ul, ol {
+    @extend .govuk-list;
+    @include govuk-font-size($size: 18);
+}
