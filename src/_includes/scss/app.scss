@@ -31,6 +31,14 @@ body {
         font-size: 1rem;
         padding: 0.2rem 0.4rem;
     }
+
+    ul { 
+        @extend .govuk-list--bullet; 
+    }
+
+    ol { 
+        @extend .govuk-list--number; 
+    }
 }
 
 .app-site-wrapper {

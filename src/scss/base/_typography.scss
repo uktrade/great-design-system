@@ -25,14 +25,6 @@ ul, ol {
     @include govuk-font-size($size: 18);
 }
 
-ul { 
-    @extend .govuk-list--bullet; 
-}
-
-ol { 
-    @extend .govuk-list--number; 
-}
-
 a {
     color: $great-ds-semantic-text-default-link;
 }
