@@ -1,6 +1,8 @@
 {% from "./_attrs.njk" import greatAttrsDjango %}
 {% from "./_radio_option_conditional_reveal.njk" import greatRadioOptionConditionalRevealDjango %}
 {% from "./_radio_option.njk" import greatRadioOptionDjango %}
+{% from "../hint/_hint.njk" import greatHint %}
+{% from "../label/_label.njk" import greatLabel %}
 
 {% macro greatMultipleInputDjango(widget) %}
 <div class="govuk-radios" id="govuk-radios-{{widget.id}}" data-module="govuk-radios">
@@ -25,10 +27,20 @@
         <fieldset class="govuk-fieldset">
         {% if reveal_field.label %}{{ reveal_field.legend_tag }}{% endif %}
       {% else %}
-        {% if reveal_field.label %}{{ reveal_field.label_tag }}{% endif %}
+      {% if reveal_field.label %}
+      {{ greatLabel(
+        text=reveal_field.label,
+        for=reveal_field.field.widget.id_for_label
+      ) }}
       {% endif %}
-      {% if reveal_field.help_text %}<div class="{{reveal_field.help_text_css_classes}}">{{ reveal_field.help_text|safe }}</div>{% endif %}
-      {{ errors }}
+      {% endif %}
+      {% if reveal_field.help_text %}
+      {{ greatHint(
+        html=reveal_field.help_text,
+        classes=reveal_field.help_text_css_classes
+      ) }}
+    {% endif %}      
+    {{ errors }}
       {{ reveal_field }}
       {% if reveal_field.use_fieldset %}</fieldset>{% endif %}
     </div>
