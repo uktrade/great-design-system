@@ -1,0 +1,31 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/forms/__form.njk" import greatForm %}
+
+    {{ greatForm(
+        fields=[[
+                {
+                    use_fieldset: false,
+                    css_classes: 'govuk-form-group',
+                    label: 'Text input example',
+                    help_text: 'This is a hint',
+                    help_text_css_classes: 'govuk-hint',
+                    field: {
+                        widget: {
+                            name: 'example',
+                            type: 'text',
+                            value: 'Example',
+                            template_name: '_input.njk',
+                            attrs: {
+                                class: ''
+                            }
+                        },
+                        linked_conditional_reveal: false
+                    }
+                },
+                []
+        ]]
+    ) }}
+
+{% endblock %}

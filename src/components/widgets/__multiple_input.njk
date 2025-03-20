@@ -1,0 +1,62 @@
+{% from "./_attrs.njk" import greatAttrsDjango %}
+{% from "./_radio_option_conditional_reveal.njk" import greatRadioOptionConditionalRevealDjango %}
+{% from "./_radio_option.njk" import greatRadioOptionDjango %}
+{% from "./_input.njk" import greatInputDjango %}
+{% from "./_error.njk" import greatErrorDjango %}
+{% from "../hint/_hint.njk" import greatHint %}
+{% from "../label/_label.njk" import greatLabel %}
+
+{% macro greatMultipleInput(widget) %}
+<div class="govuk-radios" id="govuk-radios-{{widget.id}}" data-module="govuk-radios">
+  {% for group, options, index in widget.optgroups %}
+  {% for option in options %}
+  <div class="govuk-radios__item">
+    {% if option.reveals %}
+     {{ greatRadioOptionConditionalRevealDjango(
+      widget=option
+    ) }}
+    {% else %}
+    {{ greatRadioOptionDjango(
+      widget=option
+    ) }}
+    {% endif %}
+  </div>
+  {% if option.reveals %}
+  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-radiosElement-1">
+  {% for reveal_field , errors in option.reveals %}
+    <div{% if reveal_field.css_classes %} class="{{ reveal_field.css_classes }}"{% endif %}>
+      {% if reveal_field.use_fieldset %}
+        <fieldset class="govuk-fieldset">
+        {% if reveal_field.label %}{{ reveal_field.legend_tag }}{% endif %}
+      {% else %}
+      {% if reveal_field.label %}
+    {{ greatLabel(
+      text=reveal_field.label,
+      for=reveal_field.field.widget.id_for_label
+    ) }}
+    {% endif %}
+      {% endif %}
+      {% if reveal_field.help_text %}
+      {{ greatHint(
+        html=reveal_field.help_text,
+        classes=reveal_field.help_text_css_classes
+      ) }}
+    {% endif %}
+      {% if errors != [] %}
+        {{ greatErrorDjango(
+          errors=errors
+        ) }}
+      {% endif %}
+
+      {{ greatInputDjango(
+        widget=reveal_field.field.widget
+      ) }}
+      {% if reveal_field.use_fieldset %}</fieldset>{% endif %}
+    </div>
+  {% endfor %}
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+</div>
+{% endmacro %}

@@ -1,0 +1,73 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/forms/__form.njk" import greatForm %}
+
+    {{ greatForm(
+        fields=[[
+                {
+                    use_fieldset: false,
+                    css_classes: 'govuk-form-group',
+                    label: 'Select example',
+                    help_text: 'This is a hint',
+                    help_text_css_classes: 'govuk-hint',
+                    field: {
+                        widget: {
+                            name: 'example',
+                            template_name: '_select.njk',
+                            attrs: {
+                                class: ''
+                            },
+                            optgroups: [
+                                [
+                                    none, 
+                                    [
+                                        {
+                                            name: 'select',
+                                            value: 'no',
+                                            label: 'No',
+                                            selected: false,
+                                            index: '0',
+                                            attrs: {
+                                                id: 'id_select_0'
+                                            },
+                                            type: none,
+                                            template_name: '_select_option.html',
+                                            wrap_label: true,
+                                            help_text: '',
+                                            help_text_css: ''
+                                        }
+                                    ],
+                                    0
+                                ],
+                                [
+                                    none,
+                                    [
+                                        {
+                                            name: 'select',
+                                            value: 'yes',
+                                            label: 'Yes',
+                                            selected: false,
+                                            index: '1',
+                                            attrs: {
+                                                id: 'id_select_1'
+                                            },
+                                            type: none,
+                                            template_name: '_select_option.html',
+                                            wrap_label: true,
+                                            help_text: '',
+                                            help_text_css: ''
+                                        }
+                                    ],
+                                    1
+                                ]
+                            ]
+                        },
+                        linked_conditional_reveal: false
+                    }
+                },
+                []
+        ]]
+    ) }}
+
+{% endblock %}

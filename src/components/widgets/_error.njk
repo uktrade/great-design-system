@@ -1,0 +1,3 @@
+{% macro greatErrorDjango(errors) %}
+{% for error in errors %}<p class="{{ error_class }}">{{ error }}</p>{% endfor %}
+{% endmacro %}
