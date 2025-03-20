@@ -1,0 +1,13 @@
+{% macro greatAutocomplete(id, name, classes, suggestions) %}
+  <div id=id|add("-autocomplete-results") class="great-ds-header__search-autocomplete-results-list {% if classes %} {{ classes }}{% endif %}">
+    {% if not suggestions %}
+    <div class="great-ds-header__search-autocomplete-results-item">
+      <div class="great-ds-header__search-autocomplete-results-item-link">
+        <p class="great-ds-header__search-autocomplete-results-item-link-text" role="status">
+          No results found
+        </p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+{% endmacro %}

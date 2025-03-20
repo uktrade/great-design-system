@@ -3,8 +3,9 @@
 {% from "../label/_label.njk" import greatLabel %}
 {% from "./_input-element.njk" import greatInputElement %}
 {% from "./_input-affix.njk" import greatInputAffix %}
+{% from "../autocomplete/_autocomplete.njk" import greatAutocomplete %}
 
-{% macro greatInput(id, name, type, classes, label, hint, errorMessage, spellcheck, value, disabled, autocomplete, pattern, inputmode, prefix, suffix, formGroupClasses, beforeInput, afterInput, attributes, placeholder, noFormGroup) %}
+{% macro greatInput(id, name, type, classes, label, hint, errorMessage, spellcheck, value, disabled, autocomplete, pattern, inputmode, prefix, suffix, formGroupClasses, beforeInput, afterInput, attributes, placeholder, noFormGroup, autocompleteSuggestions) %}
   {% if not noFormGroup %}
   <div class="great-form-group{% if errorMessage or errorMessage.html %} great-form-group--error{% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
   {% endif %}
@@ -39,7 +40,7 @@
     ) }}
   {% endif %}
 
-  {% if beforeInput or prefix or suffix or afterInput %}
+  {% if beforeInput or prefix or suffix or afterInput or autocomplete %}
     <div class="great-input__wrapper">
       {% if beforeInput %}
         {% if beforeInput.html %}{{ beforeInput.html|safe }}{% else %}{{ beforeInput.text }}{% endif %}
@@ -67,7 +68,15 @@
     placeholder=placeholder
   ) }}
 
-  {% if beforeInput or prefix or suffix or afterInput %}
+  {% if autocomplete %}
+  {{ greatAutocomplete(
+    id=id, 
+    classes=classes, 
+    suggestions=autocompleteSuggestions
+  ) }}
+  {% endif %}
+
+  {% if beforeInput or prefix or suffix or afterInput or autocomplete %}
       {% if suffix %}
         {{ greatInputAffix(suffix="suffix", type="suffix") }}
       {% endif %}
