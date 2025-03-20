@@ -1,6 +1,7 @@
 {% from "../widgets/_input.njk" import greatInputDjango %}
 {% from "../widgets/_textarea.njk" import greatTextareaDjango %}
 {% from "../widgets/__multiple_input.njk" import greatMultipleInput %}
+{% from "../widgets/_select.njk" import greatSelectDjango %}
 {% from "../widgets/_error.njk" import greatErrorDjango %}
 {% from "../hint/_hint.njk" import greatHint %}
 {% from "../label/_label.njk" import greatLabel %}
@@ -47,6 +48,11 @@
 
     {% elif field.field.widget.template_name == '_multiple_input.njk' %}
     {{ greatMultipleInput(
+      widget=field.field.widget
+    ) }}
+
+    {% elif field.field.widget.template_name == '_select.njk' %}
+    {{ greatSelectDjango(
       widget=field.field.widget
     ) }}
     {% endif %}

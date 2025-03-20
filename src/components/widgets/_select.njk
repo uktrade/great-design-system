@@ -1,0 +1,32 @@
+{% from "./_attrs.njk" import greatAttrsDjango %}
+{% from "./_select_option.njk" import greatSelectOptionDjango %}
+
+{% macro greatSelectDjango(widget) %}
+<select class="govuk-select{% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}" name="{{ widget.name }}"
+
+{{ greatAttrsDjango(
+  attrs=widget.attrs
+) }}
+
+>
+  {% for group_name, group_choices, group_index in widget.optgroups %}
+  {% if group_name %}
+  <optgroup label="{{ group_name }}">
+  {% endif %}
+    {% for option in group_choices %}
+    
+    {% if option.template_name == '_select_option.html' %}
+    
+    {{ greatSelectOptionDjango(
+    widget=option
+    ) }}
+
+    {% endif %}
+    
+  {% endfor %}
+  {% if group_name %}
+  </optgroup>
+  {% endif %}
+  {% endfor %}
+</select>
+{% endmacro %}

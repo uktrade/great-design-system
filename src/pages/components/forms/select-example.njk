@@ -8,14 +8,13 @@
                 {
                     use_fieldset: false,
                     css_classes: 'govuk-form-group',
-                    label: 'Radio example',
+                    label: 'Select example',
                     help_text: 'This is a hint',
                     help_text_css_classes: 'govuk-hint',
                     field: {
                         widget: {
                             name: 'example',
-                            value: 'Example',
-                            template_name: '_multiple_input.njk',
+                            template_name: '_select.njk',
                             attrs: {
                                 class: ''
                             },
@@ -24,16 +23,16 @@
                                     none, 
                                     [
                                         {
-                                            name: 'radio',
+                                            name: 'select',
                                             value: 'no',
                                             label: 'No',
                                             selected: false,
                                             index: '0',
                                             attrs: {
-                                                id: 'id_radio_0'
+                                                id: 'id_select_0'
                                             },
                                             type: none,
-                                            template_name: '_radio_option.html',
+                                            template_name: '_select_option.html',
                                             wrap_label: true,
                                             help_text: '',
                                             help_text_css: ''
@@ -45,16 +44,16 @@
                                     none,
                                     [
                                         {
-                                            name: 'radio',
+                                            name: 'select',
                                             value: 'yes',
                                             label: 'Yes',
                                             selected: false,
                                             index: '1',
                                             attrs: {
-                                                id: 'id_radio_1'
+                                                id: 'id_select_1'
                                             },
                                             type: none,
-                                            template_name: '_radio_option.html',
+                                            template_name: '_select_option.html',
                                             wrap_label: true,
                                             help_text: '',
                                             help_text_css: ''
