@@ -2,9 +2,7 @@
 {% from "../label/_label.njk" import greatLabel %}
 
 {% macro greatFormDjango(fields, hidden_fields, errors) %}
-{% if errors and not fields %}
-  <div>{% for field in hidden_fields %}{{ field }}{% endfor %}</div>
-{% endif %}
+
 {% for field, errors in fields %}
   {% if not field.field.linked_conditional_reveal %}
   <div{% if field.css_classes %} class="{{ field.css_classes }}"{% endif %}>
@@ -36,7 +34,6 @@
 </div>
 {% endif %}
 {% endfor %}
-{% if not fields and not errors %}
-  {% for field in hidden_fields %}{{ field }}{% endfor %}
-{% endif %}
+{% for field in hidden_fields %}{{ field }}{% endfor %}
+
 {% endmacro %}
