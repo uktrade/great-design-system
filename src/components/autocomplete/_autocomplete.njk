@@ -39,6 +39,17 @@
     ) }}
   {% endif %}
 
+  {% if beforeInput or prefix or suffix or afterInput %}
+    <div class="great-input__wrapper">
+      {% if beforeInput %}
+        {% if beforeInput.html %}{{ beforeInput.html|safe }}{% else %}{{ beforeInput.text }}{% endif %}
+      {% endif %}
+      
+      {% if prefix %}
+        {{ greatInputAffix(prefix="prefix", type="prefix") }}
+      {% endif %}
+  {% endif %}
+
   {{ greatInputElement(
     id=id,
     name=name,
@@ -55,6 +66,17 @@
     attributes=attributes,
     placeholder=placeholder
   ) }}
+
+  {% if beforeInput or prefix or suffix or afterInput %}
+      {% if suffix %}
+        {{ greatInputAffix(suffix="suffix", type="suffix") }}
+      {% endif %}
+
+      {% if afterInput %}
+        {% if afterInput.html %}{{ afterInput.html|safe }}{% else %}{{ afterInput.text }}{% endif %}
+      {% endif %}
+    </div>
+  {% endif %}
 
   {% if not noFormGroup %}
   </div>
