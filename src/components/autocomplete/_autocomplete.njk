@@ -1,13 +1,62 @@
-{% macro greatAutocomplete(id, name, classes, suggestions) %}
-  <div id=id|add("-autocomplete-results") class="great-ds-header__search-autocomplete-results-list {% if classes %} {{ classes }}{% endif %}">
-    {% if not suggestions %}
-    <div class="great-ds-header__search-autocomplete-results-item">
-      <div class="great-ds-header__search-autocomplete-results-item-link">
-        <p class="great-ds-header__search-autocomplete-results-item-link-text" role="status">
-          No results found
-        </p>
-      </div>
-    </div>
-    {% endif %}
+{% from "../error-message/_error-message.njk" import greatErrorMessage %}
+{% from "../hint/_hint.njk" import greatHint %}
+{% from "../label/_label.njk" import greatLabel %}
+{% from "../input/_input-element.njk" import greatInputElement %}
+{% from "../input/_input-affix.njk" import greatInputAffix %}
+
+{% macro greatAutocomplete(id, name, type, classes, label, hint, errorMessage, spellcheck, value, disabled, autocomplete, pattern, inputmode, prefix, suffix, formGroupClasses, beforeInput, afterInput, attributes, placeholder, noFormGroup) %}
+  {% if not noFormGroup %}
+  <div class="great-form-group{% if errorMessage or errorMessage.html %} great-form-group--error{% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
+  {% endif %}
+
+    {% if label %}
+    {{ greatLabel(
+      text=label.text,
+      html=label.html,
+      classes=label.classes,
+      for=id,
+      isPageHeading=label.isPageHeading
+    ) }}
+  {% endif %}
+
+  {% if hint %}
+    {{ greatHint(
+      id=id|add('-hint'),
+      classes=hint.classes,
+      html=hint.html,
+      text=hint.text
+    ) }}
+  {% endif %}
+
+  {% if errorMessage %}
+    {{ greatErrorMessage(
+      id=id|add('-error'),
+      classes=errorMessage.classes,
+      visuallyHiddenText=errorMessage.visuallyHiddenText,
+      html=errorMessage.html,
+      text=errorMessage.text,
+      for=errorMessage.for
+    ) }}
+  {% endif %}
+
+  {{ greatInputElement(
+    id=id,
+    name=name,
+    type=type,
+    classes=classes,
+    errorMessage=errorMessage,
+    spellcheck=spellcheck,
+    value=value,
+    disabled=disabled,
+    describedBy=describedBy,
+    autocomplete=autocomplete,
+    pattern=pattern,
+    inputmode=inputmode,
+    attributes=attributes,
+    placeholder=placeholder
+  ) }}
+
+  {% if not noFormGroup %}
   </div>
+  {% endif %}
 {% endmacro %}

@@ -1,20 +1,18 @@
 {% extends "layout/_example.njk" %}
 
 {% block content %}
-  {% from "../../../components/input/_input.njk" import greatInput %}
+  {% from "../../../components/autocomplete/_autocomplete.njk" import greatAutocomplete %}
 
-  {{ greatInput(
-    type = 'text',
-    name = 'autocomplete-example',
-    id = 'autocomplete-example',
+  {{ greatAutocomplete(
+    type = "text",
+    id = "autocomplete-example",
+    name = "autocomplete-example",
     label = {
-        text: 'Autocomplete example'
-    },
+            text: 'Autocomplete example'
+        },
     hint = {
         text: 'This is a hint'
-    },
-    autocomplete = true,
-    autocompleteSuggestions = []
-  ) }}
+    }
+  )}}
 
 {% endblock %}
