@@ -1,0 +1,22 @@
+{% from "./_attrs.njk" import greatAttrsDjango %}
+
+{% macro greatOptionConditionalRevealDjango(widget) %}
+
+<input class="govuk-{{ widget.template_class_name }}__input{% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}" type="{{widget.type}}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value | string }}"{% endif %}
+
+{{ greatAttrsDjango(
+	attrs=widget.attrs
+  ) }}
+
+ data-aria-controls="conditional-{{ widget.template_class_name }}Element-1">
+
+<label{% if widget.attrs.id %} id="{{ widget.attrs.id }}-label" for="{{ widget.attrs.id }}"{% endif %} class="govuk-label govuk-{{ widget.template_class_name }}__label">
+	{{ widget.label }}
+</label>
+
+{% if widget.help_text %}
+<div class="govuk-hint {{widget.help_text_css}}">
+	{{widget.help_text}}
+</div>
+{% endif %}
+{% endmacro %}
