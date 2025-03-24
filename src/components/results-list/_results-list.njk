@@ -1,0 +1,20 @@
+{% macro greatResultsList(listItems, classes, attributes) %}
+    <ul class="great-ds-results-list{% if classes %} {{ classes }}{% endif %}">
+        {% for item in listItems %}
+            <li class="great-ds-results-list__item">
+                {% if item.type %}<div class="great-ds-results-list__type">{{ item.type }}</div>{% endif %}
+                <a href="{{ item.href }}" class="great-ds-results-list__link" {% if attributes %} {{ attributes }}{% endif %}>{{ item.title }}</a>
+                <p class="great-ds-results-list__description">{{ item.description }}</p>
+                {% if item.metadata %}
+                    <ul class="great-ds-results-list__metadata">
+                        {% for metadata in item.metadata %}
+                            <li class="great-ds-results-list__metadata-item">
+                                {% if metadata.datePrefix %}{{ metadata.datePrefix }}{% endif %} <time datetime="{{ metadata.datetime }}">{{ metadata.dateString }}</time>{% if not loop.last %}, {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
