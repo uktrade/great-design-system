@@ -1,0 +1,52 @@
+---
+layout: layout/_page.njk
+content: main
+eleventyNavigation:
+  key: BGS Footer
+  parent: Components
+  title: BGS Footer
+status: 
+  - Live
+---
+{% markdown %}
+# Footer
+
+The great.gov.uk footer provides copyright, licensing and other information about your service. 
+{% endmarkdown %}
+
+{% exampleWithCode "/components/bgs-footer/bgs-footer-example/", "footer-example", "100%", "300px" %}
+
+{% markdown %}
+The great.gov.uk footer is complementary to the GOV.UK footer so that users are reassured they are working with a government department and can use the familiar conventions they have learnt from interacting with the UK Government.  
+
+## When to use this component 
+
+Different platforms use different footers across great.gov.uk and will contain different links to each other. Make sure you use the correct footer for your platform.  For example, campaign sites use a different footer from Expand Your Business.  
+
+Use this footer for internal services hosted on service.great.gov.uk domains. Users of these services will normally be DBT staff but may also include staff of other organisations such as local authorities. 
+
+## When not to use this component 
+
+If your service is hosted on a service.gov.uk domain it should use the GOV.UK Design System footer component. 
+
+## How it works 
+
+Like the GOV.UK footer, the internal service footer can be adapted to the needs of your service. When deciding what information to place in the footer, remember that: 
+
+* information placed in the footer is sometimes skipped or not noticed 
+* the dark blue background lowers the contrast ratio which will limit readability for some people 
+
+As a minimum the footer should include links to your service’s accessibility statement and privacy notice.  
+
+### Footer with links 
+
+{% endmarkdown %}
+
+{% exampleWithCode "/components/footer/footer-example/", "footer-example", "100%", "300px" %}
+
+{% markdown %}
+### International footer with links
+{% endmarkdown %}
+
+{% exampleWithCode "/components/footer/footer-international-example/", "footer-international-example", "100%", "300px" %}
+
