@@ -1,84 +1,32 @@
-{% from "../error-message/_error-message.njk" import greatErrorMessage %}
-{% from "../hint/_hint.njk" import greatHint %}
+{% from "../input/_input.njk" import greatInput %}
 {% from "../label/_label.njk" import greatLabel %}
-{% from "../input/_input-element.njk" import greatInputElement %}
-{% from "../input/_input-affix.njk" import greatInputAffix %}
 
-{% macro greatAutocomplete(id, name, type, classes, label, hint, errorMessage, spellcheck, value, disabled, autocomplete, pattern, inputmode, prefix, suffix, formGroupClasses, beforeInput, afterInput, attributes, placeholder, noFormGroup) %}
-  {% if not noFormGroup %}
-  <div class="great-form-group{% if errorMessage or errorMessage.html %} great-form-group--error{% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
-  {% endif %}
-
-    {% if label %}
-    {{ greatLabel(
-      text=label.text,
-      html=label.html,
-      classes=label.classes,
-      for=id,
-      isPageHeading=label.isPageHeading
-    ) }}
-  {% endif %}
-
-  {% if hint %}
-    {{ greatHint(
-      id=id|add('-hint'),
-      classes=hint.classes,
-      html=hint.html,
-      text=hint.text
-    ) }}
-  {% endif %}
-
-  {% if errorMessage %}
-    {{ greatErrorMessage(
-      id=id|add('-error'),
-      classes=errorMessage.classes,
-      visuallyHiddenText=errorMessage.visuallyHiddenText,
-      html=errorMessage.html,
-      text=errorMessage.text,
-      for=errorMessage.for
-    ) }}
-  {% endif %}
-
-  {% if beforeInput or prefix or suffix or afterInput %}
-    <div class="great-input__wrapper">
-      {% if beforeInput %}
-        {% if beforeInput.html %}{{ beforeInput.html|safe }}{% else %}{{ beforeInput.text }}{% endif %}
-      {% endif %}
-      
-      {% if prefix %}
-        {{ greatInputAffix(prefix="prefix", type="prefix") }}
-      {% endif %}
-  {% endif %}
-
-  {{ greatInputElement(
-    id=id,
-    name=name,
-    type=type,
-    classes=classes,
-    errorMessage=errorMessage,
-    spellcheck=spellcheck,
-    value=value,
-    disabled=disabled,
-    describedBy=describedBy,
-    autocomplete=autocomplete,
-    pattern=pattern,
-    inputmode=inputmode,
-    attributes=attributes,
-    placeholder=placeholder
-  ) }}
-
-  {% if beforeInput or prefix or suffix or afterInput %}
-      {% if suffix %}
-        {{ greatInputAffix(suffix="suffix", type="suffix") }}
-      {% endif %}
-
-      {% if afterInput %}
-        {% if afterInput.html %}{{ afterInput.html|safe }}{% else %}{{ afterInput.text }}{% endif %}
-      {% endif %}
-    </div>
-  {% endif %}
-
-  {% if not noFormGroup %}
+{% macro greatAutocomplete(id, classes, label, hint, placeholder, labelClasses, suggestions) %}
+   <div id="great-ds-autocomplete" class="great-ds-autocomplete{% if classes %}{{ classes }}{% endif %}">
+      {{ greatInput(   
+          classes="great-ds-autocomplete__input",
+          id="great-ds-autocomplete__input",
+          label=label,
+          hint=hint,
+          type="text",
+          placeholder=placeholder,
+          labelClasses=labelClasses,
+          attributes="data-great-ds-autocomplete-input",
+          autocomplete="off"
+      ) }}
+      <div class="great-ds-autocomplete__results" {% if not suggestions %}hidden{% endif %} data-great-ds-autocomplete-results>
+        {% if suggestions %}
+        <ul class="great-ds-autocomplete__results-list">
+            {% for suggestion in suggestions %}
+            <li class="great-ds-autocomplete__results-item">
+                {{ greatLabel(
+                    class="great-ds-autocomplete__results-item-label",
+                    text=suggestion.label
+                )}}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
   </div>
-  {% endif %}
 {% endmacro %}
