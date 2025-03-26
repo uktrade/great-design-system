@@ -50,6 +50,10 @@
     }
 }
 
+.great-ds-pagination__link {
+    width: fit-content;
+}
+
 .great-ds-pagination__next--numbered {
     @include govuk-media-query($until: tablet) {
         padding-left: 0;
@@ -75,5 +79,11 @@
     @include govuk-media-query($until: tablet) {
         margin-right: 15px;
         margin-left: 0px
+    }
+}
+
+.great-ds-pagination__icon-arrow {
+    a:focus & {
+        fill: $great-ds-semantic-interaction-default-icon;
     }
 }
