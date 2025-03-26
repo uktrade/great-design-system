@@ -27,9 +27,6 @@
     {{ errors }}
     {{ field }}
     {% if field.use_fieldset %}</fieldset>{% endif %}
-    {% if forloop.last %}
-      {% for field in hidden_fields %}{{ field }}{% endfor %}
-    {% endif %}
 </div>
 {% endif %}
 
