@@ -9,15 +9,14 @@
     name = "autocomplete-example",
     placeholder = "Input value",
     label = {
-        text: 'Autocomplete example'
+        text: "Autocomplete example"
     },
     hint = {
-        text: 'This is a hint'
+        text: "This is a hint"
     },
-    suggestions = [
-      {label: "list item label"},
-      {label: "list item label"}
-    ]
+    jsonData = {
+      data: [{"label": "list item label"}, {"label": "list item label"}]
+    }
   )}}
 
 {% endblock %}

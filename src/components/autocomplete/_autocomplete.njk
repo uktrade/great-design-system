@@ -1,8 +1,8 @@
 {% from "../input/_input.njk" import greatInput %}
 {% from "../label/_label.njk" import greatLabel %}
 
-{% macro greatAutocomplete(id, classes, label, hint, placeholder, labelClasses, suggestions) %}
-   <div id="great-ds-autocomplete" class="great-ds-autocomplete{% if classes %}{{ classes }}{% endif %}">
+{% macro greatAutocomplete(id, classes, label, hint, placeholder, labelClasses, suggestions, jsonData) %}
+   <div id="great-ds-autocomplete" class="great-ds-autocomplete{% if classes %}{{ classes }}{% endif %}" {% if jsonData %}data-json='{{ jsonData | dump}}'{% endif %}>
       {{ greatInput(   
           classes="great-ds-autocomplete__input",
           id="great-ds-autocomplete__input",
@@ -14,7 +14,7 @@
           attributes="data-great-ds-autocomplete-input",
           autocomplete="off"
       ) }}
-      <div class="great-ds-autocomplete__results" {% if not suggestions %}hidden{% endif %} data-great-ds-autocomplete-results>
+      <div id="great-ds-autocomplete__results" class="great-ds-autocomplete__results" {% if not suggestions %}hidden{% endif %} data-great-ds-autocomplete-results>
         {% if suggestions %}
         <ul class="great-ds-autocomplete__results-list">
             {% for suggestion in suggestions %}

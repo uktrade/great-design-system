@@ -68,13 +68,21 @@ document.addEventListener("DOMContentLoaded", () => {
 // add event listeners to design system components
 import { copyURLToClipboard } from "../../js/copy-url/copy-url.js";
 import { updateCopyLinkButton } from "../../components/share-page/update-copy-link-button.js";
+import { autocomplete } from "../../components/autocomplete/autocomplete.js";
 
 export const addEventListenersToDSComponents = () => {
   const copyURLButton = document.getElementById("copy-url-button");
+  const autocompleteInput = document.getElementById(
+    "great-ds-autocomplete__input",
+  );
 
   if (copyURLButton) {
     copyURLButton.addEventListener("click", copyURLToClipboard);
     copyURLButton.addEventListener("click", updateCopyLinkButton);
+  }
+
+  if (autocompleteInput) {
+    autocompleteInput.addEventListener("input", autocomplete);
   }
 };
 
