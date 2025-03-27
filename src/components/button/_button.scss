@@ -111,6 +111,7 @@ $great-ds-button-outline: 2px solid transparent;
 
     &:hover:not(:focus),
     &:active,
+    &.is-active,
     &:focus:active {
         @each $property, $value in $hover-styles {
             #{$property}: $value;
@@ -298,6 +299,11 @@ $great-ds-button-outline: 2px solid transparent;
         box-shadow: 0 2px 0 $great-ds-semantic-interaction-focus;
         border-bottom: none;
         background-color: $great-ds-semantic-interaction-focus;
+    }
+
+    &.is-active {
+        background-color: $great-ds-semantic-surface-background-light-blue !important;
+        border-color: $great-ds-semantic-surface-background-light-blue !important;
     }
 }
 
