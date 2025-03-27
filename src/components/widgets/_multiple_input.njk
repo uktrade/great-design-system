@@ -1,26 +1,26 @@
 {% from "./_attrs.njk" import greatAttrsDjango %}
-{% from "./_radio_option_conditional_reveal.njk" import greatRadioOptionConditionalRevealDjango %}
-{% from "./_radio_option.njk" import greatRadioOptionDjango %}
+{% from "./_option_conditional_reveal.njk" import greatOptionConditionalRevealDjango %}
+{% from "./_option.njk" import greatOptionDjango %}
 {% from "../hint/_hint.njk" import greatHint %}
 {% from "../label/_label.njk" import greatLabel %}
 
 {% macro greatMultipleInputDjango(widget) %}
-<div class="govuk-radios" id="govuk-radios-{{widget.id}}" data-module="govuk-radios">
+<div class="govuk-{{ widget.template_class_name }}" id="govuk-{{ widget.template_class_name }}-{{widget.attrs.id}}" data-module="govuk-{{ widget.template_class_name }}">
   {% for group, options, index in widget.optgroups %}
   {% for option in options %}
-  <div class="govuk-radios__item">
+  <div class="govuk-{{ widget.template_class_name }}__item">
     {% if option.reveals %}
-     {{ greatRadioOptionConditionalRevealDjango(
+     {{ greatOptionConditionalRevealDjango(
       widget=option
     ) }}
     {% else %}
-    {{ greatRadioOptionDjango(
+    {{ greatOptionDjango(
       widget=option
     ) }}
     {% endif %}
   </div>
   {% if option.reveals %}
-  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-radiosElement-1">
+  <div class="govuk-{{ widget.template_class_name }}__conditional govuk-{{ widget.template_class_name }}__conditional--hidden" id="conditional-{{ widget.template_class_name }}Element-1">
   {% for reveal_field , errors in option.reveals %}
      <div{% if reveal_field.css_classes %} class="{{ reveal_field.css_classes }}"{% endif %}>
       {% if reveal_field.use_fieldset %}
