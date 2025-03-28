@@ -55,10 +55,16 @@ const fetchAndProcessFigmaTokens = async () => {
         /-domestic/,
         "",
       );
-      const category = variableName.split("-")[1];
-
+      const category = variableName.split("-")[2];
       // Exclude the following groups as these are Figma specific but need to be published
-      if (category === "width" || category === "viewport") return;
+      if (
+        category === "width" ||
+        category === "spot" ||
+        category === "boolean" ||
+        category === "viewport" ||
+        variableName.includes("corner-radius")
+      )
+        return;
 
       const filePath = determineFilePath(
         collectionName,

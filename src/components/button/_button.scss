@@ -176,7 +176,7 @@ $great-ds-button-outline: 2px solid transparent;
 %great-ds-button-primary-on-dark {
     @include great-ds-button-states(
         $great-ds-semantic-interaction-default-primary-button,
-        $great-ds-semantic-surface-background-white,
+        $great-ds-semantic-surface-background-primary,
         $great-ds-semantic-text-default-primary-button-label,
         $great-ds-semantic-border-default-primary-button-border,
         $great-ds-semantic-border-hover-primary-button-border
@@ -191,7 +191,7 @@ $great-ds-button-outline: 2px solid transparent;
         @each $property, $value in $active-hover-styles {
             #{$property}: $value;
         }
-        background-color: $great-ds-semantic-surface-background-white;
+        background-color: $great-ds-semantic-surface-background-primary;
         box-shadow: 0 $great-ds-button-shadow-size 0 $great-ds-semantic-interaction-default-primary-button;
     }
 
@@ -201,7 +201,7 @@ $great-ds-button-outline: 2px solid transparent;
         @each $property, $value in $active-hover-styles {
             #{$property}: $value;
         }
-        background-color: $great-ds-semantic-surface-background-white !important;
+        background-color: $great-ds-semantic-surface-background-primary !important;
         box-shadow: 0 1px 0 $great-ds-semantic-interaction-default-primary-button;
     }
 }
@@ -281,8 +281,8 @@ $great-ds-button-outline: 2px solid transparent;
 @mixin great-ds-button-inverted($background, $hover-background, $hover-text-color) {
     @include great-ds-button-states(
         $background,
-        $great-ds-semantic-surface-background-white,
-        $great-ds-semantic-surface-background-white,
+        $great-ds-semantic-surface-background-primary,
+        $great-ds-semantic-surface-background-primary,
         $hover-background,
         $hover-text-color,
         true,
@@ -302,8 +302,8 @@ $great-ds-button-outline: 2px solid transparent;
     }
 
     &.is-active {
-        background-color: $great-ds-semantic-surface-background-light-blue !important;
-        border-color: $great-ds-semantic-surface-background-light-blue !important;
+        background-color: $great-ds-semantic-surface-background-secondary !important;
+        border-color: $great-ds-semantic-surface-background-secondary !important;
     }
 }
 
@@ -319,18 +319,18 @@ $great-ds-button-outline: 2px solid transparent;
     padding: 16px 20px;
     
     &:hover {
-        color: $great-ds-semantic-text-default-white-text !important;
-        background-color: $great-ds-semantic-surface-background-great-ds-blue !important;
+        color: $great-ds-semantic-text-default-text-inverted !important;
+        background-color: $great-ds-semantic-surface-background-great-blue !important;
     }
 
     &:focus:not(.is-active, :focus-visible) {
-        background-color: $great-ds-semantic-surface-background-great-ds-blue !important ;
+        background-color: $great-ds-semantic-surface-background-great-blue !important ;
         .great-ds-icon-svg path {
-            fill: $great-ds-semantic-text-default-white-text;
+            fill: $great-ds-semantic-text-default-text-inverted;
         }
     }
     &.is-active {
-        background-color: $great-ds-semantic-surface-background-light-blue !important;
+        background-color: $great-ds-semantic-surface-background-secondary !important;
         .great-ds-icon-svg path {
             fill: $great-ds-semantic-text-default-text;
         }
@@ -435,18 +435,18 @@ $great-ds-button-outline: 2px solid transparent;
 // Base inverted button styles (domestic)
 .great-ds-button--inverted {
     @include great-ds-button-inverted(
-        $great-ds-semantic-surface-background-great-ds-blue,
-        $great-ds-semantic-surface-background-white,
-        $great-ds-semantic-surface-background-great-ds-blue
+        $great-ds-semantic-surface-background-great-blue,
+        $great-ds-semantic-surface-background-primary,
+        $great-ds-semantic-surface-background-great-blue
     );
 }
 
 // International variant for inverted buttons
 .great-ds-button--inverted.great-ds-button--international {
     @include great-ds-button-inverted(
-        $great-ds-semantic-surface-background-great-ds-red,
-        $great-ds-semantic-surface-background-white,
-        $great-ds-semantic-surface-background-great-ds-red
+        $great-ds-semantic-surface-background-great-red,
+        $great-ds-semantic-surface-background-primary,
+        $great-ds-semantic-surface-background-great-red
     );
 }
 

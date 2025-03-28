@@ -1,5 +1,5 @@
 .great-ds-footer {
-  background-color: $great-ds-semantic-surface-background-great-ds-blue;
+  background-color: $great-ds-semantic-surface-background-great-blue;
 }
 
 .great-ds-footer__container {
@@ -33,7 +33,7 @@
   > a {
     font-family: $great-ds-type-family-great;
     font-size: $great-ds-type-size-body;
-    color: $great-ds-semantic-surface-background-white;
+    color: $great-ds-semantic-surface-background-primary;
     text-decoration-line: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
@@ -51,7 +51,7 @@
 }
 
 .great-ds-footer__copyright-container {
-  background-color: $great-ds-semantic-surface-background-white;
+  background-color: $great-ds-semantic-surface-background-primary;
   display: flex;
   div {
     width: 100%;
@@ -96,12 +96,12 @@
   }
 
   &:hover:not(:focus){
-    box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-ds-red;
+    box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-red;
   }
 
   .great-ds-footer--international & {
     &:hover:not(:focus) {
-      box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-ds-blue;
+      box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-blue;
     }
   }
 }
