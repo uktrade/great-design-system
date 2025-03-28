@@ -56,7 +56,7 @@
 
 .great-ds-card__inner {
     border-bottom: 4px solid rgba(0, 0, 0, 0.20);
-    background: $great-ds-semantic-surface-background-white;
+    background: $great-ds-semantic-surface-background-primary;
     height: 100%;
     
     &:hover {
@@ -69,7 +69,7 @@
     }
 
     .great-ds-card--mounted-blue & {
-        background: $great-ds-semantic-surface-background-light-blue;
+        background: $great-ds-semantic-surface-background-secondary;
     }
 
     .great-ds-card--unmounted & {
