@@ -70,21 +70,54 @@ export const determineFilePath = (
   colorsDir,
   scssDir,
 ) => {
-  let filePath;
+  // Extract the semantic type if this is a semantic variable
+  const semanticMatch = variableName.match(/^great-ds-semantic-(\w+)-/);
+  const semanticType = semanticMatch ? semanticMatch[1] : null;
+
   if (collectionName === "Color") {
-    if (variableName.includes("primitive")) {
-      filePath = path.join(colorsDir, "color-primitives.scss");
-    } else if (variableName.includes("semantic")) {
-      const parts = variableName.split("-");
-      const thirdWord = parts.length > 2 ? parts[2] : "semantic";
-      filePath = path.join(colorsDir, `${thirdWord}.scss`);
+    if (variableName.startsWith("great-ds-primitive")) {
+      return path.join(colorsDir, "color-primitives.scss");
+    } else if (semanticType) {
+      switch (semanticType) {
+        case "text":
+          return path.join(colorsDir, "text.scss");
+        case "border":
+          return path.join(colorsDir, "border.scss");
+        case "interaction":
+          return path.join(colorsDir, "interaction.scss");
+        case "surface":
+          return path.join(colorsDir, "surface.scss");
+        default:
+          return null;
+      }
     } else {
-      filePath = path.join(colorsDir, `${category}.scss`);
+      return path.join(colorsDir, "color-primitives.scss");
     }
   } else {
-    filePath = path.join(scssDir, `${category}.scss`);
+    if (variableName.includes("type")) {
+      return path.join(scssDir, "type.scss");
+    } else if (variableName.includes("spacing")) {
+      return path.join(scssDir, "spacing.scss");
+    } else if (variableName.includes("padding")) {
+      return path.join(scssDir, "padding.scss");
+    } else if (variableName.includes("icon")) {
+      return path.join(scssDir, "icon.scss");
+    } else if (variableName.includes("width")) {
+      return path.join(scssDir, "padding.scss");
+    }
   }
-  return filePath;
+
+  return null;
+};
+
+export const shouldUseBothModes = (variableName) => {
+  return (
+    (variableName.includes("type") &&
+      (variableName.includes("size") ||
+        variableName.includes("line-height"))) ||
+    variableName.includes("spacing") ||
+    variableName.includes("padding")
+  );
 };
 
 export const handleVariableModes = (
@@ -96,13 +129,14 @@ export const handleVariableModes = (
   content,
   filePath,
 ) => {
-  if (modes.length > 1) {
+  if (shouldUseBothModes(variableName) && modes.length > 1) {
     const [firstMode, secondMode] = modes.slice(0, 2);
     const firstModeValue = getValue(valuesByMode[firstMode], variables);
     const secondModeValue = getValue(valuesByMode[secondMode], variables);
 
     if (firstModeValue !== undefined && secondModeValue !== undefined) {
       if (firstModeValue === secondModeValue) {
+        // If both values are the same, just add one variable
         if (!addedVariables.has(variableName)) {
           content[filePath] += formatVariable(
             `$${variableName}`,
@@ -111,6 +145,7 @@ export const handleVariableModes = (
           addedVariables.add(variableName);
         }
       } else {
+        // If values are different, add both regular and -large variables
         if (!addedVariables.has(variableName)) {
           content[filePath] += formatVariable(
             `$${variableName}`,
@@ -128,6 +163,7 @@ export const handleVariableModes = (
       }
     }
   } else {
+    // For other variables, use the first mode
     const value = getValue(valuesByMode[modes[0]], variables);
     if (value !== undefined && !addedVariables.has(variableName)) {
       content[filePath] += formatVariable(`$${variableName}`, value);

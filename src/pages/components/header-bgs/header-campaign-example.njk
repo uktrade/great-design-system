@@ -1,0 +1,24 @@
+{% extends "layout/_example.njk" %}
+{% set exampleFullWidth = true %}
+
+{% block content %}
+    {% from "../../../components/header-bgs/_header.njk" import greatHeader %}
+
+{{ greatHeader(
+    hideSearch=true,
+    hideMenuOnDesktop=true,
+    siteTitle="The Digital Exporting Programme",
+    availableLanguages=[
+        { language_code: "en", display_name: "English" },
+        { language_code: "ar", display_name: "العربية" }
+    ],
+    currentLanguage="en",
+    subnavItemsList=[
+        { href: "#", text: "Home" },
+        { href: "#", text: "Digital Advisors" },
+        { href: "#", text: "Marketplaces" },
+        { href: "#", text: "Partners and service providers" },
+        { href: "#", text: "Webinars, events and missions" }
+    ]
+) }}
+{% endblock %}

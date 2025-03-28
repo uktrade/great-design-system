@@ -1,7 +1,7 @@
 // Text color utilities
 @each $name, $value in (
   // Default text colors
-  "white": $great-ds-semantic-text-default-white-text,
+  "white": $great-ds-semantic-text-default-text-inverted,
   "default": $great-ds-semantic-text-default-text,
   "secondary": $great-ds-semantic-text-default-secondary-text,
   "error": $great-ds-semantic-text-default-error-text,
