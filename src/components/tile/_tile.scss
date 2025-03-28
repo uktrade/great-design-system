@@ -21,10 +21,6 @@
 
     .great-ds-tile--simple & {
         padding-bottom: 0;
-        
-        &:has(.great-ds-tile__icon-wrapper) {
-            padding-top: $great-ds-spacing-5;
-        }
     }
 
     &:has(.great-ds-tile__icon-wrapper) {
