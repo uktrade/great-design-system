@@ -1,6 +1,6 @@
 .great-ds-header-bgs {
     box-sizing: border-box;
-    background-color: $great-ds-semantic-surface-background-white;
+    background-color: $great-ds-semantic-surface-background-primary;
 
     ul {
         list-style: none;
@@ -43,7 +43,7 @@
     }
 
     &:hover:not(:focus) {
-        box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-ds-blue;
+        box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-blue;
     }
 
     &:focus .great-ds-header-bgs__dbt-logo-stripe {
@@ -80,7 +80,7 @@
     &:hover,
     &.is-active {
         cursor: pointer;
-        background-color: $great-ds-semantic-surface-background-light-blue;
+        background-color: $great-ds-semantic-surface-background-secondary;
     }
 
     &:focus {
@@ -122,7 +122,7 @@
 
 .great-ds-header-bgs__languages {
     display: none;
-    background-color: $great-ds-semantic-surface-background-light-blue;
+    background-color: $great-ds-semantic-surface-background-secondary;
 }
 
 .great-ds-header-bgs__languages-list {
@@ -180,7 +180,7 @@
 }
 
 .great-ds-header-bgs__main {
-    background-color: $great-ds-semantic-surface-background-great-ds-blue;
+    background-color: $great-ds-semantic-surface-background-great-blue;
     position: relative;
 }
 
@@ -197,7 +197,7 @@
     text-decoration: none;
     font-family: $great-ds-type-family-great-ds-bold;
     line-height: 1 !important;
-    color: $great-ds-semantic-text-default-white-text;
+    color: $great-ds-semantic-text-default-text-inverted;
 
     &:hover {
         @include great-ds-link-decorator();
@@ -211,8 +211,8 @@
 
 .great-ds-header-bgs__site-title {
     @include govuk-font-size($size: 24);
-    color: $great-ds-semantic-text-default-white-text;
-    background-color: $great-ds-semantic-surface-background-great-ds-blue;
+    color: $great-ds-semantic-text-default-text-inverted;
+    background-color: $great-ds-semantic-surface-background-great-blue;
     border-top: 2px solid #353566;
     padding: $great-ds-spacing-3 0;
 
@@ -283,12 +283,12 @@
     }
 
     &:has(.great-ds-button--header-search-menu:hover){
-        border-bottom: 3px solid $great-ds-semantic-surface-background-light-blue;
+        border-bottom: 3px solid $great-ds-semantic-surface-background-secondary;
     }
 
     &:has(.is-active),
     .is-active {
-        background-color: $great-ds-semantic-surface-background-light-blue;
+        background-color: $great-ds-semantic-surface-background-secondary;
     }
 }
 
@@ -298,7 +298,7 @@
 }
 
 .great-ds-header-bgs__menu {
-    color: $great-ds-semantic-text-default-white-text;
+    color: $great-ds-semantic-text-default-text-inverted;
     position: relative;
     border-bottom: 3px solid transparent;
     margin-left: auto;
@@ -310,7 +310,7 @@
         left: 0;
         width: 100%;
         height: 34px;
-        background-color: $great-ds-semantic-surface-background-light-blue;
+        background-color: $great-ds-semantic-surface-background-secondary;
     }
 
     @include govuk-media-query($from: desktop) {
@@ -346,7 +346,7 @@ body:not(.js-enabled) {
 
 .great-ds-header-bgs__menu-wrapper {
     display: none;
-    background-color: $great-ds-semantic-surface-background-light-blue;
+    background-color: $great-ds-semantic-surface-background-secondary;
 
     &.is-active {
         display: block;
@@ -500,7 +500,7 @@ ul.great-ds-header-bgs__menu-list {
 
 .great-ds-header-bgs__menu-list-children {
     display: none;
-    background-color: $great-ds-semantic-surface-background-white;
+    background-color: $great-ds-semantic-surface-background-primary;
     margin: 0 -20px;
     padding: 0 $great-ds-spacing-6;
 
@@ -545,12 +545,12 @@ ul.great-ds-header-bgs__menu-list {
             top: 0;
             left: 0;
             height: 49px;
-            border-left: 1px solid $great-ds-semantic-surface-background-light-blue;
+            border-left: 1px solid $great-ds-semantic-surface-background-secondary;
         }
 
         &:has(.is-active),
         .is-active {
-            background-color: $great-ds-semantic-surface-background-light-blue;
+            background-color: $great-ds-semantic-surface-background-secondary;
         }
 
         @include govuk-media-query($from: desktop) {
@@ -560,7 +560,7 @@ ul.great-ds-header-bgs__menu-list {
 }
 
 .great-ds-header-bgs__subnav {
-    background-color: $great-ds-semantic-surface-background-great-ds-blue;
+    background-color: $great-ds-semantic-surface-background-great-blue;
     border-top: 2px solid #353566;
     display: none;
 
@@ -597,7 +597,7 @@ ul.great-ds-header-bgs__menu-list {
 }
 
 .great-ds-header-bgs__subnav-link {
-    color: $great-ds-semantic-text-default-white-text;
+    color: $great-ds-semantic-text-default-text-inverted;
     text-decoration: none;
 
     &--current,
@@ -612,7 +612,7 @@ ul.great-ds-header-bgs__menu-list {
 
 .great-ds-header-bgs__search-autocomplete {
     display: none;
-    background-color: $great-ds-semantic-surface-background-light-blue;
+    background-color: $great-ds-semantic-surface-background-secondary;
     margin: 0 -15px;
     padding: 15px;
     width: calc(100%);
@@ -644,7 +644,7 @@ ul.great-ds-header-bgs__menu-list {
 
 .great-ds-header-bgs__search-autocomplete-results-list {
     border: 3px solid $great-ds-semantic-border-default-input-border;
-    background-color: $great-ds-semantic-surface-background-white;
+    background-color: $great-ds-semantic-surface-background-primary;
     border-top: none;
     margin: 0 15px 15px !important;
 
@@ -671,7 +671,7 @@ ul.great-ds-header-bgs__menu-list {
     &:focus, 
     &:active,
     &.selected {
-        background-color: $great-ds-semantic-surface-background-light-blue;
+        background-color: $great-ds-semantic-surface-background-secondary;
         outline: none;
     }
 }
