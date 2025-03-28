@@ -1,0 +1,13 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/cta-banner/_cta-banner.njk" import greatCtaBanner %}
+
+{{ greatCtaBanner(
+    htmlContent = '<h2 class="govuk-heading-l">“We improved our cashflow by getting advice on finance options”</h2><p>Made Smarter has given us the know-how, the confidence and the digital tools to take our business to the next level.</p>',
+    landscapeImagePath = '/static/images/case-study-example.png',
+    imageOnTop = true,
+    actionLinkHref = '#',
+    actionLinkText = 'Read Lusso’s story and the Made Smarter programme'
+) }}
+{% endblock %}
