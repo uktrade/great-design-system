@@ -22,7 +22,7 @@
         @include govuk-focused-text;
 
         > * .great-ds-action-link__image-icon-background {
-            fill: $great-ds-semantic-interaction-default-icon;
+            fill: $great-ds-semantic-interaction-default-icon-primary;
         }
         .great-ds-action-link__text {
             color: $great-ds-semantic-text-default-text;
@@ -45,15 +45,15 @@
 }
 
 .great-ds-action-link--white-text-blue-arrow:not(:focus) {
-    text-decoration-color: $great-ds-semantic-text-default-white-text;
+    text-decoration-color: $great-ds-semantic-text-default-text-inverted;
 
     .great-ds-action-link__text {
-        color: $great-ds-semantic-text-default-white-text;
+        color: $great-ds-semantic-text-default-text-inverted;
     }
 
     &:hover {
         > * .great-ds-action-link__image-icon-background {
-            fill: $great-ds-semantic-interaction-default-icon-white;
+            fill: $great-ds-semantic-interaction-default-icon-primary;
         }
         > * .great-ds-action-link__image-icon-arrow {
             fill: $great-ds-semantic-interaction-default-icon-link;
@@ -62,14 +62,14 @@
 }
 
 .great-ds-action-link--white-text-dark-blue-arrow:not(:focus) {
-    text-decoration-color: $great-ds-semantic-text-default-white-text;
+    text-decoration-color: $great-ds-semantic-text-default-text-inverted;
 
     .great-ds-action-link__text {
-        color: $great-ds-semantic-text-default-white-text;
+        color: $great-ds-semantic-text-default-text-inverted;
     }
 
     > * .great-ds-action-link__image-icon-arrow {
-        fill: $great-ds-semantic-text-default-white-text;
+        fill: $great-ds-semantic-text-default-text-inverted;
     }
 
     > * .great-ds-action-link__image-icon-background {
@@ -78,7 +78,7 @@
 
     &:hover {
         > * .great-ds-action-link__image-icon-background {
-            fill: $great-ds-semantic-interaction-default-icon-white;
+            fill: $great-ds-semantic-interaction-default-icon-primary;
         }
         > * .great-ds-action-link__image-icon-arrow {
             fill: $great-ds-semantic-interaction-default-icon-link;
@@ -95,10 +95,10 @@
 
     &:hover {
         > * .great-ds-action-link__image-icon-background {
-            fill: $great-ds-semantic-interaction-default-icon-great-ds-blue;
+            fill: $great-ds-semantic-interaction-default-icon-great-blue;
         }
         > * .great-ds-action-link__image-icon-arrow {
-            fill: $great-ds-semantic-interaction-default-icon-white;
+            fill: $great-ds-semantic-interaction-default-icon-primary;
         }
     }
 }

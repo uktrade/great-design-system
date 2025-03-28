@@ -16,18 +16,18 @@
 }
 
 .great-ds-pagination--bg-blue {
-    background-color: $great-ds-semantic-surface-background-light-blue;
+    background-color: $great-ds-semantic-surface-background-secondary;
 }
 
 .great-ds-pagination__hover--white:not(.govuk-pagination__item--current) {
     &:hover {
-        background-color: $great-ds-semantic-surface-background-white;
+        background-color: $great-ds-semantic-surface-background-primary;
     }
 }
 
 .great-ds-pagination__hover--blue:not(.govuk-pagination__item--current) {
     &:hover {
-        background-color: $great-ds-semantic-surface-background-light-blue;
+        background-color: $great-ds-semantic-surface-background-secondary;
     }
 }
 
@@ -84,6 +84,6 @@
 
 .great-ds-pagination__icon-arrow {
     a:focus & {
-        fill: $great-ds-semantic-interaction-default-icon;
+        fill: $great-ds-semantic-interaction-default-icon-primary;
     }
 }
