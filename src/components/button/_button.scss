@@ -111,6 +111,7 @@ $great-ds-button-outline: 2px solid transparent;
 
     &:hover:not(:focus),
     &:active,
+    &.is-active,
     &:focus:active {
         @each $property, $value in $hover-styles {
             #{$property}: $value;

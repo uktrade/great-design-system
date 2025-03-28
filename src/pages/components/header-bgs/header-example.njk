@@ -1,0 +1,59 @@
+{% extends "layout/_example.njk" %}
+{% set exampleFullWidth = true %}
+
+{% block content %}
+    {% from "../../../components/header-bgs/_header.njk" import greatHeader %}
+
+{{ greatHeader(
+    searchFormAction="#",
+    isAuthenticated=true,
+    menuItemsList=[
+        { 
+            icon: "/static/icons/start-icon.svg",
+            href: "#", 
+            text: "Starting a business",
+            overviewText: "Get support and information",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+        },
+        { 
+            icon: "/static/icons/run-icon.svg",
+            href: "#", 
+            text: "Running and growing my business",
+            overviewText: "Get support and information",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+        },
+        { 
+            icon: "/static/icons/export-icon.svg",
+            href: "#", 
+            text: "Selling overseas from the UK",
+            overviewText: "Overview",
+            children: [
+                { href: "#", text: "Markets" },
+                { href: "#", text: "Export support", requiresAuth: true },
+                { href: "#", text: "UK Export Academy" },
+                { href: "#", text: "Learn to export" },
+                { href: "#", text: "Export resources", requiresAuth: true },
+                { href: "#", text: "Export dashboard", requiresAuth: true },
+                { href: "#", text: "Where to export" },
+                { href: "#", text: "Make an export plan", requiresAuth: true },
+                { href: "#", text: "Export account", requiresAuth: true },
+                { href: "#", text: "Sign out of export account services", requiresAuth: true },
+                { href: "#", text: "Sign in to export account services", requiresNoAuth: true }
+            ]
+        },
+        {
+            icon: "/static/icons/expand-icon.svg",
+            href: "#", 
+            text: "Investing and expanding in the UK",
+            overviewText: "Overview",
+            children: [
+                { href: "#", text: "Expand your business in the UK" },
+                { href: "#", text: "Investment opportunities"},
+                { href: "#", text: "Buy from the UK" },
+                { href: "#", text: "Sign out of expand your business in the UK", requiresAuth: true },
+                { href: "#", text: "Sign in to expand your business in the UK", requiresNoAuth: true }
+            ]
+        }
+    ]
+) }}
+{% endblock %}
