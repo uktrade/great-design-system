@@ -1,3 +1,4 @@
+{% from "../header-bgs/_header-masthead-logo.njk" import greatMastheadLogo %}
 {% macro greatBGSFooter(isInternational, currentYear, upperFooterSection, lowerFooterSection, logoLinkHref) %}
     <footer id="footer"
         dir="ltr"
@@ -28,19 +29,19 @@
                             <div class="great-ds-bgs-footer__section great-ds-bgs-footer__section--lower">
                             {% for footerSubSection in lowerFooterSection %}
                                 <div class="great-ds-bgs-footer__subsection great-ds-bgs-footer__subsection--lower">
+                                    <ul class="great-ds-bgs-footer__link-list">
                                     {% for link in footerSubSection %}     
-                                        <ul class="great-ds-bgs-footer__link-list">
-                                            <li class="great-ds-bgs-footer__link-list-item">
-                                                <a class="great-ds-bgs-footer__link{% if link.isHeading %} great-ds-bgs-footer__link--heading {% endif %}"
-                                                href="{{ link.href }}"
-                                                title="{{ link.title }}"
-                                                {% if link.target %} target="{{ link.target }}" {% endif %}
-                                                {% if link.rel %} rel="{{ link.rel }}" {% endif %} >
-                                                {{ link.text }}
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        <li class="great-ds-bgs-footer__link-list-item">
+                                            <a class="great-ds-bgs-footer__link{% if link.isHeading %} great-ds-bgs-footer__link--heading {% endif %}"
+                                            href="{{ link.href }}"
+                                            title="{{ link.title }}"
+                                            {% if link.target %} target="{{ link.target }}" {% endif %}
+                                            {% if link.rel %} rel="{{ link.rel }}" {% endif %} >
+                                            {{ link.text }}
+                                            </a>
+                                        </li>
                                     {% endfor %}
+                                    </ul>
                                 </div>
                             {% endfor %}
                             </div>
@@ -49,10 +50,8 @@
             </div>
         </div>
         <div class="great-ds-bgs-footer__copyright-container">
-            <div class="great-ds-container">
-                <a class="great-ds-bgs-footer__logo-link" href = {{ logoLinkHref }}>       
-                    {% include "./_bgs-footer-gov-logo.njk" %}
-                </a>
+            <div class="great-ds-container">     
+                {{ greatMastheadLogo() }}
                 <p class="great-ds-bgs-footer__copyright">© Crown copyright {{ currentYear }}. All rights reserved.</p>
             </div>
     </div>

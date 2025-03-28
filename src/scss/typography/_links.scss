@@ -1,7 +1,10 @@
 // Link styles
 a {
     color: $great-ds-semantic-text-default-link;
-    &:focus:active:not(.great-ds-card__link) { // TODO OVERRIDE remove once 'govuk-elements-styles.min.css' removed from great
+    &:focus:active:not(
+        .great-ds-card__link, 
+        .great-ds-header-bgs__dbt-logo-link
+        ) { // TODO OVERRIDE remove once 'govuk-elements-styles.min.css' removed from great
         @include govuk-focused-text;
     }
 }
