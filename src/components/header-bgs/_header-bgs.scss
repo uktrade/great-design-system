@@ -211,14 +211,11 @@
     }
 }
 
-a.great-ds-header-bgs__great-ds-logo:visited { // Remove when great-cms scss has been removed
+a.great-ds-header-bgs__great-ds-logo:visited:not(:focus) { // Remove when great-cms scss has been removed
     color: $great-ds-semantic-text-default-text-inverted;
-
 }
 
 .great-ds-header-bgs__site-title {
-    @include govuk-font-size($size: 24);
-    color: $great-ds-semantic-text-default-text-inverted;
     background-color: $great-ds-semantic-surface-background-great-blue;
     border-top: 2px solid #353566;
     padding: $great-ds-spacing-3 0;
@@ -239,6 +236,11 @@ a.great-ds-header-bgs__great-ds-logo:visited { // Remove when great-cms scss has
             display: block;
         }   
     }
+}
+
+.great-ds-header-bgs__site-title-text {
+    @include govuk-font-size($size: 24);
+    color: $great-ds-semantic-text-default-text-inverted;
 }
 
 .great-ds-header-bgs__site-title-link {
