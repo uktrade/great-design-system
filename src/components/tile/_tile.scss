@@ -24,7 +24,7 @@
     }
 
     &:has(.great-ds-tile__icon-wrapper) {
-        @include govuk-media-query($from: desktop) {
+        @include govuk-media-query($from: 940px) {
             display: flex;
             flex-direction: row-reverse;
             justify-content: space-between;
@@ -39,6 +39,7 @@
 
 .great-ds-tile__title {
     margin-bottom: 0;
+    word-break: break-word;
 }
 
 .great-ds-tile__description {

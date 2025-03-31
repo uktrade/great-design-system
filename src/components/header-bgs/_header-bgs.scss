@@ -14,7 +14,8 @@
         color: $great-ds-semantic-text-hover-link;
     }
 
-    &:focus {
+    &:focus,
+    &:focus:active {
         @include govuk-focused-text;
     }
 }
@@ -43,7 +44,7 @@
     }
 
     &:hover:not(:focus) {
-        box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-blue;
+        box-shadow: inset 0px -4px 0px $great-ds-semantic-border-hover-link-black-underline;
     }
 
     &:focus .great-ds-header-bgs__dbt-logo-stripe {
@@ -203,10 +204,16 @@
         @include great-ds-link-decorator();
     }
 
-    &:focus {
+    &:focus,
+    &:focus:active {
         @include govuk-focused-text;
         box-shadow: none;
     }
+}
+
+a.great-ds-header-bgs__great-ds-logo:visited { // Remove when great-cms scss has been removed
+    color: $great-ds-semantic-text-default-text-inverted;
+
 }
 
 .great-ds-header-bgs__site-title {
@@ -270,6 +277,7 @@
 .great-ds-header-bgs__search-form-group {
     margin: 0;
     width: 100%;
+    z-index: 999;
 }
 
 .great-ds-header-bgs__menu-wrapper--minimal-search {
@@ -526,7 +534,7 @@ ul.great-ds-header-bgs__menu-list {
     }
 }
 
-.great-ds-header-bgs__menu-list-children-link--overview {
+.great-ds-header-bgs__menu-list-children-item:has(.great-ds-header-bgs__menu-list-children-link--overview):not(:has(.great-ds-header-bgs__menu-list-children-description)) {
     @include govuk-media-query($from: tablet) {
         display: none;
     }
