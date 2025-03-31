@@ -1,0 +1,46 @@
+{% extends "layout/_example.njk" %}
+{% set exampleFullWidth = true %}
+
+{% block content %}
+    {% from "../../../components/bgs-footer/_bgs-footer.njk" import greatBGSFooter %}
+
+{{ greatBGSFooter(
+    currentYear = '2025',
+    upperFooterSection = [
+        [{ href: "#", text: "Starting a business", title: 'Export support for UK businesses', isHeading: 'true' }],
+        [{ href: "#", text: "Running and growing my business", title: 'Running and growing my business', isHeading: 'true' }],
+        [
+            { href: "#", text: "Selling overseas from the UK", title: 'Selling overseas from the UK', isHeading: 'true' },
+            { href: "#", text: "Markets", title: 'Markets' },
+            { href: "#", text: "Export support", title: 'Export support' },
+            { href: "#", text: "UK Export Academy", title: 'UK Export Academy' },
+            { href: "#", text: "Learn to export", title: 'Learn to export' },
+            { href: "#", text: "Export resources", title: 'Export resources' } 
+        ],
+        [
+            { href: "#", text: "Investing and expanding in the UK", title: 'Investing and expanding in the UK', isHeading: 'true' },
+            { href: "#", text: "Expand your business in the UK", title: 'Expand your business in the UK' },
+            { href: "#", text: "Investment opportunities", title: 'Investment opportunities' },
+            { href: "#", text: "Buy from the UK", title: 'Buy from the UK' }
+        ]
+    ],
+
+    lowerFooterSection = [
+        [   
+            { href: "#", text: "Privacy", title: 'Privacy' },
+            { href: "#", text: "Cookies", title: 'Cookies' },
+            { href: "#", text: "Accessibility statement", title: 'Accessibility statement' }
+        ],
+        [
+            { href: "#", text: "Terms and conditions", title: 'Terms and conditions' },
+            { href: "#", text: "Sitemap", title: 'Sitemap' }
+        ],
+        [
+            { href: "#", text: "About this website", title: 'About this website' },
+            { href: "#", text: "Help using this website", title: 'Help using this website' }
+        ],
+        [{ href: "#", text: "Department for Business and Trade on GOV.UK", title: 'Department for Business and Trade on GOV.UK', target: '_blank', rel: 'noopener' }]
+    ],
+) 
+}}
+{% endblock %}
