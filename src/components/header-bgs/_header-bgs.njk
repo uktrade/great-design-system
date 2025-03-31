@@ -1,6 +1,6 @@
 {% from "../button/_button.njk" import greatButton %}
-{% from "./_header-masthead-logo.njk" import greatMastheadLogo %}
-{% from "./_header-search.njk" import greatHeaderSearch %}
+{% from "./_header-bgs-masthead-logo.njk" import greatMastheadLogo %}
+{% from "./_header-bgs-search.njk" import greatHeaderSearch %}
 
 {% macro greatHeader(hideMasthead, rtl, siteHref, useDomesticLogo, headerClasses, globalHeaderClasses, availableLanguages, currentLanguage, ssoIsLoggedIn, siteTitle, largeTitle, isAuthenticated, hideSearch, hideMainNav, searchFormAction, minimalSearchAndMenu, autocompleteSearch, hideMenuOnDesktop, menuItemsList, subnavItemsList) %}
 {% set search_icon = '<svg xmlns="http://www.w3.org/2000/svg" class="great-ds-icon-svg" width="20" height="20" viewBox="0 0 18 18" fill="currentColor">

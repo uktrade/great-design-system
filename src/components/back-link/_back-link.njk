@@ -1,5 +1,5 @@
 {% macro greatBackLink(linkHref,linkClass,backLinkText) %}
-<a href= "{{ linkHref }}" class= "govuk-back-link{% if linkClass %}{{ linkClass }}{% endif %}">
+<a href= "{{ linkHref }}" class= "govuk-back-link{% if linkClass %} {{ linkClass }}{% endif %}">
     {% if backLinkText %}
         {{ backLinkText }}
     {% else %}
