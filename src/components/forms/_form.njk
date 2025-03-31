@@ -1,8 +1,9 @@
 {% from "../hint/_hint.njk" import greatHint %}
 {% from "../label/_label.njk" import greatLabel %}
 
-{% macro greatFormDjango(fields, hidden_fields, errors) %}
+{% macro greatFormDjango(form, fields, hidden_fields, errors) %}
 
+{{form.errors}}
 {% for field, errors in fields %}
   {% if not field.field.linked_conditional_reveal %}
   <div{% if field.css_classes %} class="{{ field.css_classes }}"{% endif %}>
