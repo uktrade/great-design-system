@@ -156,6 +156,11 @@
 
         &:not(&:last-child) {
             margin-right: $great-ds-spacing-8;
+
+            .great-ds-header-bgs--rtl & {
+                margin-left: $great-ds-spacing-8;
+                margin-right: 0;
+            }
         }
             
         &:has(.great-ds-header-bgs__languages-link:hover) {
@@ -234,7 +239,12 @@ a.great-ds-header-bgs__great-ds-logo:visited:not(:focus) { // Remove when great-
 
         @include govuk-media-query($from: 1024px) {
             display: block;
-        }   
+        }
+
+        .great-ds-header-bgs--rtl & {
+            margin-right: $great-ds-spacing-8;
+            margin-left: 0;
+        }
     }
 }
 
