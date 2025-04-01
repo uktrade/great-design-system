@@ -1,6 +1,6 @@
 {% macro greatErrorSummaryDjango(errors, disable_auto_focus, title, description) %}
 
-<div class="govuk-error-summary {% if errors.classes %} {{ errors.classes }} {% if not errors %}great-hidden{% endif %}{% endif %}"
+<div class="govuk-error-summary {% if errors.classes %} {{ errors.classes }}{% endif %} {% if errors|length == 0 %}great-hidden{% endif %}"
   {% if disable_auto_focus %}data-disable-auto-focus="{{ disable_auto_focus }}"{% endif %}
   data-module="govuk-error-summary">
   <div role="alert">
