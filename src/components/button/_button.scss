@@ -363,6 +363,10 @@ $great-ds-button-outline: 2px solid transparent;
     &:active {
         top: 0px;
     }
+
+    &:focus {
+        z-index: 999;
+    }
 }
 
 // Placeholder for menu button styles
