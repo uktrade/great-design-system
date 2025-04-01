@@ -95,7 +95,7 @@
   text-decoration-thickness: 5%;
   text-underline-offset: 3px;
   cursor: pointer;
-  color: $great-ds-semantic-surface-background-primary;
+  color: $great-ds-semantic-text-default-text-inverted;
 
   &:hover {
     text-decoration-thickness: 10%;
@@ -104,6 +104,10 @@
   &:focus,
   &:focus:active {
       @include govuk-focused-text;
+  }
+
+  &:visited:not(:focus) {
+    color: $great-ds-semantic-text-default-text-inverted;
   }
 
   &--heading {
