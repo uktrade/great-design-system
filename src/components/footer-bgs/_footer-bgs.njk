@@ -3,17 +3,17 @@
     <footer id="footer"
         dir="ltr"
         data-ga-section="footer"
-        class="great-ds-bgs-footer">
-        <div class="great-ds-bgs-footer__container">
+        class="great-ds-footer-bgs">
+        <div class="great-ds-footer-bgs__container">
             <div class="great-ds-container">
                 <div class='great-ds-footer__sections-container'>
-                        <div class="great-ds-bgs-footer__section great-ds-bgs-footer__section--upper">
+                        <div class="great-ds-footer-bgs__section great-ds-footer-bgs__section--upper">
                             {% for footerSubSection in upperFooterSection %}
-                                <div class="great-ds-bgs-footer__subsection great-ds-bgs-footer__subsection--upper">
+                                <div class="great-ds-footer-bgs__subsection great-ds-footer-bgs__subsection--upper">
                                     {% for link in footerSubSection %}     
-                                        <ul class="great-ds-bgs-footer__link-list">
-                                            <li class="great-ds-bgs-footer__link-list-item">
-                                                <a class="great-ds-bgs-footer__link{% if link.isHeading %} great-ds-bgs-footer__link--heading {% endif %}"
+                                        <ul class="great-ds-footer-bgs__link-list">
+                                            <li class="great-ds-footer-bgs__link-list-item">
+                                                <a class="great-ds-footer-bgs__link{% if link.isHeading %} great-ds-footer-bgs__link--heading {% endif %}"
                                                 href="{{ link.href }}"
                                                 title="{{ link.title }}"
                                                 {% if link.target %} target="{{ link.target }}" {% endif %}
@@ -26,13 +26,13 @@
                                 </div>
                             {% endfor %}
                             </div>
-                            <div class="great-ds-bgs-footer__section great-ds-bgs-footer__section--lower">
+                            <div class="great-ds-footer-bgs__section great-ds-footer-bgs__section--lower">
                             {% for footerSubSection in lowerFooterSection %}
-                                <div class="great-ds-bgs-footer__subsection great-ds-bgs-footer__subsection--lower">
-                                    <ul class="great-ds-bgs-footer__link-list">
+                                <div class="great-ds-footer-bgs__subsection great-ds-footer-bgs__subsection--lower">
+                                    <ul class="great-ds-footer-bgs__link-list">
                                     {% for link in footerSubSection %}     
-                                        <li class="great-ds-bgs-footer__link-list-item">
-                                            <a class="great-ds-bgs-footer__link{% if link.isHeading %} great-ds-bgs-footer__link--heading {% endif %}"
+                                        <li class="great-ds-footer-bgs__link-list-item">
+                                            <a class="great-ds-footer-bgs__link{% if link.isHeading %} great-ds-footer-bgs__link--heading {% endif %}"
                                             href="{{ link.href }}"
                                             title="{{ link.title }}"
                                             {% if link.target %} target="{{ link.target }}" {% endif %}
@@ -49,10 +49,10 @@
                 </div>
             </div>
         </div>
-        <div class="great-ds-bgs-footer__copyright-container">
+        <div class="great-ds-footer-bgs__copyright-container">
             <div class="great-ds-container">     
                 {{ greatMastheadLogo() }}
-                <p class="great-ds-bgs-footer__copyright">© Crown copyright {{ currentYear }}. All rights reserved.</p>
+                <p class="great-ds-footer-bgs__copyright">© Crown copyright {{ currentYear }}. All rights reserved.</p>
             </div>
     </div>
     </footer>
