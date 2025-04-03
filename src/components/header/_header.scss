@@ -16,6 +16,19 @@
     text-underline-offset: .3em;
 }
 
+.great-ds-header__link {
+    text-decoration: none;
+
+    &:hover {
+        @include great-ds-link-decorator;
+    }
+
+    &:focus,
+    &:focus:active {
+        @include govuk-focused-text;
+    }
+}
+
 .great-ds-header__global {
     position: relative;
     display: flex;
