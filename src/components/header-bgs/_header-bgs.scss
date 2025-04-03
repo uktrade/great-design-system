@@ -454,6 +454,10 @@ ul.great-ds-header-bgs__menu-list {
             display: flex;
             flex-wrap: wrap;
         }
+
+        @include govuk-media-query($from: 900px) {
+            padding: 0 30px;
+        }
     }
 }
 
@@ -512,13 +516,11 @@ ul.great-ds-header-bgs__menu-list {
 
             &:first-child {
                 padding-top: 0;
-                padding-left: 30px;
                 padding-bottom: $great-ds-spacing-9;
             }
             
             &:last-child {
                 padding-top: 0;
-                padding-right: 30px;
                 padding-bottom: $great-ds-spacing-9;
             }
                         
@@ -531,7 +533,7 @@ ul.great-ds-header-bgs__menu-list {
             
             &:last-child .great-ds-header-bgs__menu-item-inner {
                 border-right: none;
-                padding-right: 0;
+                padding-right: 50px;
                 margin-right: 0;
             }
         }
