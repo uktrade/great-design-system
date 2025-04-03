@@ -21,17 +21,17 @@ export const autocomplete = (event) => {
     }
 
     const regex = new RegExp(query, "i");
+    const dataItems = jsonData.data;
 
-    Object.keys(jsonData).forEach((key) => {
-      const dataItem = jsonData[key];
-
-      Object.keys(dataItem).forEach((field) => {
-        const value = dataItem[field];
-
+    dataItems.forEach((item) => {
+      Object.entries(item).forEach((value) => {
+        console.log(item);
         if (typeof value == "string" && value.match(regex)) {
-          matches.push(dataItem);
+          matches.push(item);
         }
       });
     });
   }
+
+  console.log(matches);
 };
