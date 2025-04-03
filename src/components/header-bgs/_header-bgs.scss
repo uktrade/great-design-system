@@ -187,6 +187,7 @@
     border-bottom: 3px solid transparent;
 
     &:focus {
+        outline: none;
         border-bottom: 3px solid $great-ds-semantic-border-focus-button-border;
         background-color: $great-ds-semantic-interaction-focus;
         color: $great-ds-semantic-text-focus-button-label-focus;
@@ -293,8 +294,11 @@
         }
 
         .great-ds-header-bgs--rtl & {
-            margin-right: $great-ds-spacing-8;
+            margin-right: $great-ds-spacing-4;
             margin-left: 0;
+            padding: 0 $great-ds-spacing-4 0 0;
+            border-left: none;
+            border-right: 1px solid $great-ds-semantic-border-default-blue-border;
         }
     }
 }
