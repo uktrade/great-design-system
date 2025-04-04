@@ -153,6 +153,7 @@ $great-ds-button-outline: 2px solid transparent;
     height: 50px;
     width: 50px;
     box-shadow: none;
+    padding: $great-ds-button-padding;
 
     &:focus {
         background-color: $bg-hover-color !important;
@@ -160,7 +161,7 @@ $great-ds-button-outline: 2px solid transparent;
         outline: 3px solid $outline-color;
         outline-offset: 0;
         border: 4px solid $border-color !important;
-        padding: 10px 10px 7px 11px;
+        padding: 5px 20px;
     }
 }
 

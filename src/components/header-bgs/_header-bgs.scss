@@ -71,7 +71,7 @@
     text-transform: uppercase;
     @include govuk-font-size($size: 16);
     color: $great-ds-semantic-text-default-text;
-    padding: 0 50px 0 60px;
+    padding: 5px 50px 0 60px;
     margin-right: -15px;
     outline: none;
     border: none;
@@ -79,6 +79,11 @@
     position: relative;
     height: 50px;
     border-bottom: 3px solid transparent;
+    
+    .great-ds-header-bgs--rtl & {
+        margin-right: 0;
+        margin-left: -15px;
+    }
     
     &:hover,
     &.is-active {
@@ -132,6 +137,7 @@
 .great-ds-header-bgs__languages-list {
     position: relative;
     margin: 0 -15px;
+    padding: 0;
 
     @include govuk-media-query($from: tablet) {
         display: flex;
@@ -395,6 +401,11 @@
 .great-ds-header-bgs__site-title + .great-ds-header-bgs__menu {
     @include govuk-media-query($from: desktop) {
         margin-left: auto;
+    }
+
+    .great-ds-header-bgs--rtl & {
+        margin-left: 0;
+        margin-right: auto;
     }
 }
 
