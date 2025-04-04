@@ -8,7 +8,8 @@
 	attrs=widget.attrs
   ) }}
 
- data-aria-controls="conditional-{{ widget.template_class_name }}Element-1">
+ data-aria-controls="conditional-{{ widget.template_class_name }}Element-1"
+ {% if widget.exclusive %}data-behaviour="exclusive"{% endif %}>
 
 <label{% if widget.attrs.id %} id="{{ widget.attrs.id }}-label" for="{{ widget.attrs.id }}"{% endif %} class="govuk-label govuk-{{ widget.template_class_name }}__label">
 	{{ widget.label }}
