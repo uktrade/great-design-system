@@ -1,0 +1,54 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/results-list/_results-list.njk" import greatResultsList %}
+
+{{ greatResultsList(
+    listItems=[
+        {
+            "title": "This is a title",
+            "href": "#",
+            "type": "Article type",
+            "description": "This is a description",
+            "metadata": [
+                {
+                    "datePrefix": "Published",
+                    "dateString": "21 March 2025",
+                    "datetime": "2025-03-21"    
+                },
+                {
+                    "datePrefix": "Updated",
+                    "dateString": "21 March 2025",
+                    "datetime": "2025-03-21"    
+                }
+            ]
+        },
+        {
+            "title": "This is a title",
+            "href": "#",
+            "type": "Article type",
+            "description": "This is a description",
+            "metadata": [
+                {
+                    "datePrefix": "Published",
+                    "dateString": "21 March 2025",
+                    "datetime": "2025-03-21"    
+                }
+            ]
+        },
+        {
+            "title": "This is a title",
+            "href": "#",
+            "type": "Article type",
+            "description": "This is a description",
+            "metadata": [
+                {
+                    "datePrefix": "Published",
+                    "dateString": "21 March 2025",
+                    "datetime": "2025-03-21"    
+                }
+            ]
+        }
+    ]
+) }}
+{% endblock %}
