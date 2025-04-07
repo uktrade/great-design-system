@@ -6,7 +6,7 @@
 
 {% macro greatInput(id, name, type, classes, label, hint, errorMessage, spellcheck, value, disabled, autocomplete, pattern, inputmode, prefix, suffix, formGroupClasses, beforeInput, afterInput, attributes, placeholder, noFormGroup) %}
   {% if not noFormGroup %}
-  <div class="great-form-group{% if errorMessage or errorMessage.html %} great-form-group--error{% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
+  <div class="great-ds-form-group{% if errorMessage or errorMessage.html %} great-ds-form-group--error{% endif %}{% if formGroupClasses %} {{ formGroupClasses }}{% endif %}">
   {% endif %}
 
   {% if label %}
