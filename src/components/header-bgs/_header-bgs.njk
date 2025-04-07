@@ -1,0 +1,155 @@
+{% from "../button/_button.njk" import greatButton %}
+{% from "./_header-bgs-masthead-logo.njk" import greatMastheadLogo %}
+{% from "./_header-bgs-search.njk" import greatHeaderSearch %}
+{% from "./_header-bgs-logo.njk" import greatLogo %}
+
+{% macro greatHeader(hideMasthead, rtl, siteHref, useDomesticLogo, headerClasses, globalHeaderClasses, availableLanguages, currentLanguage, ssoIsLoggedIn, siteTitle, largeTitle, isAuthenticated, hideSearch, hideMainNav, searchFormAction, minimalSearchAndMenu, autocompleteSearch, hideMenuOnDesktop, menuItemsList, subnavItemsList) %}
+{% set search_icon = '<svg xmlns="http://www.w3.org/2000/svg" class="great-ds-icon-svg" width="18" height="18" viewBox="0 0 18 18" fill="currentColor">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.77589 13.722C6.26697 13.8589 4.79933 13.386 3.64011 12.4016C1.2472 10.3681 0.933108 6.74217 2.94069 4.31856C4.06024 2.96784 5.66793 2.27198 7.28695 2.27198C8.57164 2.27198 9.86443 2.7113 10.9249 3.61205C12.0841 4.59641 12.7949 5.97992 12.9268 7.50687C13.0588 9.03299 12.5957 10.5206 11.6235 11.6943C10.6505 12.868 9.28401 13.5884 7.77589 13.722ZM18 15.5071L13.5606 11.7361C14.3256 10.4247 14.6737 8.91169 14.5393 7.36344C14.3702 5.40128 13.4562 3.62271 11.9651 2.35558C8.88816 -0.258992 4.28286 0.148357 1.70133 3.26536C-0.881003 6.38072 -0.477867 11.0427 2.59908 13.6573C3.92344 14.7826 5.56107 15.3834 7.26914 15.3834C7.48447 15.3834 7.70061 15.3744 7.91756 15.3555C9.44591 15.2203 10.8569 14.6097 11.9999 13.6196L16.4385 17.3914L18 15.5071Z"/>' %}
+
+<header class="great-ds-header-bgs {{ headerClasses }}{% if rtl %} great-ds-header-bgs--rtl{% endif %}" id="header" role="banner" data-ga-section="header">
+    {% if not hideMasthead %}
+        <div id="great-ds-masthead-header" class="great-ds-container great-ds-header-bgs__masthead {{ globalHeaderClasses }} {% if ssoIsLoggedIn %}signed-in{% endif %}">
+            <div class="great-ds-header-bgs__dbt-logo">
+                {{ greatMastheadLogo(useDomesticLogo=useDomesticLogo) }}
+            </div>
+            {% if availableLanguages|length > 1 %}
+                <button class="great-ds-header-bgs__languages-button" data-great-ds-reveal-button aria-controls="language-container">{{ currentLanguage }}</button>
+            {% endif %}
+        </div>
+    {% endif %}
+    {% if availableLanguages|length > 1 %}
+        <div class="great-ds-header-bgs__languages" id="language-container" aria-label="Languages">
+            <div class="great-ds-container">
+                <ul class="great-ds-header-bgs__languages-list">
+                    {% for language in availableLanguages %}
+                        <li class="great-ds-header-bgs__languages-item{% if currentLanguage == language.language_code %} great-ds-header-bgs__languages-item--current{% endif %}">
+                            <a class="great-ds-header-bgs__languages-link" href="?lang={{ language.language_code }}" aria-current="{% if currentLanguage == language.language_code %}true{% else %}false{% endif %}" lang="{{ language.language_code }}"{% if language.location %} data-location="{{ language.location }}" data-title="{{ language.display_name }}"{% endif %}>{{ language.display_name }} ({{ language.language_code | upper }})</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+    <div class="great-ds-header-bgs__main">
+        <div class="great-ds-header-bgs__main-inner great-ds-container">
+            <div class="great-ds-header-bgs__logo-container">
+                <a id="header-logo-link" aria-label="Go to Business.gov.uk" class="great-ds-header-bgs__great-ds-logo" href="{% if siteHref %}{{ siteHref }}{% else %}/{% endif %}">
+                    <span class="govuk-visually-hidden">Business.gov.uk</span>
+                    {{ greatLogo() }}
+                </a>
+            </div>
+            {% if siteTitle %}
+                <div class="great-ds-header-bgs__site-title great-ds-header-bgs__site-title--desktop">
+                    <span class="great-ds-header-bgs__site-title-text">{% if siteTitle.href %}<a class="great-ds-header-bgs__site-title-link" href="{{ siteTitle.href }}">{{ siteTitle.text }}</a>{% else %}{{ siteTitle }}{% endif %}</span>
+                </div>
+            {% endif %}
+            {% if not hideSearch %}
+                <div class="great-ds-header-bgs__search"{% if autocompleteSearch %} id="header-search"{% endif %}>
+                    {{ greatHeaderSearch(autocompleteSearch=autocompleteSearch, searchFormAction=searchFormAction, search_icon=search_icon) }}
+                </div>
+            {% endif %}
+            {% if minimalSearchAndMenu %}
+                <div class="great-ds-header-bgs__menu-wrapper--minimal-search">
+                    {{ greatButton(
+                        classes="great-ds-button--header-search-menu great-ds-button--icon-prefix great-ds-button--auto-width",
+                        attributes="data-great-ds-reveal-button aria-controls=header-search",
+                        iconPrefix=search_icon
+                    ) }}
+                </div>  
+            {% endif %}
+            {% if menuItemsList or subnavItemsList %}
+                <div class="great-ds-header-bgs__menu{% if hideMenuOnDesktop and subnavItemsList|length < 6 %} great-ds-header-bgs__menu--hidden-on-desktop{% endif %}">
+                    {% set menu_icon = '<svg class="great-ds-icon-svg great-ds-icon--menu" width="16" height="17" viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" class="great-ds-icon--menu-bars" d="M1 3.5C1 2.94687 1.44687 2.5 2 2.5H14C14.5531 2.5 15 2.94687 15 3.5C15 4.05313 14.5531 4.5 14 4.5H2C1.44687 4.5 1 4.05313 1 3.5ZM1 8.5C1 7.94688 1.44687 7.5 2 7.5H14C14.5531 7.5 15 7.94688 15 8.5C15 9.05312 14.5531 9.5 14 9.5H2C1.44687 9.5 1 9.05312 1 8.5ZM15 13.5C15 14.0531 14.5531 14.5 14 14.5H2C1.44687 14.5 1 14.0531 1 13.5C1 12.9469 1.44687 12.5 2 12.5H14C14.5531 12.5 15 12.9469 15 13.5Z"/><path fill="currentColor" class="great-ds-icon--menu-close" d="M10.085 8.5L13.2122 5.37281C13.5959 4.98906 13.5959 4.36687 13.2122 3.98281L12.5172 3.28781C12.1334 2.90406 11.5113 2.90406 11.1272 3.28781L8 6.415L4.87281 3.28781C4.48906 2.90406 3.86688 2.90406 3.48281 3.28781L2.78781 3.98281C2.40406 4.36656 2.40406 4.98875 2.78781 5.37281L5.915 8.5L2.78781 11.6272C2.40406 12.0109 2.40406 12.6331 2.78781 13.0172L3.48281 13.7122C3.86656 14.0959 4.48906 14.0959 4.87281 13.7122L8 10.585L11.1272 13.7122C11.5109 14.0959 12.1334 14.0959 12.5172 13.7122L13.2122 13.0172C13.5959 12.6334 13.5959 12.0113 13.2122 11.6272L10.085 8.5Z"/>' %}
+                    {% if minimalSearchAndMenu %}
+                        {{ greatButton(
+                            classes="great-ds-button--header-search-menu great-ds-button--icon-prefix great-ds-button--auto-width",
+                            attributes="data-great-ds-reveal-button aria-controls=header-menu",
+                            iconPrefix=menu_icon
+                        ) }}
+                    {% else %}
+                        {{ greatButton(
+                            text="Menu",
+                            classes="great-ds-button--menu great-ds-button--inverted great-ds-button--icon-prefix great-ds-button--auto-width",
+                            attributes="data-great-ds-reveal-button aria-controls=header-menu",
+                            iconPrefix=menu_icon,
+                            isInternational=isInternational
+                        ) }}
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+        {% if menuItemsList or subnavItemsList %}
+            <div class="great-ds-header-bgs__menu-wrapper" id="header-menu">
+                <div class="great-ds-header-bgs__menu-container">
+                    {% if menuItemsList %}
+                        <ul class="great-ds-header-bgs__menu-list">
+                            {% for item in menuItemsList %}
+                                <li class="great-ds-header-bgs__menu-item">
+                                    <div class="great-ds-header-bgs__menu-item-inner">
+                                        {% if item.icon %}
+                                            <img class="great-ds-header-bgs__menu-item-icon" src="{{ item.icon }}" alt="">
+                                        {% endif %}
+                                        {% if item.href %}
+                                            <button class="great-ds-header-bgs__menu-link--accordion" aria-controls="header-children-menu-{{ loop.index }}" aria-expanded="false" data-great-ds-reveal-button aria-label="Open child menu">{{ item.text }}</button>
+                                            <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes | safe }} {% endif %}class="great-ds-header-bgs__menu-link great-ds-header-bgs-link{% if item.isCurrent %} great-ds-header-bgs__menu-link--current{% endif %}"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}>{{ item.text }}</a>
+                                        {% else %}
+                                            {{ item.text }}
+                                        {% endif %}
+                                        <ul class="great-ds-header-bgs__menu-list-children" id="header-children-menu-{{ loop.index }}">
+                                            <li class="great-ds-header-bgs__menu-list-children-item">
+                                                {% if item.description %}<p class="great-ds-header-bgs__menu-list-children-description">{{ item.description }}</p>{% endif %}
+                                                <a class="great-ds-header-bgs__menu-list-children-link great-ds-header-bgs__menu-list-children-link--overview great-ds-header-bgs-link{% if item.isCurrent %} great-ds-header-bgs__menu-list-children-link--current{% endif %}" href="{{ item.href }}"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}{% if item.isCurrent %} aria-current="page"{% else %} aria-current="true"{% endif %}>{{ item.overviewText }}</a>
+                                            </li>
+                                            {% for childItem in item.children %}
+                                                {% if childItem.requiresAuth and isAuthenticated or childItem.requiresNoAuth and not isAuthenticated or not childItem.requiresAuth and not childItem.requiresNoAuth %}
+                                                    <li class="great-ds-header-bgs__menu-list-children-item">
+                                                        <a {% if childItem.attributes %}{{ childItem.attributes | safe }} {% endif %}class="great-ds-header-bgs__menu-list-children-link great-ds-header-bgs-link{% if childItem.isCurrent %} great-ds-header-bgs__menu-list-children-link--current{% endif %}" href="{{ childItem.href }}"{% if childItem.location %} data-location="{{ childItem.location }}" data-title="{{ childItem.text }}"{% endif %}{% if childItem.isCurrent %} aria-current="page"{% else %} aria-current="true"{% endif %}>{{ childItem.text }}</a>
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% if subnavItemsList %}
+                        <ul class="great-ds-header-bgs__menu-list great-ds-header-bgs__menu-list--no-grid">
+                            {% for item in subnavItemsList %}
+                                <li class="great-ds-header-bgs__menu-item">
+                                    <div class="great-ds-header-bgs__menu-item-inner">
+                                        {% if item.href %}
+                                            <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes | safe }} {% endif %}class="great-ds-header-bgs__menu-link great-ds-header-bgs__menu-link--no-accordion great-ds-header-bgs-link{% if item.isCurrent %} great-ds-header-bgs__menu-link--current{% endif %}"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}>{{ item.text }}</a>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    {% if siteTitle %}
+        <div class="great-ds-header-bgs__site-title">
+            <div class="great-ds-container">
+                <span class="great-ds-header-bgs__site-title-text">{% if siteTitle.href %}<a class="great-ds-header-bgs__site-title-link" href="{{ siteTitle.href }}">{{ siteTitle.text }}</a>{% else %}{{ siteTitle }}{% endif %}</span>
+            </div>
+        </div>
+    {% endif %}
+    {% if subnavItemsList and subnavItemsList|length < 6 %}
+        <div class="great-ds-header-bgs__subnav">
+            <nav class="great-ds-header-bgs__subnav-container great-ds-container" aria-label="Sub-menu">
+                <ul class="great-ds-header-bgs__subnav-list">
+                    {% for item in subnavItemsList %}
+                        <li class="great-ds-header-bgs__subnav-item">
+                            <a class="great-ds-header-bgs__link great-ds-header-bgs__subnav-link {% if item.isCurrent %}great-ds-header-bgs__subnav-link--current{% endif %}" href="{{ item.href }}"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}{% if item.isCurrent %} aria-current="page"{% endif %}{% if item.attributes %} {{ item.attributes | safe }}{% endif %}>{{ item.text }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    {% endif %}
+</header>
+{% endmacro %}

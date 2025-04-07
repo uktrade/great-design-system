@@ -42,10 +42,20 @@ function convertNunjucksToHtml(
   htmlContent = htmlContent.replace(/string/g, "stringformat:'s'");
 
   //Append '.items' on dict loop
-  htmlContent = htmlContent.replace(/{% for name, value in attrs %}/g, "{% for name, value in attrs.items %}");
+  htmlContent = htmlContent.replace(
+    /{% for name, value in attrs %}/g,
+    "{% for name, value in attrs.items %}",
+  );
 
   //Replace custom njk '|add(x)' filter with the django default '|add:x' filter
   htmlContent = htmlContent.replace(/add\((['"]?[-\w]+['"]?)\)/g, "add:$1");
+
+  // Replace for.index etc with django syntax version
+  htmlContent = htmlContent.replace(/loop\.index/g, "forloop.counter");
+  htmlContent = htmlContent.replace(/loop\.index0/g, "forloop.counter0");
+  htmlContent = htmlContent.replace(/loop\.first/g, "forloop.first");
+  htmlContent = htmlContent.replace(/loop\.last/g, "forloop.last");
+  htmlContent = htmlContent.replace(/loop\.length/g, "forloop.revcounter");
 
   // Replace macro calls with include statements
   htmlContent = htmlContent.replace(

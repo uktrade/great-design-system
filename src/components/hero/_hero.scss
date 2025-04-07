@@ -1,7 +1,7 @@
 .great-ds-hero {
     overflow: hidden;
     &--bg-white {
-        background-color: $great-ds-semantic-surface-background-white;
+        background-color: $great-ds-semantic-surface-background-primary;
     }
 
     &--bg-light-blue {
@@ -196,7 +196,7 @@
     line-height: $great-ds-type-line-height-heading-xl-large;
     
     &--white {
-        color: $great-ds-semantic-text-default-white-text;
+        color: $great-ds-semantic-text-default-text-inverted;
     }
 }
   
@@ -204,7 +204,7 @@
     margin-bottom: $great-ds-spacing-8;
     
     &--white {
-        color: $great-ds-semantic-text-default-white-text;
+        color: $great-ds-semantic-text-default-text-inverted;
     }
     
     > * a {

@@ -1,0 +1,51 @@
+{% macro greatErrorSummary(classes, disableAutoFocus, titleHtml, titleText, descriptionHtml, descriptionText, errorList) %}
+<div class="govuk-error-summary{% if classes %} {{ classes }}{% endif %}"
+  {% if disableAutoFocus %}data-disable-auto-focus="{{ disableAutoFocus }}"{% endif %}
+  data-module="govuk-error-summary">
+  <div role="alert">
+    <h2 class="govuk-error-summary__title">
+      {% if titleHtml %}
+        {{ titleHtml|safe }}
+      {% else %}
+        {{ titleText }}
+      {% endif %}
+    </h2>
+    <div class="govuk-error-summary__body">
+      {% if descriptionHtml or descriptionText %}
+        <p>
+          {% if descriptionHtml %}
+            {{ descriptionHtml|safe }}
+          {% else %}
+            {{ descriptionText }}
+          {% endif %}
+        </p>
+      {% endif %}
+
+      {% if errorList %}
+        <ul class="govuk-list govuk-error-summary__list">
+        {% for item in errorList %}
+          <li>
+            {% if item.href %}
+              <a href="{{ item.href }}"
+                {% if item.attributes %}{{ item.attributes|safe }}{% endif %}>
+                {% if item.html %}
+                  {{ item.html|safe }}
+                {% else %}
+                  {{ item.text }}
+                {% endif %}
+              </a>
+            {% else %}
+              {% if item.html %}
+                {{ item.html|safe }}
+              {% else %}
+                {{ item.text }}
+              {% endif %}
+            {% endif %}
+          </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endmacro %}

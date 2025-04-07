@@ -1,6 +1,6 @@
 .great-ds-header {
     box-sizing: border-box;
-    background-color: $great-ds-semantic-surface-background-white;
+    background-color: $great-ds-semantic-surface-background-primary;
     
     // TO DO: remove when we have a list style class
     ul {
@@ -57,7 +57,7 @@
     }
 
     &:hover:not(:focus) {
-        box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-ds-red;
+        box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-red;
     }
 
     &:focus .great-ds-header__dbt-logo-stripe {
@@ -66,7 +66,7 @@
 
     .great-ds-header--international & {
         &:hover:not(:focus) {
-            box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-ds-blue;
+            box-shadow: inset 0px -4px 0px $great-ds-semantic-surface-background-great-blue;
         }
     }
 }
@@ -105,13 +105,13 @@
 
     &--active, 
     &:hover {
-        border-bottom: 4px solid $great-ds-semantic-surface-background-great-ds-red;
+        border-bottom: 4px solid $great-ds-semantic-surface-background-great-red;
     }
 
     .great-ds-header--international & {
         &--active, 
         &:hover {
-            border-bottom: 4px solid $great-ds-semantic-surface-background-great-ds-blue;
+            border-bottom: 4px solid $great-ds-semantic-surface-background-great-blue;
         }
     }
 }
@@ -141,15 +141,15 @@
 
 .great-ds-header__main {
     padding: 15px 0 12px;
-    background-color: $great-ds-semantic-surface-background-great-ds-blue;
+    background-color: $great-ds-semantic-surface-background-great-blue;
     position: relative;
 
     .great-ds-header--international & {
-        background-color: $great-ds-semantic-surface-background-great-ds-red;
+        background-color: $great-ds-semantic-surface-background-great-red;
     }
 
     a {
-        color: $great-ds-semantic-text-default-white-text;
+        color: $great-ds-semantic-text-default-text-inverted;
     }
 }
 
@@ -196,11 +196,11 @@
     align-items: start;
     height: 110px;
     margin-left: -1px;
-    background-color: $great-ds-semantic-surface-background-great-ds-red;
-    border-bottom: 3px solid $great-ds-semantic-surface-background-great-ds-blue;
+    background-color: $great-ds-semantic-surface-background-great-red;
+    border-bottom: 3px solid $great-ds-semantic-surface-background-great-blue;
 
     .great-ds-header--international & {
-        border-bottom: 3px solid $great-ds-semantic-surface-background-great-ds-red;
+        border-bottom: 3px solid $great-ds-semantic-surface-background-great-red;
     }
 
     .great-ds-header__great-ds-logo-image, 
@@ -219,10 +219,10 @@
             right: 100%;
             width: 100vw;
             height: 100%;
-            background-color: $great-ds-semantic-surface-background-great-ds-red;
-            border-top: 15px solid $great-ds-semantic-surface-background-great-ds-blue;
-            border-bottom: 3px solid $great-ds-semantic-surface-background-great-ds-blue;
-            box-shadow: 0 12px 0 $great-ds-semantic-surface-background-great-ds-blue;  
+            background-color: $great-ds-semantic-surface-background-great-red;
+            border-top: 15px solid $great-ds-semantic-surface-background-great-blue;
+            border-bottom: 3px solid $great-ds-semantic-surface-background-great-blue;
+            box-shadow: 0 12px 0 $great-ds-semantic-surface-background-great-blue;  
         }
     }
 
@@ -266,7 +266,7 @@
 .great-ds-header__site-title {
     font-family: $great-ds-type-family-great-ds-bold;
     @include govuk-font-size($size: 24);
-    color: $great-ds-semantic-text-default-white-text;
+    color: $great-ds-semantic-text-default-text-inverted;
     order: 3;
     width: 100%;
     flex-grow: 1;
@@ -472,18 +472,18 @@
     }
 
     &:has(.great-ds-button--header-search-menu:hover){
-        border-bottom: 3px solid $great-ds-semantic-surface-background-light-blue;
+        border-bottom: 3px solid $great-ds-semantic-surface-background-secondary;
     }
 
     &:has(.is-active),
     .is-active {
-        background-color: $great-ds-semantic-surface-background-light-blue;
+        background-color: $great-ds-semantic-surface-background-secondary;
     }
 }
 
 .great-ds-header__search-autocomplete {
     display: none;
-    background-color: $great-ds-semantic-surface-background-light-blue;
+    background-color: $great-ds-semantic-surface-background-secondary;
     margin: 0 -15px;
     padding: 15px;
     width: calc(100%);
@@ -515,7 +515,7 @@
 
 .great-ds-header__search-autocomplete-results-list {
     border: 3px solid $great-ds-semantic-border-default-input-border;
-    background-color: $great-ds-semantic-surface-background-white;
+    background-color: $great-ds-semantic-surface-background-primary;
     border-top: none;
     margin: 0 15px 15px !important;
 
@@ -542,7 +542,7 @@
     &:focus, 
     &:active,
     &.selected {
-        background-color: $great-ds-semantic-surface-background-light-blue;
+        background-color: $great-ds-semantic-surface-background-secondary;
         outline: none;
     }
 }
@@ -569,7 +569,7 @@
     order: 1;
     width: auto;
     margin-bottom: 30px;
-    color: $great-ds-semantic-text-default-white-text;
+    color: $great-ds-semantic-text-default-text-inverted;
     z-index: 3;
     position: relative;
     border-bottom: 3px solid transparent;
@@ -580,7 +580,7 @@
     }
 
     &:has(.great-ds-button--header-search-menu:hover){
-        border-bottom: 3px solid $great-ds-semantic-surface-background-light-blue;
+        border-bottom: 3px solid $great-ds-semantic-surface-background-secondary;
     }
 
     .great-ds-header__main-inner:has(.great-ds-header__menu-wrapper--minimal-search) & {
@@ -595,12 +595,12 @@
             top: 0;
             left: 0;
             height: 49px;
-            border-left: 1px solid $great-ds-semantic-surface-background-light-blue;
+            border-left: 1px solid $great-ds-semantic-surface-background-secondary;
         }
 
         &:has(.is-active),
         .is-active {
-            background-color: $great-ds-semantic-surface-background-light-blue;
+            background-color: $great-ds-semantic-surface-background-secondary;
         }
 
         @include govuk-media-query($from: desktop) {
@@ -632,7 +632,7 @@ body:not(.js-enabled) {
 
 .great-ds-header__menu-wrapper {
     display: none;
-    background-color: $great-ds-semantic-surface-background-great-ds-blue;
+    background-color: $great-ds-semantic-surface-background-great-blue;
     width: 100%;
     order: 2;
     margin: 0 -15px;
@@ -649,7 +649,7 @@ body:not(.js-enabled) {
     }
 
     .great-ds-header__main-inner:has(.great-ds-header__menu-wrapper--minimal-search) & {
-        background-color: $great-ds-semantic-surface-background-light-blue;
+        background-color: $great-ds-semantic-surface-background-secondary;
         margin-bottom: 15px;
 
         @include govuk-media-query($from: desktop) {
@@ -683,7 +683,7 @@ ul.great-ds-header__menu-list {
     padding: $great-ds-spacing-2 0;
     margin: 0 $great-ds-spacing-5;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    color: $great-ds-semantic-text-default-white-text;
+    color: $great-ds-semantic-text-default-text-inverted;
     position: relative;
 
     &:last-child {
@@ -700,7 +700,7 @@ ul.great-ds-header__menu-list {
     }
 
     &--user {
-        background-color: $great-ds-semantic-interaction-active-blue;
+        background-color: $great-ds-semantic-interaction-active;
         border-bottom: none;
         margin: 0;
         padding: $great-ds-spacing-2 $great-ds-spacing-5;
@@ -776,7 +776,7 @@ ul.great-ds-header__menu-list {
 }
 
 ul.great-ds-header__menu-link-children {
-    background-color: $great-ds-semantic-surface-background-great-ds-blue;
+    background-color: $great-ds-semantic-surface-background-great-blue;
     width: 100%;
     margin: 15px -15px 0;
     padding: 5px 15px 10px;
@@ -790,7 +790,7 @@ ul.great-ds-header__menu-link-children {
         }
 
         .great-ds-header__menu-link {
-            color: $great-ds-semantic-text-default-white-text;
+            color: $great-ds-semantic-text-default-text-inverted;
 
             &:focus {
                 color: $great-ds-semantic-text-default-text;
@@ -809,7 +809,7 @@ ul.great-ds-header__menu-link-children {
 
 .great-ds-header__site-link-container {
     display: block;
-    background-color: $great-ds-semantic-surface-background-light-blue;
+    background-color: $great-ds-semantic-surface-background-secondary;
     overflow: hidden;
     margin-bottom: 20px;
 
@@ -853,7 +853,7 @@ a.great-ds-header__site-link {
 }
 
 .great-ds-header__subnav {
-    background-color: $great-ds-semantic-surface-background-great-ds-blue;
+    background-color: $great-ds-semantic-surface-background-great-blue;
 }
 
 .great-ds-header__subnav-container {
@@ -899,7 +899,7 @@ a.great-ds-header__site-link {
 
 .great-ds-header__subnav-link,
 .great-ds-header__submenu-link {
-    color: $great-ds-semantic-text-default-white-text; 
+    color: $great-ds-semantic-text-default-text-inverted; 
     &--current {
         @include great-ds-link-decorator;
     }
