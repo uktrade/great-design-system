@@ -1,9 +1,6 @@
 // Link styles
 a {
     color: $great-ds-semantic-text-default-link;
-    &:focus:active:not(.great-ds-card__link) { // TODO OVERRIDE remove once 'govuk-elements-styles.min.css' removed from great
-        @include govuk-focused-text;
-    }
 }
 
 @mixin great-ds-link-decorator() {
@@ -18,6 +15,18 @@ a {
         color: $great-ds-semantic-text-hover-link;
     }
     &:focus {
+        @include govuk-focused-text;
+    }
+}
+
+@mixin great-ds-link-no-decorator() { // TODO move into own component when prioritised
+    text-decoration: none;
+    &:hover {
+        color: $great-ds-semantic-text-hover-link;
+        @include great-ds-link-decorator;
+    }
+    &:focus,
+    &:focus:active {
         @include govuk-focused-text;
     }
 }

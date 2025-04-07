@@ -60,7 +60,7 @@ $great-ds-button-outline: 2px solid transparent;
         position: absolute;
         top: -2px;
         right: -2px;
-        bottom: -4px;
+        bottom: 0;
         left: -2px;
         background: rgba(0, 0, 0, 0);
     }
@@ -78,7 +78,8 @@ $great-ds-button-outline: 2px solid transparent;
     }
 
     @if $is-inverted {
-        box-shadow: 0 2px 0 $border;
+        box-shadow: none;
+        border: $great-ds-button-border-width solid $border;
     }
 
     $focus-styles: (
@@ -105,7 +106,8 @@ $great-ds-button-outline: 2px solid transparent;
         }
 
         @if $is-inverted {
-            box-shadow: 0 1px 0 $great-ds-semantic-border-focus-button-border;
+            border: $great-ds-button-border-width solid $great-ds-semantic-border-focus-button-border;
+            box-shadow: none;
         }
     }
 
@@ -126,9 +128,8 @@ $great-ds-button-outline: 2px solid transparent;
 
         @if $is-inverted {
             border: $great-ds-button-border-width solid $border;
-            box-shadow: 0 2px 0 $border;
             color: $bg-color;
-            border-bottom: none;
+            box-shadow: none;
         }
     }
 
@@ -138,6 +139,8 @@ $great-ds-button-outline: 2px solid transparent;
             top: 2px;
             border-color: transparent;
             box-shadow: 0 1px 0 $border-hover;
+        } @else if $is-inverted {
+            box-shadow: none;
         } @else {
             box-shadow: 0 2px 0 $border-hover;
         }
@@ -146,10 +149,11 @@ $great-ds-button-outline: 2px solid transparent;
 
 // Mixin for search button styles
 @mixin great-ds-button-search-states($bg-color, $bg-hover-color, $text-color, $outline-color, $border-color) {
-    margin: 0 0 0 -2px;
-    height: 56px;
-    width: 60px;
+    margin: 0;
+    height: 50px;
+    width: 50px;
     box-shadow: none;
+    padding: $great-ds-button-padding;
 
     &:focus {
         background-color: $bg-hover-color !important;
@@ -157,7 +161,11 @@ $great-ds-button-outline: 2px solid transparent;
         outline: 3px solid $outline-color;
         outline-offset: 0;
         border: 4px solid $border-color !important;
-        padding: 10px 10px 7px 11px;
+        padding: 5px 20px;
+    }
+
+    &:hover {
+        box-shadow: none !important;
     }
 }
 
@@ -291,19 +299,24 @@ $great-ds-button-outline: 2px solid transparent;
     margin-bottom: 0;
     font-family: $great-ds-type-family-great;
     line-height: 30px;
+    height: 50px;
+    padding: 0 15px;
 
     &:focus:not(:active),
     &:focus:hover:not(:active) {
         color: $great-ds-semantic-text-focus-button-label-focus;
         border: $great-ds-button-border-width solid $great-ds-semantic-interaction-focus;
-        box-shadow: 0 2px 0 $great-ds-semantic-interaction-focus;
-        border-bottom: none;
+        box-shadow: none;
         background-color: $great-ds-semantic-interaction-focus;
     }
 
     &.is-active {
         background-color: $great-ds-semantic-surface-background-secondary !important;
         border-color: $great-ds-semantic-surface-background-secondary !important;
+    }
+
+    &:active {
+        top: 0;
     }
 }
 
@@ -362,6 +375,10 @@ $great-ds-button-outline: 2px solid transparent;
 
     &:active {
         top: 0px;
+    }
+
+    &:focus {
+        z-index: 999;
     }
 }
 

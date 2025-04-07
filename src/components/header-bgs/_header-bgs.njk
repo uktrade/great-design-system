@@ -1,9 +1,10 @@
 {% from "../button/_button.njk" import greatButton %}
-{% from "./_header-masthead-logo.njk" import greatMastheadLogo %}
-{% from "./_header-search.njk" import greatHeaderSearch %}
+{% from "./_header-bgs-masthead-logo.njk" import greatMastheadLogo %}
+{% from "./_header-bgs-search.njk" import greatHeaderSearch %}
+{% from "./_header-bgs-logo.njk" import greatLogo %}
 
 {% macro greatHeader(hideMasthead, rtl, siteHref, useDomesticLogo, headerClasses, globalHeaderClasses, availableLanguages, currentLanguage, ssoIsLoggedIn, siteTitle, largeTitle, isAuthenticated, hideSearch, hideMainNav, searchFormAction, minimalSearchAndMenu, autocompleteSearch, hideMenuOnDesktop, menuItemsList, subnavItemsList) %}
-{% set search_icon = '<svg xmlns="http://www.w3.org/2000/svg" class="great-ds-icon-svg" width="20" height="20" viewBox="0 0 18 18" fill="currentColor">
+{% set search_icon = '<svg xmlns="http://www.w3.org/2000/svg" class="great-ds-icon-svg" width="18" height="18" viewBox="0 0 18 18" fill="currentColor">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M7.77589 13.722C6.26697 13.8589 4.79933 13.386 3.64011 12.4016C1.2472 10.3681 0.933108 6.74217 2.94069 4.31856C4.06024 2.96784 5.66793 2.27198 7.28695 2.27198C8.57164 2.27198 9.86443 2.7113 10.9249 3.61205C12.0841 4.59641 12.7949 5.97992 12.9268 7.50687C13.0588 9.03299 12.5957 10.5206 11.6235 11.6943C10.6505 12.868 9.28401 13.5884 7.77589 13.722ZM18 15.5071L13.5606 11.7361C14.3256 10.4247 14.6737 8.91169 14.5393 7.36344C14.3702 5.40128 13.4562 3.62271 11.9651 2.35558C8.88816 -0.258992 4.28286 0.148357 1.70133 3.26536C-0.881003 6.38072 -0.477867 11.0427 2.59908 13.6573C3.92344 14.7826 5.56107 15.3834 7.26914 15.3834C7.48447 15.3834 7.70061 15.3744 7.91756 15.3555C9.44591 15.2203 10.8569 14.6097 11.9999 13.6196L16.4385 17.3914L18 15.5071Z"/>' %}
 
 <header class="great-ds-header-bgs {{ headerClasses }}{% if rtl %} great-ds-header-bgs--rtl{% endif %}" id="header" role="banner" data-ga-section="header">
@@ -23,7 +24,7 @@
                 <ul class="great-ds-header-bgs__languages-list">
                     {% for language in availableLanguages %}
                         <li class="great-ds-header-bgs__languages-item{% if currentLanguage == language.language_code %} great-ds-header-bgs__languages-item--current{% endif %}">
-                            <a class="great-ds-header-bgs__languages-link great-ds-header-bgs-link" href="?lang={{ language.language_code }}" aria-current="{% if currentLanguage == language.language_code %}true{% else %}false{% endif %}" lang="{{ language.language_code }}"{% if language.location %} data-location="{{ language.location }}" data-title="{{ language.display_name }}"{% endif %}>{{ language.display_name }} ({{ language.language_code | upper }})</a>
+                            <a class="great-ds-header-bgs__languages-link" href="?lang={{ language.language_code }}" aria-current="{% if currentLanguage == language.language_code %}true{% else %}false{% endif %}" lang="{{ language.language_code }}"{% if language.location %} data-location="{{ language.location }}" data-title="{{ language.display_name }}"{% endif %}>{{ language.display_name }} ({{ language.language_code | upper }})</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -33,8 +34,9 @@
     <div class="great-ds-header-bgs__main">
         <div class="great-ds-header-bgs__main-inner great-ds-container">
             <div class="great-ds-header-bgs__logo-container">
-                <a id="header-logo-link" alt="Great" class="great-ds-header-bgs__great-ds-logo" href="{% if siteHref %}{{ siteHref }}{% else %}/{% endif %}">
-                    Business.gov.uk
+                <a id="header-logo-link" aria-label="Go to Business.gov.uk" class="great-ds-header-bgs__great-ds-logo" href="{% if siteHref %}{{ siteHref }}{% else %}/{% endif %}">
+                    <span class="govuk-visually-hidden">Business.gov.uk</span>
+                    {{ greatLogo() }}
                 </a>
             </div>
             {% if siteTitle %}
@@ -79,7 +81,7 @@
         </div>
         {% if menuItemsList or subnavItemsList %}
             <div class="great-ds-header-bgs__menu-wrapper" id="header-menu">
-                <div class="great-ds-container">
+                <div class="great-ds-header-bgs__menu-container">
                     {% if menuItemsList %}
                         <ul class="great-ds-header-bgs__menu-list">
                             {% for item in menuItemsList %}

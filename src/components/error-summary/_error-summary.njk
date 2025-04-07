@@ -1,50 +1,30 @@
-{% macro greatErrorSummary(classes, disableAutoFocus, titleHtml, titleText, descriptionHtml, descriptionText, errorList) %}
-<div class="govuk-error-summary{% if classes %} {{ classes }}{% endif %}"
-  {% if disableAutoFocus %}data-disable-auto-focus="{{ disableAutoFocus }}"{% endif %}
+{% macro greatErrorSummaryDjango(errors, disable_auto_focus, title, description, id) %}
+
+<div class="govuk-error-summary {% if errors.classes %} {{ errors.classes }}{% endif %} {% if errors|length == 0 %}great-hidden{% endif %}"
+  {% if disable_auto_focus %}data-disable-auto-focus="{{ disable_auto_focus }}"{% endif %}
+  {% if id %} id="{{id}}" {% endif %}
   data-module="govuk-error-summary">
   <div role="alert">
+    {% if title %}
     <h2 class="govuk-error-summary__title">
-      {% if titleHtml %}
-        {{ titleHtml|safe }}
-      {% else %}
-        {{ titleText }}
-      {% endif %}
+      {{title}}
     </h2>
+    {% endif %}
     <div class="govuk-error-summary__body">
-      {% if descriptionHtml or descriptionText %}
+      {% if description %}
         <p>
-          {% if descriptionHtml %}
-            {{ descriptionHtml|safe }}
-          {% else %}
-            {{ descriptionText }}
-          {% endif %}
+          {{description}}
         </p>
       {% endif %}
-
-      {% if errorList %}
-        <ul class="govuk-list govuk-error-summary__list">
-        {% for item in errorList %}
-          <li>
-            {% if item.href %}
-              <a href="{{ item.href }}"
-                {% if item.attributes %}{{ item.attributes|safe }}{% endif %}>
-                {% if item.html %}
-                  {{ item.html|safe }}
-                {% else %}
-                  {{ item.text }}
-                {% endif %}
-              </a>
-            {% else %}
-              {% if item.html %}
-                {{ item.html|safe }}
-              {% else %}
-                {{ item.text }}
-              {% endif %}
-            {% endif %}
-          </li>
+      <ul class="govuk-list govuk-error-summary__list">
+        {% for field, error in errors %}
+        <li>
+          <a href="#id_{{field}}">
+            {{error}}
+          </a>
+        </li>
         {% endfor %}
-        </ul>
-      {% endif %}
+      </ul>
     </div>
   </div>
 </div>
