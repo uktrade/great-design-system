@@ -1,7 +1,11 @@
-.great-ds-inset-text p{
-    margin: 0 0 $great-ds-spacing-1;
-}
-
-.great-ds-inset-text p:last-child{
-    margin: 0 ;
+.great-ds-inset-text {
+    margin-top: $great-ds-spacing-6;
+    margin-bottom: $great-ds-spacing-6;
+ 
+    p {
+        margin: 0 0 $great-ds-spacing-1;
+        &:last-child {
+            margin: 0 ;
+        }
+    }
 }
