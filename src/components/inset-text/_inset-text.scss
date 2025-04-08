@@ -1,3 +1,7 @@
 .great-ds-inset-text p{
     margin: 0 0 $great-ds-spacing-1;
 }
+
+.great-ds-inset-text p:last-child{
+    margin: 0 ;
+}
