@@ -99,8 +99,9 @@
     flex-direction: column;
     height: 100%;
 
-    &:focus {
+    &:focus, &:focus:active {
         outline: none;
+        background-color: transparent;
     }
 }
 
