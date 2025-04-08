@@ -6,7 +6,7 @@
 {{form.errors}}
 {% for field, errors in fields %}
   {% if not field.field.linked_conditional_reveal %}
-  <div{% if field.css_classes %} class="{{ field.css_classes }}"{% endif %}>
+  <div id="{{field.id_for_label}}-container"{% if field.css_classes %} class="{{ field.css_classes }}"{% endif %}>
     {% if field.use_fieldset %}
       <fieldset class="govuk-fieldset">
       {% if field.label %}{{ field.legend_tag }}{% endif %}
@@ -14,7 +14,7 @@
       {% if field.label %}
       {{ greatLabel(
         text=field.label,
-        for=field.field.widget.id_for_label
+        for=field.id_for_label
       ) }}
       {% endif %}
     {% endif %}

@@ -8,6 +8,7 @@
 <div class="govuk-{{ widget.template_class_name }} {% if widget.is_small %}govuk-{{ widget.template_class_name }}--small {% endif %}" id="govuk-{{ widget.template_class_name }}-{{widget.attrs.id}}" data-module="govuk-{{ widget.template_class_name }}">
   {% for group, options, index in widget.optgroups %}
   {% for option in options %}
+  {% if option.exclusive %} <p class='great-ds-form__divider-text'> or </p> {% endif %}
   <div id="{{widget.attrs.id}}" class="govuk-{{ widget.template_class_name }}__item">
     {% if option.reveals %}
      {{ greatOptionConditionalRevealDjango(

@@ -1,0 +1,13 @@
+.great-ds-error-message {
+    a:focus & {
+        @include govuk-focused-text;
+    }
+    a:hover & {
+        color: $great-ds-semantic-border-hover-error-border;
+    }
+}
+
+.great-ds-error-summary__link {
+    width: fit-content;
+    display: block;
+}
