@@ -1,0 +1,111 @@
+{% from "../label/_label.njk" import greatLabel %}
+{% from "../hint/_hint.njk" import greatHint %}
+{% from "../input/_input-element.njk" import greatInputElement %}
+{% from "../fieldset/_fieldset-open.njk" import greatFieldsetOpen %}
+{% from "../fieldset/_fieldset-close.njk" import greatFieldsetClose %}
+
+{% macro greatDateInput(id, name, classes, fieldset, label, hint, errorMessage, dayWidth, monthWidth, yearWidth, describedBy) %}
+  <div class="govuk-form-group govuk-grid-column-two-thirds{% if errorMessage %} govuk-form-group--error{% endif %}{% if classes %} {{ classes }}{% endif %}" 
+    {% if id %}id="{{ id }}"{% endif %}
+    {% if name %}name="{{ name }}"{% endif %}
+  >
+    {% if fieldset %}
+        {{
+        greatFieldsetOpen(
+          id=fieldset.id,
+          name=fieldset.name,
+          errorMessage=errorMessage,
+          hint=hint,
+          describedBy=describedBy,
+          legend={'text' :fieldset.legend.text, 'isPageHeading':fieldset.legend.isPageHeading, 'classes':fieldset.legend.classes },
+          classes=fieldset.classes
+          )
+      }}
+    {% endif %}
+    {% if label %}
+      {{ greatLabel(
+        text=label.text, 
+        html=label.html, 
+        classes=label.classes,
+        for=id,
+        isPageHeading=label.isPageHeading
+      ) }}
+    {% endif %}
+
+    {% if hint %}
+      {{ greatHint(
+        id=id|add('-hint'),
+        classes=hint.classes,
+        html=hint.html,
+        text=hint.text
+      ) }}
+    {% endif %}
+
+    {% if errorMessage %}
+      {{ greatErrorMessage(
+        id=id|add('-error'),
+        classes=errorMessage.classes,
+        visuallyHiddenText=errorMessage.visuallyHiddenText,
+        html=errorMessage.html,
+        text=errorMessage.text
+      ) }}
+    {% endif %}
+
+    <div class="govuk-date-input">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          {{ greatLabel(
+            text="Day",
+            classes="govuk-date-input__label",
+            for=id|add("-day")
+          ) }}
+          {{ greatInputElement(
+              id="great-ds-input--input",
+              classes="govuk-input--width-"|add(dayWidth),
+              id=id|add("-day"),
+              name=name|add("-day"),
+              type="text",
+              inputmode="numeric"
+          ) }}
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          {{ greatLabel(
+            text="Month",
+            classes="govuk-date-input__label",
+            for=id|add('-month')
+          ) }}
+          {{ greatInputElement(
+              id="great-ds-input--input",
+              classes="govuk-input--width-"|add(monthWidth),
+              id=id|add("-month"),
+              name=name|add("-month"),
+              type="text",
+              inputmode="numeric"
+          ) }}
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          {{ greatLabel(
+            text="Year",
+            classes="govuk-date-input__label",
+            for=id|add("-year")
+          ) }}
+          {{ greatInputElement(
+              id="great-ds-input--input",
+              classes="govuk-input--width-"|add(yearWidth),
+              id=id|add("-year"),
+              name=name|add("-year"),
+              type="text",
+              inputmode="numeric"
+          ) }}
+        </div>
+      </div>
+    </div>
+    {% if fieldset %}
+      {{ greatFieldsetClose() }}
+    {% endif %}
+  </div>
+{% endmacro %}
