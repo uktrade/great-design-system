@@ -9,7 +9,7 @@
                 <div class='great-ds-footer__sections-container'>
                         <div class="great-ds-footer-bgs__section great-ds-footer-bgs__section--upper">
                             {% for footerSubSection in upperFooterSection %}
-                                <div class="great-ds-footer-bgs__subsection great-ds-footer-bgs__subsection--upper">
+                                <div class="great-ds-footer-bgs__subsection great-ds-footer-bgs__subsection--upper{% if upperFooterSection|length < 4 %} great-ds-footer-bgs__subsection--third{% endif %}">
                                     {% for link in footerSubSection %}     
                                         <ul class="great-ds-footer-bgs__link-list">
                                             <li class="great-ds-footer-bgs__link-list-item">
@@ -28,7 +28,7 @@
                             </div>
                             <div class="great-ds-footer-bgs__section great-ds-footer-bgs__section--lower">
                             {% for footerSubSection in lowerFooterSection %}
-                                <div class="great-ds-footer-bgs__subsection great-ds-footer-bgs__subsection--lower">
+                                <div class="great-ds-footer-bgs__subsection great-ds-footer-bgs__subsection--lower{% if lowerFooterSection|length < 4 %} great-ds-footer-bgs__subsection--third{% endif %}">
                                     <ul class="great-ds-footer-bgs__link-list">
                                     {% for link in footerSubSection %}     
                                         <li class="great-ds-footer-bgs__link-list-item">

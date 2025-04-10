@@ -33,7 +33,7 @@
 
   @include govuk-media-query($from: 769px) {
       flex-direction: row;
-      gap: $great-ds-spacing-6-large;
+      gap: $great-ds-spacing-9;
       padding-top: $great-ds-spacing-6-large;
       padding-bottom: $great-ds-spacing-7-large;
   }
@@ -66,6 +66,17 @@
     gap: 10px;
     padding-top: 0;
     padding-bottom: 0;
+  }
+
+  &--third:not(&--lower):not(:last-child) {
+      border-bottom: 0;
+      padding-bottom: 0;
+  }
+
+  &--third {
+    @include govuk-media-query($from: 769px) {
+      width: 33%;
+    }
   }
 }
   
