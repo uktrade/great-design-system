@@ -2,7 +2,7 @@
 {% from "../action-link/_action-link.njk" import greatActionLink %}
 {% from "../responsive-image/_responsive-image.njk" import greatResponsiveImage %}
 
-{% macro greatCtaBanner(backgroundClass, headingText, leadingText, listItems, ctaButtonText, signUpLink, signInLink, landscapeImagePath, portraitImagePath, actionLinkClass, imageOnTop) %}
+{% macro greatCtaBanner(backgroundClass, headingText, leadingText, listItems, ctaButtonText, signUpLink, signInLink, landscapeImagePath, portraitImagePath, actionLinkText, actionLinkHref, actionLinkClass, imageOnTop, htmlContent) %}
     <div class="great-ds-cta-banner{% if backgroundClass %} {{ backgroundClass }}{% endif %}">
         <div class="great-ds-container govuk-!-padding-top-7{% if not landscapeImagePath %} govuk-!-padding-bottom-7{% endif %}">
             <div class="govuk-grid-row{% if imageOnTop %} great-ds-cta-banner--image-on-top{% endif %}">
@@ -24,9 +24,17 @@
                                 {% endfor %}
                             </ul>
                         {% endif %}
-                        {% if signUpLink %} 
+                        {% if htmlContent %}
+                            {{ htmlContent|safe }}
+                        {% endif %}
+                        {% if signUpLink %}
                             <div class="great-ds-cta-banner__action-link-container">
                                 {{ greatActionLink(linkText=signUpLink.linkText, linkHref=signUpLink.href, linkClass=actionLinkClass) }}
+                            </div>
+                        {% endif %}
+                        {% if actionLinkHref %} 
+                            <div class="great-ds-cta-banner__action-link-container">
+                                {{ greatActionLink(linkText=actionLinkText, linkHref=actionLinkHref, linkClass=actionLinkClass) }}
                             </div>
                         {% endif %}
                         {% if signInLink %} 
