@@ -1,0 +1,27 @@
+{% extends "layout/_example.njk" %}
+{% set exampleFullWidth = true %}
+
+{% block content %}
+    {% from "../../../components/footer-bgs/_footer-bgs.njk" import greatBGSFooter %}
+
+{{ greatBGSFooter(
+    currentYear = '2025',
+    upperFooterSection = [
+        [
+            { href: "#", text: "Privacy", title: 'Privacy' },
+            { href: "#", text: "Cookies", title: 'Cookies' },
+            { href: "#", text: "Accessibility statement", title: 'Accessibility statement' }
+        ],
+        [
+            { href: "#", text: "Terms and conditions", title: 'Terms and conditions' },
+            { href: "#", text: "Help using this website", title: 'Help using this website' }
+        ]
+    ],
+
+    lowerFooterSection = [
+        [{ href: "#", text: "Find support and information for your business on Business.gov.uk", title: 'Find support and information for your business on Business.gov.uk' }],
+        [{ href: "#", text: "Department for Business and Trade on GOV.UK", title: 'Department for Business and Trade on GOV.UK', target: '_blank', rel: 'noopener' }]
+    ]
+) 
+}}
+{% endblock %}
