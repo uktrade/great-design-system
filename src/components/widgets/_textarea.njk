@@ -1,9 +1,10 @@
 {% from "./_attrs.njk" import greatAttrsDjango %}
+{% from "../hint/_hint.njk" import greatHint %}
 
 {% macro greatTextareaDjango(widget) %}
-
+{% if widget.counter %}<div class="govuk-textarea__wrapper">{% endif %}
 <textarea 
-class="govuk-textarea{% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}"
+class="govuk-textarea {%if widget.counter %}govuk-js-character-count{% endif %} {% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}"
 name="{{ widget.name }}"
 
 {{ greatAttrsDjango(
@@ -12,4 +13,20 @@ attrs=widget.attrs
 
 >{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
 
+{% if widget.counter %}
+</div>
+{% if widget.max_words %}
+    {{ greatHint(
+        id=widget.attrs.id|add('-info'),
+        classes='govuk-character-count__message',
+        text=widget.max_words_info
+      ) }}
+{% elif widget.max_length %}
+    {{ greatHint(
+    id=widget.attrs.id|add('-info'),
+    classes='govuk-character-count__message',
+    text=widget.max_length_info
+  ) }}
+{% endif %}
+{% endif %}
 {% endmacro %}
