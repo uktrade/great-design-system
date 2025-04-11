@@ -41,9 +41,6 @@ function convertNunjucksToHtml(
   //Replace custom njk '|string' filter with the django default "|stringformat:'s'" filter
   htmlContent = htmlContent.replace(/string/g, "stringformat:'s'");
 
-  //Replace custom njk 'loop.index' with the Django's forloop.counter
-  htmlContent = htmlContent.replace(/loop.index/g, "forloop.counter");
-
   //Append '.items' on dict loop
   htmlContent = htmlContent.replace(
     /{% for name, value in attrs %}/g,
