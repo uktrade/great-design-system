@@ -1,6 +1,7 @@
 {% from "./_attrs.njk" import greatAttrsDjango %}
 {% from "./_option_conditional_reveal.njk" import greatOptionConditionalRevealDjango %}
 {% from "./_option.njk" import greatOptionDjango %}
+{% from "./_date_option.njk" import greatDateOptionDjango %}
 {% from "../hint/_hint.njk" import greatHint %}
 {% from "../label/_label.njk" import greatLabel %}
 
@@ -10,8 +11,13 @@
   {% for option in options %}
   {% if option.exclusive %} <p class='great-ds-form__divider-text'> or </p> {% endif %}
   <div id="{{widget.attrs.id}}" class="govuk-{{ widget.template_class_name }}__item">
+    {% if widget.template_class_name == 'date-input' %}<div class="govuk-form-group">{% endif %}
     {% if option.reveals %}
      {{ greatOptionConditionalRevealDjango(
+      widget=option
+    ) }}
+    {% elif widget.template_class_name == 'date-input' %}
+    {{ greatDateOptionDjango(
       widget=option
     ) }}
     {% else %}
@@ -20,6 +26,7 @@
     ) }}
     {% endif %}
   </div>
+  {% if widget.template_class_name == 'date-input' %}</div>{% endif %}
   {% if option.reveals %}
   <div class="govuk-{{ widget.template_class_name }}__conditional govuk-{{ widget.template_class_name }}__conditional--hidden" id="conditional-{{ widget.template_class_name }}Element-1">
   {% for reveal_field , errors in option.reveals %}
