@@ -1,0 +1,38 @@
+{% from "../label/_label.njk" import greatLabel %}
+{% from "../hint/_hint.njk" import greatHint %}
+{% from "../fieldset/_fieldset-open.njk" import greatFieldsetOpen %}
+{% from "./_input.njk" import greatInputDjango %}
+
+{% macro greatDateInputDjango(widget) %}
+
+<div class="govuk-date-input">
+  {% for widget, label in widget.subwidgets %}
+  <div class="govuk-date-input__item">
+      <div class="govuk-form group">
+
+        {% if label %}
+        {{ greatLabel(
+          text=label,
+          for=widget.attrs.id,
+          classes='govuk-date-input__label'
+        ) }}
+        {% endif %}
+
+        {{ greatInputDjango(
+          widget=widget
+        ) }}
+
+      {% if widget.help_text %}
+
+        {{ greatHint(
+          html=widget.help_text,
+          classes=widget.help_text_css
+        ) }}
+      {% endif %}
+      </div>
+  </div>
+  
+  {% endfor %}
+  </div>
+
+{% endmacro %}

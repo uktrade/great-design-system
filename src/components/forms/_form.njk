@@ -1,5 +1,6 @@
 {% from "../hint/_hint.njk" import greatHint %}
 {% from "../label/_label.njk" import greatLabel %}
+{% from "../fieldset/_fieldset-open.njk" import greatFieldsetOpen %}
 
 {% macro greatFormDjango(form, fields, hidden_fields, errors) %}
 
@@ -8,13 +9,15 @@
   {% if not field.field.linked_conditional_reveal %}
   <div id="{{field.id_for_container}}"{% if field.css_classes %} class="{{ field.css_classes }}"{% endif %}>
     {% if field.use_fieldset %}
-      <fieldset class="govuk-fieldset">
-      {% if field.label %}{{ field.legend_tag }}{% endif %}
+      {{ greatFieldsetOpen(
+        legend=field.legend
+      ) }}
     {% else %}
       {% if field.label %}
       {{ greatLabel(
         text=field.label,
-        for=field.id_for_label
+        for=field.id_for_label,
+        isPageHeading=field.is_page_heading
       ) }}
       {% endif %}
     {% endif %}
