@@ -1,0 +1,21 @@
+{% from "./_attrs.njk" import greatAttrsDjango %}
+
+{% macro greatDateOptionDjango(widget) %}
+
+<label{% if widget.attrs.id %} id="{{ widget.attrs.id }}-label" for="{{ widget.attrs.id }}"{% endif %} class="govuk-label govuk-{{ widget.template_class_name }}__label">
+	{{ widget.label }}
+</label>
+
+<input class="govuk-input govuk-input--width-{% if widget.label == 'Year' %}4{% else %}2{% endif %} {% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}" type="{{ widget.type}}" name="{{ widget.name }}" inputmode="numeric"
+
+{{ greatAttrsDjango(
+	attrs=widget.attrs
+  ) }}
+>
+
+{% if widget.help_text %}
+<div class="govuk-hint {{widget.help_text_css}}">
+	{{widget.help_text}}
+</div>
+{% endif %}
+{% endmacro %}
