@@ -90,7 +90,7 @@
                                             <img class="great-ds-header-bgs__menu-item-icon" src="{{ item.icon }}" alt="">
                                         {% endif %}
                                         {% if item.href %}
-                                            <button class="great-ds-header-bgs__menu-link--accordion" aria-controls="header-children-menu-{{ loop.index }}" aria-expanded="false" data-great-ds-reveal-button aria-label="Open child menu">{{ item.text }}</button>
+                                            <button class="great-ds-header-bgs__menu-link--accordion great-ds-header-bgs-link" aria-controls="header-children-menu-{{ loop.index }}" aria-expanded="false" data-great-ds-reveal-button aria-label="Open child menu">{{ item.text }}</button>
                                             <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes | safe }} {% endif %}class="great-ds-header-bgs__menu-link great-ds-header-bgs-link{% if item.isCurrent %} great-ds-header-bgs__menu-link--current{% endif %}"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}>{{ item.text }}</a>
                                         {% else %}
                                             {{ item.text }}
@@ -98,7 +98,7 @@
                                         <ul class="great-ds-header-bgs__menu-list-children" id="header-children-menu-{{ loop.index }}">
                                             <li class="great-ds-header-bgs__menu-list-children-item">
                                                 {% if item.description %}<p class="great-ds-header-bgs__menu-list-children-description">{{ item.description }}</p>{% endif %}
-                                                <a class="great-ds-header-bgs__menu-list-children-link great-ds-header-bgs__menu-list-children-link--overview great-ds-header-bgs-link{% if item.isCurrent %} great-ds-header-bgs__menu-list-children-link--current{% endif %}" href="{{ item.href }}"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}{% if item.isCurrent %} aria-current="page"{% else %} aria-current="true"{% endif %}>{{ item.overviewText }}</a>
+                                                <a class="great-ds-header-bgs__menu-list-children-link great-ds-header-bgs__menu-list-children-link--overview great-ds-header-bgs-link{% if item.isCurrent %} great-ds-header-bgs__menu-list-children-link--current{% endif %}" href="{{ item.href }}"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}{% if item.isCurrent %} aria-current="page"{% else %} aria-current="true"{% endif %}>{{ item.overviewText|safe }}</a>
                                             </li>
                                             {% for childItem in item.children %}
                                                 {% if childItem.requiresAuth and isAuthenticated or childItem.requiresNoAuth and not isAuthenticated or not childItem.requiresAuth and not childItem.requiresNoAuth %}

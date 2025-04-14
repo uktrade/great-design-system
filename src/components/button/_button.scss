@@ -302,15 +302,15 @@ $great-ds-button-outline: 2px solid transparent;
     height: 50px;
     padding: 0 15px;
 
-    &:focus:not(:active),
-    &:focus:hover:not(:active) {
+    &:focus,
+    &:focus:hover {
         color: $great-ds-semantic-text-focus-button-label-focus;
         border: $great-ds-button-border-width solid $great-ds-semantic-interaction-focus;
         box-shadow: none;
         background-color: $great-ds-semantic-interaction-focus;
     }
 
-    &.is-active {
+    &.is-active:not(:focus) {
         background-color: $great-ds-semantic-surface-background-secondary !important;
         border-color: $great-ds-semantic-surface-background-secondary !important;
     }
