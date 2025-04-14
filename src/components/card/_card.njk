@@ -1,4 +1,4 @@
-{% macro greatCard(attributes, classes, type, href, imageUrl, imageAlt, iconSvg, title, titleSize, description, metadataText, metaDataIconPath, metadataIconType, id, hideArrow, progressCompletionPercentage, progressCompletionCount, progressTotalPages, progressFullWidth, completedTag) %}
+{% macro greatCard(attributes, classes, type, href, imageUrl, imageAlt, iconSvg, title, titleSize, tag, description, metadataText, metaDataIconPath, metadataIconType, id, hideArrow, progressCompletionPercentage, progressCompletionCount, progressTotalPages, progressFullWidth, completedTag) %}
     <div class="great-ds-card{% if classes %} {{ classes }}{% endif %}{% if type %} great-ds-card--{{ type }}{% endif %}" {% if href %}role="article"{% endif %}>
         <div class="great-ds-card__inner">
             {% if href %}
@@ -20,9 +20,9 @@
                     <div class="great-ds-card__title-wrapper">
                         {% from "../title-arrow/_title-arrow.njk" import greatTitleArrow %}
                         {% if type == "elevated" or completedTag == "true" %}
-                            {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow="true") }}
+                            {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag=tag, hideArrow="true") }}
                         {% else %}
-                            {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag="h3", hideArrow=hideArrow) }}
+                            {{ greatTitleArrow(text=title, size=titleSize, id="card-title-"|add(id), tag=tag, hideArrow=hideArrow) }}
                         {% endif %}
                         {% if completedTag == "true" %}
                             {% from "../tag/_tag.njk" import greatTag %}

@@ -14,7 +14,8 @@ a {
     &:hover {
         color: $great-ds-semantic-text-hover-link;
     }
-    &:focus {
+    &:focus,
+    &:focus:active {
         @include govuk-focused-text;
     }
 }
