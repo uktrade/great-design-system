@@ -11,8 +11,8 @@
                         <div class="great-ds-footer-bgs__section great-ds-footer-bgs__section--upper">
                             {% for footerSubSection in upperFooterSection %}
                                 <div class="great-ds-footer-bgs__subsection great-ds-footer-bgs__subsection--upper{% if upperFooterSection|length < 4 %} great-ds-footer-bgs__subsection--third{% endif %}">
-                                    {% for link in footerSubSection %}     
-                                        <ul class="great-ds-footer-bgs__link-list">
+                                    <ul class="great-ds-footer-bgs__link-list">
+                                        {% for link in footerSubSection %}     
                                             <li class="great-ds-footer-bgs__link-list-item">
                                                 <a class="great-ds-footer-bgs__link{% if link.isHeading %} great-ds-footer-bgs__link--heading {% endif %}"
                                                 href="{{ link.href }}"
@@ -22,8 +22,8 @@
                                                 {{ link.text }}
                                                 </a>
                                             </li>
-                                        </ul>
-                                    {% endfor %}
+                                        {% endfor %}
+                                    </ul>
                                 </div>
                             {% endfor %}
                         </div>
