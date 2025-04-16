@@ -1,10 +1,6 @@
 {% macro greatCard(attributes, classes, type, href, imageUrl, imageAlt, iconSvg, title, titleSize, tag, description, metadataText, metaDataIconPath, metadataIconType, id, hideArrow, progressCompletionPercentage, progressCompletionCount, progressTotalPages, progressFullWidth, completedTag) %}
     <div class="great-ds-card{% if classes %} {{ classes }}{% endif %}{% if type %} great-ds-card--{{ type }}{% endif %}" {% if href %}role="article"{% endif %}>
         <div class="great-ds-card__inner">
-            {% if href %}
-                <a href="{{ href }}" class="great-ds-card__link" {% if title %}aria-labelledby="card-title-{{ id }}"{% endif %} {% if attributes %}{% for key, value in attributes.items %}{{ key }}="{{ value }}" {% endfor %}{% endif %}>
-            {% endif %}
-
             {% if imageUrl or iconSvg %}
                 <div class="great-ds-card__media" role="img">
                     {% if imageUrl %}
@@ -17,6 +13,9 @@
             {% endif %}
             <div class="great-ds-card__content">
                 {% if title %}
+                    {% if href %}
+                        <a href="{{ href }}" class="great-ds-card__link" {% if title %}aria-labelledby="card-title-{{ id }}"{% endif %} {% if attributes %}{% for key, value in attributes.items %}{{ key }}="{{ value }}" {% endfor %}{% endif %}>
+                    {% endif %}
                     <div class="great-ds-card__title-wrapper">
                         {% from "../title-arrow/_title-arrow.njk" import greatTitleArrow %}
                         {% if type == "elevated" or completedTag == "true" %}
@@ -32,6 +31,9 @@
                             ) }}
                         {% endif %}
                     </div>
+                    {% if href %}
+                        </a>
+                    {% endif %}
                 {% endif %}
                 {% if description %}
                     <div class="great-ds-card__description">{{ description }}</div>
@@ -52,10 +54,6 @@
                 {% endif %}
                 
             </div>
-
-            {% if href %}
-                </a>
-            {% endif %}
         </div>
     </div>
 {% endmacro %}
