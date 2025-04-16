@@ -28,25 +28,27 @@
                             {% endfor %}
                         </div>
                     {% endif %}
-                    <div class="great-ds-footer-bgs__section great-ds-footer-bgs__section--lower">
-                        {% for footerSubSection in lowerFooterSection %}
-                            <div class="great-ds-footer-bgs__subsection great-ds-footer-bgs__subsection--lower{% if lowerFooterSection|length < 4 %} great-ds-footer-bgs__subsection--third{% endif %}">
-                                <ul class="great-ds-footer-bgs__link-list">
-                                {% for link in footerSubSection %}     
-                                    <li class="great-ds-footer-bgs__link-list-item">
-                                        <a class="great-ds-footer-bgs__link{% if link.isHeading %} great-ds-footer-bgs__link--heading {% endif %}"
-                                        href="{{ link.href }}"
-                                        title="{{ link.title }}"
-                                        {% if link.target %} target="{{ link.target }}" {% endif %}
-                                        {% if link.rel %} rel="{{ link.rel }}" {% endif %} >
-                                        {{ link.text }}
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                        {% endfor %}
-                    </div>
+                    {% if lowerFooterSection %}
+                        <div class="great-ds-footer-bgs__section great-ds-footer-bgs__section--lower">
+                            {% for footerSubSection in lowerFooterSection %}
+                                <div class="great-ds-footer-bgs__subsection great-ds-footer-bgs__subsection--lower{% if lowerFooterSection|length < 4 %} great-ds-footer-bgs__subsection--third{% endif %}">
+                                    <ul class="great-ds-footer-bgs__link-list">
+                                    {% for link in footerSubSection %}     
+                                        <li class="great-ds-footer-bgs__link-list-item">
+                                            <a class="great-ds-footer-bgs__link{% if link.isHeading %} great-ds-footer-bgs__link--heading {% endif %}"
+                                            href="{{ link.href }}"
+                                            title="{{ link.title }}"
+                                            {% if link.target %} target="{{ link.target }}" {% endif %}
+                                            {% if link.rel %} rel="{{ link.rel }}" {% endif %} >
+                                            {{ link.text }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
