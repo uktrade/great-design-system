@@ -437,6 +437,10 @@ body:not(.js-enabled) {
     &.is-active {
         display: block;
     }
+    
+    @include govuk-media-query($from: 1024px) {
+        display: none !important;
+    }
 
 }
 
