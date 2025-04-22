@@ -90,7 +90,7 @@
                                             <img class="great-ds-header-bgs__menu-item-icon" src="{{ item.icon }}" alt="">
                                         {% endif %}
                                         {% if item.href %}
-                                            <button class="great-ds-header-bgs__menu-link--accordion great-ds-header-bgs-link" aria-controls="header-children-menu-{{ loop.index }}" aria-expanded="false" data-great-ds-reveal-button aria-label="Open child menu">{{ item.text }}</button>
+                                            <button class="great-ds-header-bgs__menu-link--accordion" aria-controls="header-children-menu-{{ loop.index }}" aria-expanded="false" data-great-ds-reveal-button aria-label="Open {{ item.text }} menu"><span class="great-ds-header-bgs__menu-link--accordion-text">{{ item.text }}</span></button>
                                             <a href="{{ item.href }}" {% if item.attributes %}{{ item.attributes | safe }} {% endif %}class="great-ds-header-bgs__menu-link great-ds-header-bgs-link{% if item.isCurrent %} great-ds-header-bgs__menu-link--current{% endif %}"{% if item.location %} data-location="{{ item.location }}" data-title="{{ item.text }}"{% endif %}>{{ item.text }}</a>
                                         {% else %}
                                             {{ item.text }}

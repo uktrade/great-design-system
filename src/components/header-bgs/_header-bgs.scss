@@ -437,7 +437,10 @@ body:not(.js-enabled) {
     &.is-active {
         display: block;
     }
-
+    
+    @include govuk-media-query($from: 1024px) {
+        display: none !important;
+    }
 }
 
 .great-ds-header-bgs__menu-container {
@@ -638,15 +641,49 @@ ul.great-ds-header-bgs__menu-list {
     outline: none;
     border: none;
     background: transparent;
-    position: relative;
+    width: 100%;
+    text-align: left;
 
     @include govuk-media-query($from: tablet) {
         display: none;
     }
+
+    &:hover {
+        cursor: pointer;
+        &:not(:focus) {
+            .great-ds-header-bgs__menu-link--accordion-text {
+                @include great-ds-link-decorator();
+                text-decoration-thickness: 10%;
+                color: $great-ds-semantic-text-hover-link;
+                &::before {
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='19' viewBox='0 0 18 19' fill='none'%3E%3Cpath d='M8.40324 13.9115L1.57087 7.07905C1.24135 6.74953 1.24135 6.2153 1.57087 5.88581L2.36776 5.08893C2.69671 4.75997 3.22986 4.75934 3.55959 5.08752L8.99988 10.5023L14.4401 5.08752C14.7699 4.75934 15.303 4.75997 15.632 5.08893L16.4288 5.88581C16.7584 6.21533 16.7584 6.74957 16.4288 7.07905L9.59651 13.9115C9.26699 14.2409 8.73276 14.2409 8.40324 13.9115Z' fill='%23003078'/%3E%3C/svg%3E");
+                }
+            }
+        }
+    }
+
+    &:focus,
+    &:focus:active {
+        .great-ds-header-bgs__menu-link--accordion-text {
+            @include govuk-focused-text;
+        }
+    }
     
+    &.is-active {
+        .great-ds-header-bgs__menu-link--accordion-text {
+            &::before {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+.great-ds-header-bgs__menu-link--accordion-text {
+    position: relative;
+        
     &::before {
         content: "";
-        left: 0;
+        left: -30px;
         top: 4px;
         position: absolute;
         width: 18px;
@@ -655,26 +692,6 @@ ul.great-ds-header-bgs__menu-list {
         background-repeat: no-repeat;
         background-position: left center;
         background-size: 18px 19px;
-    }
-
-    &:hover {
-        cursor: pointer;
-        &::before {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='19' viewBox='0 0 18 19' fill='none'%3E%3Cpath d='M8.40324 13.9115L1.57087 7.07905C1.24135 6.74953 1.24135 6.2153 1.57087 5.88581L2.36776 5.08893C2.69671 4.75997 3.22986 4.75934 3.55959 5.08752L8.99988 10.5023L14.4401 5.08752C14.7699 4.75934 15.303 4.75997 15.632 5.08893L16.4288 5.88581C16.7584 6.21533 16.7584 6.74957 16.4288 7.07905L9.59651 13.9115C9.26699 14.2409 8.73276 14.2409 8.40324 13.9115Z' fill='%23003078'/%3E%3C/svg%3E");
-        }
-    }
-
-    &:focus {
-        @include govuk-focused-text;
-        &::before {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='19' viewBox='0 0 18 19' fill='none'%3E%3Cpath d='M8.40324 13.9115L1.57087 7.07905C1.24135 6.74953 1.24135 6.2153 1.57087 5.88581L2.36776 5.08893C2.69671 4.75997 3.22986 4.75934 3.55959 5.08752L8.99988 10.5023L14.4401 5.08752C14.7699 4.75934 15.303 4.75997 15.632 5.08893L16.4288 5.88581C16.7584 6.21533 16.7584 6.74957 16.4288 7.07905L9.59651 13.9115C9.26699 14.2409 8.73276 14.2409 8.40324 13.9115Z' fill='%2304043F'/%3E%3C/svg%3E");
-        }
-    }
-    
-    &.is-active {
-        &::before {
-            transform: rotate(180deg);
-        }
     }
 }
 
