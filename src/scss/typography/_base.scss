@@ -5,3 +5,7 @@ body {
     @include govuk-font-size($size: 18);
     -webkit-font-smoothing: antialiased;
 }
+
+%govuk-body-m  {
+    @include govuk-font-size($size: 18);
+}
