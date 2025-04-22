@@ -441,7 +441,6 @@ body:not(.js-enabled) {
     @include govuk-media-query($from: 1024px) {
         display: none !important;
     }
-
 }
 
 .great-ds-header-bgs__menu-container {
