@@ -438,8 +438,10 @@ body:not(.js-enabled) {
         display: block;
     }
     
-    @include govuk-media-query($from: 1024px) {
-        display: none !important;
+    .great-ds-header-bgs:has(.great-ds-header-bgs__subnav) & {
+        @include govuk-media-query($from: 1024px) {
+            display: none !important;
+        }
     }
 }
 
