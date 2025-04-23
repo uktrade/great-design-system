@@ -19,15 +19,15 @@
               {{ row.value.text }}
             {% endif %}
           </dd>
-          {% if row.actions.items.length %}
+          {% if row.actions.items|length %}
             <dd class="govuk-summary-list__actions {% if row.actions.classes %}{{ row.actions.classes }}{% endif %}">
-              {% if row.actions.items.length == 1 %}
-                {{ greatSummaryListLink(row.actions.items[0], card.title) }}
+              {% if row.actions.items|length == 1 %}
+                {{ greatSummaryListLink(action=row.actions.items[0], cardTitle=card.title) }}
               {% else %}
                 <ul class="govuk-summary-list__actions-list">
                   {% for action in row.actions.items %}
                     <li class="govuk-summary-list__actions-list-item">
-                      {{ greatSummaryListLink(action, card.title) }}
+                      {{ greatSummaryListLink(action=action, cardTitle=card.title) }}
                     </li>
                   {% endfor %}
                 </ul>

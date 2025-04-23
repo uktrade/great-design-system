@@ -102,6 +102,9 @@ function convertNunjucksToHtml(
     },
   );
 
+  // Replace Nunjucks array access with Django dot notation
+  htmlContent = htmlContent.replace(/\[(\d+)\]/g, ".$1");
+
   // Clean the output before returning
   return removeEmptyLines(htmlContent);
 }

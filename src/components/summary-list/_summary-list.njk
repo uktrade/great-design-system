@@ -8,21 +8,21 @@
         {% if card.title %}
           <h{% if card.title.headingLevel %}{{ card.title.headingLevel }}{% else %}2{% endif %} class="govuk-summary-card__title {% if card.title.classes %}{{ card.title.classes }}{% endif %}">
             {% if card.title.html %}
-              {{ card.title.html | safe | trim | indent(6) }}
+              {{ card.title.html | safe }}
             {% else %}
               {{ card.title.text }}
             {% endif %}
           </h{% if card.title.headingLevel %}{{ card.title.headingLevel }}{% else %}2{% endif %}>
         {% endif %}
 
-        {{ greatSummaryListCardActions(card) }}
+        {{ greatSummaryListCardActions(card=card) }}
       </div>
 
       <div class="govuk-summary-card__content">
-        {{ greatSummaryListContent(rows, classes, attributes, card) }}
+        {{ greatSummaryListContent(rows=rows, classes=classes, attributes=attributes, card=card) }}
       </div>
     </div>
   {% else %}
-    {{ greatSummaryListContent(rows, classes, attributes, card) }}
+    {{ greatSummaryListContent(rows=rows, classes=classes, attributes=attributes, card=card) }}
   {% endif %}
 {% endmacro %}
