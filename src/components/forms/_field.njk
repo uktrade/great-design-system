@@ -12,7 +12,8 @@
       {% if field.label %}
       {{ greatLabel(
         text=field.label,
-        for=field.field.widget.id_for_label
+        for=field.field.widget.id_for_label,
+        classes=field.label_css_classes
       ) }}
       {% endif %}
     {% endif %}

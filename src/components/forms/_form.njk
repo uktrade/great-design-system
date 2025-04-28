@@ -17,7 +17,8 @@
       {{ greatLabel(
         text=field.label,
         for=field.id_for_label,
-        isPageHeading=field.is_page_heading
+        isPageHeading=field.is_page_heading,
+        classes=field.label_css_classes
       ) }}
       {% endif %}
     {% endif %}
