@@ -1,0 +1,24 @@
+.great-ds-tag-new {
+    @include govuk-font($size: 16);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: $great-ds-spacing-1 $great-ds-spacing-2;
+    text-decoration: none;
+    overflow-wrap: break-word;
+    width: fit-content !important;
+    border-radius: 15px;
+    color: $great-ds-semantic-text-default-tag-neutral;
+    background-color: $great-ds-semantic-interaction-default-tag-neutral;
+    margin-bottom: $great-ds-spacing-2;
+}
+
+.great-ds-tag-new--sector {
+    background: #c2f0e6;
+    color: #004f59;
+}
+
+.great-ds-tag-new--location {
+    background: $great-ds-semantic-interaction-default-tag-information;
+    color: $great-ds-semantic-interaction-hover-icon-surface-link;
+}
