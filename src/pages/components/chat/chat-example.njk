@@ -1,0 +1,9 @@
+{% extends "layout/_example.njk" %}
+
+{% block content %}
+    {% from "../../../components/chat/_chat.njk" import greatChat %}
+    {{ greatChat(
+    ) }}
+
+
+{% endblock %}

@@ -82,5 +82,6 @@ addEventListenersToDSComponents();
 
 import { initAll } from "govuk-frontend";
 initAll();
+import "../../js/chat/chat.js";
 
 import "../../js/revealer/main.js";

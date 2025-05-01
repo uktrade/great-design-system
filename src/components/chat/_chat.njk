@@ -1,0 +1,22 @@
+{% from "../input/_input.njk" import greatInput %}
+{% macro greatChat() %}
+    <div class='great-ds-chat' data-secrets="" data-api="">
+        <div class='great-ds-chat__container'>
+            <div class='great-ds-chat__messages-container'>
+                <div id ='great-ds-chat__empty-message-container' class='great-ds-chat__message-container great-ds-hidden'>
+                    {# Empty message for js to copy #}
+                    <div class='child'></div>
+                    <p class='great-ds-chat__message '> 
+                        Some content
+                    </p>
+                </div>
+            </div>
+            
+            <div class='great-ds-chat__input-container'>
+                {{ greatInput(classes='great-ds-chat__input') }}
+                <button class='great-ds-chat__submit'>
+            </div>
+        </div>
+    
+    </div>
+{% endmacro %}

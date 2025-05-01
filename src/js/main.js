@@ -2,6 +2,7 @@ import { initAll } from "govuk-frontend";
 initAll();
 
 import "./revealer/main.js";
+import "./chat/chat.js";
 
 import { CookieNotice } from "../components/cookie-banner/cookie-notice";
 

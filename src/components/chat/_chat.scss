@@ -1,0 +1,32 @@
+// Chat Container
+.great-ds-chat {
+    height:400px;
+    width:300px;
+}
+
+.great-ds-chat__submit {
+    height:20px;
+    width: 20px
+}
+
+// Messages
+
+.great-ds-chat__message-container{
+    &--user {
+        float:left;
+        background-color: cyan;
+
+    }
+    &--agent {
+        float:right;
+        background-color: red;
+
+    }
+}
+
+
+// Submit
+.great-ds-chat__input-container {
+    display: flex;
+    flex-direction: row;
+}
