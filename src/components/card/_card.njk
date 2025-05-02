@@ -22,18 +22,22 @@
                     {% if href %}
                         <a href="{{ href }}" class="great-ds-card__link" {% if title %}aria-labelledby="card-title-{{ id }}"{% endif %} {% if attributes %}{% for key, value in attributes.items %}{{ key }}="{{ value }}" {% endfor %}{% endif %}>
                     {% endif %}
-                    <div class="great-ds-card__title-wrapper">
-                        <{% if tag %}{{ tag }}{% else %}h3{% endif %} class="great-ds-card__title{% if titleSize %} great-ds-card__title--{{ titleSize }}{% endif %}"{% if id %} id="card-title-{{ id }}"{% endif %}>
-                            {{ title }}
-                        </{% if tag %}{{ tag }}{% else %}h3{% endif %}>
-                        {% if completedTag == "true" %}
-                            {% from "../tag/_tag.njk" import greatTag %}
-                            {{ greatTag(
-                                text="Completed",
-                                type="success"
-                            ) }}
-                        {% endif %}
-                    </div>
+                        <div class="great-ds-card__title-wrapper">
+                            <{% if tag %}{{ tag }}{% else %}h3{% endif %} class="great-ds-card__title{% if titleSize %} great-ds-card__title--{{ titleSize }}{% endif %}"{% if id %} id="card-title-{{ id }}"{% endif %}>
+                                {{ title }}
+                            </{% if tag %}{{ tag }}{% else %}h3{% endif %}>
+                            {% if completedTag == "true" %}
+                                {% from "../tag/_tag.njk" import greatTag %}
+                                {{ greatTag(
+                                    text="Completed",
+                                    type="success"
+                                ) }}
+                            {% endif %}
+                        </div>
+                    {% if href %}
+                        </a>
+                    {% endif %}
+
                     {% if subText %}
                         <div class="great-ds-card__subtext">
                             {% if locationIcon %}
@@ -50,9 +54,6 @@
                             {% endif %}
                             {{ subText }}
                         </div>
-                    {% endif %}
-                    {% if href %}
-                        </a>
                     {% endif %}
                 {% endif %}
 
