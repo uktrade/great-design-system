@@ -2,10 +2,17 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    margin: 0 0 30px;
-    padding: 0;
+    padding: 0 0 30px;
     list-style: none;
     align-items: stretch;
+}
+
+.great-ds-card-container:has(.great-ds-card__media--hide-on-mobile) {
+    gap: 10px;
+
+    @include govuk-media-query($from: tablet) {
+        gap: 30px;
+    }
 }
 
 .great-ds-card {
