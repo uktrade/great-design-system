@@ -226,7 +226,6 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column-reverse;
-    height: 100%;
     gap: $great-ds-spacing-2;
 
     @include govuk-media-query($from: desktop) {
@@ -302,6 +301,7 @@
     @include govuk-font-size($size: 18);
     font-family: $great-ds-type-family-great;
     color: $great-ds-semantic-text-default-text;
+    word-break: break-word;
     margin: 0;
     padding-bottom: $great-ds-spacing-3;
 }
