@@ -23,7 +23,7 @@
         padding-bottom: 0;
     }
 
-    &:has(.great-ds-tile__icon-wrapper) {
+    &:has(.great-ds-tile__logo-wrapper) {
         @include govuk-media-query($from: 940px) {
             display: flex;
             flex-direction: row-reverse;
@@ -46,7 +46,7 @@
     margin: $great-ds-spacing-3 0 0;
 }
 
-.great-ds-tile__icon {
+.great-ds-tile__logo {
     &--m {
         width: 60px;
         height: 60px;

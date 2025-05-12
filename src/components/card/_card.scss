@@ -130,11 +130,6 @@
 .great-ds-card:not(:has(.great-ds-card__media--thumbnail)) .great-ds-card__image {
     width: 100%;
     height: auto;
-    display: none;
-
-    @include govuk-media-query($from: tablet) {
-        display: block;
-    }
 }
 
 .great-ds-card__icon {
@@ -180,6 +175,13 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+}
+
+.great-ds-card:not(.great-ds-card--full) .great-ds-card__content {
+    > *:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
 }
 
 .great-ds-card:not(.great-ds-card--unmounted) .great-ds-card__content {

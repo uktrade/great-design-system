@@ -1,16 +1,16 @@
 {% from "../action-link/_action-link.njk" import greatActionLink %}
 
-{% macro greatTile(id, headingTag, size, caption, title, description, icon, content, actionLinkHref, actionLinkText, classes, isSimple, attributes, removeContentPadding) %}
+{% macro greatTile(id, headingTag, size, caption, title, description, logo, logoSize, content, actionLinkHref, actionLinkText, classes, isSimple, attributes, removeContentPadding) %}
   <div class="great-ds-tile{% if isSimple %} great-ds-tile--simple{% endif %}{% if classes %} {{ classes }}{% endif %}"
     {% if attributes %}{{ attributes|safe }}{% endif %}
     {% if id %}id="{{ id }}"{% endif %}
     {% if title and id %}aria-labelledby="tile-heading-{{ id }}"{% endif %}>
     {% if caption or title or description %}
-        <div class="great-ds-tile__header">
-            {% if icon %}
-                <div class="great-ds-tile__icon-wrapper">
-                    {% if icon %}
-                        <img src="{{ icon }}" alt="" aria-hidden="true" class="great-ds-tile__icon{% if size %} great-ds-tile__icon--{{ size }}{% endif %}">
+        <div class="great-ds-tile__header{% if brandBorderColor %} great-ds-tile__header-border great-ds-tile__header-border--{{ brandBorderColor }}{% endif %}">
+            {% if logo %}
+                <div class="great-ds-tile__logo-wrapper">
+                    {% if logo %}
+                        <img src="{{ logo }}" alt="" aria-hidden="true" class="great-ds-tile__logo{% if logoSize %} great-ds-tile__logo--{{ logoSize }}{% endif %}">
                     {% endif %}
                 </div>
             {% endif %}
