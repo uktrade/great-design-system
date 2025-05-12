@@ -265,6 +265,10 @@
         @include govuk-focused-text();
     }
 
+    a:visited:not(:focus) & {
+        color: $great-ds-semantic-text-default-link-visited;
+    }
+
     &--m {
         @include govuk-font-size($size: 24);
     }
