@@ -191,6 +191,18 @@
     padding: $great-ds-spacing-6;
 }
 
+.great-ds-card:not(.great-ds-card--unmounted).great-ds-card--elevated .great-ds-card__content {
+    padding: 0 $great-ds-spacing-6 $great-ds-spacing-6;
+}
+
+.great-ds-card:not(.great-ds-card--unmounted):has(.great-ds-card__media--hide-on-mobile) .great-ds-card__content {
+    padding: $great-ds-spacing-6;
+
+    @include govuk-media-query($from: tablet) {
+        padding: 0 $great-ds-spacing-6 $great-ds-spacing-6;
+    }
+}
+
 .great-ds-card__link {
     text-decoration: none;
     color: inherit;
